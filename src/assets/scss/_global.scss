@@ -1,5 +1,6 @@
 // imports
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import "vue-select/src/scss/vue-select.scss";
 // colors
 $primary: #30A0EE;
 $error: #ef5777;
@@ -8,12 +9,12 @@ $light: #F5F8FA;
 $medium: #657786;
 $dark: #34495E;
 $white: #fff;
+$NTNU: #00509e;
 
 // resets
 body {
 	margin: 0;
 	color: $dark;
-	background: #E6ECF0;
 }
 
 html {
@@ -68,7 +69,7 @@ p {
 a {
 	font-family: 'Open Sans', sans-serif;
 	text-decoration: none;
-	color: $primary;
+	color: $NTNU;
 	margin: 0;
 	cursor: pointer;
 
@@ -78,22 +79,6 @@ a {
 }
 
 // globals
-section {
-	display: flex;
-	max-width: 1200px;
-	margin: 0 auto;
-	@media screen and (max-width: 742px) {
-		display: block;
-	}
-}
-
-.col1,
-.col2 {
-	flex-grow: 1;
-	flex-basis: 0;
-	padding: 1rem;
-	@media screen and (max-width: 742px) {}
-}
 
 [v-cloak] {
 	display: none;
@@ -157,56 +142,16 @@ section {
 	text-align: center;
 }
 
-.inline {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-
-	li {
-		display: inline-block;
-	}
-}
 
 .clear {
 	clear: both;
 }
 
-form {
-	label {
-		display: block;
-		font-size: 16px;
-		margin-bottom: 0.5rem;
-	}
 
-	input {
-		display: block;
-		width: 100%;
-		margin-bottom: 1rem;
-		font-size: 16px;
-		padding: 10px;
-		outline: 0;
-		border: 1px solid #e6ecf0;
-		border-radius: 3px;
-
-		&:focus {
-			box-shadow: 0 0 5px 0 rgba($dark, 0.2);
-		}
-	}
-
-	textarea {
-		resize: none;
-		border: 1px solid #e6ecf0;
-		outline: 0;
-		height: 100px;
-		width: 100%;
-		padding: 10px;
-		font-size: 16px;
-	}
-}
 // transitions
 
 .fade-enter-active {
-	transition: opacity 0.5s;
+	transition: opacity 1s;
 }
 
 .fade-leave-active {
@@ -217,3 +162,6 @@ form {
 .fade-leave-to {
 	opacity: 0;
 }
+
+
+

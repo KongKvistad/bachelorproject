@@ -46,12 +46,14 @@ const store = new Vuex.Store({
     async signup({ dispatch }, form) {
       // sign user up
       const { user } = await fb.auth.createUserWithEmailAndPassword(form.email, form.password)
-
+      //clean business user
+      if(form.role == 'company'){
+        delete form.options
+        delete form.password
+        delete form.conf_pass
+      }
       // create user object in userCollections
-      await fb.usersCollection.doc(user.uid).set({
-        name: form.name,
-        title: form.title
-      })
+      await fb.usersCollection.doc(user.uid).set(form)
 
       // fetch user profile and set in state
       dispatch('fetchUserProfile', user)
@@ -60,8 +62,11 @@ const store = new Vuex.Store({
       // fetch user profile
       const userProfile = await fb.usersCollection.doc(user.uid).get()
 
+      //attatch userId
+      let obj = userProfile.data();
+      obj.id = user.uid
       // set user profile in state
-      commit('setUserProfile', userProfile.data())
+      commit('setUserProfile', obj)
 
       // change route to dashboard
       if (router.currentRoute.path === '/login') {

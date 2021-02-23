@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Dashboard from '../views/Dashboard.vue'
+import Index from '../views/Index.vue'
 import { auth } from '../firebase'
 
 Vue.use(VueRouter)
@@ -8,16 +8,34 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Dashboard',
-    component: Dashboard,
-    meta: {
-      requiresAuth: true
-    }
+    name: 'Index',
+    component: Index,
   },
   {
     path: '/login',
     name: 'Login',
     component: () => import( /* webpackChunkName: "login" */ '../views/Login.vue')
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: () => import( /* webpackChunkName: "login" */ '../views/Signup.vue')
+  },
+  {
+    path: '/profile/:id',
+    name: 'profile',
+    component: () => import( /* webpackChunkName: "settings" */ '../views/CompanyPage.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/coop/:type?',
+    name: 'coop',
+    component: () => import( /* webpackChunkName: "settings" */ '../views/Coop.vue'),
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/settings',

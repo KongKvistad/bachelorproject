@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <SiteNav v-if="showNav"></SiteNav>
+    <SiteNav :user="userProfile"></SiteNav>
     <router-view/>
   </div>
 </template>
@@ -15,9 +15,13 @@ export default {
   },
   computed: {
     ...mapState(['userProfile']),
+    
     showNav() {
-      return Object.keys(this.userProfile).length > 1
+      return Object.keys(this.userProfile).length >= 0
     }
+  },
+  mounted(){
+    console.log(process.env)
   }
 }
 </script>

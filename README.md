@@ -61,3 +61,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+
+#### EIRIK NOTES:
+
+to emulate cloud functions: firebase emulators:start
+
+output will then be availbe at <URL:port/endpoint> specified by logs;
+E.G: http://localhost:5001/bachelorproject-2f333/us-central1/helloWorld

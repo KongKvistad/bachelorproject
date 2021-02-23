@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
+import vSelect from 'vue-select'
 import router from './router'
 import store from './store'
 import { auth } from './firebase'
 import './assets/scss/app.scss'
 
 Vue.config.productionTip = false
+Vue.component('v-select', vSelect)
 
 let app
 auth.onAuthStateChanged(user => {
