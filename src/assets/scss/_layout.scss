@@ -48,8 +48,48 @@ header{
 
 .left-col-container{
   display: flex;
-  min-height: 34em;
-  section:first-of-type{
+  flex-direction: column;
+
+  .topRow{
+    
+    position: relative;
+    min-height: 6em;
+    width:100%;
+    background-color:blue;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    color: white;
+    
+
+    div{
+      
+      display:flex;
+      align-items: center;
+      justify-content:center;
+      h1{
+        text-align: center;
+      }
+      button{
+        position: absolute;
+        right:5%;
+        width: 9em;
+        background-color:white;
+        color: black;
+      }
+    }
+
+  }
+
+
+  .main{
+    display: flex;
+    width:100%;
+    min-height: 34em;
+    margin-top: 3em;
+    
+  
+    section:first-of-type{
     flex-basis: 20em;
     
     border-right: 1px solid rgb(197, 197, 197);
@@ -60,12 +100,26 @@ header{
 
     .active{
       color: blue;
+      }
     }
-  }
   section:last-of-type{
     flex-basis: calc(100% - 20em);
+    padding: 0em 5%;
     
-    
+    .secRow{
+
+      div{
+        
+        display:flex;
+        justify-content: space-between;
+        input{
+          width: 40%;
+        }
+        button{  
+          width:10em;
+        }
+      }
+    }
     
     .contentList{
       background-color: white;
@@ -89,6 +143,7 @@ header{
     }
     
   }
+ }
 }
 
 
@@ -155,7 +210,17 @@ button{
   width: min-content;
   border: none;
   border-radius: 3px;
-  margin-left: auto;
+  &:hover {
+		background: lighten($primary, 5%);
+	}
+
+  
+}
+.modalButton{
+  margin-top: 2em;
+  float: right;
+  
+  
 }
 
 #signup{
@@ -240,12 +305,16 @@ button{
   bottom: 0;
   left: 0;
   background: rgba(#333, 0.5);
+  z-index: 2;
+  padding: 5em 0em;
+  overflow-y: auto;
 
   .modal-content {
     position: relative;
     margin: auto;
-    width: 100%;
-    max-width: 400px;
+    
+    max-width: 80%;
+    
     background: #fff;
     padding: 40px;
     border-radius: 5px;
@@ -267,6 +336,7 @@ button{
 
     h3 {
       margin: 0;
+      margin-bottom: 1em;
     }
 
     p {

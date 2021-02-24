@@ -33,11 +33,23 @@
             <router-link to="/calendar">Kalender</router-link>
           </li>
           <li class="dropdown">
-            <a>Samarbeid</a>
+            <span>Oversikt</span>
+            <div class="dropdown-content">
+            <router-link :to="{ name: 'overview', params: { type: 'overordnet' }}">Overordnet</router-link>
+              <router-link :to="{ name: 'overview', params: { type: 'nyeAvtaler' }}">Nye avtaler</router-link>
+              
+            </div>
+            
           </li>
           <li class="dropdown">
-            <a>Oversikt</a>
+            <span>Samarbeid</span>
+            <div class="dropdown-content">
+              <router-link :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</router-link>
+              <router-link :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</router-link>
+            </div>
+            
           </li>
+          
           <li class="dropdown">
             <a>Min Profil</a>
           </li>
@@ -49,6 +61,14 @@
         <ul v-else>
           <li>
             <router-link to="/">Informasjon</router-link>
+          </li>
+          <li class="dropdown">
+            <span>Samarbeid</span>
+            <div class="dropdown-content">
+              <router-link :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</router-link>
+              <router-link :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</router-link>
+            </div>
+            
           </li>
           <li>
             <router-link to="/signup">Register</router-link>

@@ -1,5 +1,18 @@
 <template>
+    
     <main class="left-col-container">
+    <Modal 
+     v-if="showUserAlert"
+     @close="toggleModal" 
+     content="Du må logge inn eller registrere deg før du kan publisere en utlysning!"/>
+    <Editor v-if="showEditor" @closeEditor="toggleEditor" />
+    <section class="topRow">
+        <div>
+            <h1>Utlysninger</h1>
+            <button @click.prevent="toggleModal('opened')">Ny utlysning</button>
+        </div>
+    </section>
+    <section class="main">   
     <section>
         <ul class="menu">
         <li @click="setActive('praksis')" :class="styleActive('praksis')">Praksis</li>
@@ -7,6 +20,12 @@
         </ul>
     </section>
     <section>
+        <div class="secRow">
+            <div>
+                <h1>{{activeChoice}}</h1>
+                <input v-model.trim="search"/>
+            </div>
+        </div>
         <transition name="fade">
             <div key="praksis" class="contentList" v-if="activeChoice=='praksis'">
                 <div class="test1"/>
@@ -16,18 +35,31 @@
             </div>
         </transition>
     </section>
+    </section>
     </main>
 </template>
 
 <script>
 
-
+import Modal from '@/components/Modal'
+import Editor from '@/components/Editor'
+import { mapState } from 'vuex'
+    
 export default {
   name:"Coop",
+  components: {
+      Modal,
+      Editor
+  },
   data(){
       return {
-      activeChoice: this.$route.params.type
+      activeChoice: this.$route.params.type,
+      showUserAlert: false,
+      showEditor: false
       }
+  },
+  computed:{
+      ...mapState(['userProfile']),
   },
   methods: {
       styleActive(value){
@@ -37,6 +69,21 @@ export default {
               return ''
           }  
         
+      },
+      toggleModal(val) {
+        if(val == "opened"){
+            if(!this.userProfile.id){
+                this.showUserAlert = !this.showUserAlert
+            } else {
+                this.showEditor = true
+            }
+        } else {
+            this.showUserAlert = !this.showUserAlert
+        }
+        
+      },
+      toggleEditor(){
+          this.showEditor = false;
       },
       setActive(value){
           this.$router.push("/coop/" +value)

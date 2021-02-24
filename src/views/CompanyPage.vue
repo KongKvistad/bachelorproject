@@ -1,5 +1,9 @@
 <template>
     <main class="left-col-container">
+    <section class="topRow">
+        
+    </section>
+    <section class="main">
     <section>
         <ul class="menu">
         
@@ -7,6 +11,7 @@
     </section>
     <section> 
         <h1>{{isUser}}</h1>
+    </section>
     </section>
     </main>
 </template>

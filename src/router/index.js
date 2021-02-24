@@ -34,7 +34,15 @@ const routes = [
     name: 'coop',
     component: () => import( /* webpackChunkName: "settings" */ '../views/Coop.vue'),
     meta: {
-      requiresAuth: true
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/overview/:type?',
+    name: 'overview',
+    component: () => import( /* webpackChunkName: "settings" */ '../views/Overview.vue'),
+    meta: {
+      requiresAuth: false
     }
   },
   {
