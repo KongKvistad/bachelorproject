@@ -1,6 +1,6 @@
 // navigation
 header{
-  color: $NTNU;
+  color: $c-primary;
   display: flex;
   justify-content: space-between;
   //logo
@@ -55,7 +55,7 @@ header{
     position: relative;
     min-height: 6em;
     width:100%;
-    background-color:blue;
+    background-color:$c-primary;
     display: flex;
     align-items: center;
     justify-content:center;
@@ -74,8 +74,8 @@ header{
         position: absolute;
         right:5%;
         width: 9em;
-        background-color:white;
-        color: black;
+        background-color:$c-white;
+        color: $c-dark;
       }
     }
 
@@ -99,7 +99,7 @@ header{
 
 
     .active{
-      color: blue;
+      color: $c-primary;
       }
     }
   section:last-of-type{
@@ -168,7 +168,7 @@ form{
       
       width: 100%;
       font-size: 14px;
-      color: $NTNU;
+      color: $c-primary;
       font-weight: bold;
       margin-bottom: 10px;
     }
@@ -195,7 +195,7 @@ form{
     label{
       width: 100%;
       font-size: 14px;
-      color: $NTNU;
+      color: $c-primary;
       font-weight: bold;
       margin-bottom: 10px;
     }
@@ -204,14 +204,14 @@ form{
 }
 
 button{
-  background-color: $NTNU;
+  background-color: $c-primary;
   color: white;
   padding: 10px 20px;
   width: min-content;
   border: none;
   border-radius: 3px;
   &:hover {
-		background: lighten($primary, 5%);
+		background: lighten($c-primary, 5%);
 	}
 
   
@@ -246,11 +246,11 @@ button{
 
 // login
 #login {
-  background: linear-gradient(to right, $primary 0%, $primary 50%, $white 50%, $white 100%);
+  background: linear-gradient(to right, $c-primary 0%, $c-primary 50%, $c-white 50%, $c-white 100%);
 
   @media screen and (max-width: 742px) {
     height: 100vh;
-    background: $white;
+    background: $c-white;
   }
 
   .col1,
@@ -264,7 +264,7 @@ button{
   }
 
   .col1 {
-    color: $white;
+    color: $c-white;
     @media screen and (max-width: 742px) {
       display: none;
     }
@@ -276,7 +276,7 @@ button{
     }
 
     a {
-      color: $white;
+      color: $c-white;
       text-decoration: underline;
     }
   }
@@ -362,13 +362,13 @@ button{
   .col1 {
     max-width: 600px;
     margin: 5vh auto 0;
-    background: $white;
+    background: $c-white;
     padding: 2rem;
   }
 
 
   .success {
-    color: $success;
+    color: $c-confirm;
     margin: 0.5rem 0 -2rem;
   }
 
