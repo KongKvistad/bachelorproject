@@ -30,20 +30,30 @@
         </div>
         <transition name="fade">
             <div key="praksis" class="contentList" v-if="activeChoice=='praksis'">
-                <!-- <div class="test1"/> -->
+                <div class="test1"/> 
                 <div class="container-fluid">
                     <div class="container">
-                        <div class="card">
-                            <div class="logo-image"></div>
-                            <div class="card-information">
-                                <h3>Super Company</h3>
-                            </div>
-                        </div>
+                        
+                            <!-- <Card 
+                                :tittel="elem.tittel"
+                                :beskrivelse="elem.beskrivelse"
+                            /> -->
+                        
                     </div>
                 </div>
             </div>
             <div key="prosjekt" class="contentList" v-else>
                 <div class="test2"/>
+                <div class="container-fluid">
+                    <div class="container">
+                        
+                            <!-- <Card 
+                                :tittel="elem.tittel"
+                                :beskrivelse="elem.beskrivelse"
+                            /> -->
+                        
+                    </div>
+                </div>
             </div>
         </transition>
     </section>
@@ -57,13 +67,15 @@
 
 import Modal from '@/components/Modal'
 import Editor from '@/components/Editor'
+// import Card from '@/components/Card'
 import { mapState } from 'vuex'
     
 export default {
   name:"Coop",
   components: {
       Modal,
-      Editor
+      Editor,
+      //Card
   },
   data(){
       return {
