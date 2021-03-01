@@ -73,6 +73,7 @@
       <!--Slutt på menu-->
     
 
+
         <!-- <router-link to="/">
           <h3>NTNU</h3>
         </router-link>
