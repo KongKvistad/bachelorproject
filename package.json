@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "firebase": "^7.15.4",
+    "gridjs-vue": "^3.2.3",
     "moment": "^2.27.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",

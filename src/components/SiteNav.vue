@@ -36,7 +36,7 @@
             <span>Oversikt</span>
             <div class="dropdown-content">
             <router-link :to="{ name: 'overview', params: { type: 'overordnet' }}">Overordnet</router-link>
-              <router-link :to="{ name: 'overview', params: { type: 'nyeAvtaler' }}">Nye avtaler</router-link>
+              <router-link :to="{ name: 'overview', params: { type: 'nye avtaler' }}">Nye avtaler</router-link>
               
             </div>
             

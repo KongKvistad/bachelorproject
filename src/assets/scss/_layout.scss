@@ -51,15 +51,19 @@ header{
   flex-direction: column;
 
   .topRow{
-    
-    position: relative;
-    min-height: 6em;
-    width:100%;
-    background-color:blue;
-    display: flex;
-    align-items: center;
-    justify-content:center;
-    color: white;
+      &.blue{
+        position: relative;
+        min-height: 6em;
+        width:100%;
+        background-color:blue;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        color: white;
+      }
+    &.regular{
+      background-color:white;
+    }
     
 
     div{
@@ -69,6 +73,7 @@ header{
       justify-content:center;
       h1{
         text-align: center;
+        text-transform: capitalize;
       }
       button{
         position: absolute;
@@ -97,7 +102,7 @@ header{
     align-items: center;
     justify-content:center;
 
-
+      
     .active{
       color: blue;
       }
@@ -107,11 +112,15 @@ header{
     padding: 0em 5%;
     
     .secRow{
-
+      margin-bottom: 4em;
       div{
         
         display:flex;
         justify-content: space-between;
+        h1{
+          font-size: 3rem;
+          text-transform: capitalize
+        }
         input{
           width: 40%;
         }
