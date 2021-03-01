@@ -18,7 +18,8 @@
             </div>
         </div>
         <transition name="fade">
-            <grid :cols="cols" :sort="true" :rows="rows"></grid>
+            <grid v-if="activeChoice =='overordnet'" :cols="cols" :sort="true" :rows="rows"></grid>
+            <MatrixMenu/>
         </transition>
     </section>
     </section>

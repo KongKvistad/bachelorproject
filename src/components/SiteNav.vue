@@ -37,7 +37,7 @@
 
           <b-nav-item-dropdown text="Oversikt">
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'overordnet' }}">Overordnet</b-dropdown-item>
-            <b-dropdown-item :to="{ name: 'overview', params: { type: 'nyeAvtaler' }}">Nye avtaler</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'overview', params: { type: 'nye avtaler' }}">Nye avtaler</b-dropdown-item>
             <b-dropdown-item to="#" disabled>Brukere</b-dropdown-item>
             <b-dropdown-item to="#" disabled>Historikk</b-dropdown-item>
           </b-nav-item-dropdown>

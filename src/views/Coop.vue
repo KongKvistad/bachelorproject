@@ -34,10 +34,9 @@
                 <div class="container-fluid">
                     <div class="container">
                         
-                            <!-- <Card 
-                                :tittel="elem.tittel"
-                                :beskrivelse="elem.beskrivelse"
-                            /> -->
+                            <Card 
+                                collection="praksis"
+                            />
                         
                     </div>
                 </div>
@@ -47,10 +46,10 @@
                 <div class="container-fluid">
                     <div class="container">
                         
-                            <!-- <Card 
-                                :tittel="elem.tittel"
-                                :beskrivelse="elem.beskrivelse"
-                            /> -->
+                            <Card 
+                                collection="prosjekt"
+                                
+                            />
                         
                     </div>
                 </div>
@@ -67,7 +66,7 @@
 
 import Modal from '@/components/Modal'
 import Editor from '@/components/Editor'
-// import Card from '@/components/Card'
+import Card from '@/components/Card'
 import { mapState } from 'vuex'
     
 export default {
@@ -75,7 +74,7 @@ export default {
   components: {
       Modal,
       Editor,
-      //Card
+      Card
   },
   data(){
       return {
