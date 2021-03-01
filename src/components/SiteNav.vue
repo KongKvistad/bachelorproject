@@ -2,7 +2,9 @@
   <header>
   
       <b-navbar toggleable="lg" type="light" variant="light">
-      <b-navbar-brand to="/">NTNU BeNet</b-navbar-brand>
+      <b-navbar-brand to="/">
+      <img src="../assets/images/ntnu_logo.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:200px;">
+      </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
 
@@ -14,14 +16,14 @@
           <b-nav-item-dropdown text="Samarbeid">
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
-            <b-dropdown-item href="#" disabled>Bedrifter</b-dropdown-item>
-            <b-dropdown-item href="#" disabled>Studenter</b-dropdown-item>
+            <b-dropdown-item to="#" disabled>Bedrifter</b-dropdown-item>
+            <b-dropdown-item to="#" disabled>Studenter</b-dropdown-item>
           </b-nav-item-dropdown>
 
           <b-nav-item-dropdown text="Min oversikt">
             <b-dropdown-item :to="{ name: 'profile', params: { id: user.id }}">Profil</b-dropdown-item>
-            <b-dropdown-item href="#" disabled>Min praksis</b-dropdown-item>
-            <b-dropdown-item href="#" disabled>Min bachelor</b-dropdown-item>
+            <b-dropdown-item to="#" disabled>Min praksis</b-dropdown-item>
+            <b-dropdown-item to="#" disabled>Min bachelor</b-dropdown-item>
           </b-nav-item-dropdown>
 
           <b-nav-item @click="logout()">Logg ut</b-nav-item>
@@ -36,21 +38,21 @@
           <b-nav-item-dropdown text="Oversikt">
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'overordnet' }}">Overordnet</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'nyeAvtaler' }}">Nye avtaler</b-dropdown-item>
-            <b-dropdown-item href="#" disabled>Brukere</b-dropdown-item>
-            <b-dropdown-item href="#" disabled>Historikk</b-dropdown-item>
+            <b-dropdown-item to="#" disabled>Brukere</b-dropdown-item>
+            <b-dropdown-item to="#" disabled>Historikk</b-dropdown-item>
           </b-nav-item-dropdown>
 
           <b-nav-item-dropdown text="Samarbeid">
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
-            <b-dropdown-item href="#" disabled>Bedrifter</b-dropdown-item>
-            <b-dropdown-item href="#" disabled>Studenter</b-dropdown-item>
+            <b-dropdown-item to="#" disabled>Bedrifter</b-dropdown-item>
+            <b-dropdown-item to="#" disabled>Studenter</b-dropdown-item>
           </b-nav-item-dropdown>
 
           <b-nav-item @click="logout()">Logg ut</b-nav-item>
         </b-navbar-nav>
         <!--Slutt på admin meny-->
-        
+
         <!--Start på andre brukere-->
         <b-navbar-nav class="ml-auto" v-else>
           <b-nav-item to="/">Om</b-nav-item>
