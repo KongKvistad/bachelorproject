@@ -1,12 +1,14 @@
 <template>
-    <div v-if="cards" class="cardsList">
-    <div v-for="card in cards" :key="card.id" class="cards">
-        <div class="left-column">
-            <img :src=imageLink alt="Bedrift logo">
-        </div>
-        <div class="right-column">
-            <h3>{{ card.tittel }}</h3>
-            <p>{{ card.beskrivelse }}</p>
+    <div v-if="cards">
+    <div v-for="card in cards" :key="card.id" class="cards row">
+        <div class="cardsList" v-if="card.godkjent===true">
+            <div class="left-column">
+                <img :src=imageLink alt="Bedrift logo">
+            </div>
+            <div class="right-column">
+                <h3>{{ card.tittel }}</h3>
+                <p>{{ card.beskrivelse }}</p>
+            </div>
         </div>
     </div>
     </div>
@@ -19,8 +21,13 @@ import {getData} from '@/utils/get.js'
 export default {
     name: 'Card',
     props: [
-        "collection",
+        "collection"
     ],
+    data(){
+        return {
+            cards: []
+        }
+    },
     methods: {
 
     },

@@ -30,7 +30,6 @@
         </div>
         <transition name="fade">
             <div key="praksis" class="contentList" v-if="activeChoice=='praksis'">
-                <div class="test1"/> 
                 <div class="container-fluid">
                     <div class="container">
                         
@@ -42,13 +41,11 @@
                 </div>
             </div>
             <div key="prosjekt" class="contentList" v-else>
-                <div class="test2"/>
                 <div class="container-fluid">
                     <div class="container">
                         
                             <Card 
                                 collection="prosjekt"
-                                
                             />
                         
                     </div>
