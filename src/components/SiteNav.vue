@@ -1,12 +1,83 @@
 <template>
   <header>
-        <router-link to="/">
+  
+      <b-navbar toggleable="lg" type="light" variant="light">
+      <b-navbar-brand to="/">NTNU BeNet</b-navbar-brand>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-collapse id="nav-collapse" is-nav>
+
+        <!--Start på student og bedrift meny-->
+        <b-navbar-nav class="ml-auto" v-if="user.role === 'student' || user.role === 'company'">
+          <b-nav-item to="/">Om</b-nav-item>
+          <b-nav-item to="/calendar">Kalender</b-nav-item>
+
+          <b-nav-item-dropdown text="Samarbeid">
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
+            <b-dropdown-item href="#" disabled>Bedrifter</b-dropdown-item>
+            <b-dropdown-item href="#" disabled>Studenter</b-dropdown-item>
+          </b-nav-item-dropdown>
+
+          <b-nav-item-dropdown text="Min oversikt">
+            <b-dropdown-item :to="{ name: 'profile', params: { id: user.id }}">Profil</b-dropdown-item>
+            <b-dropdown-item href="#" disabled>Min praksis</b-dropdown-item>
+            <b-dropdown-item href="#" disabled>Min bachelor</b-dropdown-item>
+          </b-nav-item-dropdown>
+
+          <b-nav-item @click="logout()">Logg ut</b-nav-item>
+        </b-navbar-nav>
+        <!--Slutt på student og bedrift meny-->
+
+        <!--Start på admin meny-->
+        <b-navbar-nav class="ml-auto" v-else-if="user.role === 'admin'">
+          <b-nav-item to="/">Om</b-nav-item>
+          <b-nav-item to="/calendar">Kalender</b-nav-item>
+
+          <b-nav-item-dropdown text="Oversikt">
+            <b-dropdown-item :to="{ name: 'overview', params: { type: 'overordnet' }}">Overordnet</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'overview', params: { type: 'nyeAvtaler' }}">Nye avtaler</b-dropdown-item>
+            <b-dropdown-item href="#" disabled>Brukere</b-dropdown-item>
+            <b-dropdown-item href="#" disabled>Historikk</b-dropdown-item>
+          </b-nav-item-dropdown>
+
+          <b-nav-item-dropdown text="Samarbeid">
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
+            <b-dropdown-item href="#" disabled>Bedrifter</b-dropdown-item>
+            <b-dropdown-item href="#" disabled>Studenter</b-dropdown-item>
+          </b-nav-item-dropdown>
+
+          <b-nav-item @click="logout()">Logg ut</b-nav-item>
+        </b-navbar-nav>
+        <!--Slutt på admin meny-->
+        
+        <!--Start på andre brukere-->
+        <b-navbar-nav class="ml-auto" v-else>
+          <b-nav-item to="/">Om</b-nav-item>
+
+          <b-nav-item-dropdown text="Samarbeid">
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
+          </b-nav-item-dropdown>
+
+          <b-nav-item to="/signup">Registrer</b-nav-item>
+          <b-nav-item to="/login">Logg inn</b-nav-item>
+
+        </b-navbar-nav>
+        <!--Slutt på andre brukere-->
+
+      </b-collapse>
+      </b-navbar>
+      <!--Slutt på menu-->
+    
+
+        <!-- <router-link to="/">
           <h3>NTNU</h3>
         </router-link>
         
         <ul class="nav" v-if="user.role === 'student' || user.role === 'company'">
           <li>
-            <router-link to="/">Informasjon</router-link>
+            <router-link to="/">Om</router-link>
           </li>
           <li>
             <router-link to="/calendar">Kalender</router-link>
@@ -22,12 +93,12 @@
           <li>
             <router-link :to="{ name: 'profile', params: { id: user.id }}">Min Profil</router-link>
           </li>
-          <li><a @click="logout()">logout</a></li>
+          <li><a @click="logout()">Logg ut</a></li>
         </ul>
 
         <ul v-else-if="user.role === 'admin'" class="inline">
           <li>
-            <router-link to="/">Informasjon</router-link>
+            <router-link to="/">Om</router-link>
           </li>
           <li>
             <router-link to="/calendar">Kalender</router-link>
@@ -51,16 +122,16 @@
           </li>
           
           <li class="dropdown">
-            <a>Min Profil</a>
+            <a>Min oversikt</a>
           </li>
-          <li><a @click="logout()">logout</a></li>
+          <li><a @click="logout()">Logg ut</a></li>
         </ul>
 
         
 
         <ul v-else>
           <li>
-            <router-link to="/">Informasjon</router-link>
+            <router-link to="/">Om</router-link>
           </li>
           <li class="dropdown">
             <span>Samarbeid</span>
@@ -76,7 +147,7 @@
           <li>
             <router-link to="/login">Logg inn</router-link>
           </li>
-        </ul>
+        </ul> -->
   </header>
 </template>
 
