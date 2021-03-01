@@ -46,6 +46,7 @@ header{
   }
 }
 
+// FOR SAMARBEID
 .left-col-container{
   display: flex;
   flex-direction: column;
@@ -65,8 +66,8 @@ header{
     div{
       
       display:flex;
-      align-items: center;
-      justify-content:center;
+     /*  align-items: center;
+      justify-content:center; */
       h1{
         text-align: center;
       }
@@ -76,11 +77,11 @@ header{
         width: 9em;
         background-color:$c-white;
         color: $c-dark;
+        border-radius: 5px;
       }
     }
 
   }
-
 
   .main{
     display: flex;
@@ -90,18 +91,18 @@ header{
     
   
     section:first-of-type{
-    flex-basis: 20em;
-    
+    // flex-basis: 20em;
+    padding: 50px;
     border-right: 1px solid rgb(197, 197, 197);
     display: flex;
-    align-items: center;
+    // align-items: center;
     justify-content:center;
-
 
     .active{
       color: $c-primary;
       }
     }
+
   section:last-of-type{
     flex-basis: calc(100% - 20em);
     padding: 0em 5%;
@@ -126,10 +127,15 @@ header{
       width: 100%;
       height: 100%;
       display: flex;
-      align-items:center;
+      // align-items:center;
       justify-content:center;
     }
 
+    .card {
+      background-color: blue;
+      min-height: 200px;
+      padding: 20px;
+    }
     .test1{
       background-color: blue;
       width: 100px;
@@ -145,7 +151,7 @@ header{
   }
  }
 }
-
+// SLUTT PÅ SAMARBEID
 
 //forms
 
