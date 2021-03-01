@@ -1,6 +1,6 @@
 // navigation
 header{
-  color: $NTNU;
+  color: $c-primary;
   display: flex;
   justify-content: space-between;
   //logo
@@ -31,7 +31,7 @@ header{
       margin-top: 40%;
       display: none;
       position: absolute;
-      background-color: #f9f9f9;
+      background-color: $c-white;
       min-width: 140px;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       padding: 12px 16px;
@@ -46,6 +46,7 @@ header{
   }
 }
 
+// FOR SAMARBEID
 .left-col-container{
   display: flex;
   flex-direction: column;
@@ -55,11 +56,14 @@ header{
         position: relative;
         min-height: 6em;
         width:100%;
-        background-color:blue;
+        
         display: flex;
         align-items: center;
         justify-content:center;
         color: white;
+        background-color:$c-primary;
+   
+        color: $c-white;
       }
     &.regular{
       background-color:white;
@@ -69,8 +73,8 @@ header{
     div{
       
       display:flex;
-      align-items: center;
-      justify-content:center;
+     /*  align-items: center;
+      justify-content:center; */
       h1{
         text-align: center;
         text-transform: capitalize;
@@ -79,13 +83,13 @@ header{
         position: absolute;
         right:5%;
         width: 9em;
-        background-color:white;
-        color: black;
+        background-color:$c-white;
+        color: $c-dark;
+        border-radius: 5px;
       }
     }
 
   }
-
 
   .main{
     display: flex;
@@ -95,18 +99,18 @@ header{
     
   
     section:first-of-type{
-    flex-basis: 20em;
-    
+    // flex-basis: 20em;
+    padding: 50px;
     border-right: 1px solid rgb(197, 197, 197);
     display: flex;
-    align-items: center;
+    // align-items: center;
     justify-content:center;
 
-      
     .active{
-      color: blue;
+      color: $c-primary;
       }
     }
+
   section:last-of-type{
     flex-basis: calc(100% - 20em);
     padding: 0em 5%;
@@ -131,14 +135,19 @@ header{
     }
     
     .contentList{
-      background-color: white;
+      background-color: $c-white;
       width: 100%;
       height: 100%;
       display: flex;
-      align-items:center;
+      // align-items:center;
       justify-content:center;
     }
 
+    .card {
+      background-color: blue;
+      min-height: 200px;
+      padding: 20px;
+    }
     .test1{
       background-color: blue;
       width: 100px;
@@ -154,7 +163,7 @@ header{
   }
  }
 }
-
+// SLUTT PÅ SAMARBEID
 
 //forms
 
@@ -176,16 +185,16 @@ form{
     label{
       
       width: 100%;
-      font-size: 14px;
-      color: $NTNU;
+      font-size: $fs-small;
+      color: $c-primary;
       font-weight: bold;
       margin-bottom: 10px;
     }
     input{
-      font-size: 16px;
+      font-size: $fs-normal;
       width: 100%;
       border: none;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid $c-dark;
       padding-bottom: 8px;
     }
     textarea{
@@ -203,8 +212,8 @@ form{
     width: 100%;
     label{
       width: 100%;
-      font-size: 14px;
-      color: $NTNU;
+      font-size: $fs-small;
+      color: $c-primary;
       font-weight: bold;
       margin-bottom: 10px;
     }
@@ -213,14 +222,14 @@ form{
 }
 
 button{
-  background-color: $NTNU;
-  color: white;
+  background-color: $c-primary;
+  color: $c-white;
   padding: 10px 20px;
   width: min-content;
   border: none;
   border-radius: 3px;
   &:hover {
-		background: lighten($primary, 5%);
+		background: lighten($c-primary, 5%);
 	}
 
   
@@ -255,11 +264,11 @@ button{
 
 // login
 #login {
-  background: linear-gradient(to right, $primary 0%, $primary 50%, $white 50%, $white 100%);
+  background: linear-gradient(to right, $c-primary 0%, $c-primary 50%, $c-white 50%, $c-white 100%);
 
   @media screen and (max-width: 742px) {
     height: 100vh;
-    background: $white;
+    background: $c-white;
   }
 
   .col1,
@@ -273,7 +282,7 @@ button{
   }
 
   .col1 {
-    color: $white;
+    color: $c-white;
     @media screen and (max-width: 742px) {
       display: none;
     }
@@ -285,7 +294,7 @@ button{
     }
 
     a {
-      color: $white;
+      color: $c-white;
       text-decoration: underline;
     }
   }
@@ -324,7 +333,7 @@ button{
     
     max-width: 80%;
     
-    background: #fff;
+    background: $c-white;
     padding: 40px;
     border-radius: 5px;
     box-shadow: 0 0 5px 0 rgba(#333, 0.5);
@@ -339,7 +348,7 @@ button{
       transition: 0.15s;
 
       &:hover {
-        color: #000;
+        color: $c-dark;
       }
     }
 
@@ -353,8 +362,8 @@ button{
     }
 
     .error {
-      color: tomato;
-      font-size: 12px;
+      color: $c-alert;
+      font-size: $fs-small;
     }
 
     .button {
@@ -371,13 +380,13 @@ button{
   .col1 {
     max-width: 600px;
     margin: 5vh auto 0;
-    background: $white;
+    background: $c-white;
     padding: 2rem;
   }
 
 
   .success {
-    color: $success;
+    color: $c-confirm;
     margin: 0.5rem 0 -2rem;
   }
 

@@ -30,7 +30,17 @@
         </div>
         <transition name="fade">
             <div key="praksis" class="contentList" v-if="activeChoice=='praksis'">
-                <div class="test1"/>
+                <!-- <div class="test1"/> -->
+                <div class="container-fluid">
+                    <div class="container">
+                        <div class="card">
+                            <div class="logo-image"></div>
+                            <div class="card-information">
+                                <h3>Super Company</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div key="prosjekt" class="contentList" v-else>
                 <div class="test2"/>
