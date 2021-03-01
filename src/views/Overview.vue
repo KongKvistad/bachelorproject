@@ -1,3 +1,4 @@
+<!-- skal bli til oversikt for admin. følger samme route/sidemeny-mapping som f.eks Coop.-->
 <template>
 <main class="left-col-container">
     <section class="topRow">
@@ -26,6 +27,9 @@
 
 
 <script>
+// grid er en vue-component som enkelt lager tables.
+// tar props som kolonner og rader.
+
 import Grid from 'gridjs-vue'
 import {multipleCols} from '@/utils/get.js'
 export default {
@@ -58,12 +62,15 @@ data() {
         
       }
   },
+  // data fra DB burde lastes inn i created, fordi dette skjer før selve komponenten mountes.
+  // https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
   created(){
       multipleCols(1, ['praksis', 'prosjekt']).then(res => {
           console.log(res.flat())
       })
   },
   watch:{
+      //en watcher som følger med på endringer i URI'en og setter aktivt menyelement i henhold.
       '$route.params.type': function( val ){
           this.activeChoice = val
       }

@@ -1,3 +1,6 @@
+// denne fila bruker jeg så jeg slipper å skrive firebase-requests i hver eneste vue-fil.
+// Get.js dreier seg spesifikt om å HENTE data. funksjoner for SKRIVE data er definert i create.js
+
 import { db } from '@/firebase.js'
 
 const getData = async (limit, collection) => {

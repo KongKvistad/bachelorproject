@@ -1,3 +1,5 @@
+<!-- Page for samarbeid. Sidemeny er mappet til navigasjon,
+ så man kan laste f.eks coop/praksis med riktig menyelement valgt-->
 <template>
     
     <main class="left-col-container">
@@ -40,6 +42,8 @@
 </template>
 
 <script>
+
+//Modal er en pop-up component. skal brukes opp der man trenger popups
 
 import Modal from '@/components/Modal'
 import Editor from '@/components/Editor'
@@ -91,6 +95,7 @@ export default {
       }
   },
   watch:{
+      //en watcher som følger med på endringer i URI'en og setter aktivt menyelement i henhold.
       '$route.params.type': function( val ){
           this.activeChoice = val
       }

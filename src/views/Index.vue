@@ -1,3 +1,4 @@
+<!-- Landingsside. har annet random innhold per nå, men skal bli til inofrmasjons-siden-->
 <template>
   <div id="dashboard">
     <transition name="fade">
@@ -88,6 +89,7 @@ export default {
   computed: {
     ...mapState(['userProfile', 'posts'])
   },
+  //alle disse metodene skal byttes ut - don't worry 'bout it
   methods: {
     createPost() {
       this.$store.dispatch('createPost', { content: this.post.content })

@@ -17,6 +17,8 @@
 </template>
 
 <script>
+
+//work in progress
 import { mapState } from 'vuex'
 
 export default {

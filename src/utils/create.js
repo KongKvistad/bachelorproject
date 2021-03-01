@@ -1,4 +1,7 @@
+// motsetning til get.js
+
 import { db } from '@/firebase.js'
+
 
 async function createPost(type, obj){
 

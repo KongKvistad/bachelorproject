@@ -5,6 +5,13 @@ import router from '../router/index'
 
 Vue.use(Vuex)
 
+// VUEX er vue sitt top-level state API.
+// det vil si: det finnes data som vi kanskje vil ha tilgang på på tvers av applikasjonen
+
+// ved å hente de her, vil de være tilgjengelig i hele applikasjonen uten å måtte sende
+// en ny forespørsel, eller å f.eks prop-drille.
+
+
 // realtime firebase
 fb.postsCollection.orderBy('createdOn', 'desc').onSnapshot(snapshot => {
   let postsArray = []

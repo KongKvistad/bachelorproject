@@ -9,6 +9,8 @@ import './assets/scss/app.scss'
 Vue.config.productionTip = false
 Vue.component('v-select', vSelect)
 
+// mountinga må flettes inn i et forsøk på å autentisere,
+// fordi applikasjonen mountes hver gang en URI lastes inn i nettleseren og noen av disse er beskyttet
 let app
 auth.onAuthStateChanged(user => {
   if (!app) {
