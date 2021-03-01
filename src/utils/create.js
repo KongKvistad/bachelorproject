@@ -3,8 +3,27 @@
 import { db } from '@/firebase.js'
 
 
-async function createPost(type, obj){
+async function writeToCol(col, obj){
 
-    const res = await db.collection(type).add(obj)
-    .then(res => res)
+    const res = await db.collection(col).add(obj)
+    .then(docRef => {
+        return docRef.id
+    })
+    
+    return res
 }
+
+async function editDoc(col, id, obj){
+
+    const res = await db.collection(col).add(obj)
+    .then(docRef => {
+        return docRef.id
+    })
+    
+    return res
+}
+
+export {
+    writeToCol,
+    editDoc
+  }

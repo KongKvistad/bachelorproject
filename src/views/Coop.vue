@@ -7,7 +7,7 @@
      v-if="showUserAlert"
      @close="toggleModal" 
      content="Du må logge inn eller registrere deg før du kan publisere en utlysning!"/>
-    <Editor v-if="showEditor" @closeEditor="toggleEditor" />
+    <Editor :collection="activeChoice" v-if="showEditor" @closeEditor="toggleEditor" />
     <section class="topRow blue">
         <div>
             <h1>Utlysninger</h1>

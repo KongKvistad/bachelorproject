@@ -315,7 +315,8 @@ button{
 }
 
 // password reset
-.modal {
+// bootstrap knekte modalen, så denne har blitt renamed til cutomModal
+.customModal {
   display: flex;
   position: fixed;
   top: 0;
@@ -327,7 +328,7 @@ button{
   padding: 5em 0em;
   overflow-y: auto;
 
-  .modal-content {
+  .custom-modal-content {
     position: relative;
     margin: auto;
     
