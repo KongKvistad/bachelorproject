@@ -16,7 +16,7 @@ etc.
 //COLORS
 $c-primary: #00509E;
 $c-hover: #000;
-$c-secondary: #D9E5F0; //NB!! Bytte til #DDE7EE etter NTNU sin designmanual? Eventuelt #79A2CE
+$c-secondary: #A3BAD1; //NB!! Bytte til #DDE7EE etter NTNU sin designmanual? Eventuelt #79A2CE
 $c-alert: #BA0909;
 $c-confirm: #0CAE43;
 $c-dark: #272833; //Bruk denne for all tekst løpende tekst
@@ -242,3 +242,43 @@ a {
 
 
 
+footer {
+	margin-top: 2rem;
+	.footer-top, .footer-bottom {
+		margin: 0;
+	}
+
+	.footer-top {
+		width: 100%;
+		min-height: 250px;
+		margin-bottom: -5px;
+		background: url("../images/footer-graphic-200.svg") no-repeat bottom;
+	}
+
+	.footer-bottom {
+		height: auto;
+		padding: 0.5rem 1rem;
+		background: $c-secondary;
+
+		img {
+			max-width: 250px;
+			padding-bottom: 20px;
+		}
+
+		h6 {
+			font-size: $fs-h6;
+			font-weight: bold !important;
+		}
+
+		h6, a {
+			color: $c-dark;
+		}
+		
+		ul {
+			list-style-type: none;
+			padding: 0;
+		}
+	}
+
+	
+}
