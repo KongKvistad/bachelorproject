@@ -1,48 +1,17 @@
 // navigation
 header{
-  color: $c-primary;
-  display: flex;
-  justify-content: space-between;
-  //logo
-  >a{
-    display: flex;
-    margin: 16px;
-  }
-  //rest of menu
+  //bootstrap nav
   ul{
     display: flex;
     justify-content: space-evenly;
     list-style: none;
     li{
       margin: 0px 20px;
-    }
-    .dropdown{
-      position: relative;
       
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .dropdown:hover .dropdown-content {
-      display: flex;
-    }
-    .dropdown-content {
-      flex-direction: column;
-      margin-top: 40%;
-      display: none;
-      position: absolute;
-      background-color: $c-white;
-      min-width: 140px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      padding: 12px 16px;
-      z-index: 1;
-      border: 1px solid rgb(207, 207, 207);
-
-      >a:not(:first-of-type) {
-        margin-top: 10px;
+      @media screen and (max-width: 990px) {
+        text-align: center;
       }
     }
-
   }
 }
 
@@ -123,7 +92,7 @@ header{
         justify-content: space-between;
         h1{
           font-size: 3rem;
-          text-transform: capitalize
+          text-transform: capitalize;
         }
         input{
           width: 40%;
@@ -140,16 +109,26 @@ header{
       height: 100%;
       display: flex;
       padding-top: 50px;
-      // align-items:center;
       justify-content:center;
     }
 
-    .card {
+    .cardsList {
       min-height: 200px;
+      min-width: 100%;
       padding: 20px; 
+      border-radius: 5px;
+      margin-top: 30px;
 
       &:hover {
         box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+      }
+      
+      .card-buttons {
+        margin-top: 10px;
+        float:right;
+      }
+      img {
+        max-width: 200px;
       }
     }
     
@@ -226,19 +205,30 @@ form{
 
 }
 
-button{
+.primary-button{
   background-color: $c-primary;
   color: $c-white;
-  padding: 10px 20px;
-  width: min-content;
-  border: none;
-  border-radius: 3px;
+  border:none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
   &:hover {
 		background: lighten($c-primary, 5%);
 	}
-
-  
 }
+
+.secondary-button {
+    background-color: $c-white;
+    border: 1px solid $c-primary;
+    padding: 10px;
+    border-radius: 5px;
+    color: $c-primary;
+
+    &:hover {
+      background-color: $c-secondary;
+    }
+}
+
 .modalButton{
   margin-top: 2em;
   float: right;

@@ -1,13 +1,17 @@
 <template>
     <div v-if="cards">
-    <div v-for="card in cards" :key="card.id" class="cards row">
-        <div class="cardsList" v-if="card.godkjent===true">
-            <div class="left-column">
-                <img :src=imageLink alt="Bedrift logo">
+    <div v-for="card in cards" :key="card.id" class="cards">
+        <div class="cardsList row" v-if="card.approved===true">
+            <div class="left-column col-md-3">
+                <img :src= card.image_url alt="Bedrift logo">
             </div>
-            <div class="right-column">
-                <h3>{{ card.tittel }}</h3>
-                <p>{{ card.beskrivelse }}</p>
+            <div class="right-column col-md-9">
+                <h3>{{ card.title }}</h3>
+                <p>{{ card.description|truncate() }}</p>
+            </div>
+            <div class="card-buttons col-md-12 d-flex justify-content-end">
+                <button class="primary-button">Les mer</button>
+                <button class="secondary-button">Prioriter</button>
             </div>
         </div>
     </div>
@@ -35,6 +39,14 @@ export default {
         getData(false, this.collection).then( res => {
             this.cards = res
         })
-    }
+    },
+    filters: { //limit the amount of description from db on card 
+            truncate: function(value) {
+                if (value) {
+                    value = value.substring(0, 300) + '...';
+                }
+                return value
+            }
+        },
 }
 </script>
