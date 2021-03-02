@@ -1,13 +1,13 @@
 <template>
     <div v-if="cards">
     <div v-for="card in cards" :key="card.id" class="cards row">
-        <div class="cardsList" v-if="card.godkjent===true">
+        <div class="cardsList" v-if="card.approved===true">
             <div class="left-column">
                 <img :src=imageLink alt="Bedrift logo">
             </div>
             <div class="right-column">
-                <h3>{{ card.tittel }}</h3>
-                <p>{{ card.beskrivelse }}</p>
+                <h3>{{ card.title }}</h3>
+                <p>{{ card.description }}</p>
             </div>
         </div>
     </div>
