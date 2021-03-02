@@ -29,27 +29,19 @@
             </div>
         </div>
         <transition name="fade">
-            <div key="praksis" class="contentList" v-if="activeChoice=='praksis'">
-                <div class="container-fluid">
-                    <div class="container">
-                        
-                            <Card 
-                                collection="praksis"
-                            />
-                        
-                    </div>
-                </div>
+            <div key="praksis" v-if="activeChoice=='praksis'">
+
+                <Card 
+                    collection="praksis"
+                />
+                    
             </div>
-            <div key="prosjekt" class="contentList" v-else>
-                <div class="container-fluid">
-                    <div class="container">
-                        
-                            <Card 
-                                collection="prosjekt"
-                            />
-                        
-                    </div>
-                </div>
+            <div key="prosjekt" v-else>
+          
+                <Card 
+                    collection="prosjekt"
+                />
+
             </div>
         </transition>
     </section>
