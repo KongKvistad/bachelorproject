@@ -17,10 +17,10 @@
     <section class="main">   
     <section>
         <ul class="menu">
-        <li @click="setActive('praksis')" :class="styleActive('praksis')">Praksis</li>
-        <li @click="setActive('prosjekt')" :class="styleActive('prosjekt')">Prosjekt</li>
-        <li @click="setActive('users')" :class="styleActive('users')">Bedrifter</li>
-        </ul>
+            <li @click="setActive('praksis')" :class="styleActive('praksis')">Praksis</li>
+            <li @click="setActive('prosjekt')" :class="styleActive('prosjekt')">Prosjekt</li>
+            <li @click="setActive('bedrifter')" :class="styleActive('bedrifter')">Bedrifter</li>
+        </ul> 
     </section>
     <section>
         <div class="secRow">
@@ -44,7 +44,7 @@
                 />
 
             </div>
-            <div key="users" v-else-if="activeChoice=='users'">
+            <div key="bedrifter" v-else-if="activeChoice=='bedrifter'">
           
                 <Card 
                     collection="users"
