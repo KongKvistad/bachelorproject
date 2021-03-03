@@ -1,51 +1,31 @@
 <template>
-  <div class="container-fluid" id="login">
+  <div class="container-fluid">
     <PasswordReset v-if="showPasswordReset" @close="togglePasswordReset()"></PasswordReset>
-    <section>
-      <div :class="{ 'signup-form': !showLoginForm }" class="col2">
-        
+    <div class="container">
+      <div class="row">
+        <h1>Logg inn</h1>
+      </div>
+      <div :class="{ 'signup-form': !showLoginForm }" class="row justify-content-center col2">
         <form v-if="showLoginForm" @submit.prevent>
-          <h1>Logg inn</h1>
-          <div>
-            <label for="email1">Epost</label>
-            <input v-model.trim="loginForm.email" type="text" placeholder="deg@email.com" id="email1" />
+          <div class="row">
+            <div class="col-6">
+              <label for="email1">Epost</label>
+              <input v-model.trim="loginForm.email" type="text" placeholder="deg@email.com" id="email1" />
+            </div>
+            <div class="col-6">
+              <label for="password1">Passord</label>
+              <input v-model.trim="loginForm.password" type="password" placeholder="******" id="password1" />
+              <a @click="togglePasswordReset()">Glemt passord</a>
+            </div>
           </div>
-          <div>
-            <label for="password1">Passord</label>
-            <input v-model.trim="loginForm.password" type="password" placeholder="******" id="password1" />
-          </div>
+          <div class="row">
+          <div class="col-12">
           <button @click="login()" class="button">Logg inn</button>
-          <div class="extras">
-            <a @click="togglePasswordReset()">Glemt passord</a>
-            <!-- <a @click="toggleForm()">Create an Account</a> -->
+          </div>
           </div>
         </form>
-
-        <!-- <form v-else @submit.prevent>
-          <h1>Get Started</h1>
-          <div>
-            <label for="name">Name</label>
-            <input v-model.trim="signupForm.name" type="text" placeholder="Savvy Apps" id="name" />
-          </div>
-          <div>
-            <label for="title">Title</label>
-            <input v-model.trim="signupForm.title" type="text" placeholder="Company" id="title" />
-          </div>
-          <div>
-            <label for="email2">Email</label>
-            <input v-model.trim="signupForm.email" type="text" placeholder="you@email.com" id="email2" />
-          </div>
-          <div>
-            <label for="password2">Password</label>
-            <input v-model.trim="signupForm.password" type="password" placeholder="min 6 characters" id="password2" />
-          </div>
-          <button @click="signup()" class="button">Sign Up</button>
-          <div class="extras">
-            <a @click="toggleForm()">Back to Log In</a>
-          </div>
-        </form> -->
       </div>
-    </section>
+    </div>
   </div>
 </template>
 

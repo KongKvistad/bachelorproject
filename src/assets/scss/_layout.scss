@@ -147,7 +147,7 @@ header{
 
 //forms
 
-form{
+/* form{
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -199,7 +199,7 @@ form{
     }
   }
 
-}
+} */
 
 .primary-button{
   background-color: $c-primary;
@@ -261,56 +261,27 @@ form{
 }
 
 // login
-#login {
-  background: linear-gradient(to right, $c-primary 0%, $c-primary 50%, $c-white 50%, $c-white 100%);
 
-  @media screen and (max-width: 742px) {
-    height: 100vh;
-    background: $c-white;
-  }
-
-  .col1,
   .col2 {
     height: 100vh;
-    padding-top: 30vh;
+    padding-top: 15vh;
+    h1 {
+      margin-bottom: 2rem;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid $c-primary;
+    }
     @media screen and (max-width: 742px) {
       height: auto;
       padding-top: 20vh;
     }
   }
 
-  .col1 {
-    color: $c-white;
-    @media screen and (max-width: 742px) {
-      display: none;
-    }
 
-    p {
-      max-width: 490px;
-      margin-top: 2rem;
-      line-height: 1.8;
-    }
 
-    a {
-      color: $c-white;
-      text-decoration: underline;
-    }
-  }
-
-  .signup-form {
-    padding-top: 20vh;
-    @media screen and (max-width: 742px) {
-      padding-top: 10vh;
-    }
-  }
-
-  .col2 {
-    h1 {
-      margin-bottom: 2rem;
-    }
-
-  }
-}
 
 // password reset
 // bootstrap knekte modalen, så denne har blitt renamed til cutomModal
