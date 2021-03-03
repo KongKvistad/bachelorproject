@@ -90,8 +90,8 @@ header{
         
         display:flex;
         justify-content: space-between;
-        h1{
-          font-size: 3rem;
+        h2{
+          font-size: 2.5em;
           text-transform: capitalize;
         }
         input{
@@ -209,7 +209,11 @@ form{
   border-radius: 5px;
   margin-right: 10px;
   &:hover {
-		background: lighten($c-primary, 5%);
+		background-color: $c-white;
+    border: 1px solid $c-primary;
+    padding: 10px;
+    border-radius: 5px;
+    color: $c-primary;
 	}
 }
 
@@ -221,7 +225,10 @@ form{
     color: $c-primary;
 
     &:hover {
-      background-color: $c-secondary;
+      background-color: $c-primary;
+      color: $c-white;
+      padding: 10px;
+      border-radius: 5px;
     }
 }
 

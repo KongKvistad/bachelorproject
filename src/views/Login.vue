@@ -1,30 +1,27 @@
 <template>
-  <div id="login">
+  <div class="container-fluid" id="login">
     <PasswordReset v-if="showPasswordReset" @close="togglePasswordReset()"></PasswordReset>
     <section>
-      <div class="col1">
-        <h1>Vuegram</h1>
-        <p>Welcome to the <a href="https://savvyapps.com/" target="_blank">Savvy Apps</a> sample social media web app powered by Vue.js and Firebase.
-          Build this project by checking out The Definitive Guide to Getting Started with Vue.js</p>
-      </div>
       <div :class="{ 'signup-form': !showLoginForm }" class="col2">
+        
         <form v-if="showLoginForm" @submit.prevent>
-          <h1>Welcome Back</h1>
+          <h1>Logg inn</h1>
           <div>
-            <label for="email1">Email</label>
-            <input v-model.trim="loginForm.email" type="text" placeholder="you@email.com" id="email1" />
+            <label for="email1">Epost</label>
+            <input v-model.trim="loginForm.email" type="text" placeholder="deg@email.com" id="email1" />
           </div>
           <div>
-            <label for="password1">Password</label>
+            <label for="password1">Passord</label>
             <input v-model.trim="loginForm.password" type="password" placeholder="******" id="password1" />
           </div>
-          <button @click="login()" class="button">Log In</button>
+          <button @click="login()" class="button">Logg inn</button>
           <div class="extras">
-            <a @click="togglePasswordReset()">Forgot Password</a>
-            <a @click="toggleForm()">Create an Account</a>
+            <a @click="togglePasswordReset()">Glemt passord</a>
+            <!-- <a @click="toggleForm()">Create an Account</a> -->
           </div>
         </form>
-        <form v-else @submit.prevent>
+
+        <!-- <form v-else @submit.prevent>
           <h1>Get Started</h1>
           <div>
             <label for="name">Name</label>
@@ -46,7 +43,7 @@
           <div class="extras">
             <a @click="toggleForm()">Back to Log In</a>
           </div>
-        </form>
+        </form> -->
       </div>
     </section>
   </div>
