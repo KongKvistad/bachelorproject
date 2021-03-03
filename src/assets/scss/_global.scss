@@ -71,6 +71,8 @@ $fs-h6: 1.1rem;
 $fs-normal: 1rem;
 $fs-small: 0.8rem;
 
+$h1-padding-top: 30px;
+
 /* $primary: #30A0EE;
 $error: #ef5777;
 $success: #1abc9c;
@@ -117,6 +119,7 @@ p {
 
 h1 {
 	font-size: $fs-h1;
+	padding-top: $h1-padding-top;
 }
 
 h2 {
@@ -222,6 +225,30 @@ a {
 
 .clear {
 	clear: both;
+}
+
+
+#dashboard {
+	.img_about_1 {
+		max-height: 400px;
+		float: right;
+	}
+
+	.img_about_2 {
+		max-width: 400px;
+		width: 100%;
+	}
+
+	@media only screen and (max-width: 768px) {
+		.img_about_1 {
+			display: none;
+		}
+
+		.img_about_2 {
+			display: block;
+			margin: auto;
+		}
+	}
 }
 
 
