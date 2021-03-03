@@ -244,6 +244,7 @@ a {
 
 footer {
 	margin-top: 2rem;
+
 	.footer-top, .footer-bottom {
 		margin: 0;
 	}
@@ -280,5 +281,16 @@ footer {
 		}
 	}
 
-	
+	@media only screen and (max-width: 768px) {
+		.footer-bottom {
+			img {
+				display: block;
+				margin: auto;
+				padding: 50px 0;
+			}
+			h6, a, ul {
+				text-align: center;
+			}
+		}
+	}
 }
