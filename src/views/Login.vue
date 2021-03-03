@@ -2,24 +2,27 @@
   <div class="container-fluid">
     <PasswordReset v-if="showPasswordReset" @close="togglePasswordReset()"></PasswordReset>
     <div class="container">
-      <div class="row">
-        <h1>Logg inn</h1>
-      </div>
       <div :class="{ 'signup-form': !showLoginForm }" class="row justify-content-center col2">
+        
         <form v-if="showLoginForm" @submit.prevent>
           <div class="row">
-            <div class="col-6">
+            <div class="col-md-12">
+              <h1>Logg inn</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
               <label for="email1">Epost</label>
               <input v-model.trim="loginForm.email" type="text" placeholder="deg@email.com" id="email1" />
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
               <label for="password1">Passord</label>
               <input v-model.trim="loginForm.password" type="password" placeholder="******" id="password1" />
               <a @click="togglePasswordReset()">Glemt passord</a>
             </div>
           </div>
           <div class="row">
-          <div class="col-12">
+          <div class="col-md-12">
           <button @click="login()" class="button">Logg inn</button>
           </div>
           </div>

@@ -147,7 +147,7 @@ header{
 
 //forms
 
-/* form{
+.signUpForm{
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -199,7 +199,7 @@ header{
     }
   }
 
-} */
+} 
 
 .primary-button{
   background-color: $c-primary;
@@ -263,8 +263,7 @@ header{
 // login
 
   .col2 {
-    height: 100vh;
-    padding-top: 15vh;
+    height: 70vh;
     h1 {
       margin-bottom: 2rem;
     }
@@ -273,6 +272,18 @@ header{
       padding: 10px;
       border-radius: 5px;
       border: 1px solid $c-primary;
+    }
+    label{
+      width: 100%;
+      font-size: $fs-small;
+      color: $c-primary;
+      font-weight: bold;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    button {
+      float: right;
+      margin-top: 2rem;
     }
     @media screen and (max-width: 742px) {
       height: auto;

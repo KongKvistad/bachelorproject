@@ -16,8 +16,7 @@
           <b-nav-item-dropdown text="Samarbeid">
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
-            <b-dropdown-item to="#" disabled>Bedrifter</b-dropdown-item>
-            <b-dropdown-item to="#" disabled>Studenter</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'users' }}">Bedrifter</b-dropdown-item>
           </b-nav-item-dropdown>
 
           <b-nav-item-dropdown text="Min oversikt">
@@ -45,7 +44,7 @@
           <b-nav-item-dropdown text="Samarbeid">
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
-            <b-dropdown-item to="#" disabled>Bedrifter</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'users' }}">Bedrifter</b-dropdown-item>
             <b-dropdown-item to="#" disabled>Studenter</b-dropdown-item>
           </b-nav-item-dropdown>
 
