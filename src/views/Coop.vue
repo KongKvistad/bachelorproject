@@ -24,7 +24,7 @@
     <section>
         <div class="secRow">
             <div>
-                <h1>{{activeChoice}}</h1>
+                <h2>{{activeChoice}}</h2>
                 <input v-model.trim="search"/>
             </div>
         </div>
