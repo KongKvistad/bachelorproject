@@ -7,7 +7,7 @@
             <div class="row footer-bottom align-items-end">
                 <div class="col-md-6">
                     <a href="/">
-                        <img src="../assets/images/ntnu_logo.png" alt="">
+                        <img src="../assets/images/ntnu_logo.png" alt="NTNU logo">
                     </a>
                 </div>
                 <div class="col-md-3">

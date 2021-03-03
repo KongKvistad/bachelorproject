@@ -1,7 +1,67 @@
 <!-- Landingsside. har annet random innhold per nå, men skal bli til inofrmasjons-siden-->
 <template>
   <div id="dashboard">
-    <transition name="fade">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h1>Om NTNU BeNet</h1>
+            <p>NTNU BeNet er et bedriftsnettverk som tilbyr praksisformidling og administrasjon av praksisopphold. 
+              Tjenesten krever lite interaksjon fra deg som arbeidsgiver, og gjør det lettere for studenter å skaffe 
+              og koordinere praksisplass eller bachelor-oppgave.</p>
+            <p>Foreløpig er NTNU BeNet et internt bedriftsnettverk for Institutt for design på NTNU Gjøvik, men i 
+              dagens digitale situasjon er det helt åpent for bedrifter fra andre kommuner og fylker. I tillegg er 
+              det er et stort antall studenter på Gjøvik som er innflyttere, og som derfor har flere muligheter.</p>
+          </div>
+
+          <div class="col-md-6">
+            <img class="img_about_1" src="../assets/images/about_image_1.png" alt="Student">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 d-flex align-items-center">
+            <img class="img_about_2" src="../assets/images/about_image_2.png" alt="Dame plasserer post-it-lapper på veggen">
+          </div>
+
+          <div class="col-md-6 align-self-center">
+            <h2>Hvordan fungerer det?</h2>
+            <p>Du som bedrift er ansvarlig for å ta i mot studenten eller de studentene som skal ha praksisplass hos dere. 
+              Det første som skjer er at du må lage en utlysning, som beskriver hva praksisperioden vil inneholde. Dette er 
+              noe studentene skal se, før de prioriterer 3 valgfrie bedrifter, ved å skrive søknader. </p>
+            <p>Når de har gjort det, vil du få en oversikt over alle som har søkt til deg, samt lese deres søknader og få 
+              tilgang til de gjeldene studentenes profil. Deres profil inneholder en digital CV og relevant informasjon om 
+              studenten. Deretter må du som bedrift også prioritere dine søkere fra èn til tre, innen en gitt frist.</p>
+          </div>
+        </div>
+
+         <div class="row">
+          <div class="col-md-6">
+            <h2>Målsettinger</h2>
+            <p>NTNU BeNet har som formål å legge til rette for at studentene kan få en praksisperiode som er gull 
+              verdt. Det er et mål at alle studenter som har praksis, enten det er et obligatorisk fag eller et valgfag, 
+              skal finne en bedrift som passer. Like så er det stor verdi for bedrifter å ha en praksisstudent hos seg, 
+              da det bidrar til nytenkning og gode innspill fra nye perspektiver. </p>
+          </div>
+          
+          <div class="col-md-6">
+            <h2>Fordeler</h2>
+            <p>NTNU BeNet har som formål å legge til rette for at studentene kan få en praksisperiode som er gull 
+              verdt. Det er et mål at alle studenter som har praksis, enten det er et obligatorisk fag eller et valgfag, 
+              skal finne en bedrift som passer. Like så er det stor verdi for bedrifter å ha en praksisstudent hos seg, 
+              da det bidrar til nytenkning og gode innspill fra nye perspektiver. </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 d-flex justify-content-end">
+                <button class="primary-button">Registrer</button>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- <transition name="fade">
       <CommentModal v-if="showCommentModal" :post="selectedPost" @close="toggleCommentModal()"></CommentModal>
     </transition>
     <section>
@@ -35,10 +95,10 @@
           <p class="no-results">There are currently no posts</p>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- full post modal -->
-    <transition name="fade">
+    <!-- <transition name="fade">
       <div v-if="showPostModal" class="p-modal">
         <div class="p-container">
           <a @click="closePostModal()" class="close">close</a>
@@ -60,7 +120,7 @@
           </div>
         </div>
       </div>
-    </transition>
+    </transition> -->
   </div>
 </template>
 
@@ -72,7 +132,7 @@ import CommentModal from '@/components/CommentModal'
 
 export default {
   components: {
-    CommentModal
+    //CommentModal
   },
   data() {
     return {
