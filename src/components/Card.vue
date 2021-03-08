@@ -21,6 +21,11 @@ export default {
     props: [
         "collection",
     ],
+    data(){
+        return{
+            cards: []
+        }
+    },
     methods: {
 
     },

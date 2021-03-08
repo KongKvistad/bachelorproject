@@ -19,7 +19,7 @@
         </div>
         <transition name="fade">
             <grid v-if="activeChoice =='overordnet'" :cols="cols" :sort="true" :rows="rows"></grid>
-            <MatrixMenu/>
+            <MatrixMenu  v-else/>
         </transition>
     </section>
     </section>
@@ -45,10 +45,12 @@
 
 import Grid from 'gridjs-vue'
 import {multipleCols} from '@/utils/get.js'
+import MatrixMenu from '@/components/MatrixMenu'
 export default {
   name: "Overview",
    components: {
-      Grid
+      Grid,
+      MatrixMenu
     },
   
 data() {
@@ -79,7 +81,7 @@ data() {
   // https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
   created(){
       multipleCols(1, ['praksis', 'prosjekt']).then(res => {
-          console.log(res.flat())
+          //console.log(res.flat())
       })
   },
   watch:{
