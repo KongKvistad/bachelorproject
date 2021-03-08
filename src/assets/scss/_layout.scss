@@ -14,6 +14,11 @@ header{
     }
   }
 }
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:focus{
+  color: $c-primary!important;
+  border-bottom: 1px solid black;
+}
+
 
 // FOR SAMARBEID
 .left-col-container{
@@ -37,7 +42,6 @@ header{
     &.regular{
       background-color:white;
     }
-    
 
     div{
       
@@ -69,7 +73,7 @@ header{
   
     section:first-of-type{
     // flex-basis: 20em;
-    padding: 50px;
+    padding: 0 50px 0 50px;
     border-right: 1px solid rgb(197, 197, 197);
     display: flex;
     // align-items: center;
@@ -77,7 +81,17 @@ header{
 
     .active{
       color: $c-primary;
+      font-weight: bold;
       }
+    ul {
+      font-size: $fs-menu;
+      list-style-type: none;
+      padding-left: 0;
+      li {
+        padding-bottom: 20px;
+        cursor: pointer;
+      }
+    }
     }
 
   section:last-of-type{
@@ -217,7 +231,7 @@ header{
 
 //forms
 
-form{
+.signUpForm{
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -269,7 +283,7 @@ form{
     }
   }
 
-}
+} 
 
 /*
 KNAPPER
@@ -364,56 +378,38 @@ KNAPPER
 }
 
 // login
-#login {
-  background: linear-gradient(to right, $c-primary 0%, $c-primary 50%, $c-white 50%, $c-white 100%);
 
-  @media screen and (max-width: 742px) {
-    height: 100vh;
-    background: $c-white;
-  }
-
-  .col1,
   .col2 {
-    height: 100vh;
-    padding-top: 30vh;
+    height: 70vh;
+    h1 {
+      margin-bottom: 2rem;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid $c-primary;
+    }
+    label{
+      width: 100%;
+      font-size: $fs-small;
+      color: $c-primary;
+      font-weight: bold;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    button {
+      float: right;
+      margin-top: 2rem;
+    }
     @media screen and (max-width: 742px) {
       height: auto;
       padding-top: 20vh;
     }
   }
 
-  .col1 {
-    color: $c-white;
-    @media screen and (max-width: 742px) {
-      display: none;
-    }
 
-    p {
-      max-width: 490px;
-      margin-top: 2rem;
-      line-height: 1.8;
-    }
 
-    a {
-      color: $c-white;
-      text-decoration: underline;
-    }
-  }
-
-  .signup-form {
-    padding-top: 20vh;
-    @media screen and (max-width: 742px) {
-      padding-top: 10vh;
-    }
-  }
-
-  .col2 {
-    h1 {
-      margin-bottom: 2rem;
-    }
-
-  }
-}
 
 // password reset
 // bootstrap knekte modalen, så denne har blitt renamed til cutomModal
