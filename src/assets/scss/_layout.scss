@@ -1,5 +1,20 @@
 // navigation
 header{
+  .counter{
+    position: absolute;
+    background-color: red;
+    color: white;
+    border-radius: 50px;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    font-size: 12px;
+    top: 1.6em;
+    right: 10.4em;
+    z-index: 5;
+  }
   //bootstrap nav
   ul{
     display: flex;
@@ -432,7 +447,55 @@ KNAPPER
     padding: 0px 4%;
 
     #makePost{
-      
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: minmax(min-content, max-content);
+      grid-gap: 0px 30px;
+
+      .field:not(.select){
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 2em;
+        
+        label{
+          
+          width: 100%;
+          font-size: $fs-small;
+          color: $c-primary;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        input{
+          font-size: $fs-normal;
+          width: 100%;
+          border: none;
+          border-bottom: 1px solid $c-dark;
+          padding-bottom: 8px;
+        }
+        textarea{
+          height: 13em;
+          width: 100%;
+          padding: 10px 10px;
+        }
+        
+      }
+
+      .select{
+        display: flex;
+        flex-direction: column;
+        
+        width: 100%;
+        label{
+          width: 100%;
+          font-size: $fs-small;
+          color: $c-primary;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+      }
       .full{
         grid-column: 1/3;
       }

@@ -29,17 +29,21 @@ fb.postsCollection.orderBy('createdOn', 'desc').onSnapshot(snapshot => {
 const store = new Vuex.Store({
   state: {
     userProfile: {},
-    posts: []
+    posts: [],
+    priorityCart: []
   },
   mutations: {
     setUserProfile(state, val) {
       state.userProfile = val
     },
-    setPerformingRequest(state, val) {
-      state.performingRequest = val
-    },
-    setPosts(state, val) {
-      state.posts = val
+    updatePrioCart(state, val){
+      state.priorityCart.push(val)
+    }
+    
+  },
+  getters:{
+    getPrioCart: state => {
+      return  state.priorityCart
     }
   },
   actions: {

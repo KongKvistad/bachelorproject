@@ -17,7 +17,7 @@
                 </div>
                 <div class="card-buttons col-md-12 d-flex justify-content-end">
                     <button @click="showModal = true" class="primary-button">Les mer</button>
-                    <button class="secondary-button" v-if="collection=='praksis' || collection=='prosjekt'">Prioriter</button>
+                    <button @click="$store.commit('updatePrioCart', card)" class="secondary-button" v-if="renderPrioBtn()">Prioriter</button>
                 </div>
             </div>
 
@@ -78,6 +78,7 @@
 
 
 <script>
+import {mapState} from 'vuex'
 import {getData} from '@/utils/get.js'
 //import CoopModal from '@/components/CoopModal.vue'
 
@@ -98,6 +99,8 @@ export default {
         }
     },
     computed: {
+        ...mapState(['userProfile']),
+
         activeCards() {
             if (this.collection=="users"){
                 return this.cards.filter(x=>x.role=="company")
@@ -113,6 +116,15 @@ export default {
         closeCoopModal() {
             this.isCoopModalVisible = false;
         } */
+
+        renderPrioBtn(){
+            if(this.collection=='praksis' || this.collection=='prosjekt'){
+                return this.userProfile.role == "student" ? true : false
+            } else {
+                return false
+            }
+            
+        }
     },
     created(){
         getData(false, this.collection).then( res => {

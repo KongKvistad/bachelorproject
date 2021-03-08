@@ -1,6 +1,6 @@
 <template>
   <header>
-  
+      <span v-if="prioCart" class="counter">{{prioCart}}</span>
       <b-navbar toggleable="lg" type="light" variant="light">
       <b-navbar-brand to="/">
       <img src="../assets/images/ntnu_logo.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:200px;">
@@ -20,6 +20,7 @@
           </b-nav-item-dropdown>
 
           <b-nav-item-dropdown text="Min oversikt">
+            
             <b-dropdown-item :to="{ name: 'profile', params: { id: user.id }}">Profil</b-dropdown-item>
             <b-dropdown-item to="#" disabled>Min praksis</b-dropdown-item>
             <b-dropdown-item to="#" disabled>Min bachelor</b-dropdown-item>
@@ -77,6 +78,11 @@
 <script>
 export default {
   props:["user"],
+  computed:{
+    prioCart(){
+      return this.$store.state.priorityCart.length > 0 ? this.$store.state.priorityCart.length : false 
+    }
+  },
   methods: {
     logout() {
       this.$store.dispatch('logout')
