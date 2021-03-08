@@ -149,7 +149,7 @@ p {
 a {
 	font-family: $f-primary;
 	text-decoration: none;
-	color: $c-primary;
+	color: $c-primary !important;
 	margin: 0;
 	cursor: pointer;
 
@@ -227,31 +227,6 @@ a {
 	clear: both;
 }
 
-
-#dashboard {
-	.img_about_1 {
-		max-height: 400px;
-		float: right;
-	}
-
-	.img_about_2 {
-		max-width: 400px;
-		width: 100%;
-	}
-
-	@media only screen and (max-width: 768px) {
-		.img_about_1 {
-			display: none;
-		}
-
-		.img_about_2 {
-			display: block;
-			margin: auto;
-		}
-	}
-}
-
-
 // transitions
 
 .fade-enter-active {
@@ -265,59 +240,4 @@ a {
 .fade-enter,
 .fade-leave-to {
 	opacity: 0;
-}
-
-
-
-footer {
-	margin-top: 2rem;
-
-	.footer-top, .footer-bottom {
-		margin: 0;
-	}
-
-	.footer-top {
-		width: 100%;
-		min-height: 250px;
-		margin-bottom: -5px;
-		background: url("../images/footer-graphic-200.svg") no-repeat bottom;
-	}
-
-	.footer-bottom {
-		height: auto;
-		padding: 0.5rem 1rem;
-		background: $c-secondary;
-
-		img {
-			max-width: 250px;
-			padding-bottom: 20px;
-		}
-
-		h6 {
-			font-size: $fs-h6;
-			font-weight: bold !important;
-		}
-
-		h6, a {
-			color: $c-dark;
-		}
-		
-		ul {
-			list-style-type: none;
-			padding: 0;
-		}
-	}
-
-	@media only screen and (max-width: 768px) {
-		.footer-bottom {
-			img {
-				display: block;
-				margin: auto;
-				padding: 50px 0;
-			}
-			h6, a, ul {
-				text-align: center;
-			}
-		}
-	}
 }

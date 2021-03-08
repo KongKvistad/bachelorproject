@@ -52,7 +52,7 @@
               da det bidrar til nytenkning og gode innspill fra nye perspektiver. </p>
           </div>
         </div>
-        <div class="row">
+        <div class="row" v-show="!authorized">
           <div class="col-md-12 d-flex justify-content-end">
                 <button class="primary-button">Registrer</button>
             </div>
@@ -129,6 +129,7 @@ import { commentsCollection } from '@/firebase'
 import { mapState } from 'vuex'
 import moment from 'moment'
 import CommentModal from '@/components/CommentModal'
+import { auth } from '@/firebase.js'
 
 export default {
   components: {
@@ -139,19 +140,23 @@ export default {
       post: {
         content: ''
       },
-      showCommentModal: false,
+      /* showCommentModal: false,
       selectedPost: {},
       showPostModal: false,
       fullPost: {},
-      postComments: []
+      postComments: [] */
     }
   },
   computed: {
-    ...mapState(['userProfile', 'posts'])
+    ...mapState(['userProfile', 'posts']),
+    authorized: () => {return auth.currentUser !== null}
   },
   //alle disse metodene skal byttes ut - don't worry 'bout it
   methods: {
-    createPost() {
+
+
+
+    /* createPost() {
       this.$store.dispatch('createPost', { content: this.post.content })
       this.post.content = ''
     },
@@ -195,7 +200,7 @@ export default {
     trimLength(val) {
       if (val.length < 200) { return val }
       return `${val.substring(0, 200)}...`
-    }
+    } */
   }
 }
 </script>

@@ -143,6 +143,76 @@ header{
   }
  }
 }
+
+//Modal for samarbeid
+.coopModal {
+	height: 80vh;
+	width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+	position: fixed;
+	z-index: 99999;
+  top: 5%;
+	background-color: $c-white;
+	box-shadow: 0px 0px 20px $c-primary;
+	padding: 50px;
+  overflow-y: auto;
+
+  span:first-of-type {
+    display: flex;
+    text-align: center;
+    float: right;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: $c-primary;
+  }
+  
+  v-list {
+    list-style-type: none;
+
+    li {
+      display: inline;
+    }
+  }
+
+	.left-column {
+		border-right: 1px solid $c-secondary;
+    text-align: center;
+    padding-right: 30px;
+	}
+  .right-column {
+    padding-left: 30px;
+  }
+
+	.modalbtns {
+		div {
+			float: right;
+		}
+	}
+
+  @media only screen and (max-width: 768px) {
+    .left-column {
+      border-right: none;
+      
+      img {
+        max-width: 200px;
+      }
+    }
+
+    .modalbtns {
+      div {
+        float: none;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+
 // SLUTT PÅ SAMARBEID
 
 //forms
@@ -201,34 +271,43 @@ form{
 
 }
 
-.primary-button{
-  background-color: $c-primary;
-  color: $c-white;
-  border:none;
+/*
+KNAPPER
+*/
+
+//Felles
+.primary-button, .secondary-button {
   padding: 10px;
   border-radius: 5px;
   margin-right: 10px;
+  min-width: 90px;
+  border: 1px solid $c-primary;
+
   &:hover {
-		background-color: $c-white;
-    border: 1px solid $c-primary;
     padding: 10px;
     border-radius: 5px;
+  }
+}
+
+//Primær
+.primary-button{
+  background-color: $c-primary;
+  color: $c-white;
+
+  &:hover {
+		background-color: $c-white;
     color: $c-primary;
 	}
 }
 
+//Sekundær
 .secondary-button {
     background-color: $c-white;
-    border: 1px solid $c-primary;
-    padding: 10px;
-    border-radius: 5px;
     color: $c-primary;
 
     &:hover {
       background-color: $c-primary;
       color: $c-white;
-      padding: 10px;
-      border-radius: 5px;
     }
 }
 
@@ -237,6 +316,30 @@ form{
   float: right;
   
   
+}
+
+//Om-side
+#dashboard {
+	.img_about_1 {
+		max-height: 400px;
+		float: right;
+	}
+
+	.img_about_2 {
+		max-width: 400px;
+		width: 100%;
+	}
+
+	@media only screen and (max-width: 768px) {
+		.img_about_1 {
+			display: none;
+		}
+
+		.img_about_2 {
+			display: block;
+			margin: auto;
+		}
+	}
 }
 
 #signup{
@@ -393,3 +496,59 @@ form{
     margin-top: 2rem;
   }
 }
+
+
+//Footer
+footer {
+	margin-top: 2rem;
+
+	.footer-top, .footer-bottom {
+		margin: 0;
+	}
+
+	.footer-top {
+		width: 100%;
+		min-height: 250px;
+		margin-bottom: -5px;
+		background: url("../images/footer-graphic-200.svg") no-repeat bottom;
+	}
+
+	.footer-bottom {
+		height: auto;
+		padding: 0.5rem 1rem;
+		background: $c-secondary;
+
+		img {
+			max-width: 250px;
+			padding-bottom: 20px;
+		}
+
+		h6 {
+			font-size: $fs-h6;
+			font-weight: bold !important;
+		}
+
+		h6, a {
+			color: $c-dark;
+		}
+		
+		ul {
+			list-style-type: none;
+			padding: 0;
+		}
+	}
+
+	@media only screen and (max-width: 768px) {
+		.footer-bottom {
+			img {
+				display: block;
+				margin: auto;
+				padding: 50px 0;
+			}
+			h6, a, ul {
+				text-align: center;
+			}
+		}
+	}
+}
+
