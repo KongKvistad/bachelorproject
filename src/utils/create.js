@@ -15,9 +15,9 @@ async function writeToCol(col, obj){
 
 async function editDoc(col, id, obj){
 
-    const res = await db.collection(col).add(obj)
+    const res = await db.collection(col).doc(id).set(obj, {merge: true})
     .then(docRef => {
-        return docRef.id
+        return true
     })
     
     return res

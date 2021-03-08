@@ -7,7 +7,11 @@
      v-if="showUserAlert"
      @close="toggleModal" 
      content="Du må logge inn eller registrere deg før du kan publisere en utlysning!"/>
-    <Editor :collection="activeChoice" v-if="showEditor" @closeEditor="toggleEditor" />
+    <EditorWrapper 
+    :collection="activeChoice"
+    :access="'new'"
+    v-if="showEditor"
+    @closeEditor="toggleEditor" />
     <section class="topRow blue">
         <div>
             <h1>Utlysninger</h1>
@@ -62,7 +66,7 @@
 //Modal er en pop-up component. skal brukes opp der man trenger popups
 
 import Modal from '@/components/Modal'
-import Editor from '@/components/Editor'
+import EditorWrapper from '@/components/EditorWrapper'
 import Card from '@/components/Card'
 import { mapState } from 'vuex'
     
@@ -70,7 +74,7 @@ export default {
   name:"Coop",
   components: {
       Modal,
-      Editor,
+      EditorWrapper,
       Card
   },
   data(){

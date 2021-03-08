@@ -1,53 +1,106 @@
 <template>
-  <div class="customModal">
-    <transition name="fade">
-    <div v-if="!postMade" class="custom-modal-content">
-      <div @click="$emit('closeEditor')" class="close">close</div>
-      <h3>Lag en ny utlysning</h3>
-      <vue-editor v-model="content" />
-      <button class="modalButton" @click.prevent="submit">Fullfør</button>
-    </div>
-    <div v-else class="custom-modal-content">
-      <div @click="$emit('closeEditor')" class="close">close</div>
-      <h3>Utlysning sendt</h3>
-      <p>utlysningen er sendt til administrator for gokjenning! vi tar videre kontakt</p>
-      <button class="modalButton" @click="$emit('closeEditor')">Ok</button>
-    </div>
+  <div id="post">
+          <section class="left">
+            <img :src="data.image_url"/>
+            <div class="desc">
+              <h2 class="companyName">{{data.name}}</h2>
+              <strong>Kontakt</strong>
+              <p class="contact">
+              
+                <span>Navn: {{contact.name}}</span>
+                <span>TLF: {{contact.phone}}</span>
+              </p>
+            
+            </div>
+          </section>
+          <section class="right">
+          <h3>{{heading}}</h3>
+          <form  @submit.prevent id="makePost">
+              
+              <div class="field full">
+                <label for="title">Tittel</label>
+                <input :disabled="setAccess()" v-model.trim="data.title" type="text" placeholder="praksisplass" id="title" />
+              </div>
+              
+              <div class="field select">
+                <label for="type">Type</label>
+                <v-select :disabled="setAccess()" v-on:input="e => data.selected = e" id="type" :placeholder="data.selected" :options = "data.options"></v-select>
+              </div>
+              
+              <div class="field select">
+                <label for="amount">plasser</label>
+                <input :disabled="setAccess()" v-model.trim="data.amount" type="text" id="amount" />
+              </div>
 
-    </transition>
+          </form>
+          <vue-editor v-model="data.content" :editor-toolbar="customToolbar" />
+          <button class="modalButton" @click.prevent="submit">Fullfør</button>
+          </section>
   </div>
 </template>
 
 <script>
 import { VueEditor } from "vue2-editor"
 import { mapState } from 'vuex'
-import { writeToCol } from "@/utils/create.js"
+import { writeToCol, editDoc } from "@/utils/create.js"
 
 export default {
   name: "Editor",
-  props:["collection"],
+  props:["data", "heading", "contact", "access"],
   components: { VueEditor },
-  computed:{
-      ...mapState(['userProfile']),
-  },
+
   data: () => ({
-    content: "<h1>Some initial content</h1>",
-    postMade: false
+    postMade: false,
+    customToolbar: [
+      ["bold", "italic", "underline"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [ "code-block"]
+    ]
   }),
+  computed:{
+    ...mapState(['userProfile']),
+  },
   methods: {
+      setAccess(){
+        if(this.access == "editor"){
+          return true
+        } else {
+          return false
+        }
+      },
       submit(){
+        if(this.access != 'editor') {
           let data = {}
-          data.content = this.content;
-          data.from = this.userProfile.id
+          data.content = this.data.content;
+          data.created_by = this.userProfile.id
+          data.name = this.userProfile.name
+          data.contact = this.userProfile.contact
+          data.phone = this.userProfile.phone
+          data.image_url = this.data.image_url
           data.approved = false
-          let collection = this.collection
+          data.spots = this.data.amount
+          data.title = this.data.title
+
+          let collection = this.data.selected
+
           
           writeToCol(collection, data).then(res => {
             if(res){
-              this.postMade = true
+              this.$emit("postmade", true)
             }
           })
-      }
+      
+        } else {
+          console.log(this.data)
+            editDoc(this.data.selected, this.data.id, this.data).then(res => {
+              console.log(res)
+              if(res){
+                this.$emit("postmade", true)
+              }
+            })
+        }
+
+    }  
   }
 }
 </script>

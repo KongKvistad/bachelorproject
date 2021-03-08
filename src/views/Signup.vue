@@ -35,6 +35,10 @@
             <label for="location">lokasjon</label>
             <input v-model.trim="signupForm.location" type="text" placeholder="Hamar" id="location" />
           </div>
+           <div class="field full">
+           <label for="upload">Upload an image</label>
+            <ImgUpload id="upload" v-on:imgUpload="imageUploaded"/>
+           </div>
           <div class="field full">
             <label for="about">Om bedriften</label>
             <textarea v-model.trim="signupForm.about" type="text" placeholder="Informasjon om bedriften" id="about" />
@@ -46,9 +50,12 @@
 </template>
 
 <script>
-
+import ImgUpload from '@/components/ImgUpload'
 
 export default {
+  components: {
+  ImgUpload
+},
   data() {
     return {
       loginForm: {
@@ -64,6 +71,7 @@ export default {
         phone: '',
         location: '',
         about: '',
+        image_url: '',
         role: 'company',
         selected: 'IT',
         options: [
@@ -78,8 +86,15 @@ export default {
   },
   methods: {
     signup() {
-      this.$store.dispatch('signup', this.signupForm)
-    }
+      this.$store.dispatch('signup', this.signupForm).then(() => {
+        this.$router.push("/")
+      })
+    },
+    imageUploaded(val){ 
+      console.log(val)
+      let url = val[0];
+      this.signupForm.image_url = url;
+    },
   }
 }
 </script>

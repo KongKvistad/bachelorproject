@@ -377,6 +377,80 @@ KNAPPER
 
 }
 
+
+//editor for making post
+#post{
+  display: flex;
+  width:100%;
+  >.left{
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 15em;
+
+    img{
+      width: 100%;
+      object-fit: contain;
+      max-height: 8em;
+      margin-bottom: 2em;
+    }
+
+    
+
+    .desc{
+      display: flex;
+      flex-direction: column;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .companyName{
+      text-transform: capitalize;
+      margin-bottom:1.5em;
+    }
+
+    .contact{
+      display: flex;
+      flex-direction: column;
+      justify-content:center;
+      align-items:flex-start;
+      background-color:rgb(241, 241, 241);
+      border-radius: 5px;
+      width: 100%;
+      padding: 20px 0px 20px 20px;
+      
+      >*:first-of-type {
+        margin-bottom:1rem;
+      }
+    }
+  }
+  .right{
+    display: flex;
+    flex-direction: column;
+    flex-basis: calc(100% - 15em);
+    max-width: calc(100% - 15em);
+    padding: 0px 4%;
+
+    #makePost{
+      
+      .full{
+        grid-column: 1/3;
+      }
+      .select{
+        margin-bottom: 2em;
+      }
+      
+    }
+    
+    .modalButton{
+      align-self: flex-end;
+      margin-top: 5em;
+    }
+
+  }
+}
+
+
 // login
 
   .col2 {
@@ -426,11 +500,16 @@ KNAPPER
   overflow-y: auto;
 
   .custom-modal-content {
+
+    &.editor{
+      min-width: 80%;
+    }
+
     position: relative;
     margin: auto;
     
     max-width: 80%;
-    
+    min-width: 60%;
     background: $c-white;
     padding: 40px;
     border-radius: 5px;
@@ -548,3 +627,115 @@ footer {
 	}
 }
 
+//cardview hos admin
+.matrixMenu{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .tabs{
+    display: flex;
+    justify-content: space-between;
+    list-style:none;
+    li{
+      cursor: pointer;
+      &.active{
+        border-bottom:2px solid blue;
+      }
+    }
+  }
+  .cards-list{
+    display: flex;
+    flex-direction:column;
+  }
+}
+
+.imgUpload-cont{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  .top{
+    margin-bottom:2em;
+    display: flex;
+    #imgInput{
+      border: none;
+      width: 48%;
+      margin-right: 2em;
+    }
+    p{
+      width: calc(100% - (48% + 2em));
+      display:flex;
+      justify-content: space-between;
+    }
+  }
+  .bottom{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    min-width: 100%;
+      height: 14em;
+      border: 3px dashed rgb(190, 190, 190);
+      border-radius: 15px;
+    >*{
+      object-fit: contain;
+      cursor: pointer;
+      background-color: rgb(241, 241, 241);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      
+    }
+
+  }
+}
+
+.pureCard{
+  display: flex;
+  min-height: 12em;
+  .left{
+    flex-basis: 15em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+      width: 70%;
+      object-fit:contain;
+    }
+  }
+  .middle{
+    flex-basis: calc(100% - 27em);
+    padding: 0px 20px;
+    min-width: 20em;
+    div{
+      
+      text-align: justify;
+    }
+  }
+  .right{
+    flex-basis: 12em;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    
+    button{
+      height: 2em;
+      padding: 0px;
+      
+      width:100%;
+      margin-bottom: 2em;
+    }
+    div{
+      display: flex;
+      justify-content:space-between;
+      button{
+        padding: 0px;
+        width: 48%;
+        min-width: 2em;
+        align-self: flex-start;
+    
+      }
+    }
+  }
+}
