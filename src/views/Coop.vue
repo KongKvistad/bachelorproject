@@ -6,12 +6,23 @@
     <Modal 
      v-if="showUserAlert"
      @close="toggleModal" 
-     content="Du må logge inn eller registrere deg før du kan publisere en utlysning!"/>
-    <EditorWrapper 
-    :collection="activeChoice"
-    :access="'new'"
-    v-if="showEditor"
-    @closeEditor="toggleEditor" />
+   
+     >
+      <template v-slot:content>
+        <h3>Oops!</h3>
+        <p>Du må logge inn eller registrere deg før du kan publisere en utlysning!</p>
+      </template>
+    </Modal>
+    <Modal 
+     v-if="showEditor"
+     @close="toggleEditor"
+   >
+   <template v-slot:content>
+     <EditorWrapper 
+        :collection="activeChoice"
+        :access="'new'"/>
+   </template>
+   </Modal>
     <section class="topRow blue">
         <div>
             <h1>Utlysninger</h1>

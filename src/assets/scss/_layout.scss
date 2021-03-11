@@ -629,15 +629,15 @@ KNAPPER
 
   .custom-modal-content {
 
-    &.editor{
-      min-width: 80%;
+    >.editor{
+      min-width: 70vw;
     }
 
     position: relative;
     margin: auto;
     
     max-width: 80%;
-    min-width: 60%;
+    min-width: 55%;
     background: $c-white;
     padding: 40px;
     border-radius: 5px;

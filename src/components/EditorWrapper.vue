@@ -1,8 +1,8 @@
 <template>
-  <div class="customModal">
+  
     <transition name="fade">
-    <div v-if="!postMade" class="custom-modal-content editor">
-      <div @click="$emit('closeEditor')" class="close">close</div>
+    <div v-if="!postMade" class="editor">
+      
         <Editor
         :data="form"
         :heading="setHeading()"
@@ -10,19 +10,16 @@
         :access="access"
         @postmade="postMade = !postMade"
         />
-      </div>
+    </div>
         <!-- if edit has been done-->
-      <div v-else class="custom-modal-content">
-        <div @click="$emit('closeEditor')" class="close">close</div>
+      <div v-else>
         <h3 v-if="access != 'editor'">Utlysning sendt</h3>
         <h3 v-else>Forslag endret</h3>
         <p v-if="access != 'editor'">utlysningen er sendt til administrator for gokjenning! vi tar videre kontakt</p>
         <p v-else >Forslag til endring har blitt lagret og videreformidlet.</p>
-        <button class="modalButton" @click="$emit('closeEditor')">Ok</button>
       </div>
 
     </transition>
-  </div>
 </template>
 
 <script>

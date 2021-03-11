@@ -16,12 +16,12 @@
                     <p>{{ card.about }}</p>
                 </div>
                 <div class="card-buttons col-md-12 d-flex justify-content-end">
-                    <button @click="showModal = true" class="primary-button">Les mer</button>
+                    <button @click="showModal = true, expandedCard = card" class="primary-button">Les mer</button>
                     <button @click="$store.commit('updatePrioCart', card)" class="secondary-button" v-if="renderPrioBtn()">Prioriter</button>
                 </div>
             </div>
-
-            <!-- POP-UP (MODAL) FOR SHOWING ALL INFORMATION IN A CARD-->
+        </div>
+        <!-- POP-UP (MODAL) FOR SHOWING ALL INFORMATION IN A CARD-->
             <transition name="fade" appear>
                 <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
             </transition>
@@ -37,28 +37,28 @@
                     </div>
                     <div class="row">
                         <div class="left-column col-md-3">
-                            <img :src= card.image_url alt="Bedriftslogo">
+                            <img :src= "expandedCard.image_url" alt="Bedriftslogo">
                             <div>
-                                <p>Super company</p>
+                                <p>{{expandedCard.name}}</p>
                                 <p><a href="#">Vis profil</a></p>
                                 <p>Bransje:</p>
                             </div>
                             
                         </div>
                         <div class="right-column col-md-9">
-                            <h1>{{ card.title }}</h1>
+                            <h1>{{ expandedCard.title }}</h1>
                             <p>Type: {{collection }}</p>
                             <p>Arbeidssted: </p>
                             <p>Arbeidsoppgaver:
                                 <v-list>
-                                    <v-list-tile v-for="(tag, index) in card.tags" :key="tag.id">
+                                    <v-list-tile v-for="(tag, index) in expandedCard.tags" :key="tag.id">
                                         <li v-if="index < tag.length">{{ tag }}, </li>
                                         <li v-else> {{ tag }}</li>
                                     </v-list-tile>
                                 </v-list>
                              </p>
                             <h2>Beskrivelse</h2>
-                            <p>{{ card.description }}</p>
+                            <p>{{ expandedCard.description }}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -71,7 +71,6 @@
                     </div>
                 </div>
             </transition>
-        </div>
     </div>
 
 </template>
@@ -95,7 +94,8 @@ export default {
         return {
             cards: [],
             //isCoopModalVisible: false,
-            showModal: false
+            showModal: false,
+            expandedCard: false
         }
     },
     computed: {
