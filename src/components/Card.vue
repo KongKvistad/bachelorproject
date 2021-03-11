@@ -40,7 +40,7 @@
                             <img :src= card.image_url alt="Bedriftslogo">
                             <div>
                                 <p>Super company</p>
-                                <p><a href="#">Vis profil</a></p>
+                                <router-link :to="{ name: 'profile', params: { id: card.created_by}}"> Vis profil</router-link>
                                 <p>Bransje:</p>
                             </div>
                             

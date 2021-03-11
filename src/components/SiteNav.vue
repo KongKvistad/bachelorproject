@@ -21,7 +21,7 @@
 
           <b-nav-item-dropdown text="Min oversikt">
             
-            <b-dropdown-item :to="{ name: 'profile', params: { id: user.id }}">Profil</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'profile', params: { id: user.id, type: 'default' }}">Profil</b-dropdown-item>
             <b-dropdown-item to="#" disabled>Min praksis</b-dropdown-item>
             <b-dropdown-item to="#" disabled>Min bachelor</b-dropdown-item>
           </b-nav-item-dropdown>

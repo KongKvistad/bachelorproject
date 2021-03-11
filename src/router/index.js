@@ -22,9 +22,9 @@ const routes = [
     component: () => import( /* webpackChunkName: "login" */ '../views/Signup.vue')
   },
   {
-    path: '/profile/:id',
+    path: '/profile/:id/:type?',
     name: 'profile',
-    component: () => import( /* webpackChunkName: "settings" */ '../views/CompanyPage.vue'),
+    component: () => import( /* webpackChunkName: "settings" */ '../views/ProfilePage.vue'),
     meta: {
       requiresAuth: true
     }
