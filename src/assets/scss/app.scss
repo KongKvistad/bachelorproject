@@ -1,6 +1,24 @@
-@import 'global';
-@import 'layout';
+//LightMode --> if theme is empty use light mode
+[theme=""], [theme="lightMode"]{
+    @import 'lightModeVariables';
+    @import 'variables';
+    @import 'global';
+    @import 'layout';
 
-//  Bootstrap an BootstrapVue SCSS files (order is important)
-@import 'node_modules/bootstrap/scss/bootstrap.scss';
-@import 'node_modules/bootstrap-vue/src/index.scss';
+    //  Bootstrap an BootstrapVue SCSS files (order is important)
+    @import 'node_modules/bootstrap/scss/bootstrap.scss';
+    @import 'node_modules/bootstrap-vue/src/index.scss';
+}
+
+//DarkMode
+[theme="darkMode"]{
+    @import 'darkModeVariables';
+    @import 'variables';
+    @import 'global';
+    @import 'layout';
+    
+    //  Bootstrap an BootstrapVue SCSS files (order is important)
+    @import 'node_modules/bootstrap/scss/bootstrap.scss';
+    @import 'node_modules/bootstrap-vue/src/index.scss';
+}
+

@@ -4,12 +4,19 @@ import vSelect from 'vue-select'
 import router from './router'
 import store from './store'
 import { auth } from './firebase'
-import './assets/scss/app.scss'
+
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './assets/scss/app.scss'
+//Toggle between scss darkTheme and normal
+/* if(document.querySelectorAll(".darkModeYOOO")){
+  require('./assets/scss/darkMode.scss');
+} else {
+  require('./assets/scss/app.scss');
+} */
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)

@@ -13,10 +13,12 @@ import { mapState } from 'vuex'
 import SiteNav from '@/components/SiteNav'
 import Footer from '@/components/Footer'
 
+
 export default {
   components: {
     SiteNav,
-    Footer
+    Footer,
+
   },
   computed: {
     ...mapState(['userProfile']),

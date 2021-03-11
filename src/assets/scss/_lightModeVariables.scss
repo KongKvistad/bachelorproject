@@ -1,0 +1,22 @@
+/** 
+Set up variables:
+
+For colors create names like: $c-primary
+where c stands for color
+For fonts create names like: $f-primary
+where f stands for fonts
+etc.
+
+*/
+
+//COLORS
+$c-primary: #00509E;
+$c-hover: #000;
+$c-secondary: #A3BAD1; //NB!! Bytte til #DDE7EE etter NTNU sin designmanual? Eventuelt #79A2CE
+$c-alert: #BA0909;
+$c-confirm: #0CAE43;
+$c-dark: #272833; //Bruk denne for all tekst løpende tekst
+$c-white: #fff;
+$c-text: #272833;
+$c-bodybg: #fff;
+$c-transparent: transparent;

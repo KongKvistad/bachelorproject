@@ -69,6 +69,7 @@
         <!--Slutt på andre brukere-->
 
       </b-collapse>
+      <DarkMode/>
       </b-navbar>
       <!--Slutt på menu-->
     
@@ -76,7 +77,12 @@
 </template>
 
 <script>
+import DarkMode from '@/components/DarkMode'
+
 export default {
+  components: {
+    DarkMode
+  },
   props:["user"],
   computed:{
     prioCart(){
