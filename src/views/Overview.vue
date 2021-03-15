@@ -6,10 +6,25 @@
     </section>
     <section class="main">   
     <section>
-        <ul class="menu">
-        <li @click="setActive('overordnet')" :class="styleActive('overordnet')">Overordnet</li>
-        <li @click="setActive('nye avtaler')" :class="styleActive('nye avtaler')">Nye avtaler</li>
-        </ul>
+        <SideMenu
+        :menuOptions="[{
+            param: '/overordnet',
+            text: 'Overordnet'
+        },
+        {
+            param: '/nye avtaler',
+            text: 'Nye avtaler'
+        },
+        {
+            param: '/brukere',
+            text: 'Brukere'
+        },
+        {
+            param: '/historikk',
+            text: 'Historikk'
+        }]"
+        base="/overview"
+         />
     </section>
     <section>
         <div class="secRow">
@@ -19,6 +34,8 @@
         </div>
         <transition name="fade">
             <grid v-if="activeChoice =='overordnet'" :cols="cols" :sort="true" :rows="rows"></grid>
+            <grid v-else-if="activeChoice =='brukere'" :cols="cols" :sort="true" :rows="rows"></grid>
+            <grid v-else-if="activeChoice =='historikk'" :cols="cols" :sort="true" :rows="rows"></grid>
             <MatrixMenu  v-else/>
         </transition>
     </section>
@@ -46,16 +63,17 @@
 import Grid from 'gridjs-vue'
 import {multipleCols} from '@/utils/get.js'
 import MatrixMenu from '@/components/MatrixMenu'
+import SideMenu from '@/components/SideMenu'
 export default {
   name: "Overview",
    components: {
       Grid,
-      MatrixMenu
+      MatrixMenu,
+      SideMenu
     },
   
 data() {
     return {
-        activeChoice: this.$route.params.type,
         cols: ['Status', 'Navn', 'Year', 'Color'],
         rows: [
         ['Ford', 'Fusion', '2011', 'Silver'],
@@ -63,19 +81,14 @@ data() {
     ]
     }
 },
-  methods: {
-     styleActive(value){
-          if(this.activeChoice == value){
-              return 'active'
-          }else {
-              return ''
-          }  
-        
-      },
-      setActive(value){
-          this.$router.push("/overview/" +value)
-        
+ computed:{
+      
+      activeChoice(){
+          return this.$route.params.type
       }
+  },
+  methods: {
+     
   },
   // data fra DB burde lastes inn i created, fordi dette skjer før selve komponenten mountes.
   // https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
@@ -84,11 +97,5 @@ data() {
           //console.log(res.flat())
       })
   },
-  watch:{
-      //en watcher som følger med på endringer i URI'en og setter aktivt menyelement i henhold.
-      '$route.params.type': function( val ){
-          this.activeChoice = val
-      }
-  }
 }
 </script>

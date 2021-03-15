@@ -38,6 +38,10 @@ const store = new Vuex.Store({
     },
     updatePrioCart(state, val){
       state.priorityCart.push(val)
+    },
+    
+    savePrioCart(){
+      console.log("nice")
     }
     
   },
@@ -47,6 +51,8 @@ const store = new Vuex.Store({
     }
   },
   actions: {
+    
+
     async login({ dispatch }, form) {
       // sign user in
       const { user } = await fb.auth.signInWithEmailAndPassword(form.email, form.password)

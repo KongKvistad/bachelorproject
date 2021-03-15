@@ -42,7 +42,27 @@ const multipleCols = async (limit, collections) => {
     }))
 }
 
+// get specific doc
+
+async function getDoc(doctype, refId) {
+    
+  const ref = db.collection(doctype).doc(refId)
+  const res = await ref.get().then(doc => {
+      let newObj = doc.data()
+      if(newObj != undefined){
+          newObj.id = doc.id
+      }
+     
+      return newObj
+  })
+  return res
+
+}
+
+
+
 export {
   getData,
-  multipleCols
+  multipleCols,
+  getDoc
 }

@@ -31,11 +31,21 @@
     </section>
     <section class="main">   
     <section>
-        <ul class="menu">
-            <li @click="setActive('praksis')" :class="styleActive('praksis')">Praksis</li>
-            <li @click="setActive('prosjekt')" :class="styleActive('prosjekt')">Prosjekt</li>
-            <li @click="setActive('bedrifter')" :class="styleActive('bedrifter')">Bedrifter</li>
-        </ul> 
+        <SideMenu
+        :menuOptions="[{
+            param: '/praksis',
+            text: 'Praksis'
+        },
+        {
+            param: '/prosjekt',
+            text: 'Prosjekter'
+        },
+        {
+            param: '/bedrifter',
+            text: 'Bedrifter'
+        }]"
+        base="/coop"
+         />
     </section>
     <section>
         <div class="secRow">
@@ -78,6 +88,7 @@
 
 import Modal from '@/components/Modal'
 import EditorWrapper from '@/components/EditorWrapper'
+import SideMenu from '@/components/SideMenu'
 import Card from '@/components/Card'
 import { mapState } from 'vuex'
     
@@ -86,27 +97,24 @@ export default {
   components: {
       Modal,
       EditorWrapper,
-      Card
+      Card,
+      SideMenu
   },
   data(){
       return {
-      activeChoice: this.$route.params.type,
       showUserAlert: false,
       showEditor: false
       }
   },
   computed:{
       ...mapState(['userProfile']),
+      
+      activeChoice(){
+          return this.$route.params.type
+      }
   },
   methods: {
-      styleActive(value){
-          if(this.activeChoice == value){
-              return 'active'
-          }else {
-              return ''
-          }  
-        
-      },
+      
       toggleModal(val) {
         if(val == "opened"){
             if(!this.userProfile.id){
@@ -122,16 +130,8 @@ export default {
       toggleEditor(){
           this.showEditor = false;
       },
-      setActive(value){
-          this.$router.push("/coop/" +value)
-        
-      }
+      
   },
-  watch:{
-      //en watcher som følger med på endringer i URI'en og setter aktivt menyelement i henhold.
-      '$route.params.type': function( val ){
-          this.activeChoice = val
-      }
-  }
+  
 }
 </script>
