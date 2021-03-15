@@ -16,61 +16,50 @@
                     <p>{{ card.about }}</p>
                 </div>
                 <div class="card-buttons col-md-12 d-flex justify-content-end">
-                    <button @click="showModal = true, expandedCard = card" class="primary-button">Les mer</button>
+                    <button @click="toggleCoopModal(card)" class="primary-button">Les mer</button>
                     <button @click="$store.commit('updatePrioCart', card)" class="secondary-button" v-if="renderPrioBtn()">Prioriter</button>
                 </div>
             </div>
         </div>
-        <!-- POP-UP (MODAL) FOR SHOWING ALL INFORMATION IN A CARD-->
-            <transition name="fade" appear>
-                <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
-            </transition>
-            <transition name="slide" appear>
-                <div class="coopModal" v-if="showModal">
-                    <div class="row">
-                        <div class="col-12">
-                            <p @click="showModal = false"><span> &#10006; </span></p>
+
+        <Modal 
+        v-if="isCoopModalVisible"
+         @close="toggleCoopModal">
+            <template v-slot:content>
+                <div class="row coopModal">
+                    <div class="left-column col-md-3">
+                        <img :src= "expandedCard.image_url" alt="Bedriftslogo">
+                        <div>
+                            <p>{{expandedCard.name}}</p>
+                            <p><a href="#">Vis profil</a></p>
+                            <p>Bransje:</p>
                         </div>
                     </div>
-                    <div class="row">
-                        
+
+                    <div class="right-column col-md-9">
+                        <h1>{{ expandedCard.title }}</h1>
+                        <p>Type: {{collection }}</p>
+                        <p>Arbeidssted: </p>
+                        <p>Arbeidsoppgaver:
+                            <v-list>
+                                <v-list-tile v-for="(tag, index) in expandedCard.tags" :key="tag.id">
+                                    <li v-if="index < tag.length">{{ tag }}, </li>
+                                    <li v-else> {{ tag }}</li>
+                                </v-list-tile>
+                            </v-list>
+                            </p>
+                        <h2>Beskrivelse</h2>
+                        <p>{{ expandedCard.description }}</p>
                     </div>
-                    <div class="row">
-                        <div class="left-column col-md-3">
-                            <img :src= "expandedCard.image_url" alt="Bedriftslogo">
-                            <div>
-                                <p>{{expandedCard.name}}</p>
-                                <p><a href="#">Vis profil</a></p>
-                                <p>Bransje:</p>
-                            </div>
-                            
-                        </div>
-                        <div class="right-column col-md-9">
-                            <h1>{{ expandedCard.title }}</h1>
-                            <p>Type: {{collection }}</p>
-                            <p>Arbeidssted: </p>
-                            <p>Arbeidsoppgaver:
-                                <v-list>
-                                    <v-list-tile v-for="(tag, index) in expandedCard.tags" :key="tag.id">
-                                        <li v-if="index < tag.length">{{ tag }}, </li>
-                                        <li v-else> {{ tag }}</li>
-                                    </v-list-tile>
-                                </v-list>
-                             </p>
-                            <h2>Beskrivelse</h2>
-                            <p>{{ expandedCard.description }}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 modalbtns">
-                            <div>
-                                <button class="primary-button">Prioriter</button>
-                                <button class="secondary-button" @click="showModal = false">Lukk</button>
-                            </div>
+                    <div class="col-12 modalbtns col-md-12 d-flex justify-content-end">
+                        <div>
+                            <button @click="$store.commit('updatePrioCart', expandedCard)" class="secondary-button" v-if="renderPrioBtn()">Prioriter</button>
+                            <button class="secondary-button" @click="toggleCoopModal">Lukk</button>
                         </div>
                     </div>
                 </div>
-            </transition>
+            </template>
+        </Modal>
     </div>
 
 </template>
@@ -79,13 +68,12 @@
 <script>
 import {mapState} from 'vuex'
 import {getData} from '@/utils/get.js'
-//import CoopModal from '@/components/CoopModal.vue'
-
+import Modal from '@/components/Modal'
 
 export default {
     name: 'Card',
     components: {
-        //CoopModal
+        Modal
     },
     props: [
         "collection"
@@ -93,7 +81,7 @@ export default {
     data(){
         return {
             cards: [],
-            //isCoopModalVisible: false,
+            isCoopModalVisible: false,
             showModal: false,
             expandedCard: false
         }
@@ -110,12 +98,15 @@ export default {
         }
     },
     methods: {
-        /* showCoopModal() {
-            this.isCoopModalVisible = true;
+        //Toggle mellom open og lukken "Les mer"-modal
+        toggleCoopModal(card) {
+            if(!this.isCoopModalVisible){
+                this.expandedCard = card
+            } else {
+                this.expandedCard = false
+            }
+            this.isCoopModalVisible = !this.isCoopModalVisible;
         },
-        closeCoopModal() {
-            this.isCoopModalVisible = false;
-        } */
 
         renderPrioBtn(){
             if(this.collection=='praksis' || this.collection=='prosjekt'){

@@ -1,3 +1,5 @@
+
+//DARK MODE SLIDER
 .switch {
   position: relative;
   display: inline-block;
@@ -20,7 +22,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: $c-bodybg;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -32,17 +34,17 @@
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: $c-bodybg;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: $c-primary;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px $c-primary;
 }
 
 input:checked + .slider:before {
@@ -96,7 +98,7 @@ header{
 }
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:focus{
   color: $c-primary!important;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $c-dark;
 }
 
 
@@ -114,13 +116,11 @@ header{
         display: flex;
         align-items: center;
         justify-content:center;
-        color: white;
+        color: $c-text;
         background-color:$c-primary;
-   
-        color: $c-white;
       }
     &.regular{
-      background-color:white;
+      background-color:$c-white;
     }
 
     div{
@@ -136,7 +136,7 @@ header{
         position: absolute;
         right:5%;
         width: 9em;
-        background-color:$c-white;
+        background-color:$c-transparent;
         color: $c-dark;
         border-radius: 5px;
       }
@@ -238,75 +238,6 @@ header{
  }
 }
 
-//Modal for samarbeid
-.coopModal {
-	height: 80vh;
-	width: 70vw;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-	position: fixed;
-	z-index: 99999;
-  top: 5%;
-	background-color: $c-white;
-	box-shadow: 0px 0px 20px $c-primary;
-	padding: 50px;
-  overflow-y: auto;
-
-  span:first-of-type {
-    display: flex;
-    text-align: center;
-    float: right;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    background-color: $c-primary;
-  }
-  
-  v-list {
-    list-style-type: none;
-
-    li {
-      display: inline;
-    }
-  }
-
-	.left-column {
-		border-right: 1px solid $c-secondary;
-    text-align: center;
-    padding-right: 30px;
-	}
-  .right-column {
-    padding-left: 30px;
-  }
-
-	.modalbtns {
-		div {
-			float: right;
-		}
-	}
-
-  @media only screen and (max-width: 768px) {
-    .left-column {
-      border-right: none;
-      
-      img {
-        max-width: 200px;
-      }
-    }
-
-    .modalbtns {
-      div {
-        float: none;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-      }
-    }
-  }
-}
-
 // SLUTT PÅ SAMARBEID
 
 //forms
@@ -396,7 +327,7 @@ KNAPPER
 
 //Sekundær
 .secondary-button {
-    background-color: $c-white;
+    background-color: $c-transparent;
     color: $c-primary;
 
     &:hover {
@@ -610,9 +541,6 @@ KNAPPER
     }
   }
 
-
-
-
 // password reset
 // bootstrap knekte modalen, så denne har blitt renamed til cutomModal
 .customModal {
@@ -622,15 +550,60 @@ KNAPPER
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(#333, 0.5);
+  background: $c-modaltransparent;
   z-index: 2;
   padding: 5em 0em;
   overflow-y: auto;
 
   .custom-modal-content {
-
     >.editor{
       min-width: 70vw;
+    }
+
+    //Modal for samarbeid
+    .coopModal {
+      width: 70vw;
+
+      v-list {
+        list-style-type: none;
+
+        li {
+          display: inline;
+        }
+      }
+
+      .left-column {
+        border-right: 1px solid $c-secondary;
+        text-align: center;
+        padding-right: 30px;
+
+        img {
+          max-width: 200px;
+        }
+      }
+
+      .right-column {
+        padding-left: 30px;
+      }
+
+      @media only screen and (max-width: 768px) {
+        .left-column {
+          border-right: none;
+          
+          img {
+            max-width: 200px;
+          }
+        }
+
+        .modalbtns {
+          div {
+            float: none;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
     }
 
     position: relative;
@@ -638,7 +611,7 @@ KNAPPER
     
     max-width: 80%;
     min-width: 55%;
-    background: $c-white;
+    background: $c-bodybg;
     padding: 40px;
     border-radius: 5px;
     box-shadow: 0 0 5px 0 rgba(#333, 0.5);

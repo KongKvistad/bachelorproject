@@ -3,7 +3,10 @@
         <!-- <button @click="toggleTheme" id="darkModeBtn" class="primary-button">Bytt tema</button> -->
         <label class="switch">
         <input type="checkbox" class='theme-switch' v-model="darkMode"/>
-        <span class="slider round"></span>
+        <span class="slider round">
+            <span v-if="!this.darkMode"> Light </span>
+            <span v-else><i class="fas fa-sun"></i></span>  
+        </span>
         </label>
     </div>
 </template>
