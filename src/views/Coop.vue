@@ -23,12 +23,13 @@
         :access="'new'"/>
    </template>
    </Modal>
-    <section class="topRow blue">
+    <!-- <section class="topRow blue">
         <div>
-            <h1>Utlysninger</h1>
+            <h1>{{activeChoice}}</h1>
             <button @click.prevent="toggleModal('opened')">Ny utlysning</button>
         </div>
-    </section>
+        <div class="heading-underline"></div>
+    </section> -->
     <section class="main">   
     <section>
         <SideMenu
@@ -50,7 +51,8 @@
     <section>
         <div class="secRow">
             <div>
-                <h2>{{activeChoice}}</h2>
+                <h1>{{activeChoice}}</h1>
+                <button class="primary-button" @click.prevent="toggleModal('opened')">Ny utlysning</button>
                 <input v-model.trim="search"/>
             </div>
         </div>
