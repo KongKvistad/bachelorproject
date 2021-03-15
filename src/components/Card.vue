@@ -27,7 +27,7 @@
          @close="toggleCoopModal">
             <template v-slot:content>
                 <div class="row coopModal">
-                    <div class="left-column col-md-3">
+                    <!-- <div class="left-column col-md-3">
                         <img :src= "expandedCard.image_url" alt="Bedriftslogo">
                         <div>
                             <p>{{expandedCard.name}}</p>
@@ -37,31 +37,31 @@
                     </div>
                     <div class="row">
                         
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="left-column col-md-3">
-                            <img :src= card.image_url alt="Bedriftslogo">
+                            <img :src= expandedCard.image_url alt="Bedriftslogo">
                             <div>
                                 <p>Super company</p>
-                                <router-link :to="{ name: 'profile', params: { id: card.created_by}}"> Vis profil</router-link>
+                                <router-link :to="{ name: 'profile', params: { id: expandedCard.created_by}}"> Vis profil</router-link>
                                 <p>Bransje:</p>
                             </div>
                             
                         </div>
                         <div class="right-column col-md-9">
-                            <h1>{{ card.title }}</h1>
+                            <h1>{{ expandedCard.title }}</h1>
                             <p>Type: {{collection }}</p>
                             <p>Arbeidssted: </p>
                             <p>Arbeidsoppgaver:
                                 <v-list>
-                                    <v-list-tile v-for="(tag, index) in card.tags" :key="tag.id">
+                                    <v-list-tile v-for="(tag, index) in expandedCard.tags" :key="tag.id">
                                         <li v-if="index < tag.length">{{ tag }}, </li>
                                         <li v-else> {{ tag }}</li>
                                     </v-list-tile>
                                 </v-list>
                              </p>
                             <h2>Beskrivelse</h2>
-                            <p>{{ card.description }}</p>
+                            <p>{{ expandedCard.description }}</p>
                         </div>
                     </div>
                     <div class="col-12 modalbtns col-md-12 d-flex justify-content-end">
