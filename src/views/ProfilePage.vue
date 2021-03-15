@@ -13,6 +13,10 @@
         {
             param: '/praksis',
             text: 'Min praksis'
+        },
+        {
+            param: '/prosjekt',
+            text: 'Min bachelor'
         }]"
         :id="'/' + this.$route.params.id"
         base="/profile"

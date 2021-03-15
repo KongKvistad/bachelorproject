@@ -4,15 +4,15 @@
     <div class="info">
         <h3>Kontakt</h3>
         <span>
-            <em> navn</em>
+            <em>Navn</em>
             <p>{{name}}</p>
         </span>
         <span>
-            <em> telefon</em>
+            <em>Telefon</em>
             <p>{{phone}}</p>
         </span>
         <span>
-            <em> email</em>
+            <em>Epost</em>
             <p>{{email}}</p>
         </span>
     </div>
