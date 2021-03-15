@@ -15,7 +15,7 @@
       <div v-else>
         <h3 v-if="access != 'editor'">Utlysning sendt</h3>
         <h3 v-else>Forslag endret</h3>
-        <p v-if="access != 'editor'">utlysningen er sendt til administrator for gokjenning! vi tar videre kontakt</p>
+        <p v-if="access != 'editor'">Utlysningen er sendt til NTNU for godkjenning! Vi tar videre kontakt.</p>
         <p v-else >Forslag til endring har blitt lagret og videreformidlet.</p>
       </div>
 

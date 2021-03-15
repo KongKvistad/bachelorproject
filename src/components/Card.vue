@@ -8,7 +8,7 @@
                 </div>
                 <div class="right-column col-md-9" v-if="collection=='praksis' || collection=='prosjekt'">
                     <h3>{{ card.title }}</h3>
-                    <p>{{ card.description|truncate }}</p>
+                    <p>{{ card.content|truncate }}</p>
                     <p>{{card.name}}</p>
                 </div>
                 <div class="right-column col-md-9" v-else>
@@ -61,7 +61,7 @@
                                 </v-list>
                              </p>
                             <h2>Beskrivelse</h2>
-                            <p>{{ expandedCard.description }}</p>
+                            <p>{{ expandedCard.content }}</p>
                         </div>
                     </div>
                     <div class="col-12 modalbtns col-md-12 d-flex justify-content-end">
