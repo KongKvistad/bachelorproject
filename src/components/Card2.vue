@@ -12,11 +12,11 @@
                 </div>
                 <div class="right-column col-md-9" v-else>
                     <h3>{{ cardData.name }}</h3>
-                    <p>{{ cardData.about }}</p>
+                    <p>{{ cardData.about|truncate }}</p>
                 </div>
                 <div class="card-buttons col-md-12 d-flex justify-content-end">
                     
-                    <button>Les mer</button>
+                    <button>Se søkere</button>
                 </div>
             </div>
 
