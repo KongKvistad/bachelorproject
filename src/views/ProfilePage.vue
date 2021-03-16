@@ -26,19 +26,19 @@
             <SideMenu
             :menuOptions="[{
                 param: '/default',
-                text: 'Min profil'
+                text: 'Vår profil'
             },
             {
                 param: '/praksis',
-                text: 'Min praksis'
+                text: 'Vår praksis'
             },
             {
                 param: '/prosjekt',
-                text: 'Min bachelor'
+                text: 'Vår bachelor'
             },
             {
                 param: '/historikk',
-                text: 'Min historikk'
+                text: 'Vår historikk'
             }]"
             :id="'/' + this.$route.params.id"
             base="/profile"
@@ -77,33 +77,59 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Ikke godkjente:</h2>
                         </div>
                     </div>
+
                     <div class="row">
-                <div class="col-md-12">
-                    <Priorities/>
-                    <button @click.prevent="$store.commit('savePrioCart')" class="button prio">Godkjenn</button>
-                </div>
-            </div>
+                        <div class="col-md-12">
+                            <Priorities/>
+                            <button @click.prevent="$store.commit('savePrioCart')" class="button prio">Godkjenn</button>
+                        </div>
+                    </div>
                 </div>
             </div> 
             
         </section>
 
-        <section v-else-if="activeChoice == 'prosjekt'"> 
-            <h1>Bachelor</h1>
-            <Priorities/>
-            <button @click.prevent="$store.commit('savePrioCart')" class="button prio">Godkjenn</button>
+        <section v-else-if="activeChoice == 'prosjekt'">
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Bachelor</h1>
+                            <h2>Godkjente:</h2>
+                            <div key="praksis" v-if="pageUserData.role == 'company'">
+
+                                <Card 
+                                    collection="prosjekt"
+                                />
+                                    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Ikke godkjente:</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <Priorities/>
+                            <button @click.prevent="$store.commit('savePrioCart')" class="button prio">Godkjenn</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </section>
 
         <section v-else-if="activeChoice == 'historikk'"> 
             <h1>Historikk</h1>
-
-            <Priorities/>
-            <button @click.prevent="$store.commit('savePrioCart')" class="button prio">Godkjenn</button>
         </section>
 
     </section>

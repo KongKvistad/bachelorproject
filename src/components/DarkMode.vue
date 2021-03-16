@@ -4,8 +4,8 @@
         <label class="switch">
         <input type="checkbox" class='theme-switch' v-model="darkMode"/>
         <span class="slider round">
-            <span v-if="!this.darkMode"> Light </span>
-            <span v-else><i class="fas fa-sun"></i></span>  
+            <span v-if="!this.darkMode"> <b-icon-moon class="b-icon-sun" shift-h="38" shift-v="-4" scale="1.4"></b-icon-moon></span>
+            <span v-else><b-icon-sun class="b-icon-moon" shift-h="6" shift-v="-4" scale="1.2"></b-icon-sun></span>  
         </span>
         </label>
     </div>
