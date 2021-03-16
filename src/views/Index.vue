@@ -1,6 +1,6 @@
 <!-- Landingsside. har annet random innhold per nå, men skal bli til inofrmasjons-siden-->
 <template>
-  <div id="dashboard">
+  <div id="dashboard" class="main">
     <div class="container-fluid">
       <div class="container">
         <div class="row">

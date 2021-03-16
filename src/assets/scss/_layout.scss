@@ -1,4 +1,7 @@
-
+header {
+  background: $c-headerbg;
+  border-bottom: 1px solid $c-secondary;
+}
 //DARK MODE SLIDER
 .switch {
   position: relative;
@@ -152,7 +155,6 @@ header{
     min-height: 34em;
     margin-top: 3em;
     
-  
     section:first-of-type{
     // flex-basis: 20em;
     padding: 0 50px 0 50px;
@@ -164,17 +166,19 @@ header{
     .active{
       color: $c-primary;
       font-weight: bold;
-      }
+    }
+
     ul {
       font-size: $fs-menu;
       list-style-type: none;
       padding-left: 0;
+
       li {
         padding-bottom: 20px;
         cursor: pointer;
       }
     }
-    }
+  }
 
   section:last-of-type{
     flex-basis: calc(100% - 20em);
@@ -664,6 +668,21 @@ KNAPPER
     .button {
       width: 100%;
     }
+  }
+}
+
+// Contact Column
+.contactColumn {
+  margin-right: 50px;
+  background-color: rgba(0,0,255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  img {
+    margin-bottom: 20px;
+    max-width: 150px;
+  }
+  .info {
+    text-align: center;
   }
 }
 

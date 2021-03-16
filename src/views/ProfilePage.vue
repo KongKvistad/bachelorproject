@@ -61,17 +61,17 @@
                 />
         </section>
 
-        <section v-else-if="activeChoice == 'praksis'">
+        <section v-else-if="activeChoice == 'praksis' && pageUserData.role == 'company'">
             <div class="container-fluid">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <h1>Praksis</h1>
                             <h2>Godkjente:</h2>
-                            <div key="praksis" v-if="pageUserData.role == 'company'" class="cards">
+                            <div key="praksis" class="cards">
                             
                                 <Card2 
-                                v-for="card in approvedPosts"
+                                v-for="card in approvedPraksisPosts"
                                 :key="card.title"
                                 collection="praksis"
                                 :cardData="card" 
@@ -84,10 +84,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Ikke godkjente:</h2>
-                            <div key="praksis" v-if="pageUserData.role == 'company'" class="cards">
+                            <div key="praksis" class="cards">
                             
                                 <Card2 
-                                v-for="card in deniedPosts"
+                                v-for="card in deniedPraksisPosts"
                                 :key="card.title"
                                 collection="praksis"
                                 :cardData="card" 
@@ -108,17 +108,20 @@
             
         </section>
 
-        <section v-else-if="activeChoice == 'prosjekt'">
+        <section v-else-if="activeChoice == 'prosjekt' && pageUserData.role == 'company'">
             <div class="container-fluid">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <h1>Bachelor</h1>
                             <h2>Godkjente:</h2>
-                            <div key="praksis" v-if="pageUserData.role == 'company'">
-
-                                <Card 
-                                    collection="prosjekt"
+                            <div key="prosjekt" class="cards">
+                            
+                                <Card2 
+                                v-for="card in approvedProsjektPosts"
+                                :key="card.title"
+                                collection="prosjekt"
+                                :cardData="card" 
                                 />
                                     
                             </div>
@@ -128,6 +131,16 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Ikke godkjente:</h2>
+                            <div key="prosjekt" class="cards">
+                            
+                                <Card2 
+                                v-for="card in deniedProsjektPosts"
+                                :key="card.title"
+                                collection="prosjekt"
+                                :cardData="card" 
+                                />
+                                    
+                            </div>
                         </div>
                     </div>
 
@@ -197,8 +210,10 @@ export default {
   data(){
       return {
           pageUserData: false,
-          approvedPosts: [],
-          deniedPosts: [],
+          approvedPraksisPosts: [],
+          deniedPraksisPosts: [],
+          approvedProsjektPosts: [],
+          deniedProsjektPosts: []
       }
   },
   computed: {
@@ -218,17 +233,19 @@ export default {
     
   },
   created(){
-      getDoc("users", this.$route.params.id).then(res => {
-          this.pageUserData = res
-      })
-    
-    
-        filterByField("praksis", "created_by", this.$route.params.id).then(res => {
-        this.approvedPosts = res.filter(x => x.approved == true)
-        this.deniedPosts = res.filter(x => x.approved == false)
+    getDoc("users", this.$route.params.id).then(res => {
+        this.pageUserData = res
+    })
+
+    filterByField("praksis", "created_by", this.$route.params.id).then(res => {
+        this.approvedPraksisPosts = res.filter(x => x.approved == true)
+        this.deniedPraksisPosts = res.filter(x => x.approved == false)
     })
     
-    
+    filterByField("prosjekt", "created_by", this.$route.params.id).then(res => {
+        this.approvedProsjektPosts = res.filter(x => x.approved == true)
+        this.deniedProsjektPosts = res.filter(x => x.approved == false)
+    })
         
 
   }

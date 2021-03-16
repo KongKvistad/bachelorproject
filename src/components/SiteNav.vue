@@ -1,7 +1,7 @@
 <template>
   <header>
       <!--<span v-if="prioCart" class="counter">{{prioCart}}</span>-->
-      <b-navbar toggleable="lg" type="light" variant="light">
+      <b-navbar toggleable="lg" type="light" >
       <b-navbar-brand to="/">
       <img src="../assets/images/ntnu_logo.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:200px;">
       </b-navbar-brand>
