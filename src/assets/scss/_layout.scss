@@ -117,7 +117,6 @@ header{
         align-items: center;
         justify-content:center;
         color: $c-text;
-        background-color:$c-primary;
       }
     &.regular{
       background-color:$c-white;
@@ -188,18 +187,14 @@ header{
     .secRow{
       margin-bottom: 4em;
       div{
-        
+        position: relative;
         display:flex;
         justify-content: space-between;
-        h2{
-          font-size: 2.5em;
+        h1{
           text-transform: capitalize;
         }
         input{
           width: 40%;
-        }
-        button{  
-          width:10em;
         }
       }
     }

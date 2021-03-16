@@ -13,7 +13,7 @@
                 </div>
                 <div class="right-column col-md-9" v-else>
                     <h3>{{ card.name }}</h3>
-                    <p>{{ card.about }}</p>
+                    <p>{{ card.about|truncate }}</p>
                 </div>
                 <div class="card-buttons col-md-12 d-flex justify-content-end">
                     <button @click="toggleCoopModal(card)" class="primary-button">Les mer</button>
