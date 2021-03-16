@@ -1,6 +1,6 @@
 <template>
   <header>
-      <span v-if="prioCart" class="counter">{{prioCart}}</span>
+      <!--<span v-if="prioCart" class="counter">{{prioCart}}</span>-->
       <b-navbar toggleable="lg" type="light" variant="light">
       <b-navbar-brand to="/">
       <img src="../assets/images/ntnu_logo.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:200px;">
@@ -85,9 +85,9 @@ export default {
   },
   props:["user"],
   computed:{
-    prioCart(){
-      return this.$store.state.priorityCart.length > 0 ? this.$store.state.priorityCart.length : false 
-    }
+    // prioCart(){
+    //   return this.$store.state.priorityCart.length > 0 ? this.$store.state.priorityCart.length : false 
+    // }
   },
   methods: {
     logout() {
