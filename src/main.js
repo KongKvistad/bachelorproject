@@ -4,6 +4,8 @@ import vSelect from 'vue-select'
 import router from './router'
 import store from './store'
 import { auth } from './firebase'
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
@@ -22,6 +24,8 @@ import './assets/scss/app.scss'
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+//toaster
+Vue.use(VueToast);
 
 Vue.config.productionTip = false
 Vue.component('v-select', vSelect)

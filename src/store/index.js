@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as fb from '../firebase'
 import router from '../router/index'
+import { db } from '@/firebase.js'
 
 Vue.use(Vuex)
 
@@ -12,46 +13,43 @@ Vue.use(Vuex)
 // en ny forespørsel, eller å f.eks prop-drille.
 
 
-// realtime firebase
-fb.postsCollection.orderBy('createdOn', 'desc').onSnapshot(snapshot => {
-  let postsArray = []
-
-  snapshot.forEach(doc => {
-    let post = doc.data()
-    post.id = doc.id
-
-    postsArray.push(post)
-  })
-
-  store.commit('setPosts', postsArray)
-})
 
 const store = new Vuex.Store({
   state: {
     userProfile: {},
     posts: [],
-    priorityCart: []
+    priorityCart: {
+      praksis: [],
+      prosjekt: []
+    }
   },
   mutations: {
     setUserProfile(state, val) {
       state.userProfile = val
     },
-    updatePrioCart(state, val){
-      state.priorityCart.push(val)
+    addToPrioCart(state, card){
+      state.priorityCart[card.type].push(card.data)
     },
-    
-    savePrioCart(){
-      console.log("nice")
-    }
+    setPrioCart(state, cart){
+      state.priorityCart = cart
+    },
     
   },
   getters:{
-    getPrioCart: state => {
-      return  state.priorityCart
+    
+    getPrioCart: (state) => (key) => {
+      return state.priorityCart[key]
     }
   },
   actions: {
-    
+    async savePrioCart({ state }, id){
+      // save PrioCart to DB
+
+      await db.collection("priorities").doc(id).set(state.priorityCart, {merge: true})
+      .then(docRef => {
+          return true
+      })
+    },
 
     async login({ dispatch }, form) {
       // sign user in
@@ -59,6 +57,7 @@ const store = new Vuex.Store({
 
       // fetch user profile and set in state
       dispatch('fetchUserProfile', user)
+
     },
     async signup({ dispatch }, form) {
       // sign user up
@@ -75,7 +74,7 @@ const store = new Vuex.Store({
       // fetch user profile and set in state
       dispatch('fetchUserProfile', user)
     },
-    async fetchUserProfile({ commit }, user) {
+    async fetchUserProfile({ commit, dispatch }, user) {
       // fetch user profile
       const userProfile = await fb.usersCollection.doc(user.uid).get()
 
@@ -84,11 +83,17 @@ const store = new Vuex.Store({
       obj.id = user.uid
       // set user profile in state
       commit('setUserProfile', obj)
-
+      //getCartContents
+      dispatch('fetchPrioCart', user.uid)
       // change route to dashboard
       if (router.currentRoute.path === '/login') {
         router.push('/')
       }
+    },
+
+    async fetchPrioCart({commit}, id){
+      const cart = await db.collection("priorities").doc(id).get()
+      commit('setPrioCart',cart.data())
     },
     async logout({ commit }) {
       // log user out

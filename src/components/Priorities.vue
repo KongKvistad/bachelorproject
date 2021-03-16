@@ -34,7 +34,7 @@ export default {
 
     data(){
         return{
-            cart: this.$store.getters.getPrioCart
+            cart: this.$store.getters.getPrioCart("praksis")
         }
     },
     methods: {

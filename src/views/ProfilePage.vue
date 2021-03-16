@@ -36,9 +36,9 @@
             
             />
     </section>
-    <section v-else> 
+    <section v-else class="column"> 
          <Priorities/>
-         <button @click.prevent="$store.commit('savePrioCart')" class="button prio">Godkjenn</button>
+         <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="button prio">Lagre</button>
     </section>
     </section>
     </main>

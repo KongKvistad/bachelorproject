@@ -79,7 +79,7 @@ header{
     justify-content:center;
     font-size: 12px;
     top: 1.6em;
-    right: 10.4em;
+    right: 16em;
     z-index: 5;
   }
   //bootstrap nav
@@ -246,6 +246,13 @@ header{
   &.profile{
     section:last-of-type{
       display: flex;
+    }
+    .column{
+      flex-direction: column;
+      .button{
+        max-width: 6em;
+        align-self: flex-end;
+      }
     }
     
   }

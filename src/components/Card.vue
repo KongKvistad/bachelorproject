@@ -17,7 +17,7 @@
                 </div>
                 <div class="card-buttons col-md-12 d-flex justify-content-end">
                     <button @click="toggleCoopModal(card)" class="primary-button">Les mer</button>
-                    <button @click="$store.commit('updatePrioCart', card)" class="secondary-button" v-if="renderPrioBtn()">Prioriter</button>
+                    <button @click="addToCart(card)" class="secondary-button" v-if="renderPrioBtn()">Prioriter</button>
                 </div>
             </div>
         </div>
@@ -128,6 +128,13 @@ export default {
                 return false
             }
             
+        },
+        addToCart(card){
+            this.$toast.success('prioriteringen' + '"'+card.title + '"'+ ' lagt til i min ' + this.collection, {
+            // optional options Object
+
+            })
+            this.$store.commit('addToPrioCart', {type: this.collection, data: card})
         }
     },
     created(){
