@@ -71,7 +71,7 @@
                             <div key="praksis" v-if="pageUserData.role == 'company'">
 
                                 <Card 
-                                    collection="praksis"
+                                collection="praksis" 
                                 />
                                     
                             </div>
