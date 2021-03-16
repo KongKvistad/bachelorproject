@@ -60,9 +60,28 @@ async function getDoc(doctype, refId) {
 }
 
 
+//filtrer i backend basert på felt
+
+const filterByField = async (collection, field, filterVal) => {
+
+  const res = []
+
+  const ref = db.collection(collection)
+  var query = await ref.where(field, "==", filterVal)
+  .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            res.push(doc.data())
+        });
+    })
+  return res
+
+}
+
 
 export {
   getData,
   multipleCols,
-  getDoc
+  getDoc,
+  filterByField
 }

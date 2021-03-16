@@ -68,10 +68,13 @@
                         <div class="col-md-12">
                             <h1>Praksis</h1>
                             <h2>Godkjente:</h2>
-                            <div key="praksis" v-if="pageUserData.role == 'company'">
-
-                                <Card 
-                                collection="praksis" 
+                            <div key="praksis" v-if="pageUserData.role == 'company'" class="cards">
+                            
+                                <Card2 
+                                v-for="card in approvedPosts"
+                                :key="card.title"
+                                collection="praksis"
+                                :cardData="card" 
                                 />
                                     
                             </div>
@@ -80,6 +83,16 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Ikke godkjente:</h2>
+                            <div key="praksis" v-if="pageUserData.role == 'company'" class="cards">
+                            
+                                <Card2 
+                                v-for="card in deniedPosts"
+                                :key="card.title"
+                                collection="praksis"
+                                :cardData="card" 
+                                />
+                                    
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -139,12 +152,12 @@
 
 //work in progress
 import { mapState } from 'vuex'
-import { getDoc } from "@/utils/get.js"
+import { getDoc, filterByField } from "@/utils/get.js"
 import SideMenu from '@/components/SideMenu'
 import ContactColumn from '@/components/ContactColumn.vue'
 import About from '@/components/About.vue'
 import Priorities from '@/components/Priorities.vue'
-import Card from '@/components/Card.vue'
+import Card2 from '@/components/Card2.vue'
 
 export default {
   name:"ProfilePage",
@@ -153,11 +166,13 @@ export default {
       ContactColumn,
       About,
       Priorities,
-      Card
+      Card2
   },
   data(){
       return {
-          pageUserData: false
+          pageUserData: false,
+          approvedPosts: [],
+          deniedPosts: [],
       }
   },
   computed: {
@@ -180,7 +195,15 @@ export default {
       getDoc("users", this.$route.params.id).then(res => {
           this.pageUserData = res
       })
-
+    
+    
+        filterByField("praksis", "created_by", this.$route.params.id).then(res => {
+        this.approvedPosts = res.filter(x => x.approved == true)
+        this.deniedPosts = res.filter(x => x.approved == false)
+    })
+    
+    
+        
 
   }
   
