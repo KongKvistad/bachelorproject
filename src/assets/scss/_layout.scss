@@ -1,4 +1,7 @@
-
+header {
+  background: $c-headerbg;
+  border-bottom: 1px solid $c-secondary;
+}
 //DARK MODE SLIDER
 .switch {
   position: relative;
@@ -34,13 +37,13 @@
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: $c-bodybg;
+  background-color: $c-text;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: $c-primary;
+  background-color: $c-bodybg;
 }
 
 input:focus + .slider {
@@ -62,7 +65,9 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-
+.b-icon-sun, .b-icon-moon {
+  fill: $c-text;
+}
 
 
 // navigation
@@ -117,6 +122,7 @@ header{
         align-items: center;
         justify-content:center;
         color: $c-text;
+        background-color:$c-primary;
       }
     &.regular{
       background-color:$c-white;
@@ -149,7 +155,6 @@ header{
     min-height: 34em;
     margin-top: 3em;
     
-  
     section:first-of-type{
     // flex-basis: 20em;
     padding: 0 50px 0 50px;
@@ -157,28 +162,23 @@ header{
     display: flex;
     // align-items: center;
     justify-content:center;
-    width: 14em;
 
     .active{
       color: $c-primary;
       font-weight: bold;
-      }
+    }
+
     ul {
       font-size: $fs-menu;
       list-style-type: none;
       padding-left: 0;
+
       li {
         padding-bottom: 20px;
         cursor: pointer;
       }
     }
-    .backArrow{
-      object-fit: contain;
-      width: 4em;
-      height: 4em;
-      cursor: pointer;
-    }
-    }
+  }
 
   section:last-of-type{
     flex-basis: calc(100% - 20em);
@@ -187,14 +187,18 @@ header{
     .secRow{
       margin-bottom: 4em;
       div{
-        position: relative;
+        
         display:flex;
         justify-content: space-between;
-        h1{
+        h2{
+          font-size: 2.5em;
           text-transform: capitalize;
         }
         input{
           width: 40%;
+        }
+        button{  
+          width:10em;
         }
       }
     }
@@ -667,6 +671,21 @@ KNAPPER
   }
 }
 
+// Contact Column
+.contactColumn {
+  margin-right: 50px;
+  background-color: rgba(0,0,255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  img {
+    margin-bottom: 20px;
+    max-width: 150px;
+  }
+  .info {
+    text-align: center;
+  }
+}
+
 
 // settings
 #settings {
@@ -860,92 +879,6 @@ footer {
         align-self: flex-start;
     
       }
-    }
-  }
-}
-
-// contactcolumn useed e.g. in profile
-
-.contactColumn{
-  display: flex;
-  flex-direction: column;
-  width: 18em;
-  margin-right: 5em;
-  img{
-    width: 100%;
-    height: 13em;
-    padding: 1em;
-    object-fit: contain;
-  }
-  .info{
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-  }
-}
-
-.about{
-  width: 100%;
-}
-
-
-//card design for priorities and
-.priorities{
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  width: 100%;
-  transition: 0.4s;
-  position: relative;
-
-  li{
-    display:flex;
-    height: 10em;
-    width: 100%;
-    margin-bottom: 1em;
-    border:1px solid gray;
-   
-  
-  
-    .cardimg{
-      flex-basis: 20%;
-      margin-right: 2em;
-      margin-left: 2em;
-      display: flex;
-       justify-content:center;
-       align-items: center;
-      
-
-      img{
-      object-fit: contain;
-      max-width: 10em;
-      max-height: 9em;
-      
-      }
-    }
-  }
-  .content{
-    flex-basis:calc(80% - 4em);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1em 1em;
-    .title{
-      font-size: 2vw;
-    }
-    .pickarrow{
-      width: 2em;
-      height: 2em;
-      cursor: pointer;
-      align-self: flex-end;
-
-      &.up{
-          transform: rotate(90deg);
-      }
-      &.down{
-        transform: rotate(270deg);
-    }
     }
   }
 }
