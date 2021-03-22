@@ -1,5 +1,5 @@
 <template>
-    <main class="left-col-container" v-if="ownsPage">
+    <main class="left-col-container" v-if="ownsPage && data.pageUserData">
     <section class="topRow">
         
     </section>
@@ -20,7 +20,7 @@
             }]"
             :id="'/' + this.$route.params.id"
             base="/profile"
-            v-if="pageUserData.role == 'student'"
+            v-if="data.pageUserData.role == 'student'"
             />
 
             <SideMenu
@@ -42,21 +42,21 @@
             }]"
             :id="'/' + this.$route.params.id"
             base="/profile"
-            v-else-if="pageUserData.role == 'company'"
+            v-else-if="data.pageUserData.role == 'company'"
             />
 
         </section>
         <section v-if="activeChoice == 'default'"> 
             <ContactColumn
-                :img="pageUserData.image_url"
-                :name="pageUserData.contact"
-                :phone="pageUserData.phone"
-                :email="pageUserData.email"
+                :img="data.pageUserData.image_url"
+                :name="data.pageUserData.contact"
+                :phone="data.pageUserData.phone"
+                :email="data.pageUserData.email"
                 :editable="ownsPage"
                 />
                 <About
-                :description="pageUserData.about"
-                :name="pageUserData.name"
+                :description="data.pageUserData.about"
+                :name="data.pageUserData.name"
                 
                 />
         </section>
@@ -68,10 +68,10 @@
                         <div class="col-md-12">
                             <h1>Praksis</h1>
                             <h2>Godkjente:</h2>
-                            <div key="praksis" v-if="pageUserData.role == 'company'" class="cards">
+                            <div key="praksis" v-if="data.pageUserData.role == 'company'" class="cards">
                             
                                 <Card2 
-                                v-for="card in approvedPosts"
+                                v-for="card in data.praksis.approved"
                                 :key="card.title"
                                 collection="praksis"
                                 :cardData="card" 
@@ -83,10 +83,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Ikke godkjente:</h2>
-                            <div key="praksis" v-if="pageUserData.role == 'company'" class="cards">
+                            <div key="praksis" v-if="data.pageUserData.role == 'company'" class="cards">
                             
                                 <Card2 
-                                v-for="card in deniedPosts"
+                                v-for="card in data.praksis.denied"
                                 :key="card.title"
                                 collection="praksis"
                                 :cardData="card" 
@@ -121,8 +121,9 @@
 
     </section>
     </main>
+
     <!-- if profile is owner by someone who's not the owner-->
-    <main v-else class="left-col-container">
+    <main v-else-if="!ownsPage && data.pageUserData" class="left-col-container">
     <section class="topRow">
         
     </section>
@@ -132,15 +133,15 @@
         </section>
         <section> 
             <ContactColumn
-            :img="pageUserData.image_url"
-            :name="pageUserData.contact"
-            :phone="pageUserData.phone"
-            :email="pageUserData.email"
+            :img="data.pageUserData.image_url"
+            :name="data.pageUserData.contact"
+            :phone="data.pageUserData.phone"
+            :email="data.pageUserData.email"
             :editable="ownsPage"
             />
             <About
-            :description="pageUserData.about"
-            :name="pageUserData.name"
+            :description="data.pageUserData.about"
+            :name="data.pageUserData.name"
             
             />
         </section>
@@ -153,12 +154,13 @@
 //work in progress
 import { mapState } from 'vuex'
 import { getDoc, filterByField } from "@/utils/get.js"
+import gateKeeper from "@/utils/gatekeeper.js"
 import SideMenu from '@/components/SideMenu'
 import ContactColumn from '@/components/ContactColumn.vue'
 import About from '@/components/About.vue'
 import Priorities from '@/components/Priorities.vue'
 import Card2 from '@/components/Card2.vue'
-
+import store from '../store'
 export default {
   name:"ProfilePage",
   components: {
@@ -170,9 +172,9 @@ export default {
   },
   data(){
       return {
-          pageUserData: false,
-          approvedPosts: [],
-          deniedPosts: [],
+          data: false
+          
+          
       }
   },
   computed: {
@@ -184,28 +186,38 @@ export default {
 
     ownsPage(){
         return this.userProfile.id == this.$route.params.id ? true : false
-    }
+    },
+    
 
     
+  },
+  watch:{
+      
+      //need to watch in addition to fetching on compenent creation,
+      //in case user us the owner of the page
+      ownsPage(newVal, oldVal){
+          
+        if(newVal != oldVal){
+            gateKeeper(newVal, this.$route.params.id).then(res =>{
+                this.data = {...res}
+            })
+        }
+    },  
   },
   methods:{
     
   },
-  created(){
-      getDoc("users", this.$route.params.id).then(res => {
-          this.pageUserData = res
-      })
-    
-    
-        filterByField("praksis", "created_by", this.$route.params.id).then(res => {
-        this.approvedPosts = res.filter(x => x.approved == true)
-        this.deniedPosts = res.filter(x => x.approved == false)
+  
+ beforeCreate(){
+     let ownsPage = store.state.userProfile.id
+     console.log(ownsPage)
+ },
+ created(){
+    gateKeeper(this.ownsPage, this.$route.params.id).then(res =>{
+                this.data = {...res}
     })
-    
-    
-        
-
   }
+  
   
 
 }

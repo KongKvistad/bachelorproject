@@ -35,11 +35,23 @@ const getData = async (limit, collection) => {
 }
 
 // flere collections. @param collections forventes som array, f.eks ["users", "prosjekter"]
-const multipleCols = async (limit, collections) => {
+const multipleCols = async (limit, collections, filter, filterVal) => {
+    
+  if(!filter){
+    
     return Promise.all(collections.map(col => {
-        const res =  getData(limit, col)
-        return res
+      const res =  getData(limit, col)
+      return res
     }))
+
+  } else {
+
+    return Promise.all(collections.map(col => {
+      const res =  filterByField(col, filter, filterVal)
+      return res
+    }))
+  }
+  
 }
 
 // get specific doc
@@ -71,7 +83,9 @@ const filterByField = async (collection, field, filterVal) => {
   .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            res.push(doc.data())
+          const obj = doc.data()
+          obj.id = doc.id  
+          res.push(obj)
         });
     })
   return res

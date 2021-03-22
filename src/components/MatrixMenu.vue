@@ -1,11 +1,21 @@
 <template>
 <div v-if="results" class="matrixMenu">
-  <EditorWrapper 
-  :collection="activeChoice"
-  :access="'editor'"
-  :data="cardData"
-  v-if="showEditor"
-  @closeEditor="toggleEditor" />
+ <Modal 
+     v-if="showEditor"
+     @close="toggleEditor"
+   >
+   <template v-slot:content>
+    
+
+      <EditorWrapper 
+      :collection="activeChoice"
+      :access="'editor'"
+      :data="cardData"/>
+     
+     
+   </template>
+   </Modal>
+  
 
   <ul class="tabs">
     <li :class="styleActive('alle')" @click="activeChoice = 'alle'">Alle ({{countCards('alle')}}) </li>
@@ -26,9 +36,10 @@
 import PureCard from '@/components/PureCard'
 import EditorWrapper from '@/components/EditorWrapper'
 import {getData, multipleCols} from '@/utils/get.js'
+import Modal from '@/components/Modal'
 export default {
   name: "MatrixMenu",
-  components: { PureCard, EditorWrapper },
+  components: { PureCard, EditorWrapper, Modal },
 
   data(){
       return {
