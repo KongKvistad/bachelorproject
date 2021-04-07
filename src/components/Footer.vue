@@ -12,7 +12,8 @@
             <div class="row footer-bottom align-items-end">
                 <div class="col-md-6">
                     <a href="/">
-                        <img src="../assets/images/ntnu_logo.png" alt="NTNU logo">
+                        <img v-if="findMode('lightMode')" src="../assets/images/ntnu_logo.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:200px;">
+                        <img v-if="findMode('darkMode')" src="../assets/images/ntnu_logo_white.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:200px;">
                     </a>
                 </div>
                 <div class="col-md-3">
@@ -43,7 +44,13 @@
             
         ],
         methods: {
-
+            findMode(mode) {
+                if(document.documentElement.getAttribute('theme') == mode){
+                    return true;
+                } else {
+                    return false;
+                }
+            },
         }
     }
 </script>
