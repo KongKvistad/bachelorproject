@@ -61,21 +61,27 @@
                 />
         </section>
 
-        <section v-else-if="activeChoice == 'praksis' && pageUserData.role == 'company'">
+        <section v-else-if="activeChoice == 'praksis' && data.pageUserData.role == 'company'">
             <div class="container-fluid">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <h1>Praksis</h1>
                             <h2>Godkjente:</h2>
-                            <div key="praksis" v-if="data.pageUserData.role == 'company'" class="cards">
+                            <div key="praksis" class="cards">
                             
                                 <Card2 
                                 v-for="card in data.praksis.approved"
                                 :key="card.title"
                                 collection="praksis"
                                 :cardData="card" 
-                                />
+                                >
+                                <template v-slot:button>
+                                  
+                                        <button class="button" @click="$router.push('/applicants/' + card.id)" >se søkere</button>
+                                   
+                                </template>
+                                </Card2>
                                     
                             </div>
                         </div>
@@ -84,31 +90,32 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Ikke godkjente:</h2>
-                            <div key="praksis" v-if="data.pageUserData.role == 'company'" class="cards">
+                            <div key="praksis"  class="cards">
                             
                                 <Card2 
                                 v-for="card in data.praksis.denied"
                                 :key="card.title"
                                 collection="praksis"
                                 :cardData="card" 
-                                />
+                                >
+                                <template v-slot:button>
+                                  
+                                        <button class="button">se utlysning</button>
+                                   
+                                </template>
+                                </Card2>
                                     
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                <div class="col-md-12">
-                    <Priorities/>
-                    <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="button prio">Lagre</button>
-                </div>
-            </div>
+                    
                 </div>
             </div> 
             
         </section>
 
-        <section v-else-if="activeChoice == 'prosjekt' && pageUserData.role == 'company'">
+        <section v-else-if="activeChoice == 'prosjekt' && data.pageUserData.role == 'company'">
             <div class="container-fluid">
                 <div class="container">
                     <div class="row">
@@ -118,7 +125,7 @@
                             <div key="prosjekt" class="cards">
                             
                                 <Card2 
-                                v-for="card in approvedProsjektPosts"
+                                v-for="card in data.prosjekt.approved"
                                 :key="card.title"
                                 collection="prosjekt"
                                 :cardData="card" 
@@ -134,7 +141,7 @@
                             <div key="prosjekt" class="cards">
                             
                                 <Card2 
-                                v-for="card in deniedProsjektPosts"
+                                v-for="card in data.prosjekt.denied"
                                 :key="card.title"
                                 collection="prosjekt"
                                 :cardData="card" 
@@ -144,12 +151,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <Priorities/>
-                            <button @click.prevent="$store.commit('savePrioCart')" class="button prio">Godkjenn</button>
-                        </div>
-                    </div>
+                    
                 </div>
             </div> 
         </section>
@@ -157,6 +159,27 @@
         <section v-else-if="activeChoice == 'historikk'"> 
             <h1>Historikk</h1>
         </section>
+
+        <section v-else-if="activeChoice == 'praksis' && data.pageUserData.role == 'student'">
+           <b-container >
+            <b-row cols="1">
+                <b-col>
+                <Priorities/>
+                </b-col>
+                <b-col>
+                <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="button prio">Godkjenn</button>
+                </b-col>
+
+            </b-row>
+            </b-container>
+             
+            
+            
+                        
+            
+        </section>
+
+        
 
     </section>
     </main>
@@ -168,7 +191,7 @@
     </section>
     <section class="main profile">
         <section>
-            <img class="backArrow" @click="$router.go(-1)" src="../assets/images/Left-Arrow-90.png"/>
+            <b-icon-arrow-left font-scale="3" class="backArrow" @click="$router.go(-1)" /> 
         </section>
         <section> 
             <ContactColumn

@@ -20,7 +20,9 @@ const store = new Vuex.Store({
     posts: [],
     priorityCart: {
       praksis: [],
-      prosjekt: []
+      prosjekt: [],
+      praksisIds: [],
+      prosjektIds: []
     }
   },
   mutations: {
@@ -29,6 +31,8 @@ const store = new Vuex.Store({
     },
     addToPrioCart(state, card){
       state.priorityCart[card.type].push(card.data)
+      state.priorityCart[card.type+'Ids'].push(card.data.id)
+
     },
     setPrioCart(state, cart){
       state.priorityCart = cart

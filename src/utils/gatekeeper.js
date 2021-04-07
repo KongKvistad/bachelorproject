@@ -31,7 +31,7 @@ const gateKeeper = async (isOwner, uri) => {
             
             dataObj.pageUserData = res
             console.log(pageType, isOwner)
-            if(pageType == 'company' && isOwner){
+            if((pageType == 'company' || pageType == 'student') && isOwner){
                 
                 // return (async() => {
                 //     const data = await multipleCols(false, ["praksis", "prosjekt"], 'created_by', uri)
@@ -48,6 +48,7 @@ const gateKeeper = async (isOwner, uri) => {
                 })
                 
             }
+
 
             return dataObj
                 

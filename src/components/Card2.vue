@@ -16,7 +16,8 @@
                 </div>
                 <div class="card-buttons col-md-12 d-flex justify-content-end">
                     
-                    <button>Se søkere</button>
+                    <slot name="button">
+                    </slot>
                 </div>
             </div>
 
