@@ -33,7 +33,8 @@
               </div>
 
           </form>
-          <vue-editor v-model="data.content" :editor-toolbar="customToolbar" />
+          <textarea style="min-height: 18em; padding: 2em 2em;" v-if="access == 'new'" v-model.trim="data.content"></textarea>
+          <vue-editor v-else v-model="data.content" :editor-toolbar="customToolbar" />
           <button class="modalButton" @click.prevent="submit">Fullfør</button>
           </section>
   </div>
