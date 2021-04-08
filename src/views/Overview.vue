@@ -110,6 +110,7 @@ data() {
   // data fra DB burde lastes inn i created, fordi dette skjer før selve komponenten mountes.
   // https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
   created(){
+      
       //get all the data concerning posts
       multipleCols(false, ['praksis', 'prosjekt']).then(res => {
           let obj = {
