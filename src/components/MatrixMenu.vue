@@ -24,7 +24,12 @@
     </ul>
     <ul class="cards-list">
     
-    <PureCard @cardClicked="putDataInModal" v-for="(entry, idx) in relCards" v-bind:key="'card' + idx" :data="entry"/>
+    <PureCard 
+    @cardClicked="putDataInModal" 
+    v-for="(entry, idx) in relCards" 
+    v-bind:key="'card' + idx" :data="entry" 
+    :collection="activeChoice"
+    @appApproved="removeCard"/>
     
     </ul>
   
@@ -70,6 +75,11 @@ export default {
       })
   },
   methods: {
+    removeCard(card){
+      let tempArr = this.results[card.type]
+      let index = tempArr.findIndex(x => x == card)
+      tempArr.splice(index, 1)
+    },
     toggleEditor(){
           this.showEditor = false;
       },

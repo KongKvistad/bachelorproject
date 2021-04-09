@@ -1,24 +1,27 @@
 <template>
-     <transition-group tag="ul" name="list" class="priorities" style="position: relative;">
-        <b-card no-body class="overflow-hidden" v-for="(data, idx) in cart" :key="data.title + idx" tag="li" >
+     <b-card-group deck style="flex-direction: column;">
+        <b-card no-body v-for="(data, idx) in cart" :key="data.title + idx" tag="li" >
             <b-row no-gutters>
-            <b-col md="4"  align="center">
-                <b-card-img style="width: 14em; height: 11em; object-fit: contain;" :src= "data.image_url" alt="Image" class="rounded-0"></b-card-img>
+            <b-col md="4"  align-self="center" align="center">
+                <b-card-img style="max-width: 14em; max-height: 11em; object-fit: contain;" :src= "data.image_url" alt="Image" class="m-auto rounded-0"></b-card-img>
             </b-col>
             <b-col md="8">
                 <b-card-body :title="data.title">
-                    <div class="h2 mb-0" v-if="idx == cart.length - 1" @click="arrange(idx, -1)">
+                    <div class="h2 mb-0" align="right" v-if="idx == cart.length - 1" @click="arrange(idx, -1)">
                         <b-icon-arrow-up ></b-icon-arrow-up>
                     </div>
-                    <div class="h2 mb-0" v-else-if="idx == 0" @click="arrange(idx, 1)">
+                    <div class="h2 mb-0" align="right" v-else-if="idx == 0" @click="arrange(idx, 1)">
                         <b-icon-arrow-down ></b-icon-arrow-down>
                     </div>
-                    <div class="h2 mb-0" v-else>
-                        <b-icon-arrow-up ></b-icon-arrow-up>
-                        <b-icon-arrow-down ></b-icon-arrow-down>
+                    <div class="h2 mb-0" align="right" v-else>
+                        <b-icon-arrow-up @click="arrange(idx, -1)" ></b-icon-arrow-up>
+                        <b-icon-arrow-down @click="arrange(idx, 1)" ></b-icon-arrow-down>
                     </div>
 
                 </b-card-body>
+                <b-card-footer footer-bg-variant="white" align="right">
+                    <button @click="$emit('appOpen', data)" class="button">søknad</button>
+                </b-card-footer>
             </b-col>
             </b-row>
         </b-card>
@@ -39,7 +42,7 @@
             </div>
         </li> -->
         
-    </transition-group>
+    </b-card-group>
     
         
         
@@ -55,14 +58,13 @@ export default {
     computed:{
         renderArrows(){
             return '<img @click="arrange(idx)" class="pickarrow up" src="../assets/images/Left-Arrow-90.png"/>'
+        },
+        cart(){
+            return this.$store.getters.getPrioCart("praksis")
         }
     },
 
-    data(){
-        return{
-            cart: this.$store.getters.getPrioCart("praksis")
-        }
-    },
+    
     methods: {
     arrange: function (idx, dir) {
         this.cart.splice(idx + dir, 0, this.cart.splice(idx, 1)[0]);

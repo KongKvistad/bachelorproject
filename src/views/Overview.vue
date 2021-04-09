@@ -41,7 +41,7 @@
              @catChanged="tableCatChange"
              >
                 <template v-slot:content>
-                    <grid :cols="users[activeTableCat].cols" :rows="users[activeTableCat].rows" />
+                    <grid :cols="users[activeTableCat].cols" :sort="true" :rows="users[activeTableCat].rows" />
                 </template>
              </MatrixMenu2>
             <grid v-else-if="activeChoice =='historikk'" :cols="cols" :sort="true" :rows="rows"></grid>

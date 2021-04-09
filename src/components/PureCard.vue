@@ -12,8 +12,8 @@
         <div class="right">
              <button @click.prevent="cardClick(data)" class="button">foreslå endring</button>
              <div>
-             <button class="button">godkjenn</button>
-             <button class="button">avslå </button>
+             <button @click="setStatus(data, true)" class="button">godkjenn</button>
+             <button @click="setStatus(data, false)" class="button">avslå </button>
              </div>
         </div> 
 
@@ -23,19 +23,31 @@
 
 <script>
 import {getData, multipleCols} from '@/utils/get.js'
-
+import { editDoc } from '@/utils/create.js'
 
 export default {
     name: 'PureCard',
     props: [
         "data",
+        "collection"
     ],
     methods: {
-    cardClick(data){
-        this.$emit("cardClicked", data)
-    },
+        cardClick(data){
+            this.$emit("cardClicked", data)
+        },
         trim(data){
             return data.substring(0, 300) + "..."
+        },
+        setStatus(data, bool){
+            
+            data.approved = bool
+            
+            editDoc(data.type, data.id, data).then(res => {
+                //if change got rhtough and value was changed to true
+                if(res && bool == true){
+                    this.$emit("appApproved", data)
+                }
+            })
         }
     }
 }

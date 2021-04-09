@@ -43,7 +43,7 @@
                             <img :src= expandedCard.image_url alt="Bedriftslogo">
                             <div>
                                 <p>Super company</p>
-                                <router-link :to="{ name: 'profile', params: { id: expandedCard.created_by}}"> Vis profil</router-link>
+                                <router-link :to="{ name: 'profile', params: { id: expandedCard.created_by, type:'default'}}"> Vis profil</router-link>
                                 <p>Bransje:</p>
                             </div>
                             
