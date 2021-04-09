@@ -24,7 +24,7 @@ mounted() {
     let theme = localStorage.getItem("theme");
 
     //Sett aktiv theme fra localStorage
-    if (theme === 'dark') {
+    if (theme === 'darkMode') {
         htmlElement.setAttribute('theme', 'darkMode');
         this.darkMode = true;
     } else {

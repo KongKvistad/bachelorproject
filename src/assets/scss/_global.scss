@@ -34,9 +34,19 @@ h2,
 h3,
 h4,
 h5,
+h6,
 p {
 	margin: 0 0 0.5rem;
 	color: $c-text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $c-headerTxt;
 }
 
 h1 {
@@ -64,14 +74,15 @@ h6 {
 	font-size: $fs-h6;
 }
 
-p {
+p, em, strong {
+	color: $c-text;
 	line-height: 1.5;
 }
 
 a {
 	font-family: $f-primary;
 	text-decoration: none;
-	color: $c-primary !important;
+	color: $c-links !important;
 	margin: 0;
 	cursor: pointer;
 

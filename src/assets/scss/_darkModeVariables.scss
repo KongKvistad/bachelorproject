@@ -11,14 +11,24 @@ etc.
 
 //COLORS
 $c-primary: #00509E;
-$c-headerbg: #fff;
-$c-hover: #000;
-$c-secondary: #A3BAD1; //NB!! Bytte til #DDE7EE etter NTNU sin designmanual? Eventuelt #79A2CE
+$c-mediumbg: #373847;
+$c-lightbg: #4a4b5f;
+$c-headerbg: #373847;
+$c-headerTxt: #fff;
+$c-hover: #fff;
+$c-secondary: #373847; //NB!! Bytte til #DDE7EE etter NTNU sin designmanual? Eventuelt #79A2CE
+$c-secondarysdw: #373847a7;
 $c-alert: #BA0909;
 $c-confirm: #0CAE43;
-$c-dark: #272833; //Bruk denne for all tekst løpende tekst
+$c-dark: #272833;
 $c-white: #fff;
-$c-text: #fff;
+$c-text: #fff; //Bruk denne for all tekst løpende tekst
+$c-links: #fff;
 $c-bodybg: #272833;
-$c-modaltransparent: rgba(#333, 0.9);
+$c-modaltransparent: rgba(#272833, 0.9);
+$c-modalbg: #373847;
 $c-transparent: transparent;
+$c-btnborder: #fff;
+$c-btntext: #fff;
+
+$footer-graphic: url("../images/footer-graphic-200-dark.svg") no-repeat bottom;
