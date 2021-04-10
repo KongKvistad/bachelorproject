@@ -50,11 +50,26 @@
     </section>
     <section>
         <div class="secRow">
-            <div>
-                <h1>{{activeChoice}}</h1>
-                <button class="primary-button" @click.prevent="toggleModal('opened')">Ny utlysning</button>
-                <input v-model.trim="search"/>
+            <div class="row">
+                <div class="col-md-12" id="search-field">
+                    <input v-model.trim="search" placeholder="Search..."/>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <h1>{{activeChoice}}</h1>
+                        
+                    </div>
+                </div>
+                <div class="col-md-6 justify-content-end">
+                    
+                        <button class="primary-button" @click.prevent="toggleModal('opened')">Ny utlysning</button>
+                    
+                </div>
+            </div>
+
+            
         </div>
         <transition name="fade">
             <div key="praksis" v-if="activeChoice=='praksis'">

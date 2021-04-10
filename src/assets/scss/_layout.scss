@@ -124,6 +124,23 @@ header{
 
 
 // FOR SAMARBEID
+
+#search-field {
+  input {
+    width: 100%;
+  margin-bottom: 40px;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid $c-secondary;
+  background-color: $c-headerbg;
+  color: $c-text;
+  }
+
+  input:focus {
+    background-color: darken($c-headerbg, 5%);
+  }
+}
+
 .left-col-container{
   display: flex;
   flex-direction: column;
@@ -342,14 +359,14 @@ KNAPPER
 
 //Felles
 .primary-button, .secondary-button {
-  padding: 10px;
+  padding: 7px;
   border-radius: 5px;
-  margin-right: 10px;
+  margin-left: 10px;
   min-width: 90px;
   border: 1px solid $c-btnborder;
 
   &:hover {
-    padding: 10px;
+    padding: 7px;
     border-radius: 5px;
   }
 }
@@ -720,12 +737,21 @@ KNAPPER
 // Contact Column
 .contactColumn {
   margin-right: 50px;
-  background-color: $c-secondary;
+  //background-color: $c-secondary;
   border-radius: 15px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   img {
+    border-radius: 15px;
     margin-bottom: 20px;
-    max-width: 150px;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
   }
   .info {
     text-align: center;
