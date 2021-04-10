@@ -37,7 +37,7 @@ export default {
 
       form(){
         //decides whether to prefill data and give editing options or wheter it's a new post
-        if(this.access == "editor"){
+        if(this.access == "editor" || this.access == 'owner'){
             return {
                 name: this.data.name,
                 title: this.data.title,
@@ -91,7 +91,7 @@ export default {
  
   methods: {
       setHeading(){
-          if(this.access == 'editor'){
+          if(this.access == 'editor' || this.access == 'owner'){
               return "Rediger forslag"
           } else {
               return "Lag ny utlysning"

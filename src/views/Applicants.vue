@@ -5,8 +5,23 @@
     <b-spinner class="m-auto" variant="white"  style="width: 6rem; height: 6rem;"></b-spinner>
   
   </div>
-  
-  <b-row v-else >
+  <b-container v-else>
+    <b-row class="mt-5" style="margin-bottom: 2.3em;">
+        <b-col cols="8" class="pl-4" >
+        <b-row>
+            <h1 class="h3">Søkere til {{userProfile.name}}</h1>
+        </b-row>
+        <b-row>
+            <p >Legg til søkere med plusstegnet</p>
+        </b-row>
+            
+        </b-col>
+        <b-col cols="4">
+            <h1 class="h3">Mine Prioriteringer</h1>
+        </b-col>
+
+  </b-row>
+  <b-row  >
   <Modal 
      v-if="modalShow"
      @close="modalShow = false"
@@ -38,14 +53,20 @@
         </b-list-group>
     </b-col>
   </b-row>
+  <b-row class="py-5 px-3">
+  <button @click="saveApplicants()" class="ml-auto button">Lagre</button>
+  </b-row>
+  </b-container>
 </b-container>
 </template>
 
 <script>
 
 import {getDoc} from '@/utils/get.js'
+import {editDoc} from '@/utils/create.js'
 import { db } from '@/firebase.js'
 import { VueEditor } from "vue2-editor"
+import { mapState } from "vuex"
 import Applicant from '@/components/Applicant'
 import SelectedApplicant from '@/components/SelectedApplicant'
 import Modal from '@/components/Modal'
@@ -67,7 +88,23 @@ export default {
             applications: {}
         }
     },
+    computed: {
+        ...mapState(['userProfile']),
+    },
     methods: {
+
+        async checkForPrios(){
+            return await getDoc('priorities', this.$route.params.id)
+        },
+
+        saveApplicants(){
+            let id = this.$route.params.id
+            editDoc('priorities', id, {...this.selectedApp}).then(res => {
+                console.log(res)
+            })
+           
+        },
+
         setModal(applicant){
             this.activeApp = applicant
             this.modalShow = !this.modalShow
@@ -103,13 +140,21 @@ export default {
                 
                     let studRef = doc.id
                     let relData = doc.data().praksis
+
+                    // håndtering for data i priorities som ikke nødvendigvis har 'praksis-felt'
                     if(relData){
                         let applicationData = relData.filter(x => x.id == this.$route.params.id)[0]
                         this.applications[studRef] = applicationData.application
                     }
                     
-                   
-                    results.push(studRef)
+                    //check with already existing priorities
+                    let existing = this.selectedApp
+                    if(existing.find(x => x.id == studRef)){
+                        console.log(existing)
+                    } else{
+                        results.push(studRef)
+                    }
+                    
                     
                 });
             })
@@ -135,15 +180,25 @@ export default {
     },
 
     mounted(){
-
+        
        this.loading = true
-       this.getApplicants(this.$route.params.id).then(res => {
-           this.getItems(res, items => {
-               this.applicants = items
-               this.loading = false
-               });
 
+        //check to see if previous prios has been made
+       this.checkForPrios().then( res => {
+            delete res.id
+            this.selectedApp = Object.values(res)
+            //get applicants
+            this.getApplicants(this.$route.params.id).then(res => {
+            this.getItems(res, items => {
+                this.applicants = items
+                this.loading = false
+                });
+
+            })
        })
+       
+
+       
        
     }
 }

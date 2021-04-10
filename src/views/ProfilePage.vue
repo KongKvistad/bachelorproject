@@ -49,7 +49,7 @@
         <section v-if="activeChoice == 'default'"> 
             <ContactColumn
                 :img="data.pageUserData.image_url"
-                :name="data.pageUserData.contact"
+                :name="data.pageUserData.contact ? data.pageUserData.contact : data.pageUserData.name"
                 :phone="data.pageUserData.phone"
                 :email="data.pageUserData.email"
                 :editable="ownsPage"
@@ -62,6 +62,17 @@
         </section>
 
         <section v-else-if="activeChoice == 'praksis' && data.pageUserData.role == 'company'">
+        <Modal 
+            v-if="showEditor"
+            @close="showEditor = false"
+        >
+        <template v-slot:content>
+            <EditorWrapper 
+                :collection="activeChoice"
+                :access="'owner'"
+                :data="cardData"/>
+        </template>
+        </Modal>
             <div class="container-fluid">
                 <div class="container">
                     <div class="row">
@@ -77,7 +88,7 @@
                                 :cardData="card" 
                                 >
                                 <template v-slot:button>
-                                  
+                                        <button class="button mr-4" @click="toggleCard(card)" >se utlysning</button>
                                         <button class="button" @click="$router.push('/applicants/' + card.id)" >se søkere</button>
                                    
                                 </template>
@@ -100,7 +111,7 @@
                                 >
                                 <template v-slot:button>
                                   
-                                        <button class="button">se utlysning</button>
+                                        <button class="button" @click="toggleCard(card)" >se utlysning</button>
                                    
                                 </template>
                                 </Card2>
@@ -164,10 +175,25 @@
            <b-container >
             <b-row cols="1">
                 <b-col>
-                <Priorities/>
+                    <Modal 
+                        v-if="showEditor"
+                        @close="showEditor = false"
+                    >
+                        <template v-slot:content>
+                            
+                            <vue-editor style="margin-top: 2em;" v-model="cardData.application"/>
+                            <button @click="$store.dispatch('savePrioCart', userProfile.id)" class="button w-25 float-right mt-4" >lagre</button>
+                           
+                        </template>
+                    </Modal>
+                    <Priorities
+                    @appOpen="toggleCard"
+                    />
                 </b-col>
                 <b-col>
-                <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="button prio">Godkjenn</button>
+                    <b-row class="mt-5 px-4">
+                        <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="button prio ml-auto">Godkjenn</button>
+                    </b-row>
                 </b-col>
 
             </b-row>
@@ -196,7 +222,7 @@
         <section> 
             <ContactColumn
             :img="data.pageUserData.image_url"
-            :name="data.pageUserData.contact"
+            :name="data.pageUserData.contact ? data.pageUserData.contact : data.pageUserData.name "
             :phone="data.pageUserData.phone"
             :email="data.pageUserData.email"
             :editable="ownsPage"
@@ -223,6 +249,9 @@ import About from '@/components/About.vue'
 import Priorities from '@/components/Priorities.vue'
 import Card2 from '@/components/Card2.vue'
 import store from '../store'
+import EditorWrapper from '@/components/EditorWrapper'
+import Modal from '@/components/Modal'
+import { VueEditor } from "vue2-editor"
 export default {
   name:"ProfilePage",
   components: {
@@ -230,12 +259,16 @@ export default {
       ContactColumn,
       About,
       Priorities,
-      Card2
+      Card2,
+      Modal,
+      EditorWrapper,
+      VueEditor
   },
   data(){
       return {
-          data: false
-          
+          data: false,
+          showEditor : false,
+          cardData: false
           
       }
   },
@@ -267,6 +300,11 @@ export default {
     },  
   },
   methods:{
+    toggleCard(card){
+        console.log(card)
+        this.showEditor = true
+        this.cardData = card
+    },
     
   },
   

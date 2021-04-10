@@ -30,6 +30,14 @@ const store = new Vuex.Store({
       state.userProfile = val
     },
     addToPrioCart(state, card){
+      if(!state.priorityCart[card.type]){
+        state.priorityCart[card.type] = []
+      }
+
+      if(!state.priorityCart[card.type + 'Ids']){
+        state.priorityCart[card.type + 'Ids'] = []
+      }
+     
       state.priorityCart[card.type].push(card.data)
       state.priorityCart[card.type+'Ids'].push(card.data.id)
 
