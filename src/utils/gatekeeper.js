@@ -9,8 +9,10 @@ import { getDoc, filterByField, multipleCols} from "@/utils/get.js"
 
 const gateKeeper = async (isOwner, uri) => {
 
-    
+    // "om"-data trengs for samtlige sider uavhengig av tilgang og rolle.
+        // den trengs dessuten for å bestemme hvilken type page denne uri-en hører til.
     if(isOwner == false){
+        console.log("this")
         return getDoc("users", uri).then(res =>  {
         
             let dataObj = {}
@@ -18,42 +20,36 @@ const gateKeeper = async (isOwner, uri) => {
             return dataObj
         })
     } else {
-        // "om"-data trengs for samtlige sider uavhengig av tilgang og rolle.
-        // den trengs dessuten for å bestemme hvilken type page denne uri-en hører til.
-        return getDoc("users", uri).then(res =>  {
-            
-            let dataObj = {
-                praksis: {},
-                prosjekt:{}
-            }
-            
-            let pageType = res.role
-            
-            dataObj.pageUserData = res
-            console.log(pageType, isOwner)
-            if((pageType == 'company' || pageType == 'student') && isOwner){
-                
-                // return (async() => {
-                //     const data = await multipleCols(false, ["praksis", "prosjekt"], 'created_by', uri)
-                //     return data
-                // })()
+        
+        let dataObj = {
+            praksis: {},
+            prosjekt:{}
+        }
 
-                multipleCols(false, ["praksis", "prosjekt"], 'created_by', uri)
-                .then(data => {
-                        dataObj.praksis.approved = data[0].filter(x => x.approved == true)
-                        dataObj.praksis.denied = data[0].filter(x => x.approved != true)
-                        dataObj.prosjekt.approved = data[1].filter(x => x.approved == true)
-                        dataObj.prosjekt.denied = data[1].filter(x => x.approved != true)
-                        dataObj.historikk = { praksis: dataObj.praksis, prosjekt: dataObj.prosjekt}
-                })
-                
-            }
+        let user = await getDoc("users", uri)
+            
+        let pageType = user.role
+            
+        dataObj.pageUserData = user
+
+        console.log(dataObj)
+        
+        if(pageType == 'company'){
+
+        let data = await multipleCols(false, ["praksis", "prosjekt"], 'created_by', uri)
+              
+        dataObj.praksis.approved = data[0].filter(x => x.approved == true)
+        dataObj.praksis.denied = data[0].filter(x => x.approved != true)
+        dataObj.prosjekt.approved = data[1].filter(x => x.approved == true)
+        dataObj.prosjekt.denied = data[1].filter(x => x.approved != true)
+        dataObj.historikk = { praksis: dataObj.praksis, prosjekt: dataObj.prosjekt}
 
 
-            return dataObj
+        }
+
+        return dataObj;
                 
         
-        })
     }
 }
 

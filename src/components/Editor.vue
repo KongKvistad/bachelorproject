@@ -32,6 +32,16 @@
                 <input :disabled="setAccess()" v-model.trim="data.amount" type="text" id="amount" />
               </div>
 
+              <div class="field select">
+                <label for="from">Fra</label>
+                <input :disabled="setAccess()" v-model.trim="data.from" id="from" type="date" :placeholder="data.from" />
+              </div>
+              
+              <div class="field select">
+                <label for="to">Til</label>
+                <input :disabled="setAccess()" v-model.trim="data.to" type="date" id="to" :placeholder="data.to"  />
+              </div>
+
           </form>
           <textarea style="min-height: 18em; padding: 2em 2em;" v-if="access == 'new'" v-model.trim="data.content"></textarea>
           <textarea disabled style="min-height: 18em; padding: 2em 2em;" v-else-if="access == 'owner'" v-model.trim="data.content"></textarea>
@@ -82,6 +92,8 @@ export default {
           data.approved = false
           data.spots = this.data.amount
           data.title = this.data.title
+          data.from = new Date(this.data.from)
+          data.to = new Date (this.data.to)
 
           let collection = this.data.selected
 

@@ -7,12 +7,12 @@
                 </div>
                 <div class="right-column col-md-9" v-if="collection=='praksis' || collection=='prosjekt'">
                     <h3>{{ cardData.title }}</h3>
-                    <p>{{ cardData.content|truncate }}</p>
+                    <p>{{ cardData.content}}</p>
                     <p>{{cardData.name}}</p>
                 </div>
                 <div class="right-column col-md-9" v-else>
                     <h3>{{ cardData.name }}</h3>
-                    <p>{{ cardData.about|truncate }}</p>
+                    <p>{{ cardData.about}}</p>
                 </div>
                 <div class="card-buttons col-md-12 d-flex justify-content-end">
                     

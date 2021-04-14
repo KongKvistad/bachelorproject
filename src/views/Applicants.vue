@@ -62,6 +62,9 @@
 
 <script>
 
+// TODO: currently only takes internships into account - in the future, additional parameters will be needed.
+// TODO: offer slots according to data in DB
+
 import {getDoc} from '@/utils/get.js'
 import {editDoc} from '@/utils/create.js'
 import { db } from '@/firebase.js'
@@ -94,12 +97,13 @@ export default {
     methods: {
 
         async checkForPrios(){
-            return await getDoc('priorities', this.$route.params.id)
+            return await getDoc('company_priorities', this.$route.params.id)
         },
 
         saveApplicants(){
             let id = this.$route.params.id
-            editDoc('priorities', id, {...this.selectedApp}).then(res => {
+            
+            editDoc('company_priorities', id, {praksis: {...this.selectedApp}}).then(res => {
                 console.log(res)
             })
            
@@ -185,8 +189,12 @@ export default {
 
         //check to see if previous prios has been made
        this.checkForPrios().then( res => {
-            delete res.id
-            this.selectedApp = Object.values(res)
+            
+            //if priorities have already been made
+            if (res){
+            this.selectedApp = Object.values(res.praksis)
+            }
+
             //get applicants
             this.getApplicants(this.$route.params.id).then(res => {
             this.getItems(res, items => {

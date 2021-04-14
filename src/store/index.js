@@ -107,6 +107,8 @@ const store = new Vuex.Store({
       const cart = await db.collection("priorities").doc(id).get()
       commit('setPrioCart',cart.data())
     },
+
+    
     async logout({ commit }) {
       // log user out
       await fb.auth.signOut()

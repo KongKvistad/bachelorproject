@@ -43,6 +43,8 @@ export default {
                 title: this.data.title,
                 image_url: this.data.image_url ? this.data.image_url : 'https://firebasestorage.googleapis.com/v0/b/bachelorproject-2f333.appspot.com/o/profile.png?alt=media&token=f3af9c0c-5422-4d75-9fc9-b704b32ec3d1',
                 selected: this.data.type,
+                from: this.data.from,
+                to: this.data.to,
                 content: this.data.content,
                 amount: this.data.spots,
                 approved: this.data.approved,
@@ -59,6 +61,8 @@ export default {
                 title: "",
                 image_url: this.userProfile.image_url ? this.userProfile.image_url : 'https://firebasestorage.googleapis.com/v0/b/bachelorproject-2f333.appspot.com/o/profile.png?alt=media&token=f3af9c0c-5422-4d75-9fc9-b704b32ec3d1',
                 selected: this.collection,
+                from: "2021-01-01",
+                to: "2022-03-01",
                 content: "",
                 amount: 1,
                 options: [
