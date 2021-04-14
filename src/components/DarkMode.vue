@@ -8,6 +8,7 @@
             <span v-else><b-icon-sun class="b-icon-moon" shift-h="6" shift-v="-4" scale="1.2"></b-icon-sun></span>  
         </span>
         </label>
+       
     </div>
 </template>
 

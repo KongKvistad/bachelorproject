@@ -3,9 +3,16 @@
       <!--<span v-if="prioCart" class="counter">{{prioCart}}</span>-->
       <b-navbar toggleable="lg"  >
       <b-navbar-brand to="/">
-      <img v-if="findMode('lightMode')" src="../assets/images/ntnu_logo.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:200px;">
-      <img v-if="findMode('darkMode')" src="../assets/images/ntnu_logo_white.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:200px;">
+      <img v-if="findMode('lightMode')" src="../assets/images/ntnu_logo.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:150px;">
+      <img v-if="findMode('darkMode')" src="../assets/images/ntnu_logo_white.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:150px;">
       </b-navbar-brand>
+
+      <!--Følgende tre linjer er kun for å lettere å se hvem man er innlogget som i MVP-->
+      <b-nav-text v-if="user.role === 'admin'">Velkommen, admin!</b-nav-text>
+      <b-nav-text v-else-if="user.role === 'student'">Velkommen, student!</b-nav-text>
+      <b-nav-text v-else-if="user.role === 'company'">Velkommen, bedrift!</b-nav-text>
+      <!--------------------------------------------------------------------------------->
+
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
 
@@ -69,8 +76,8 @@
         </b-navbar-nav>
         <!--Slutt på andre brukere-->
 
-      </b-collapse>
       <DarkMode/>
+      </b-collapse>
       </b-navbar>
       <!--Slutt på menu-->
     

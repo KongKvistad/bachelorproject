@@ -2,7 +2,7 @@
  så man kan laste f.eks coop/praksis med riktig menyelement valgt-->
 <template>
     
-    <main class="left-col-container">
+    <main> <!--class="left-col-container" -->
     <Modal 
      v-if="showUserAlert"
      @close="toggleModal" 
@@ -30,72 +30,82 @@
         </div>
         <div class="heading-underline"></div>
     </section> -->
-    <section class="main">   
-    <section>
-        <SideMenu
-        :menuOptions="[{
-            param: '/praksis',
-            text: 'Praksis'
-        },
-        {
-            param: '/prosjekt',
-            text: 'Prosjekter'
-        },
-        {
-            param: '/bedrifter',
-            text: 'Bedrifter'
-        }]"
-        base="/coop"
-         />
-    </section>
-    <section>
-        <div class="secRow">
-            <div class="row">
-                <div class="col-md-12" id="search-field">
-                    <input v-model.trim="search" placeholder="Search..."/>
-                </div>
+
+<div class="container-fluid">
+    <div class="container coopContainer">
+        <div class="row">
+            <!-- <section> -->
+            <div class="col-md-2 sideMenu">
+                <SideMenu
+                :menuOptions="[{
+                    param: '/praksis',
+                    text: 'Praksis'
+                },
+                {
+                    param: '/prosjekt',
+                    text: 'Prosjekter'
+                },
+                {
+                    param: '/bedrifter',
+                    text: 'Bedrifter'
+                }]"
+                base="/coop"
+                />
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div>
-                        <h1>{{activeChoice}}</h1>
-                        
+            <!-- </section> -->
+            <!-- <section> --> 
+            <div class="col-md-10">
+                <!-- <div class="secRow"> --> 
+                <div class="row">
+                    <div class="col-6">
+                            <h1>{{activeChoice}}</h1>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                        <button class="primary-button" @click.prevent="toggleModal('opened')">Ny utlysning</button>
                     </div>
                 </div>
-                <div class="col-md-6 justify-content-end">
-                    
-                        <button class="primary-button" @click.prevent="toggleModal('opened')">Ny utlysning</button>
-                    
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="coopIntro">Finn en praksisplass, et prosjekt eller les mer om en bedrift!</p>
+                        <p>
+                            Bruk menyen til venstre for å navigere. Ønsker du å lage en ny utlysning
+                            kan du ta i bruk den blå knappen. Husk at du som student må prioritere minst
+                            tre bedrifter om du ikke finner en på egenhånd. Prioriteringene dine finner du
+                            i din oversikt.
+                        </p>
+                    </div>
                 </div>
-            </div>
+                <div class="row"> <!-- <div class="secRow"> --> 
+                    <div class="col-md-12" id="search-field">
+                        <input v-model.trim="search" placeholder="Search..."/>
+                    </div>
+                </div>
 
-            
-        </div>
-        <transition name="fade">
-            <div key="praksis" v-if="activeChoice=='praksis'">
+                <transition name="fade">
+                    <div key="praksis" v-if="activeChoice=='praksis'">
+                        <Card 
+                            collection="praksis"
+                        /> 
+                    </div>
 
-                <Card 
-                    collection="praksis"
-                />
+                    <div key="prosjekt" v-else-if="activeChoice=='prosjekt'">
+                        <Card 
+                            collection="prosjekt"
+                        />
+                    </div>
                     
-            </div>
-            <div key="prosjekt" v-else-if="activeChoice=='prosjekt'">
-          
-                <Card 
-                    collection="prosjekt"
-                />
+                    <div key="bedrifter" v-else-if="activeChoice=='bedrifter'">
+                        <Card 
+                            collection="users"
+                        />
+                    </div>
 
-            </div>
-            <div key="bedrifter" v-else-if="activeChoice=='bedrifter'">
-          
-                <Card 
-                    collection="users"
-                />
-
-            </div>
-        </transition>
-    </section>
-    </section>
+                </transition>
+            </div> <!-- </section> -->
+        </div>
+    </div> 
+</div>
+    
     </main>
 </template>
 

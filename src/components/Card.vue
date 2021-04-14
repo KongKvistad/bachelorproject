@@ -15,7 +15,7 @@
                     <h3>{{ card.name }}</h3>
                     <p>{{ card.about|truncate }}</p>
                 </div>
-                <div class="card-buttons col-md-12 d-flex justify-content-end">
+                <div class="card-buttons col-md-12">
                     <button @click="toggleCoopModal(card)" class="primary-button">Les mer</button>
                     <button @click="addToCart(card)" class="secondary-button" v-if="renderPrioBtn()">Prioriter</button>
                 </div>
