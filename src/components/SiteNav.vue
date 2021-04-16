@@ -80,7 +80,6 @@
       </b-collapse>
       </b-navbar>
       <!--Slutt på menu-->
-    
   </header>
 </template>
 
