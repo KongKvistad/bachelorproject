@@ -79,6 +79,15 @@ input:checked + .slider:before {
 header{
     background: $c-headerbg;
     border-bottom: 1px solid $c-secondary;
+    
+    li {
+      color: $c-navFooterTxt !important;
+    }
+
+    .navbar-toggler{
+      background:  $c-navFooterTxt;
+    }
+    
 
     a:hover {
       text-decoration: underline !important;
@@ -116,7 +125,7 @@ header{
       margin: 0px 20px;
 
       a {
-        color: $c-headerTxt !important;
+        color: $c-navFooterTxt !important;
       }
       
       @media screen and (max-width: 990px) {
@@ -142,13 +151,13 @@ header{
   margin-top: 40px;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid $c-secondary;
-  background-color: $c-headerbg;
+  border: 1px solid $c-text;
+  background-color: $c-bodybg;
   color: $c-text;
   }
 
   input:focus {
-    background-color: darken($c-headerbg, 5%);
+    background-color: darken($c-bodybg, 5%);
   }
 }
 
@@ -846,15 +855,20 @@ footer {
 	.footer-bottom {
 		height: auto;
 		padding: 0.5rem 1rem;
-		background: $c-secondary;
+		background: $c-footerbg;
 
 		img {
 			max-width: 250px;
 			padding-bottom: 20px;
 		}
 
-    a {
+    li a {
       font-size: $fs-small;
+      color: $c-navFooterTxt !important;
+    }
+
+    h6 {
+     color: $c-navFooterTxt;
     }
 		
 		ul {

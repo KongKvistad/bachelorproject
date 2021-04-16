@@ -13,7 +13,9 @@ etc.
 $c-primary: #00509E;
 $c-mediumbg: #cfdeee;
 $c-lightbg: #d5e0eb;
-$c-headerbg: #fff;
+$c-headerbg: #373847;
+$c-footerbg: #373847;
+$c-navFooterTxt: #fff;
 $c-headerTxt: #00509E;
 $c-hover: #000;
 $c-secondary: #cfdaf1; //NB!! Bytte til #DDE7EE etter NTNU sin designmanual? Eventuelt #79A2CE
@@ -31,4 +33,4 @@ $c-transparent: transparent;
 $c-btnborder: #00509E;
 $c-btntext: #00509E;
 
-$footer-graphic: url("../images/footer-graphic-200-light.svg") no-repeat bottom;
+$footer-graphic: url("../images/footer-graphic-200-dark.svg") no-repeat bottom;

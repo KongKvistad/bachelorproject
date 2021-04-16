@@ -3,8 +3,7 @@
       <!--<span v-if="prioCart" class="counter">{{prioCart}}</span>-->
       <b-navbar toggleable="lg"  >
       <b-navbar-brand to="/">
-      <img v-if="findMode('lightMode')" src="../assets/images/ntnu_logo.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:150px;">
-      <img v-if="findMode('darkMode')" src="../assets/images/ntnu_logo_white.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:150px;">
+      <img src="../assets/images/ntnu_logo_white.png" alt="NTNU logo med slagord kunnskap for en bedre verden" style="width:150px;">
       </b-navbar-brand>
 
       <!--Følgende tre linjer er kun for å lettere å se hvem man er innlogget som i MVP-->
@@ -100,13 +99,6 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch('logout')
-    },
-    findMode(mode) {
-      if(document.documentElement.getAttribute('theme') == mode){
-        return true;
-      } else {
-        return false;
-      }
     }
   }
 }
