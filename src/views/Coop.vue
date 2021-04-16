@@ -77,7 +77,7 @@
                 </div>
                 <div class="row"> <!-- <div class="secRow"> --> 
                     <div class="col-md-12" id="search-field">
-                        <input v-model.trim="search" placeholder="Search..."/>
+                        <input v-model.trim="search" placeholder="Søk..."/>
                     </div>
                 </div>
 
