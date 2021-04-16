@@ -140,6 +140,7 @@ header{
     z-index: 99999999999;
     width: 100%;
     nav {
+      border-top: 1px solid $c-white;
       .navbar-text {
         display: none;
       }
@@ -868,9 +869,11 @@ footer {
 		height: auto;
 		padding: 0.5rem 1rem;
 		background: $c-footerbg;
+    padding-bottom: 65px;
 
 		img {
 			max-width: 250px;
+      width: 100%;
 			padding-bottom: 20px;
 		}
 
