@@ -30,6 +30,13 @@
                     </ul>
                 </div>
             </div>
+            <div class="row credits">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <p>BeNet er et bachelorprosjekt av Eirik Kvistad, Mari Rogne & Sarah Victoria Berg
+                        ved NTNU i Gjøvik.
+                    </p>
+                </div>
+            </div>
         </footer>
     </div>
 </template>

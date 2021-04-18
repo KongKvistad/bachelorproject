@@ -4,12 +4,14 @@
         <div v-for="card in activeCards" :key="card.id" class="cards">
             <div class="cardsList row">
                 <div class="left-column col-md-3">
-                    <img :src= card.image_url alt="Bedrift logo">
+                    <div class="card-logo">
+                        <img :src= card.image_url alt="Bedrift logo">
+                    </div>
                 </div>
                 <div class="right-column col-md-9" v-if="collection=='praksis' || collection=='prosjekt'">
                     <h3>{{ card.title }}</h3>
                     <p>{{ card.content|truncate }}</p>
-                    <p>{{card.name}}</p>
+                    <p class="card-company-name">{{card.name}}</p>
                 </div>
                 <div class="right-column col-md-9" v-else>
                     <h3>{{ card.name }}</h3>
