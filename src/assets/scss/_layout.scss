@@ -461,29 +461,35 @@ KNAPPER
 
 //Om-side
 #dashboard {
-	.img_about_1 {
+	/* .img_about_1 {
 		max-height: 400px;
 		float: right;
-	}
+	} */
 
 	.img_about_2 {
 		max-width: 400px;
 		width: 100%;
 	}
-  .indexIntro h1, .indexIntro h2{ //.indexIntro ligger på to diver i index.vue
+  .indexIntro { //.indexIntro ligger på to diver
     margin-top: 50px;
+  }
+  .indexEnd { //siste to avsnitta på index
+    margin-top: 70px;
   }
 
 	@media only screen and (max-width: 768px) {
+    .mobile-second { //classe på bilde nr 2 for å få bildet etter tekst i mobilview
+      order: 2;
+    }
 		.img_about_1 {
-			display: none;
+			padding-top: 20px;
+      padding-bottom: 20px;
 		}
 
 		.img_about_2 {
-			display: block;
-			margin: auto;
+      padding-top: 20px;
 		}
-	}
+	} 
 }
 
 #signup{
