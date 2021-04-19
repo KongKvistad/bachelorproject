@@ -858,6 +858,7 @@ KNAPPER
 //Footer
 footer {
 	margin-top: 2rem;
+  overflow: hidden;
 
 	.footer-top, .footer-bottom {
 		margin: 0;
@@ -904,7 +905,6 @@ footer {
 	}
   .credits { //forklarende tekst om at BeNet er bachelorprosjekt
     font-size: $fs-xsmall;
-    overflow: hidden;
     background: $c-footerbg;
       p {
       color: $c-navFooterTxt;
