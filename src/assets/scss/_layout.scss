@@ -473,7 +473,11 @@ KNAPPER
     height: 100%;
     width: 100%;
 		float: right;
-	} */
+	} 
+
+  h1 {
+    margin-top: 40px;
+  }
 
   .calendarImg {
     height: 100%;
@@ -485,9 +489,9 @@ KNAPPER
 		width: 100%;
 	}
 
-  .indexIntro { //.indexIntro ligger på to diver
+  /* .indexIntro { //.indexIntro ligger på to diver
     margin-top: 50px;
-  }
+  } */
   .indexEnd { //siste to avsnitta på index
     margin-top: 70px;
   }
