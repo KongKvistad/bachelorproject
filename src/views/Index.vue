@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 indexIntro">
+          <div class="col-md-6">
             <h1>Om NTNU BeNet</h1>
             <p>NTNU BeNet er et bedriftsnettverk som tilbyr praksisformidling og administrasjon av praksisopphold. 
               Tjenesten krever lite interaksjon fra deg som arbeidsgiver, og gjør det lettere for studenter å skaffe 
@@ -15,13 +15,13 @@
           </div>
 
           <div class="col-md-6">
-            <img class="img_about_1" src="../assets/images/about_image_1.png" alt="Student">
+            <img class="img_right_column" src="../assets/images/about_image_1.png" alt="Student">
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-6 d-flex align-items-center">
-            <img class="img_about_2" src="../assets/images/about_image_2.png" alt="Dame plasserer post-it-lapper på veggen">
+            <img class="img_left_column" src="../assets/images/about_image_2.png" alt="Dame plasserer post-it-lapper på veggen">
           </div>
 
           <div class="col-md-6 align-self-center">
@@ -35,7 +35,7 @@
           </div>
         </div>
 
-         <div class="row indexIntro">
+         <div class="row">
           <div class="col-md-6">
             <h2>Målsettinger</h2>
             <p>NTNU BeNet har som formål å legge til rette for at studentene kan få en praksisperiode som er gull 
