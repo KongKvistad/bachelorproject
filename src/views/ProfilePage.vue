@@ -50,6 +50,7 @@
             <ContactColumn
                 :img="data.pageUserData.image_url"
                 :name="data.pageUserData.contact ? data.pageUserData.contact : data.pageUserData.name"
+                :study="data.pageUserData.study"
                 :phone="data.pageUserData.phone"
                 :email="data.pageUserData.email"
                 :editable="ownsPage"
@@ -57,6 +58,8 @@
                 <About
                 :description="data.pageUserData.about"
                 :name="data.pageUserData.name"
+                :study="data.pageUserData.study"
+                :wanted_work="data.pageUserData.wanted_work"
                 
                 />
         </section>
@@ -236,12 +239,15 @@
             :img="data.pageUserData.image_url"
             :name="data.pageUserData.contact ? data.pageUserData.contact : data.pageUserData.name "
             :phone="data.pageUserData.phone"
+            :study="data.pageUserData.study"
             :email="data.pageUserData.email"
             :editable="ownsPage"
             />
             <About
             :description="data.pageUserData.about"
             :name="data.pageUserData.name"
+            :study="data.pageUserData.study"
+            :wanted_work="data.pageUserData.wanted_work"
             
             />
         </section>
