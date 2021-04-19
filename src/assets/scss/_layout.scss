@@ -829,19 +829,33 @@ KNAPPER
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  //justify-content: center;
+  //align-items: center;
   img {
     border-radius: 15px;
     margin-bottom: 20px;
     height: 150px;
     width: 150px;
     object-fit: cover;
-    margin-left: auto;
+    //margin-left: auto;
     margin-right: auto;
   }
-  .info {
+  /* .info {
     text-align: center;
+  } */
+  .profile-contact, .profile-links { //class på ul
+    list-style: none;
+    padding: 0;
+  }
+  .profile-links {
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+    li {
+      display: inline;
+      padding-right: 10px;
+    }
   }
 }
 

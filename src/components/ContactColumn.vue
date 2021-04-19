@@ -3,18 +3,20 @@
     <img :src="img"/>
     <div class="info">
         <h3>Kontakt</h3>
-        <span>
-            <em>Navn</em>
-            <p>{{name}}</p>
-        </span>
-        <span>
-            <em>Telefon</em>
-            <p>{{phone}}</p>
-        </span>
-        <span>
-            <em>Epost</em>
-            <p>{{email}}</p>
-        </span>
+        <ul class="profile-contact">
+            <li>{{name}}</li>
+        
+            <li>{{study}}</li>
+        
+            <li>{{phone}}</li>
+       
+            <li>{{email}}</li>
+        </ul>
+        <ul class="profile-links">
+            <a><li><b-icon icon="linkedin"></b-icon></li></a>
+            <a><li><b-icon icon="github"></b-icon></li></a>
+            <a><li><b-icon icon="globe"></b-icon></li></a>
+        </ul>
     </div>
     
         
@@ -26,7 +28,7 @@
 <script>
 export default {
     name: "ContactColumn",
-    props:["img", "email", "phone", "editable", "name"]
+    props:["img", "email", "phone", "editable", "name", "study"]
 }
 
 </script>
