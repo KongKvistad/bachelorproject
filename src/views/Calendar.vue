@@ -15,7 +15,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <img src="../assets/images/Kalender_benet_wbg.svg" class="calendarImg" alt="Illustrasjon av kalenderen">
+                        <img src="../assets/images/Kalender_benet.png" class="calendarImg" alt="Illustrasjon av kalenderen">
                     </div>
                 </div>
             </div>
