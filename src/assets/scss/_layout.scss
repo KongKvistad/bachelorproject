@@ -315,6 +315,11 @@ header{
     h3 {
       margin-bottom: 10px;
     }
+    .card-company-name {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: $fs-small;
+    }
   }
   .card-buttons {
     display: flex;
@@ -468,7 +473,7 @@ KNAPPER
     height: 100%;
     width: 100%;
 		float: right;
-	}
+	} */
 
   .calendarImg {
     height: 100%;
@@ -480,20 +485,26 @@ KNAPPER
 		width: 100%;
 	}
 
-  h1, h2{ 
+  .indexIntro { //.indexIntro ligger på to diver
     margin-top: 50px;
+  }
+  .indexEnd { //siste to avsnitta på index
+    margin-top: 70px;
   }
 
 	@media only screen and (max-width: 768px) {
+    .mobile-second { //classe på bilde nr 2 for å få bildet etter tekst i mobilview
+      order: 2;
+    }
 		.img_about_1 {
-			display: none;
+			padding-top: 20px;
+      padding-bottom: 20px;
 		}
 
 		.img_about_2 {
-			display: block;
-			margin: auto;
+      padding-top: 20px;
 		}
-	}
+	} 
 }
 
 #signup{
@@ -901,6 +912,14 @@ footer {
 			padding: 0;
 		}
 	}
+  .credits { //forklarende tekst om at BeNet er bachelorprosjekt
+    font-size: $fs-xsmall;
+    overflow: hidden;
+    background: $c-footerbg;
+      p {
+      color: $c-navFooterTxt;
+      }
+  }
 
 	@media only screen and (max-width: 768px) {
 		.footer-bottom {
@@ -1031,11 +1050,17 @@ footer {
   }
 }
 
-//NY KODE FOR SAMARBEID SARAH. MÅTTE LEGGES HER FORDI ALT
-//JEG GJORDE ANDRE STEDER FUNKA IKKE. CSS MÅ RYDDES OPP. 
+//NY KODE FOR SAMARBEID OG CARDS SARAH. MÅTTE LEGGES HER FORDI ALT
+//JEG GJORDE ANDRE STEDER FUNKA IKKE. CSS MÅ RYDDES LITT. 
 .left-column { //Dette handler om bildene i cards på samarbeid
-  img {
-    max-width: 100%;
+  max-width: 200px;
+    .card-logo { //div inni left-column
+    overflow: hidden;
+    padding: 15px;
+      img {
+        width: 100%;
+        height: auto;
+      }
   }
 }
 
