@@ -40,7 +40,7 @@
         <!--Start på admin meny-->
         <b-navbar-nav class="ml-auto" v-else-if="user.role === 'admin'">
           <b-nav-item to="/">Om</b-nav-item>
-          <b-nav-item :to="{ name: 'calendar' }">Kalender</b-nav-item>
+          <b-nav-item to="/calendar">Kalender</b-nav-item>
 
           <b-nav-item-dropdown text="Oversikt">
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'overordnet' }}">Overordnet</b-dropdown-item>

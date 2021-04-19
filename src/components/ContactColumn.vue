@@ -17,6 +17,8 @@
             <a><li><b-icon icon="github"></b-icon></li></a>
             <a><li><b-icon icon="globe"></b-icon></li></a>
         </ul>
+        <p><b-icon icon="pencil"></b-icon>Rediger profil</p>
+
     </div>
     
         

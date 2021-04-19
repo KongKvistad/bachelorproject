@@ -475,10 +475,6 @@ KNAPPER
 		float: right;
 	} 
 
-  h1 {
-    margin-top: 40px;
-  }
-
   .calendarImg {
     height: 100%;
     width: 100%;
@@ -489,9 +485,9 @@ KNAPPER
 		width: 100%;
 	}
 
-  /* .indexIntro { //.indexIntro ligger på to diver
+  .indexIntro { //.indexIntro ligger på to diver
     margin-top: 50px;
-  } */
+  } 
   .indexEnd { //siste to avsnitta på index
     margin-top: 70px;
   }
@@ -843,18 +839,23 @@ KNAPPER
   /* .info {
     text-align: center;
   } */
-  .profile-contact, .profile-links { //class på ul
+  .profile-contact, .profile-links { //classer på ul
     list-style: none;
     padding: 0;
   }
   .profile-links {
+    margin-top: 40px;
     svg {
       width: 30px;
       height: 30px;
     }
     li {
       display: inline;
-      padding-right: 10px;
+      padding-right: 15px;
+    }
+    p svg {
+      width: 30px;
+      height: 30px;
     }
   }
 }
