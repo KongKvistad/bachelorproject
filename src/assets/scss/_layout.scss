@@ -357,7 +357,7 @@ header{
 		}
 }
 
-.coopContainer { //container i samarbeid, for å få avstand fra meny
+.padding-top50 { //container i samarbeid, for å få avstand fra meny
   padding-top: 50px;
 }
 
@@ -475,10 +475,6 @@ KNAPPER
 		float: right;
 	} 
 
-  h1 {
-    margin-top: 40px;
-  }
-
   .calendarImg {
     height: 100%;
     width: 100%;
@@ -489,9 +485,9 @@ KNAPPER
 		width: 100%;
 	}
 
-  /* .indexIntro { //.indexIntro ligger på to diver
+  .indexIntro { //.indexIntro ligger på to diver
     margin-top: 50px;
-  } */
+  } 
   .indexEnd { //siste to avsnitta på index
     margin-top: 70px;
   }
@@ -829,19 +825,38 @@ KNAPPER
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  //justify-content: center;
+  //align-items: center;
   img {
     border-radius: 15px;
     margin-bottom: 20px;
     height: 150px;
     width: 150px;
     object-fit: cover;
-    margin-left: auto;
+    //margin-left: auto;
     margin-right: auto;
   }
-  .info {
+  /* .info {
     text-align: center;
+  } */
+  .profile-contact, .profile-links { //classer på ul
+    list-style: none;
+    padding: 0;
+  }
+  .profile-links {
+    margin-top: 40px;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+    li {
+      display: inline;
+      padding-right: 15px;
+    }
+    p svg {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
 
@@ -872,6 +887,7 @@ KNAPPER
 //Footer
 footer {
 	margin-top: 2rem;
+  overflow: hidden;
 
 	.footer-top, .footer-bottom {
 		margin: 0;
@@ -918,7 +934,6 @@ footer {
 	}
   .credits { //forklarende tekst om at BeNet er bachelorprosjekt
     font-size: $fs-xsmall;
-    overflow: hidden;
     background: $c-footerbg;
       p {
       color: $c-navFooterTxt;
