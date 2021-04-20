@@ -311,8 +311,8 @@ export default {
   },
   watch:{
       
-      //need to watch in addition to fetching on compenent creation,
-      //in case user us the owner of the page and the owner state refreshes
+      //need to watch in addition to fetching on component creation,
+      //in case user us the owner of the page and the owner state refreshes (async)
     ownsPage(newVal, oldVal){
         
         if(newVal != oldVal){
@@ -374,7 +374,7 @@ export default {
                         }
  
                     })
-                 this.$forceUpdate();
+                 
                 
             })
         } 
@@ -386,14 +386,17 @@ export default {
      let ownsPage = store.state.userProfile.id
  },
  created(){
+    // runs only if user is student - check if they've already recieved offers
     this.checkForOffers(this.userProfile.role)
+    
     // check flags in order to know if companies can prioritize
+    // makes button available if true
     getDoc('state_flags', 'companies_can_prioritize').then( res => {
         this.compCanPrio = res.state
     })
      
 
-     //hent data avhengig av rolle, etc
+     //get data depending on role, etc
     gateKeeper(this.ownsPage, this.$route.params.id).then(res =>{
                 
                 this.data = {...res}

@@ -105,7 +105,21 @@ const store = new Vuex.Store({
 
     async fetchPrioCart({commit}, id){
       const cart = await db.collection("priorities").doc(id).get()
-      commit('setPrioCart',cart.data())
+      
+      if(cart.data() !== undefined){
+        commit('setPrioCart',cart.data())
+      } else {
+        
+        let startObj = {
+          praksis: [],
+          prosjekt: [],
+          praksisIds: [],
+          prosjektIds: []
+        }
+        
+        commit('setPrioCart', startObj)
+      }
+      
     },
 
     
