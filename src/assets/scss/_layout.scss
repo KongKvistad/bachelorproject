@@ -740,7 +740,6 @@ KNAPPER
       }
 
       .left-column {
-        border-right: 10px solid $c-secondary;
         text-align: center;
         padding-right: 30px;
 
@@ -820,25 +819,25 @@ KNAPPER
 // Contact Column
 .contactColumn {
   margin-right: 50px;
-  //background-color: $c-secondary;
+  background-color: $c-lightbg;
   border-radius: 15px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   //justify-content: center;
-  //align-items: center;
+  align-items: center;
   img {
     border-radius: 15px;
     margin-bottom: 20px;
     height: 150px;
     width: 150px;
     object-fit: cover;
-    //margin-left: auto;
+    margin-left: auto;
     margin-right: auto;
   }
-  /* .info {
+  .info {
     text-align: center;
-  } */
+  }
   .profile-contact, .profile-links { //classer på ul
     list-style: none;
     padding: 0;
