@@ -103,7 +103,18 @@ export default {
         saveApplicants(){
             let id = this.$route.params.id
             
-            editDoc('company_priorities', id, {praksis: {...this.selectedApp}}).then(res => {
+            let obj = {...this.selectedApp}
+
+            // initialize and set approved field to false
+
+            // Object.values(obj).forEach(elem =>{
+            //     if(typeof elem == 'object'){
+            //         elem.approved = false
+            //     }
+            // })
+
+            
+            editDoc('company_priorities', id, {praksis: obj}).then(res => {
                 console.log(res)
             })
            

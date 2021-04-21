@@ -19,7 +19,7 @@
             </b-row>
             
         </b-col>
-        <b-col cols="2" align-self="end">
+        <b-col cols="2" align-self="center">
             <button @click="accept(offer)" class="button">godta</button>
         </b-col>
      </b-row>

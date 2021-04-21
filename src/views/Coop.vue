@@ -32,7 +32,7 @@
     </section> -->
 
 <div class="container-fluid">
-    <div class="container coopContainer">
+    <div class="container padding-top50">
         <div class="row">
             <!-- <section> -->
             <div class="col-md-2 sideMenu">

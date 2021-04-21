@@ -3,7 +3,24 @@
   margin-top: 30px;
   font-size: 20px; 
 }
-
+.student-infobox { //melding på profil som forteller at profilen er CV
+  margin-top: 10px;
+  background: $c-lightbg;
+  font-size: $fs-small;
+  padding: 10px;
+  position: relative;
+  .danger-icon { //oppmerksomhets ikon
+    position: absolute;
+    margin-left: -7px;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
 
 //DARK MODE SLIDER
 .switch {
@@ -357,7 +374,7 @@ header{
 		}
 }
 
-.coopContainer { //container i samarbeid, for å få avstand fra meny
+.padding-top50 { //container i samarbeid, for å få avstand fra meny
   padding-top: 50px;
 }
 

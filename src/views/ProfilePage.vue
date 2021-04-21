@@ -1,9 +1,20 @@
 <template>
     <main class="left-col-container" v-if="ownsPage && data.pageUserData">
-    <section class="topRow">
-        
-    </section>
+
+    <div class="container">
+        <div class="row student-infobox" v-if="data.pageUserData.role == 'student' && activeChoice == 'default'">
+            <div class="danger-icon"><b-icon icon="exclamation-octagon"></b-icon></div>
+            <div class="col-md-12">
+                <p>Dette er profilen din, som andre også kan se. 
+                Profilen erstatter behovet for å laste opp en CV, og det er derfor viktig at du oppdaterer den med
+                en beskrivelse av deg selv, hva du foretrekker å jobbe med, samt noen kvalifikasjoner
+                du anser som relevant. Du kan også legge ved linker til relevant informasjon og arbeid.</p>
+            </div>
+        </div>
+    </div>
+
     <section class="main profile">
+        
         <section>
             <SideMenu
             :menuOptions="[{
@@ -177,6 +188,15 @@
         <section v-else-if="(activeChoice == 'praksis' || activeChoice == 'prosjekt') && data.pageUserData.role == 'student'">
            <b-container >
             <b-row cols="1">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>{{ activeChoice }}</h1>
+                        <p>Dette er dine prioriteringer. Du kan endre rekkefølgen ved å
+                            bruke pilene til høyre. Husk at du må skrive èn søknad til hver prioritering innen
+                            fristen, samt oppdatere profilen din. Profilen din fungerer som en CV.
+                        </p>
+                    </div>
+                </div>
                 <b-col>
                     <Modal 
                         v-if="showEditor"
@@ -317,8 +337,8 @@ export default {
   },
   watch:{
       
-      //need to watch in addition to fetching on compenent creation,
-      //in case user us the owner of the page and the owner state refreshes
+      //need to watch in addition to fetching on component creation,
+      //in case user us the owner of the page and the owner state refreshes (async)
     ownsPage(newVal, oldVal){
         
         if(newVal != oldVal){
@@ -380,7 +400,7 @@ export default {
                         }
  
                     })
-                 this.$forceUpdate();
+                 
                 
             })
         } 
@@ -392,14 +412,17 @@ export default {
      let ownsPage = store.state.userProfile.id
  },
  created(){
+    // runs only if user is student - check if they've already recieved offers
     this.checkForOffers(this.userProfile.role)
+    
     // check flags in order to know if companies can prioritize
+    // makes button available if true
     getDoc('state_flags', 'companies_can_prioritize').then( res => {
         this.compCanPrio = res.state
     })
      
 
-     //hent data avhengig av rolle, etc
+     //get data depending on role, etc
     gateKeeper(this.ownsPage, this.$route.params.id).then(res =>{
                 
                 this.data = {...res}

@@ -1,5 +1,5 @@
 <template>
-    <div id="calendar" class="main">
+    <div id="calendar" class="main padding-top50">
         <div class="container-fluid">
             <div class="container">
                 <div class="row">

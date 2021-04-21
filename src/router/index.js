@@ -59,6 +59,14 @@ const routes = [
     }
   },
   {
+    path: '/offerbroker',
+    name: 'offerbroker',
+    component: () => import( /* webpackChunkName: "settings" */ '../views/OfferBroker.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/settings',
     name: 'settings',
     component: () => import( /* webpackChunkName: "settings" */ '../views/Settings.vue'),

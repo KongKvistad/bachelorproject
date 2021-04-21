@@ -18,8 +18,8 @@
                     <p>{{ card.about|truncate }}</p>
                 </div>
                 <div class="card-buttons col-md-12">
-                    <button @click="toggleCoopModal(card)" class="primary-button">Les mer</button>
-                    <button @click="addToCart(card)" class="secondary-button" v-if="renderPrioBtn()">Prioriter</button>
+                    <button @click="addToCart(card)" class="primary-button" v-if="renderPrioBtn()">Prioriter</button>
+                    <button @click="toggleCoopModal(card)" class="secondary-button">Les mer</button>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                         <div class="left-column col-md-3">
                             <img :src= expandedCard.image_url alt="Bedriftslogo">
                             <div>
-                                <p>Super company</p>
+                                <p>{{expandedCard.name}}</p>
                                 <router-link :to="{ name: 'profile', params: { id: expandedCard.created_by, type:'default'}}"> Vis profil</router-link>
                                 <p>Bransje:</p>
                             </div>
