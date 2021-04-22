@@ -33,6 +33,7 @@
             <b-dropdown-item :to="{ name: 'profile', params: { id: user.id, type: 'prosjekt' }}">Min bachelor</b-dropdown-item>
           </b-nav-item-dropdown>
 
+          <b-nav-item to="/information">Hjelp</b-nav-item>
           <b-nav-item @click="logout()">Logg ut</b-nav-item>
         </b-navbar-nav>
         <!--Slutt på student og bedrift meny-->
