@@ -191,6 +191,24 @@ header{
   }
 }
 
+.deadline { //div in coop for søknadsfrist
+  background: $c-lightbg;
+  padding: 10px 10px 10px 30px;
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  p:first-of-type {
+    font-weight: bold;
+  }
+  .attention {
+    position: absolute;
+    margin-left: -25px;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
 
 .left-col-container{
   display: flex;

@@ -193,7 +193,7 @@
                         <h1>{{ activeChoice }}</h1>
                         <p>Dette er dine prioriteringer. Du kan endre rekkefølgen ved å
                             bruke pilene til høyre. Husk at du må skrive èn søknad til hver prioritering innen
-                            fristen, samt oppdatere profilen din. Profilen din fungerer som en CV.
+                            fristen, samt oppdatere profilen din.
                         </p>
                     </div>
                 </div>
