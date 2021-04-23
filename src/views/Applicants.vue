@@ -84,6 +84,7 @@ export default {
     data(){
         return {
             applicants:false,
+            postData: false,
             loading: false,
             selectedApp: [1,2,3],
             modalShow: false,
@@ -103,7 +104,7 @@ export default {
         saveApplicants(){
             let id = this.$route.params.id
             
-            let obj = {...this.selectedApp}
+            let arr = [...this.selectedApp]
 
             // initialize and set approved field to false
 
@@ -113,8 +114,9 @@ export default {
             //     }
             // })
 
+            console.log(arr)
             
-            editDoc('company_priorities', id, {praksis: obj}).then(res => {
+            editDoc('company_priorities', id, {spots: this.postData.spots, praksis: arr}).then(res => {
                 console.log(res)
             })
            
@@ -192,6 +194,11 @@ export default {
         })
         .catch(error => console.log(error))
         }
+    },
+    created(){
+        getDoc("praksis", this.$route.params.id).then(res => {
+            this.postData = res
+        })
     },
 
     mounted(){
