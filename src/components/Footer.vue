@@ -19,6 +19,7 @@
                     <h6>Trenger du hjelp?</h6>
                     <ul>
                         <li><a href="/">Om BeNet</a></li>
+                        <li><a href="#">Hjelp</a></li>
                         <li><a href="#">Kontakt</a></li>
                     </ul>
                 </div>

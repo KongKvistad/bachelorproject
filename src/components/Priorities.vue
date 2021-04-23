@@ -20,7 +20,7 @@
 
                 </b-card-body>
                 <b-card-footer footer-bg-variant="white" align="right">
-                    <button @click="$emit('appOpen', data)" class="button">søknad</button>
+                    <button @click="$emit('appOpen', data)" class="primary-button button">Søknad</button>
                 </b-card-footer>
             </b-col>
             </b-row>

@@ -3,7 +3,7 @@
     <li v-for="(item, idx) in menuOptions"
      :key="'list' +idx"
      @click="setActive(item.param)"
-    :class="styleActive(item.param)">{{item.text}}</li>
+    :class="styleActive(item.param)"><a href="#">{{item.text}}</a></li>
     
 </ul>
 </template>

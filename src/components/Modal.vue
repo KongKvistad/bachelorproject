@@ -1,7 +1,7 @@
 <template>
   <div class="customModal">
     <div class="custom-modal-content">
-      <div @click="$emit('close')" class="close">close</div>
+      <button @click="$emit('close')" class="close">Lukk</button>
       <slot name="content">
       </slot>
     </div>

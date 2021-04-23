@@ -29,10 +29,11 @@
           <b-nav-item-dropdown text="Min oversikt">
             
             <b-dropdown-item :to="{ name: 'profile', params: { id: user.id, type: 'default' }}">Profil</b-dropdown-item>
-            <b-dropdown-item to="#" disabled>Min praksis</b-dropdown-item>
-            <b-dropdown-item to="#" disabled>Min bachelor</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'profile', params: { id: user.id, type: 'praksis' }}">Min praksis</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'profile', params: { id: user.id, type: 'prosjekt' }}">Min bachelor</b-dropdown-item>
           </b-nav-item-dropdown>
 
+          <b-nav-item to="/information">Hjelp</b-nav-item>
           <b-nav-item @click="logout()">Logg ut</b-nav-item>
         </b-navbar-nav>
         <!--Slutt på student og bedrift meny-->
@@ -45,8 +46,8 @@
           <b-nav-item-dropdown text="Oversikt">
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'overordnet' }}">Overordnet</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'nye avtaler' }}">Nye avtaler</b-dropdown-item>
-            <b-dropdown-item to="#" disabled>Brukere</b-dropdown-item>
-            <b-dropdown-item to="#" disabled>Historikk</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'overview', params: { type: 'brukere' }}">Brukere</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'overview', params: { type: 'historikk' }}">Historikk</b-dropdown-item>
           </b-nav-item-dropdown>
 
           <b-nav-item-dropdown text="Samarbeid">

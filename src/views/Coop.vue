@@ -39,7 +39,8 @@
                 <SideMenu
                 :menuOptions="[{
                     param: '/praksis',
-                    text: 'Praksis'
+                    text: 'Praksis',
+                    tabix:'0'
                 },
                 {
                     param: '/prosjekt',
@@ -51,6 +52,11 @@
                 }]"
                 base="/coop"
                 />
+               <div class="deadline" v-if="activeChoice=='praksis' || activeChoice=='prosjekt'">
+                   <div class="attention"><b-icon icon="exclamation-octagon"></b-icon></div>
+                   <p>Frist for å søke:</p>
+                   <p>18. september</p>
+               </div>
             </div>
             <!-- </section> -->
             <!-- <section> --> 

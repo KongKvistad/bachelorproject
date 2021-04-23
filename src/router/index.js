@@ -73,6 +73,14 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '/information',
+    name: 'information',
+    component: () => import( /* webpackChunkName: "settings" */ '../views/Information.vue'),
+    meta: {
+      requiresAuth: false
+    }
   }
 ]
 

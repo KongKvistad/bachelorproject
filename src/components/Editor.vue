@@ -46,7 +46,10 @@
           <textarea style="min-height: 18em; padding: 2em 2em;" v-if="access == 'new'" v-model.trim="data.content"></textarea>
           <textarea disabled style="min-height: 18em; padding: 2em 2em;" v-else-if="access == 'owner'" v-model.trim="data.content"></textarea>
           <vue-editor v-else v-model="data.content" :editor-toolbar="customToolbar" />
-          <button v-if="access === 'editor' || access == 'new'" class="primary-button modalButton" @click.prevent="submit">Fullfør</button>
+          <div class="modal-buttons"> 
+            <button v-if="access === 'editor' || access == 'new'" class="primary-button modalButton" @click.prevent="submit">Fullfør</button>
+            <button class="secondary-button">Avbryt</button>
+          </div>
           </section>
   </div>
 </template>

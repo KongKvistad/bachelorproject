@@ -1,9 +1,20 @@
 <template>
     <main class="left-col-container" v-if="ownsPage && data.pageUserData">
-    <section class="topRow">
-        
-    </section>
+
+    <div class="container">
+        <div class="row student-infobox" v-if="data.pageUserData.role == 'student' && activeChoice == 'default'">
+            <div class="danger-icon"><b-icon icon="exclamation-octagon"></b-icon></div>
+            <div class="col-md-12">
+                <p>Dette er profilen din, som andre også kan se. 
+                Profilen erstatter behovet for å laste opp en CV, og det er derfor viktig at du oppdaterer den med
+                en beskrivelse av deg selv, hva du foretrekker å jobbe med, samt noen kvalifikasjoner
+                du anser som relevant. Du kan også legge ved linker til relevant informasjon og arbeid.</p>
+            </div>
+        </div>
+    </div>
+
     <section class="main profile">
+        
         <section>
             <SideMenu
             :menuOptions="[{
@@ -91,9 +102,8 @@
                                 :cardData="card" 
                                 >
                                 <template v-slot:button>
-                                        <button class="button mr-4" @click="toggleCard(card)" >se utlysning</button>
-                                        <button :disabled="!compCanPrio" class="button" @click="$router.push('/applicants/' + card.id)" >se søkere</button>
-                                   
+                                        <button :disabled="!compCanPrio" class="primary-button button" @click="$router.push('/applicants/' + card.id)" >Se søkere</button>
+                                        <button class="secondary-button button mr-4" @click="toggleCard(card)" >Se utlysning</button>
                                 </template>
                                 </Card2>
                                     
@@ -114,7 +124,7 @@
                                 >
                                 <template v-slot:button>
                                   
-                                        <button class="button" @click="toggleCard(card)" >se utlysning</button>
+                                        <button class="primary-button button" @click="toggleCard(card)" >Se utlysning</button>
                                    
                                 </template>
                                 </Card2>
@@ -177,6 +187,15 @@
         <section v-else-if="(activeChoice == 'praksis' || activeChoice == 'prosjekt') && data.pageUserData.role == 'student'">
            <b-container >
             <b-row cols="1">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>{{ activeChoice }}</h1>
+                        <p>Dette er dine prioriteringer. Du kan endre rekkefølgen ved å
+                            bruke pilene til høyre. Husk at du må skrive èn søknad til hver prioritering innen
+                            fristen, samt oppdatere profilen din.
+                        </p>
+                    </div>
+                </div>
                 <b-col>
                     <Modal 
                         v-if="showEditor"
@@ -185,8 +204,10 @@
                         <template v-slot:content>
                             
                             <vue-editor style="margin-top: 2em;" v-model="cardData.application"/>
-                            <button @click="$store.dispatch('savePrioCart', userProfile.id)" class="button w-25 float-right mt-4" >lagre</button>
-                           
+                            <div class="modal-buttons">
+                                <button @click="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button">Lagre</button>
+                                <button class="secondary-button">Avbryt</button>
+                            </div>
                         </template>
                     </Modal>
                     <Priorities
@@ -207,7 +228,7 @@
                 </b-col>
                 <b-col v-if="!placeOffered">
                     <b-row class="mt-5 px-4">
-                        <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="button prio ml-auto">Godkjenn</button>
+                        <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button button prio ml-auto">Godkjenn</button>
                     </b-row>
                 </b-col>
 
