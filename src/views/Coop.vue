@@ -39,7 +39,8 @@
                 <SideMenu
                 :menuOptions="[{
                     param: '/praksis',
-                    text: 'Praksis'
+                    text: 'Praksis',
+                    tabix:'0'
                 },
                 {
                     param: '/prosjekt',

@@ -10,8 +10,8 @@
                 </div>
                 <div class="right-column col-md-9" v-if="collection=='praksis' || collection=='prosjekt'">
                     <h3>{{ card.title }}</h3>
-                    <p>{{ card.content|truncate }}</p>
                     <p class="card-company-name">{{card.name}}</p>
+                    <p>{{ card.content|truncate }}</p>
                 </div>
                 <div class="right-column col-md-9" v-else>
                     <h3>{{ card.name }}</h3>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-12 modalbtns col-md-12 d-flex justify-content-end">
                         <div>
-                            <button @click="$store.commit('updatePrioCart', expandedCard)" class="secondary-button" v-if="renderPrioBtn()">Prioriter</button>
+                            <button @click="$store.commit('updatePrioCart', expandedCard)" class="primary-button" v-if="renderPrioBtn()">Prioriter</button>
                             <button class="secondary-button" @click="toggleCoopModal">Lukk</button>
                         </div>
                     </div>

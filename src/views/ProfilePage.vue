@@ -102,9 +102,8 @@
                                 :cardData="card" 
                                 >
                                 <template v-slot:button>
-                                        <button class="button mr-4" @click="toggleCard(card)" >se utlysning</button>
-                                        <button :disabled="!compCanPrio" class="button" @click="$router.push('/applicants/' + card.id)" >se søkere</button>
-                                   
+                                        <button :disabled="!compCanPrio" class="primary-button button" @click="$router.push('/applicants/' + card.id)" >Se søkere</button>
+                                        <button class="secondary-button button mr-4" @click="toggleCard(card)" >Se utlysning</button>
                                 </template>
                                 </Card2>
                                     
@@ -125,7 +124,7 @@
                                 >
                                 <template v-slot:button>
                                   
-                                        <button class="button" @click="toggleCard(card)" >se utlysning</button>
+                                        <button class="primary-button button" @click="toggleCard(card)" >Se utlysning</button>
                                    
                                 </template>
                                 </Card2>
@@ -205,8 +204,10 @@
                         <template v-slot:content>
                             
                             <vue-editor style="margin-top: 2em;" v-model="cardData.application"/>
-                            <button @click="$store.dispatch('savePrioCart', userProfile.id)" class="button w-25 float-right mt-4" >lagre</button>
-                           
+                            <div class="modal-buttons">
+                                <button @click="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button">Lagre</button>
+                                <button class="secondary-button">Avbryt</button>
+                            </div>
                         </template>
                     </Modal>
                     <Priorities
@@ -227,7 +228,7 @@
                 </b-col>
                 <b-col v-if="!placeOffered">
                     <b-row class="mt-5 px-4">
-                        <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="button prio ml-auto">Godkjenn</button>
+                        <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button button prio ml-auto">Godkjenn</button>
                     </b-row>
                 </b-col>
 

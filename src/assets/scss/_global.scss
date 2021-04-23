@@ -22,10 +22,6 @@ html {
 	font-family: $f-primary;
 	box-sizing: border-box;
 	transition: 0.15s;
-
-	&:focus {
-		outline: none;
-	}
 }
 
 li {

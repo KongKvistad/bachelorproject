@@ -354,8 +354,11 @@ header{
   margin-top: 30px;
   border: 1px solid $c-transparent;
 
+  img {
+    max-width: 150px;
+  }
+
   &:hover {
-    
     border: 1px solid $c-secondary;
     box-shadow: 0 3px 15px $c-secondarysdw;
   }
@@ -369,14 +372,6 @@ header{
       text-transform: uppercase;
       font-size: $fs-small;
     }
-  }
-  .card-buttons {
-    display: flex;
-    justify-content: flex-end;
-
-    @media only screen and (max-width: 768px) {
-      justify-content: flex-start;
-      }
   }
 }
 
@@ -475,7 +470,8 @@ KNAPPER
   padding: 7px;
   border-radius: 5px;
   min-width: 90px;
-  border: 1px solid $c-btnborder;
+  border: 2px solid $c-btnborder;
+  margin-top: 2em;
 
   &:hover {
     padding: 7px;
@@ -507,11 +503,14 @@ KNAPPER
     }
 }
 
-.modalButton{
-  margin-top: 2em;
-  float: right;
-  
-  
+//Knapper på modaler:
+.card-buttons, .modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+
+  @media only screen and (max-width: 768px) {
+    justify-content: flex-start;
+    }
 }
 
 //Om-side
@@ -664,12 +663,12 @@ KNAPPER
         margin-bottom: 2em;
         
         label{
-          
           width: 100%;
           font-size: $fs-normal;
           color: $c-headerTxt;
           margin-bottom: 10px;
         }
+
         input{
           font-size: $fs-normal;
           width: 100%;
@@ -678,6 +677,7 @@ KNAPPER
           border-bottom: 1px solid $c-text;
           padding-bottom: 8px;
         }
+
         textarea{
           height: 13em;
           width: 100%;
@@ -705,11 +705,6 @@ KNAPPER
         margin-bottom: 2em;
       }
       
-    }
-    
-    .modalButton{
-      align-self: flex-end;
-      margin-top: 5em;
     }
 
   }
@@ -837,11 +832,14 @@ KNAPPER
       top: 10px;
       right: 10px;
       padding: 5px;
-      cursor: pointer;
       transition: 0.15s;
+      color: $c-text;
+      text-shadow: none;
+      opacity: 0.7;
+      font-size: $fs-normal;
 
       &:hover {
-        color: $c-dark;
+        text-decoration: underline;
       }
     }
 
