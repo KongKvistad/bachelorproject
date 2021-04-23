@@ -20,19 +20,21 @@
         <div class="row">
           <div class="col-md-6 align-self-center">
             <h2>Ofte stilte spørsmål</h2>
-            <transition name="fade">
-            <div @click="show = !show"><p>Hvor mange bedrifter kan jeg prioritere?</p>
-                <p aria-hidden="true" v-if="show">Du kan prioritere tre bedrifter</p>
-            </div>
-                <p>Hva gjør jeg etter at jeg har prioritert?</p>
-                <p>Hva skal jeg ha med i søknaden?</p>
-                <p>Når er søknadsfristen?</p>
             
-            </transition>
+          <details>
+            <summary> Hvor mange bedrifter kan jeg prioritere?</summary>
+            <p>Du kan prioritere tre</p>
+              
+          </details>
           </div>
         </div>
 
-        
+<!--           <p aria-hidden="true" v-if="show">Du kan prioritere tre bedrifter</p>
+            </div>
+                <p>Hva gjør jeg etter at jeg har prioritert?</p>
+                <p>Hva skal jeg ha med i søknaden?</p>
+                <p>Når er søknadsfristen?</p> -->
+            
       </div>
     </div>
   </div>
