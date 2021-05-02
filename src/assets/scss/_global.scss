@@ -74,7 +74,7 @@ h6 {
 	font-size: $fs-h6;
 }
 
-p, em, strong {
+p, em, strong, details p, details summary {
 	color: $c-text;
 	line-height: 1.5;
 }

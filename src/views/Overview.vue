@@ -4,63 +4,67 @@
     <section class="topRow">
        
     </section>
-    <section class="main">   
-    <section>
-        <SideMenu
-        :menuOptions="[{
-            param: '/overordnet',
-            text: 'Overordnet'
-        },
-        {
-            param: '/nye avtaler',
-            text: 'Nye avtaler'
-        },
-        {
-            param: '/brukere',
-            text: 'Brukere'
-        },
-        {
-            param: '/historikk',
-            text: 'Historikk'
-        }]"
-        base="/overview"
-         />
-    </section>
-    <section>
-        <div class="secRow">
-            <div>
-                <h1>{{activeChoice}}</h1>
+    <section class="main"> 
+        <div class="container-fluid">
+            <div class="container padding-top50">
+                <div class="row">
+                    <div class="col-md-2 sideMenu">
+                        
+                        <SideMenu
+                        :menuOptions="[{
+                            param: '/overordnet',
+                            text: 'Overordnet'
+                        },
+                        {
+                            param: '/nye avtaler',
+                            text: 'Nye avtaler'
+                        },
+                        {
+                            param: '/brukere',
+                            text: 'Brukere'
+                        },
+                        {
+                            param: '/historikk',
+                            text: 'Historikk'
+                        }]"
+                        base="/overview"
+                        />
+                        
+                    </div>
+
+            <div class="col-md-10">
+
+                <div class="secRow">
+                    <div>
+                        <h1>{{activeChoice}}</h1>
+                    </div>
+                </div>
+                <div v-if="activeChoice == 'overordnet'" class="newCoop">
+                    <p>Nye avtaler</p>
+                    <p><span>X</span> samarbeid mangler godkjenning</p>
+                </div>
+                <transition name="fade">
+                    <grid v-if="activeChoice =='overordnet'" :cols="cols" :sort="true" :rows="rows"></grid>
+                    <MatrixMenu2
+                    v-else-if="activeChoice =='brukere' && users"
+                    :data="users"
+                    :widthModal="false"
+                    @catChanged="tableCatChange"
+                    >
+                        <template v-slot:content>
+                            <grid :cols="users[activeTableCat].cols" :sort="true" :rows="users[activeTableCat].rows" />
+                        </template>
+                    </MatrixMenu2>
+                    <grid v-else-if="activeChoice =='historikk'" :cols="cols" :sort="true" :rows="rows"></grid>
+                    <MatrixMenu  v-else/>
+                </transition>
+            </div>
+            
+                 </div>
             </div>
         </div>
-        <transition name="fade">
-            <grid v-if="activeChoice =='overordnet'" :cols="cols" :sort="true" :rows="rows"></grid>
-            <MatrixMenu2
-             v-else-if="activeChoice =='brukere' && users"
-             :data="users"
-             :widthModal="false"
-             @catChanged="tableCatChange"
-             >
-                <template v-slot:content>
-                    <grid :cols="users[activeTableCat].cols" :sort="true" :rows="users[activeTableCat].rows" />
-                </template>
-             </MatrixMenu2>
-            <grid v-else-if="activeChoice =='historikk'" :cols="cols" :sort="true" :rows="rows"></grid>
-            <MatrixMenu  v-else/>
-        </transition>
-    </section>
     </section>
     </main>
-    <!--<div class="container-fluid">
-    <div class="container">
-            <div class="row align-items-center" style="height:700px;">
-                <div class="col-md-4">
-                    <h1>dd</h1>
-                </div>
-                <div class="col-md-3">hei</div>
-                <div class="col-md-5">ho</div>
-            </div>
-        </div>
-    </div> -->
 
 </template>
 
