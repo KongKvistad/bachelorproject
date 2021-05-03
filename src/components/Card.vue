@@ -53,12 +53,11 @@
                         <div class="right-column col-md-9">
                             <h1>{{ expandedCard.title }}</h1>
                             <p>Type: {{collection }}</p>
-                            <p>Arbeidssted: </p>
+                            <p>Arbeidssted: {{expandedCard.location}} </p>
                             <p>Arbeidsoppgaver:
                                 <v-list>
                                     <v-list-tile v-for="(tag, index) in expandedCard.tags" :key="tag.id">
                                         <li v-if="index < tag.length">{{ tag }}, </li>
-                                        <li v-else> {{ tag }}</li>
                                     </v-list-tile>
                                 </v-list>
                              </p>

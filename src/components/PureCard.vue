@@ -1,21 +1,32 @@
 <template>
 <transition name="fade">
-    <li class="pureCard">
-        <div class="left">
+    <li class="pureCard cardsList">
+        <div class="row">
+        <div class="left col-md-3">
             <img :src="data.image_url" alt="Bedrift logo">
         </div>
-        <div class="middle">
+        <div  class="col-md-6 middle">
             <h3>{{ data.title }}</h3>
             <div v-if="data.content" v-html="trim(data.content)"></div>
             
         </div>
-        <div class="right">
-             <button @click.prevent="cardClick(data)" class="button">foreslå endring</button>
-             <div>
-             <button @click="setStatus(data, true)" class="button">godkjenn</button>
-             <button @click="setStatus(data, false)" class="button">avslå </button>
-             </div>
+        <div class="right col-md-3 d-flex justify-content-center">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-cd-12">
+                        <button @click.prevent="cardClick(data)" class="primary-button">Foreslå endring</button>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-cd-6">
+                        <button @click="setStatus(data, true)" class="secondary-button">Godkjenn</button>
+                    </div>
+                    <div class="col-cd-6">
+                        <button @click="setStatus(data, false)" class="secondary-button">Avslå </button>
+                    </div>
+                </div>
+            
         </div> 
+        </div>
 
     </li>
 </transition>

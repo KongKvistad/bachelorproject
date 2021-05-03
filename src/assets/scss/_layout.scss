@@ -466,12 +466,15 @@ KNAPPER
 */
 
 //Felles
+
 .primary-button, .secondary-button {
   padding: 7px;
   border-radius: 5px;
   min-width: 90px;
   border: 2px solid $c-btnborder;
-  margin-top: 2em;
+  margin: 5px 5px 0;
+
+  
 
   &:hover {
     padding: 7px;
@@ -483,6 +486,7 @@ KNAPPER
 .primary-button{
   background-color: $c-primary;
   color: $c-white;
+  
 
   &:hover {
 		background-color: $c-transparent;
@@ -495,7 +499,10 @@ KNAPPER
 .secondary-button {
     background-color: $c-transparent;
     color: $c-btntext;
-    margin-left: 10px;
+    max-width: 90px;
+    //width: 40%;
+    //margin: 0 5px;
+    
 
     &:hover {
       background-color: $c-primary;
@@ -1079,6 +1086,7 @@ footer {
       object-fit:contain;
     }
   }
+
   .middle{
     flex-basis: calc(100% - 27em);
     padding: 0px 20px;
@@ -1088,29 +1096,29 @@ footer {
       text-align: justify;
     }
   }
+
   .right{
-    flex-basis: 12em;
-    display:flex;
+    //flex-basis: 12em;
+    display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     
-    button{
-      height: 2em;
-      padding: 0px;
-      
+    .primary-button{      
       width:100%;
-      margin-bottom: 2em;
+      display: flex;
+      //justify-content: center;
+      //margin-bottom: 0.5em;
     }
+
     div{
       display: flex;
-      justify-content:space-between;
-      button{
-        padding: 0px;
+      //justify-content:space-between;
+
+      /* button{
         width: 48%;
         min-width: 2em;
         align-self: flex-start;
-    
-      }
+      } */
     }
   }
 }
@@ -1126,6 +1134,23 @@ footer {
         width: 100%;
         height: auto;
       }
+  }
+}
+
+.newCoop {
+  background-color: $c-lightbg;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  p:first-of-type {
+    font-weight: 700;
+  }
+  span {
+    color: $c-alert;
+    font-size: $fs-large;
+    font-weight: 900;
+    background-color: $c-white;
+    border-radius: 5px;
+    padding: 2px 5px;
   }
 }
 
