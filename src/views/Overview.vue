@@ -33,7 +33,9 @@
             </div>
         </div>
         <transition name="fade">
-            <grid v-if="activeChoice =='overordnet'" :cols="cols" :sort="true" :rows="rows"></grid>
+            <b-container v-if="activeChoice =='overordnet'" >
+             <router-link to="/offerbroker"> Offerbroker</router-link>
+            </b-container>
             <MatrixMenu2
              v-else-if="activeChoice =='brukere' && users"
              :data="users"
@@ -131,7 +133,9 @@ data() {
           getData(false, 'priorities').then(prios => {
               students.forEach(stud => {
                   prios.forEach(prio => {
-                      stud.priorities = prio.id == stud.id ? prio : false
+                      
+                      stud.priorities = prio.id == stud.id && !stud.priorities ? prio : stud.priorities
+                      
                   })
               })
               
@@ -155,10 +159,11 @@ data() {
               }
               
               students.forEach((stud, idx, orgArr) => {
-
+                  
                   usersObj.alle.rows.push([stud.name])
 
                   let prios = stud.priorities
+                  
                   
                   if(!prios){
                       usersObj.praksis.rows.push([stud.status = "ikke startet", stud.name])
@@ -166,8 +171,8 @@ data() {
 
                   }else {
                       
-                      let praksisCount = stud.priorities.praksis.length
-                      let prosjektCount = stud.priorities.prosjekt.length
+                      let praksisCount = stud.priorities.praksis ? stud.priorities.praksis.length : 0
+                      let prosjektCount = stud.priorities.prosjekt ? stud.priorities.prosjekt.length : 0
                      
                       if(praksisCount <= 2 && praksisCount > 0){
                           usersObj.praksis.rows.push([stud.status = "påbegynt", stud.name])
@@ -187,10 +192,28 @@ data() {
               })
              
               this.users = usersObj
+              
 
           })
          
           
+      })
+
+      //historyData
+      getData(false, 'matches').then(res => {
+          let resArr = []
+          let cols = ["bedrift", "student", "dato"]
+          res.forEach(elem => {
+            let tableObj = elem.result.map(x => {
+              return [x.comp.slice(0,10) + '...', x.stud.slice(0,10) + '...', elem.date.toDate().toDateString()]
+            })
+
+            resArr.push(tableObj)
+          })
+          console.log(resArr)
+          this.cols = cols
+          this.rows = resArr[0]
+
       })
   },
 }

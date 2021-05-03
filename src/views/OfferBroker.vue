@@ -40,12 +40,16 @@
         />
     </b-list-group>
 </b-row>
+<b-row>
+<button @click="sendData" class="button ml-auto">Godkjenn</button>
+</b-row>
 </b-container>
 </template>
 
 <script>
 
 import {getData} from '@/utils/get.js'
+import {writeToCol, editDoc} from '@/utils/create.js'
 import Match from '@/components/Match'
 
 export default {
@@ -66,6 +70,24 @@ export default {
     },
 
     methods:{
+
+        sendData(){
+            let obj = {
+                result:this.firstDegMatches.concat(this.secDegMatches),
+                rest_students: this.restStudents,
+                date: new Date(),
+            }
+            console.log(obj)
+
+            writeToCol("matches", obj).then(res => {
+                editDoc('state_flags', 'pairing_complete', {state: true}).then(state => {
+                    console.log(state)
+                
+                })
+            })
+
+
+        },
 
         //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
         shuffle(array){
