@@ -15,7 +15,7 @@
 
     <section class="main profile">
         
-        <section>
+        <div class="sideMenu">
             <SideMenu
             :menuOptions="[{
                 param: '/default',
@@ -33,7 +33,11 @@
             base="/profile"
             v-if="data.pageUserData.role == 'student'"
             />
-
+            <div class="deadline" v-if="data.pageUserData.role=='student' && activeChoice=='praksis' || data.pageUserData.role=='student' && activeChoice=='prosjekt'">
+                   <div class="attention"><b-icon icon="exclamation-octagon"></b-icon></div>
+                   <p>Frist for å søke:</p>
+                   <p>18. september</p>
+               </div>
             <SideMenu
             :menuOptions="[{
                 param: '/default',
@@ -56,7 +60,7 @@
             v-else-if="data.pageUserData.role == 'company'"
             />
 
-        </section>
+        </div>
         <section v-if="activeChoice == 'default'"> 
             <ContactColumn
                 :img="data.pageUserData.image_url"

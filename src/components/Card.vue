@@ -2,7 +2,7 @@
 
     <div v-if="cards">
         <div v-for="card in activeCards" :key="card.id" class="cards">
-            <div class="cardsList row" @click="toggleCoopModal(card)">
+            <div class="cardsList row">
                 <div class="left-column col-md-3">
                     <div class="card-logo">
                         <img :src= card.image_url alt="Bedrift logo">
@@ -131,7 +131,7 @@ export default {
             
         },
         addToCart(card){
-            this.$toast.success('prioriteringen' + '"'+card.title + '"'+ ' lagt til i min ' + this.collection, {
+            this.$toast.success('"'+card.title + '"'+ ' ble lagt til som prioritering i min ' + this.collection, {
             // optional options Object
 
             })
