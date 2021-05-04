@@ -39,6 +39,11 @@
               vil de se etter kvalifikasjoner de verdsetter i sin bedrift.
             </p>
           </details>
+          <details>
+            <summary> Hva gjør jeg hvis jeg har funnet en praksisplass på egenhånd?</summary>
+            <p>Henvis den aktuelle bedriften til BeNet, og be de opprette en profil for sin bedrift. 
+            </p>
+          </details>
           </div>
         </div>
 

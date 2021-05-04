@@ -590,7 +590,24 @@ KNAPPER
 }
 
 
-//editor for making post
+//editor for making post/utlysninger
+.contactOnPost { //klasse på kontaktinformasjon når du lager ny utlysning
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+img{
+  width: 100%;
+  object-fit: contain;
+  max-height: 8em;
+  margin-bottom: 2em;
+}
+.companyName{
+  text-transform: capitalize;
+  margin-bottom:1.5em;
+  font-size: $fs-large;
+}
+}
 #post{
   display: flex;
   width:100%;
@@ -723,6 +740,41 @@ KNAPPER
   }
 }
 
+.editorForm {
+
+  input{
+    font-size: $fs-normal;
+    width: 100%;
+    border: none;
+    background-color: $c-transparent;
+    border-bottom: 1px solid $c-text;
+    padding-bottom: 8px;
+  }
+  textarea{
+    height: 13em;
+    width: 100%;
+    padding: 10px 10px;
+  }
+  label{
+    width: 100%;
+    font-size: $fs-normal;
+    color: $c-headerTxt;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  .v-select{
+    color: $c-text;
+
+    input {
+      color: $c-text;
+    }
+
+    svg {
+      fill: $c-text;
+    }
+  }
+
+}
 
 // login
 
