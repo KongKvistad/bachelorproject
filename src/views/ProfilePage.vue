@@ -196,7 +196,8 @@
                         </p>
                     </div>
                 </div>
-                <b-col>
+                <b-col class="mt-4">
+                    <h3 class="mb-5 " v-if="placeOffered && !compCanPrio && pairComplete">Din {{activeChoice}}-plass:</h3>
                     <Modal 
                         v-if="showEditor"
                         @close="showEditor = false"
@@ -210,23 +211,34 @@
                             </div>
                         </template>
                     </Modal>
+                    <b-col class="mt-4"
+                    v-if="compCanPrio"
+                    >
+                    <h3 class="w-50 mx-auto">Du er i karantene</h3>
+                    <p class="w-50 mx-auto"> Bedriftene prioriterer for sesongen.<br>
+                    Det betyr at fristen er uløpt, og du må vente på svar</p>
+                    </b-col>
+                    
                     <Priorities
                     @appOpen="toggleCard"
-                    v-if="!placeOffered"
+                    v-else-if="!compCanPrio && !pairComplete"
+
                     />
 
-                    
-                        <Contract
-                        v-else
-                        @removeOffers="removeOffers"
-                        v-for="place in placeOffered"
-                        :key="place.id"
-                        :offer="place"
-                        />
-                    
+                        
+                    <Contract
+                    v-else-if="placeOffered && pairComplete"
+                    @removeOffers="removeOffers"
+                    v-for="place in placeOffered"
+                    :key="place.id"
+                    :offer="place"
+                    />
+                    <h3
+                    v-else-if="!placeOffered && pairComplete"
+                    >beklager! du har havnet i reste-liste</h3>
                     
                 </b-col>
-                <b-col v-if="!placeOffered">
+                <b-col v-if="!placeOffered &&!pairComplete">
                     <b-row class="mt-5 px-4">
                         <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button button prio ml-auto">Godkjenn</button>
                     </b-row>
@@ -312,7 +324,8 @@ export default {
           cardData: false,
           compCanPrio: false,
           dataFetched: false,
-          placeOffered: false
+          placeOffered: false,
+          pairComplete: false,
           
       }
   },
@@ -352,7 +365,9 @@ export default {
     },
 
     role(val){
-        this.checkForOffers(val)
+        
+            this.checkForOffers(val)
+        
     },
    
     
@@ -371,32 +386,35 @@ export default {
         this.cardData = card
     },
 
-    findPost(id){
-        
-        let match = this.cart.find(x => x.id == id)
-        match.to = match.to ? match.to : false
-        match.from = match.from ?match.from: false
+    findPost(hit){
         if(!this.placeOffered){
-            this.placeOffered = [match]
-        } else {
-            this.placeOffered.push(match)
+        //there can only be one offer
+        hit = hit[0]
+        let match = this.cart.find(x => x.id == hit.comp)
+        
+        // match.to = match.to ? match.to : false
+        // match.from = match.from ?match.from: false
+        this.placeOffered = [match]
+        }
+         else {
+            void(0)
         }
         
         
     },
     checkForOffers(val){
         if(val == 'student'){
+            
           
             //check if student has any places offered          
-            getData(false, 'company_priorities').then( res => {
+            getData(false, 'matches').then( res => {
                 
                     
                     res.forEach(x => { 
-                        let id = x.id
-                        let hit = Object.values(x.praksis).filter(y => y.id == this.userProfile.id)
-
+                        let hit = x.result.filter(y => y.stud == this.userProfile.id)
+                        
                         if(hit.length > 0){
-                            this.findPost(id)
+                            this.findPost(hit)
                             
                         }
  
@@ -413,13 +431,21 @@ export default {
      let ownsPage = store.state.userProfile.id
  },
  created(){
-    // runs only if user is student - check if they've already recieved offers
-    this.checkForOffers(this.userProfile.role)
     
-    // check flags in order to know if companies can prioritize
-    // makes button available if true
-    getDoc('state_flags', 'companies_can_prioritize').then( res => {
-        this.compCanPrio = res.state
+    
+   
+    getData(false, 'state_flags').then( res => {
+         // check flags in order to know if companies can prioritize
+         // makes button available if true
+        this.compCanPrio = res.find(x => x.id == 'companies_can_prioritize').state
+        // check flags in order to know if pairings have been made
+        // present offers if true
+        this.pairComplete = res.find(x => x.id == 'pairing_complete').state
+
+        if(this.pairComplete){
+            // runs only if user is student - check if they've already recieved offers
+            this.checkForOffers(this.userProfile.role)
+        }
     })
      
 
