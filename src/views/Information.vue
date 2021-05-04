@@ -19,12 +19,25 @@
 
         <div class="row">
           <div class="col-md-6 align-self-center">
-            <h2>Ofte stilte spørsmål</h2>
+            <h2>Spørsmål og svar</h2>
             
           <details>
             <summary> Hvor mange bedrifter kan jeg prioritere?</summary>
-            <p>Du kan prioritere tre</p>
-              
+            <p>Du kan prioritere tre stk i løsningen</p>
+          </details>
+          <details>
+            <summary> Hvordan sender jeg CV til bedriften?</summary>
+            <p>Profilen din fungerer som din CV, slik at du slipper å sende søknad til alle tre
+              bedriftene du vil søke på. Derfor er det viktig at du fyller ut profilen din med
+              relevant informasjon. Hvis du vil kan du også legge ved lenker til relevante sider, 
+              slik som for eksempel LinkedIn.
+            </p>
+          </details>
+          <details>
+            <summary> Hva burde jeg skrive på min profil?</summary>
+            <p>Det viktigste du burde ha med er dine kvalifikasjoner! Husk at for at bedriften skal velge deg,
+              vil de se etter kvalifikasjoner de verdsetter i sin bedrift.
+            </p>
           </details>
           </div>
         </div>

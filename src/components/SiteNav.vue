@@ -7,9 +7,9 @@
       </b-navbar-brand>
 
       <!--Følgende tre linjer er kun for å lettere å se hvem man er innlogget som i MVP-->
-      <b-nav-text v-if="user.role === 'admin'">Velkommen, admin!</b-nav-text>
-      <b-nav-text v-else-if="user.role === 'student'">Velkommen, student!</b-nav-text>
-      <b-nav-text v-else-if="user.role === 'company'">Velkommen, bedrift!</b-nav-text>
+      <b-nav-text v-if="user.role === 'admin'">Velkommen Admin!</b-nav-text>
+      <b-nav-text v-else-if="user.role === 'student'">Velkommen Student!</b-nav-text>
+      <b-nav-text v-else-if="user.role === 'company'">Velkommen Bedrift!</b-nav-text>
       <!--------------------------------------------------------------------------------->
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -23,7 +23,7 @@
           <b-nav-item-dropdown text="Samarbeid">
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
-            <b-dropdown-item :to="{ name: 'coop', params: { type: 'bedrifter' }}">Bedrifter</b-dropdown-item>
+            <!-- <b-dropdown-item :to="{ name: 'coop', params: { type: 'bedrifter' }}">Bedrifter</b-dropdown-item> -->
           </b-nav-item-dropdown>
 
           <b-nav-item-dropdown text="Min oversikt">
@@ -53,7 +53,7 @@
           <b-nav-item-dropdown text="Samarbeid">
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
-            <b-dropdown-item :to="{ name: 'coop', params: { type: 'bedrifter' }}">Bedrifter</b-dropdown-item>
+            <!-- <b-dropdown-item :to="{ name: 'coop', params: { type: 'bedrifter' }}">Bedrifter</b-dropdown-item> -->
             <b-dropdown-item to="#" disabled>Studenter</b-dropdown-item>
           </b-nav-item-dropdown>
 
@@ -70,7 +70,7 @@
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
           </b-nav-item-dropdown>
 
-          <b-nav-item to="/signup">Registrer</b-nav-item>
+          <!-- <b-nav-item to="/signup">Registrer</b-nav-item> -->
           <b-nav-item to="/login">Logg inn</b-nav-item>
 
         </b-navbar-nav>

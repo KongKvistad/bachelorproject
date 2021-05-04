@@ -2,7 +2,7 @@
 
     <div v-if="cards">
         <div v-for="card in activeCards" :key="card.id" class="cards">
-            <div class="cardsList row">
+            <div class="cardsList row" @click="toggleCoopModal(card)">
                 <div class="left-column col-md-3">
                     <div class="card-logo">
                         <img :src= card.image_url alt="Bedrift logo">

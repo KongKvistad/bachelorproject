@@ -191,12 +191,14 @@
                     <div class="col-md-12">
                         <h1>{{ activeChoice }}</h1>
                         <p>Dette er dine prioriteringer. Du kan endre rekkefølgen ved å
-                            bruke pilene til høyre. Husk at du må skrive èn søknad til hver prioritering innen
-                            fristen, samt oppdatere profilen din.
+                            bruke pilene til høyre. Hvis du endrer rekkefølge må du huske å lagre
+                            rekkefølgen. Husk også at du må skrive èn søknad til hver prioritering innen
+                            fristen.
                         </p>
                     </div>
                 </div>
-                <b-col>
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-md-12">
                     <Modal 
                         v-if="showEditor"
                         @close="showEditor = false"
@@ -224,11 +226,12 @@
                         :offer="place"
                         />
                     
-                    
-                </b-col>
+                    </div>
+                </div>
+
                 <b-col v-if="!placeOffered">
                     <b-row class="mt-5 px-4">
-                        <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button button prio ml-auto">Godkjenn</button>
+                        <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button button prio ml-auto">Lagre rekkefølge på prioriteringer</button>
                     </b-row>
                 </b-col>
 
