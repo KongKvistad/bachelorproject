@@ -46,7 +46,7 @@
                             <div>
                                 <p>{{expandedCard.name}}</p>
                                 <router-link :to="{ name: 'profile', params: { id: expandedCard.created_by, type:'default'}}"> Vis profil</router-link>
-                                <p><strong>Bransje:</strong></p>
+                                <p><strong>Bransje:</strong> {{expandedCard.field}}</p>
                             </div>
                             
                         </div>
@@ -54,7 +54,7 @@
                             <h1>{{ expandedCard.title }}</h1>
                             <p><strong>Type utlysning:</strong> {{collection }}</p>
                             <p><strong>Arbeidssted:</strong> {{expandedCard.location}} </p>
-                            <p><strong>Arbeidsoppgaver:</strong>
+                            <p><strong>Arbeidsoppgaver: </strong>
                                 <v-list>
                                     <v-list-tile v-for="(tag, index) in expandedCard.tags" :key="tag.id">
                                         <li v-if="index < tag.length">{{ tag }}, </li>
