@@ -131,7 +131,7 @@ export default {
             
         },
         addToCart(card){
-            this.$toast.success('prioriteringen' + '"'+card.title + '"'+ ' lagt til i min ' + this.collection, {
+            this.$toast.success('"'+card.title + '"'+ ' ble lagt til som prioritering i min ' + this.collection, {
             // optional options Object
 
             })

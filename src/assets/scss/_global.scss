@@ -51,6 +51,8 @@ h6 {
 
 h1 {
 	font-size: $fs-h1;
+}
+h1::first-letter {
 	text-transform: capitalize;
 }
 

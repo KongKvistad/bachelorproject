@@ -12,7 +12,9 @@
             <p>Foreløpig er NTNU BeNet et internt bedriftsnettverk for Institutt for design på NTNU Gjøvik, men i 
               dagens digitale situasjon er det helt åpent for bedrifter fra andre kommuner og fylker. I tillegg er 
               det er et stort antall studenter på Gjøvik som er innflyttere, og som derfor har flere muligheter.</p>
+              <span v-show="!authorized"><a href="/login"><button class="primary-button">Kom i gang</button></a></span>
           </div>
+
 
           <div class="col-md-6">
             <img class="img_about_1" src="../assets/images/job-search.svg" alt="Student som sitter ved en pult og søker på jobber på datamaskinen">
@@ -52,11 +54,11 @@
               da det bidrar til nytenkning og gode innspill fra nye perspektiver. </p>
           </div>
         </div>
-        <div class="row" v-show="!authorized">
+        <!-- <div class="row" v-show="!authorized">
           <div class="col-md-12 d-flex justify-content-end">
-                <button class="primary-button">Registrer</button>
+                <a href="/signup"><button class="primary-button">Opprett en bruker for din bedrift</button></a>
             </div>
-        </div>
+        </div> -->
         
       </div>
     </div>

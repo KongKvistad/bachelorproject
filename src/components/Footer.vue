@@ -28,6 +28,7 @@
                     <ul>
                         <li><a href="https://www.ntnu.no">www.ntnu.no</a></li>
                         <li><a href="https://innsida.ntnu.no/">www.innsida.ntnu.no</a></li>
+                        <li><a href="https://www.ntnu.no/design">www.ntnu.no/design</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid login-container">
     <PasswordReset v-if="showPasswordReset" @close="togglePasswordReset()"></PasswordReset>
     <div class="container">
       <div :class="{ 'signup-form': !showLoginForm }" class="row justify-content-center col2">
@@ -11,6 +11,11 @@
             </div>
           </div>
           <div class="row">
+            <div class="col-md-12">
+              <p>Har du ikke en bruker? <a href="/signup">Gå til registrering.</a></p>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-6">
               <label for="email1">Epost</label>
               <input v-model.trim="loginForm.email" type="text" placeholder="deg@email.com" id="email1" />
@@ -18,7 +23,7 @@
             <div class="col-md-6">
               <label for="password1">Passord</label>
               <input v-model.trim="loginForm.password" type="password" placeholder="******" id="password1" />
-              <a @click="togglePasswordReset()">Glemt passord</a>
+              <a @click="togglePasswordReset()">Glemt passord?</a>
             </div>
           </div>
           <div class="row">

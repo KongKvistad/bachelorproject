@@ -15,7 +15,7 @@
 
     <section class="main profile">
         
-        <section>
+        <div class="sideMenu">
             <SideMenu
             :menuOptions="[{
                 param: '/default',
@@ -33,7 +33,11 @@
             base="/profile"
             v-if="data.pageUserData.role == 'student'"
             />
-
+            <div class="deadline" v-if="data.pageUserData.role=='student' && activeChoice=='praksis' || data.pageUserData.role=='student' && activeChoice=='prosjekt'">
+                   <div class="attention"><b-icon icon="exclamation-octagon"></b-icon></div>
+                   <p>Frist for å søke:</p>
+                   <p>18. september</p>
+               </div>
             <SideMenu
             :menuOptions="[{
                 param: '/default',
@@ -56,7 +60,7 @@
             v-else-if="data.pageUserData.role == 'company'"
             />
 
-        </section>
+        </div>
         <section v-if="activeChoice == 'default'"> 
             <ContactColumn
                 :img="data.pageUserData.image_url"
@@ -191,13 +195,17 @@
                     <div class="col-md-12">
                         <h1>{{ activeChoice }}</h1>
                         <p>Dette er dine prioriteringer. Du kan endre rekkefølgen ved å
-                            bruke pilene til høyre. Husk at du må skrive èn søknad til hver prioritering innen
-                            fristen, samt oppdatere profilen din.
+                            bruke pilene til høyre. Hvis du endrer rekkefølge må du huske å lagre
+                            rekkefølgen. Husk også at du må skrive èn søknad til hver prioritering innen
+                            fristen.
                         </p>
                     </div>
                 </div>
-                <b-col class="mt-4">
+
+                    
+                <div class="row" style="margin-top: 30px;">
                     <h3 class="mb-5 " v-if="placeOffered && !compCanPrio && pairComplete">Din {{activeChoice}}-plass:</h3>
+                    <div class="col-md-12">
                     <Modal 
                         v-if="showEditor"
                         @close="showEditor = false"
@@ -225,7 +233,6 @@
                     v-else-if="!compCanPrio && !pairComplete"
 
                     />
-
                         
                     <Contract
                     v-else-if="placeOffered && pairComplete"
@@ -240,8 +247,21 @@
                     
                 </b-col>
                 <b-col v-if="!compCanPrio && !pairComplete">
+                    
+                        <Contract
+                        v-else
+                        @removeOffers="removeOffers"
+                        v-for="place in placeOffered"
+                        :key="place.id"
+                        :offer="place"
+                        />
+                    
+                    </div>
+                </div>
+
+                <b-col v-if="!placeOffered">
                     <b-row class="mt-5 px-4">
-                        <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button button prio ml-auto">Godkjenn</button>
+                        <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button button prio ml-auto">Lagre rekkefølge på prioriteringer</button>
                     </b-row>
                 </b-col>
 

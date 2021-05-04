@@ -21,6 +21,10 @@
     margin-bottom: 0;
   }
 }
+.text-underline { //just for design purpose
+  text-decoration: underline;
+}
+
 
 //DARK MODE SLIDER
 .switch {
@@ -353,6 +357,7 @@ header{
   border-radius: 5px;
   margin-top: 30px;
   border: 1px solid $c-transparent;
+  cursor: pointer;
 
   img {
     max-width: 150px;
@@ -568,6 +573,7 @@ KNAPPER
   width: 80%;
   max-width: 40em;
   margin: 0px auto;
+  margin-top: 40px;
   
   form{
     margin-top: 3em;
@@ -720,6 +726,9 @@ KNAPPER
 
 // login
 
+  .login-container {
+    margin-top: 40px;
+  }
   .col2 {
     height: 70vh;
     h1 {

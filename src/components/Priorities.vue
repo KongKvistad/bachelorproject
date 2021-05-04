@@ -22,7 +22,7 @@
                 <b-card-footer footer-bg-variant="white" align="right">
                     <button @click="$emit('deleteApp', data)" class="secondary-button button">Slett</button>
                     <button v-if="data.application" @click="$emit('appOpen', data)" class="primary-button button">Rediger søknad</button>
-                    <button v-else @click="$emit('appOpen', data)" class="primary-button button">Søknad</button>
+                    <button v-else @click="$emit('appOpen', data)" class="primary-button button">Skriv søknad</button>
                 </b-card-footer>
             </b-col>
             </b-row>
