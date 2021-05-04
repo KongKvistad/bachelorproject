@@ -42,6 +42,16 @@ const store = new Vuex.Store({
       state.priorityCart[card.type+'Ids'].push(card.data.id)
 
     },
+
+    removeFromCart(state, card){
+      let cartTarget = state.priorityCart[card.type].findIndex(x => x.id == card.data.id)
+      state.priorityCart[card.type].splice(cartTarget, 1)
+      
+      let idTarget = state.priorityCart[card.type+'Ids'].findIndex(x => x == card.data.id)
+      state.priorityCart[card.type+'Ids'].splice(idTarget, 1)
+      
+    },
+
     setPrioCart(state, cart){
       state.priorityCart = cart
     },

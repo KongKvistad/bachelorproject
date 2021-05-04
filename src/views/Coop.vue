@@ -20,7 +20,8 @@
    <template v-slot:content>
      <EditorWrapper 
         :collection="activeChoice"
-        :access="'new'"/>
+        :access="'new'"
+        @closed="showEditor = !showEditor"/>
    </template>
    </Modal>
     <!-- <section class="topRow blue">

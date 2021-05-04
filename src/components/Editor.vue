@@ -66,7 +66,7 @@
 
             <div class="row modal-buttons"> 
             <button v-if="access === 'editor' || access == 'new'" class="primary-button modalButton" @click.prevent="submit">Fullfør</button>
-            <button class="secondary-button">Avbryt</button>
+            <button @click.prevent="close" class="secondary-button">Avbryt</button>
           </div>
 
           </form>
@@ -143,7 +143,10 @@ export default {
             })
         }
 
-    }  
+    },
+    close(){
+      this.$emit("closed")
+    } 
   }
 }
 </script>
