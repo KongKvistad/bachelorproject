@@ -221,6 +221,7 @@
                     
                     <Priorities
                     @appOpen="toggleCard"
+                    @deleteApp="deleteCard"
                     v-else-if="!compCanPrio && !pairComplete"
 
                     />
@@ -238,7 +239,7 @@
                     >beklager! du har havnet i reste-liste</h3>
                     
                 </b-col>
-                <b-col v-if="!placeOffered &&!pairComplete">
+                <b-col v-if="!compCanPrio && !pairComplete">
                     <b-row class="mt-5 px-4">
                         <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button button prio ml-auto">Godkjenn</button>
                     </b-row>
@@ -384,6 +385,10 @@ export default {
         console.log(card)
         this.showEditor = true
         this.cardData = card
+    },
+    deleteCard(card){
+        this.$store.commit('removeFromCart', {type: this.activeChoice, data: card})
+        //this.$store.dispatch('savePrioCart', this.userProfile.id)
     },
 
     findPost(hit){
