@@ -131,11 +131,9 @@ export default {
             
         },
         addToCart(card){
-            this.$toast.success('"'+card.title + '"'+ ' ble lagt til som prioritering i min ' + this.collection, {
-            // optional options Object
-
-            })
+            
             this.$store.commit('addToPrioCart', {type: this.collection, data: card})
+            this.$store.dispatch('savePrioCart', this.userProfile.id)
         }
     },
     created(){

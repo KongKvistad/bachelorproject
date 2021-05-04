@@ -202,7 +202,7 @@
                     </div>
                 </div>
 
-                    
+                   
                 <div class="row" style="margin-top: 30px;">
                     <h3 class="mb-5 " v-if="placeOffered && !compCanPrio && pairComplete">Din {{activeChoice}}-plass:</h3>
                     <div class="col-md-12">
@@ -214,8 +214,8 @@
                             
                             <vue-editor style="margin-top: 2em;" v-model="cardData.application"/>
                             <div class="modal-buttons">
-                                <button @click="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button">Lagre</button>
-                                <button class="secondary-button">Avbryt</button>
+                                <button @click="saveApp" class="primary-button">Lagre</button>
+                                <button @click.prevent="showEditor = !showEditor" class="secondary-button">Avbryt</button>
                             </div>
                         </template>
                     </Modal>
@@ -230,6 +230,7 @@
                     <Priorities
                     @appOpen="toggleCard"
                     @deleteApp="deleteCard"
+                    @prioChanged="prioChange = !prioChange"
                     v-else-if="!compCanPrio && !pairComplete"
 
                     />
@@ -254,7 +255,8 @@
 
                 <b-col v-if="!compCanPrio && !pairComplete">
                     <b-row class="mt-5 px-4">
-                        <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button button prio ml-auto">Lagre rekkefølge på prioriteringer</button>
+                        <button :disabled="!prioChange" @click.prevent="rePrioritize" class="primary-button button prio ml-auto">Lagre rekkefølge på prioriteringer</button>
+                        
                     </b-row>
                 </b-col>
 
@@ -340,6 +342,7 @@ export default {
           dataFetched: false,
           placeOffered: false,
           pairComplete: false,
+          prioChange: false
           
       }
   },
@@ -389,6 +392,15 @@ export default {
    
   },
   methods:{
+    saveApp(){
+        this.$store.dispatch('savePrioCart', this.userProfile.id)
+        this.$toast.success('Søknad er lagret')
+        this.showEditor = !this.showEditor
+    },
+    rePrioritize(){
+        this.$store.dispatch('savePrioCart', this.userProfile.id)
+        this.$toast.success('Omprioritering er lagret')
+    },
 
     removeOffers(choice){
         this.placeOffered = [choice]
@@ -401,7 +413,7 @@ export default {
     },
     deleteCard(card){
         this.$store.commit('removeFromCart', {type: this.activeChoice, data: card})
-        //this.$store.dispatch('savePrioCart', this.userProfile.id)
+        this.$store.dispatch('savePrioCart', this.userProfile.id)
     },
 
     findPost(hit){

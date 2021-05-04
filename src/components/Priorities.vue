@@ -2,8 +2,13 @@
      <b-card-group deck style="flex-direction: column;">
         <b-card no-body v-for="(data, idx) in cart" :key="data.title + idx" tag="li" >
             <b-row no-gutters>
-            <b-col md="4"  align-self="center" align="center">
-                <b-card-img style="max-width: 14em; max-height: 11em; object-fit: contain;" :src= "data.image_url" alt="Image" class="m-auto rounded-0"></b-card-img>
+             <b-col md="1" style="border-right: 1px solid #cecece; display: flex;" class="justify-content-center" >
+                
+                <h4 style="align-self:center;" ># {{idx + 1}}</h4>
+                
+              </b-col>          
+            <b-col md="3"  align-self="center" align="center">
+                <b-card-img style="max-width: 12em; max-height: 10em; object-fit: contain;" :src= "data.image_url" alt="Image" class="m-auto rounded-0"></b-card-img>
             </b-col>
             <b-col md="8">
                 <b-card-body :title="data.title">
@@ -70,6 +75,7 @@ export default {
     methods: {
     arrange: function (idx, dir) {
         this.cart.splice(idx + dir, 0, this.cart.splice(idx, 1)[0]);
+        this.$emit("prioChanged")
     }
   }
 }
