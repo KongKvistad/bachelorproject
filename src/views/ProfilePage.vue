@@ -245,21 +245,14 @@
                     v-else-if="!placeOffered && pairComplete"
                     >beklager! du har havnet i reste-liste</h3>
                     
-                </b-col>
-                <b-col v-if="!compCanPrio && !pairComplete">
+                
                     
-                        <Contract
-                        v-else
-                        @removeOffers="removeOffers"
-                        v-for="place in placeOffered"
-                        :key="place.id"
-                        :offer="place"
-                        />
+                
                     
                     </div>
                 </div>
 
-                <b-col v-if="!placeOffered">
+                <b-col v-if="!compCanPrio && !pairComplete">
                     <b-row class="mt-5 px-4">
                         <button @click.prevent="$store.dispatch('savePrioCart', userProfile.id)" class="primary-button button prio ml-auto">Lagre rekkefølge på prioriteringer</button>
                     </b-row>
