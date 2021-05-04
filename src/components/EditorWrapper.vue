@@ -98,7 +98,7 @@ export default {
           if(this.access == 'editor' || this.access == 'owner'){
               return "Rediger forslag"
           } else {
-              return "Lag ny utlysning"
+              return "Opprett en ny utlysning"
           }
       },
       

@@ -46,15 +46,15 @@
                             <div>
                                 <p>{{expandedCard.name}}</p>
                                 <router-link :to="{ name: 'profile', params: { id: expandedCard.created_by, type:'default'}}"> Vis profil</router-link>
-                                <p>Bransje:</p>
+                                <p><strong>Bransje:</strong></p>
                             </div>
                             
                         </div>
                         <div class="right-column col-md-9">
                             <h1>{{ expandedCard.title }}</h1>
-                            <p>Type: {{collection }}</p>
-                            <p>Arbeidssted: {{expandedCard.location}} </p>
-                            <p>Arbeidsoppgaver:
+                            <p><strong>Type utlysning:</strong> {{collection }}</p>
+                            <p><strong>Arbeidssted:</strong> {{expandedCard.location}} </p>
+                            <p><strong>Arbeidsoppgaver:</strong>
                                 <v-list>
                                     <v-list-tile v-for="(tag, index) in expandedCard.tags" :key="tag.id">
                                         <li v-if="index < tag.length">{{ tag }}, </li>
@@ -65,7 +65,7 @@
                             <p>{{ expandedCard.content }}</p>
                         </div>
                     </div>
-                    <div class="col-12 modalbtns col-md-12 d-flex justify-content-end">
+                    <div class="col-md-12 modalbtns col-md-12 d-flex justify-content-end">
                         <div>
                             <button @click="$store.commit('updatePrioCart', expandedCard)" class="primary-button" v-if="renderPrioBtn()">Prioriter</button>
                             <button class="secondary-button" @click="toggleCoopModal">Lukk</button>

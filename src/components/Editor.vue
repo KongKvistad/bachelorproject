@@ -1,56 +1,82 @@
 <template>
-  <div id="post">
-          <section class="left">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+
+          <div class="col-md-3 contactOnPost">
+            <div class="col-md-12">
             <img :src="data.image_url"/>
-            <div class="desc">
-              <h2 class="companyName">{{data.name}}</h2>
-              <strong>Kontakt</strong>
-              <p class="contact">
-              
-                <span>Navn: {{contact.name}}</span>
-                <span>TLF: {{contact.phone}}</span>
-              </p>
-            
             </div>
-          </section>
-          <section class="right">
-          <h3>{{heading}}</h3>
-          <form  @submit.prevent id="makePost">
-              
-              <div class="field full">
-                <label for="title">Tittel</label>
-                <input :disabled="setAccess()" v-model.trim="data.title" type="text" placeholder="praksisplass" id="title" />
+            <div class="col-md-12">
+              <p class="companyName">{{data.name}}</p>
+
+              <div class="contact">
+                <ul>
+                  <li><strong>Kontaktperson</strong></li>
+                  <li>{{contact.name}}</li>
+                  <li>{{contact.phone}}</li>
+                </ul>
               </div>
-              
-              <div class="field select">
+            </div>
+          </div>
+
+          <div class="col-md-9">
+          <h3>{{heading}}</h3>
+          <form  @submit.prevent class="editorForm"> <!--id="makePost"-->
+
+            <div class="row">
+              <div class="col-md-12">
+                <label for="title">Tittel</label>
+                <input :disabled="setAccess()" v-model.trim="data.title" type="text" placeholder="Praksisplass" id="title" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
                 <label for="type">Type</label>
                 <v-select :disabled="setAccess()" v-on:input="e => data.selected = e" id="type" :placeholder="data.selected" :options = "data.options"></v-select>
               </div>
               
-              <div class="field select">
-                <label for="amount">plasser</label>
+              <div class="col-md-6">
+                <label for="amount">Antall plasser</label>
                 <input :disabled="setAccess()" v-model.trim="data.amount" type="text" id="amount" />
               </div>
+            </div>
 
-              <div class="field select">
+            <div class="row">
+              <div class="col-md-6">
                 <label for="from">Fra</label>
                 <input :disabled="setAccess()" v-model.trim="data.from" id="from" type="date" :placeholder="data.from" />
               </div>
               
-              <div class="field select">
+              <div class="col-md-6">
                 <label for="to">Til</label>
                 <input :disabled="setAccess()" v-model.trim="data.to" type="date" id="to" :placeholder="data.to"  />
               </div>
+            </div>
 
-          </form>
-          <textarea style="min-height: 18em; padding: 2em 2em;" v-if="access == 'new'" v-model.trim="data.content"></textarea>
-          <textarea disabled style="min-height: 18em; padding: 2em 2em;" v-else-if="access == 'owner'" v-model.trim="data.content"></textarea>
-          <vue-editor v-else v-model="data.content" :editor-toolbar="customToolbar" />
-          <div class="modal-buttons"> 
+            <div class="row">
+              <div class="col-md-12">
+                <label for="desc">Beskrivelse</label>
+                <textarea id="desc" style="min-height: 18em; padding: 2em 2em;" v-if="access == 'new'" v-model.trim="data.content"></textarea>
+                <textarea disabled style="min-height: 18em; padding: 2em 2em;" v-else-if="access == 'owner'" v-model.trim="data.content"></textarea>
+                <vue-editor v-else v-model="data.content" :editor-toolbar="customToolbar" />
+              </div>
+            </div>
+
+            <div class="row modal-buttons"> 
             <button v-if="access === 'editor' || access == 'new'" class="primary-button modalButton" @click.prevent="submit">Fullfør</button>
             <button class="secondary-button">Avbryt</button>
           </div>
-          </section>
+
+          </form>
+
+      
+   
+
+          </div>
+      </div>
+    </div>
   </div>
 </template>
 
