@@ -9,6 +9,7 @@
         :contact="setContact"
         :access="access"
         @postmade="postMade = !postMade"
+        @closed="$emit('closed')"
         />
     </div>
         <!-- if edit has been done-->
