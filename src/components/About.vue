@@ -1,3 +1,5 @@
+<!--Profil komponent-->
+
 <template>
     <div class="container about">
 

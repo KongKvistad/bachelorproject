@@ -19,8 +19,7 @@
                     <h6>Trenger du hjelp?</h6>
                     <ul>
                         <li><a href="/">Om BeNet</a></li>
-                        <li><a href="#">Hjelp</a></li>
-                        <li><a href="#">Kontakt</a></li>
+                        <li><a href="/information">Spørsmål og svar</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
@@ -28,7 +27,6 @@
                     <ul>
                         <li><a href="https://www.ntnu.no">www.ntnu.no</a></li>
                         <li><a href="https://innsida.ntnu.no/">www.innsida.ntnu.no</a></li>
-                        <li><a href="https://www.ntnu.no/design">www.ntnu.no/design</a></li>
                     </ul>
                 </div>
             </div>

@@ -16,7 +16,7 @@
     </div>
     <div v-else class="bottom">
             <div @click="$refs.imgInput.click()" class="empty">
-            <p>upload image</p>
+            <p>Upload image</p>
             </div>
     </div>
     

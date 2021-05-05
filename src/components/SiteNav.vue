@@ -43,6 +43,7 @@
           <b-nav-item to="/">Om</b-nav-item>
           <b-nav-item to="/calendar">Kalender</b-nav-item>
 
+        
           <b-nav-item-dropdown text="Oversikt">
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'overordnet' }}">Overordnet</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'nye avtaler' }}">Nye avtaler</b-dropdown-item>
@@ -54,9 +55,10 @@
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
             <!-- <b-dropdown-item :to="{ name: 'coop', params: { type: 'bedrifter' }}">Bedrifter</b-dropdown-item> -->
-            <b-dropdown-item to="#" disabled>Studenter</b-dropdown-item>
+            <!-- <b-dropdown-item to="#" disabled>Studenter</b-dropdown-item> -->
           </b-nav-item-dropdown>
 
+          <b-nav-item to="/information">Hjelp</b-nav-item>
           <b-nav-item @click="logout()">Logg ut</b-nav-item>
         </b-navbar-nav>
         <!--Slutt på admin meny-->
