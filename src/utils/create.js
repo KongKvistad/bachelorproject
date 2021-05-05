@@ -23,7 +23,15 @@ async function editDoc(col, id, obj){
     return res
 }
 
+async function deleteDoc(col, id){
+    const res = await db.collection(col).doc(id).delete().then((ref) => {
+        return ref
+    })
+    return res
+}   
+
 export {
     writeToCol,
-    editDoc
+    editDoc,
+    deleteDoc
   }

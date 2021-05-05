@@ -47,16 +47,23 @@
                     <b-container v-if="activeChoice =='overordnet'" >
                         <router-link to="/offerbroker"> Offerbroker</router-link>
                     </b-container>
-                    <MatrixMenu2
-                    v-else-if="activeChoice =='brukere' && users"
-                    :data="users"
-                    :widthModal="false"
-                    @catChanged="tableCatChange"
-                    >
-                        <template v-slot:content>
-                            <grid :cols="users[activeTableCat].cols" :sort="true" :rows="users[activeTableCat].rows" />
-                        </template>
-                    </MatrixMenu2>
+                    <b-container v-else-if="activeChoice =='brukere' && studentData && companyData">
+                        <h2 class="mt-5 mb-4">Studenter</h2>
+                        <MatrixMenu2
+                        
+                        :data="studentData"
+                        :widthModal="false"
+                        @catChanged="tableCatChange"
+                        >
+                            <template v-slot:content>
+                                <grid :cols="studentData[activeTableCat].cols" :sort="true" :rows="studentData[activeTableCat].rows" />
+                            </template>
+                        </MatrixMenu2>
+                        <h2 class="mt-5 mb-4">Bedrifter</h2>
+                        <grid :cols="companyData.cols" :sort="true" :rows="companyData.rows" />
+                    </b-container>
+
+                    
                     <grid v-else-if="activeChoice =='historikk'" :cols="cols" :sort="true" :rows="rows"></grid>
                     <MatrixMenu  v-else/>
                 </transition>
@@ -98,8 +105,9 @@ data() {
             ['Chevrolet', 'Cruz', '2018', 'White']
         ],
         deals: false,
-        users: false,
-        activeTableCat: "alle"
+        studentData: false,
+        activeTableCat: "alle",
+        companyData:false
     }
 },
  computed:{
@@ -111,6 +119,17 @@ data() {
   methods: {
       tableCatChange(val) {
           this.activeTableCat = val
+      },
+      setCompanyData(comps){
+        let cols = ['Navn', 'Kontakt', 'TLF', 'Email']
+
+        let rowData = comps.map(x => {
+            return [x.name, x.contact, x.phone, x.email]
+        })
+
+        this.companyData = {cols: cols, rows: rowData}
+
+        
       }
      
   },
@@ -130,10 +149,12 @@ data() {
           this.deals = obj
       })
 
-        // get data for table over students
-      filterByField('users', 'role', 'student').then(res => {
+        // get data for table over students and comps
+      getData(false, 'users').then(res => {
           
-          let students = res
+          let students = res.filter(x => x.role =='student')
+          let comps = res.filter(x => x.role =='company')
+          this.setCompanyData(comps)
           // map priorities to students
           getData(false, 'priorities').then(prios => {
               students.forEach(stud => {
@@ -196,7 +217,7 @@ data() {
                 
               })
              
-              this.users = usersObj
+              this.studentData = usersObj
               
 
           })
@@ -210,14 +231,14 @@ data() {
           let cols = ["bedrift", "student", "dato"]
           res.forEach(elem => {
             let tableObj = elem.result.map(x => {
-              return [x.comp.slice(0,10) + '...', x.stud.slice(0,10) + '...', elem.date.toDate().toDateString()]
+              return [x.compName, x.studName, elem.date.toDate().toDateString()]
             })
 
             resArr.push(tableObj)
           })
           console.log(resArr)
           this.cols = cols
-          this.rows = resArr[0]
+          this.rows = resArr.flatMap(x => x)
 
       })
   },

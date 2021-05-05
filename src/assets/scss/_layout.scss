@@ -1087,8 +1087,12 @@ footer {
     }
   }
   .cards-list, .matrix-list{
+    
     display: flex;
     flex-direction:column;
+  }
+  .matrix-list{
+    padding-left: 0;
   }
 }
 

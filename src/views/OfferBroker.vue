@@ -1,26 +1,27 @@
 <template>
 <b-container>
-<b-row class="mt-5" style="margin-bottom: 2.3em;">
+
+<b-row class="mt-5">
+    <h2 class="h2">1-grad</h2>
+</b-row>
+<b-row class="mt-3">
         
         <b-col cols="8" >
         <b-row>
-            <h1 class="h3">Bedrifter</h1>
+            <h3 class="h4">Bedrifter</h3>
         </b-row>
         
             
         </b-col>
         <b-col cols="4">
-            <h1 class="h3">Studenter</h1>
+            <h3 class="h4">Studenter</h3>
         </b-col>
 
 </b-row>
-<b-row>
-    <h2 class="h3">1-grad</h2>
-</b-row>
-<b-row class="mt-5" id="firstDegList">
+<b-row class="mt-2" id="firstDegList">
     <b-list-group style="width: 100%;">
         <Match
-        v-for="comp in firstDegMatches"
+        v-for="comp in mapNames(firstDegMatches)"
         :key="comp.comp"
         :item="comp"
         type="first"
@@ -28,12 +29,26 @@
     </b-list-group>
 </b-row>
 <b-row class="mt-5">
-    <h2 class="h3">2-grad</h2>
+    <h2 class="h2">2-grad</h2>
 </b-row>
-<b-row class="mt-5" id="secDegList">
+<b-row class="mt-3">
+        
+        <b-col cols="8" >
+        <b-row>
+            <h3 class="h4">Bedrifter</h3>
+        </b-row>
+        
+            
+        </b-col>
+        <b-col cols="4">
+            <h3 class="h4">Studenter</h3>
+        </b-col>
+
+</b-row>
+<b-row class="mt-2" id="secDegList">
     <b-list-group style="width: 100%;">
         <Match
-        v-for="comp in secDegMatches"
+        v-for="comp in mapNames(secDegMatches)"
         :key="comp.comp"
         :item="comp"
         type="second"
@@ -41,7 +56,7 @@
     </b-list-group>
 </b-row>
 <b-row>
-<button @click="sendData" class="button ml-auto">Godkjenn</button>
+<button @click="sendData" class="button ml-auto mt-4">Godkjenn</button>
 </b-row>
 </b-container>
 </template>
@@ -65,11 +80,41 @@ export default {
             maxSpot: false,
             firstDegMatches:[],
             secDegMatches:[],
-            restStudents:[]
+            restStudents:[],
+            users:{
+                comps: [],
+                studs: []
+            }
         }
     },
 
     methods:{
+        mapNames(data){
+            
+            let result = data.map(entry => {
+                
+                
+                this.users.comps[0].forEach(elem => {
+                    let hit = elem.find(x => x.id == entry.comp)
+                    if(hit){
+                        entry.compName = hit.name
+                        entry.compPic = hit.image_url
+                    }
+                })
+
+                this.users.studs[0].forEach(elem => {
+                    let hit = elem.find(x => x.id == entry.stud)
+                    if(hit){
+                        entry.studName = hit.name
+                        entry.studPic = hit.image_url
+                    }
+                })
+                
+                return entry
+            })
+            console.log("here",result)
+            return result
+        },
 
         sendData(){
             let obj = {
@@ -77,11 +122,11 @@ export default {
                 rest_students: this.restStudents,
                 date: new Date(),
             }
-            console.log(obj)
+            //console.log(obj)
 
             writeToCol("matches", obj).then(res => {
                 editDoc('state_flags', 'pairing_complete', {state: true}).then(state => {
-                    console.log(state)
+                    //console.log(state)
                 
                 })
             })
@@ -106,6 +151,7 @@ export default {
             let result = data.map(x => {
             
             let prioArr = Array.isArray(x[this.type])?  x[this.type].map(x => x.id) : Object.values(x[this.type]).map(x => x.id)
+            
             prioArr = prioArr.filter(x => x!= undefined)
 
                 let resObj = {
@@ -166,7 +212,7 @@ export default {
             });
             this.secDegMatches.push(bestmatch)
             students.splice(bestmatch.studIndex, 1)
-            console.log(comp.id, bestmatch)
+            //console.log(comp.id, bestmatch)
             }
             
             
@@ -180,20 +226,22 @@ export default {
             for(var i = 1; i <= maxSpots; i++){
                 console.log("itterations")
                 compPrios.forEach((comp, idx, orgArr) => {
-                    
-                    if(comp.spots >= i){
+                    //comp.spots >= i
+                    if(comp.spots > 0){
                         
                         // 1: both student and company put each other in 1st
                         this.firstDeg(studPrios, comp)
+                        comp.spots--
                         
                     }
                 })
                 compPrios.forEach((comp, idx, orgArr) => {
-                    
-                    if(comp.spots >= i){
+                     //comp.spots >= i
+                    if(comp.spots > 0){
                         
                         //2: company 1st choice is taken, but student has company in their list,
                         this.secondDeg(studPrios, comp)
+                        comp.spots--
                         
                     }
                 })
@@ -218,18 +266,28 @@ export default {
 
     created(){
 
-        
+        // //needed to map user names
+        // getData(false, 'users').then(res => {
+            
+        // })
     
         //get and clean company prios
         getData(false, 'company_priorities').then(res => {
             this.flatten("compPrios", res)
+            let comps = res.map(x => x.praksis)
+            this.users.studs.push(comps) 
+            
         })
 
         // get and clean student data
         getData(false, 'priorities').then(res => {
             this.flatten("studPrios", res)
+            let studs = res.map(x => x.praksis)
+            this.users.comps.push(studs) 
 
         })
+
+        
         
     },
 
