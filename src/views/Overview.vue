@@ -39,13 +39,11 @@
                         <h1>{{activeChoice}}</h1>
                     </div>
                 </div>
-                <div v-if="activeChoice == 'overordnet'" class="newCoop">
-                    <p>Nye avtaler</p>
-                    <p><span>X</span> samarbeid mangler godkjenning</p>
-                </div>
+                
                 <transition name="fade">
                     <b-container v-if="activeChoice =='overordnet'" >
-                        <router-link to="/offerbroker"> Offerbroker</router-link>
+                        <!--<router-link to="/offerbroker"> Offerbroker</router-link>-->
+                        <Offerbroker/>
                     </b-container>
                     <b-container v-else-if="activeChoice =='brukere' && studentData && companyData">
                         <h2 class="mt-5 mb-4">Studenter</h2>
@@ -88,13 +86,15 @@ import {multipleCols, getData, filterByField, getDoc} from '@/utils/get.js'
 import MatrixMenu from '@/components/MatrixMenu'
 import MatrixMenu2 from '@/components/MatrixMenu2'
 import SideMenu from '@/components/SideMenu'
+import Offerbroker from '@/views/OfferBroker'
 export default {
   name: "Overview",
    components: {
       Grid,
       MatrixMenu,
       MatrixMenu2,
-      SideMenu
+      SideMenu,
+      Offerbroker
     },
   
 data() {

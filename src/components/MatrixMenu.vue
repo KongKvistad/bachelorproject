@@ -10,7 +10,8 @@
       <EditorWrapper 
       :collection="activeChoice"
       :access="'editor'"
-      :data="cardData"/>
+      :data="cardData"
+      @closed="showEditor = !showEditor"/>
      
      
    </template>
