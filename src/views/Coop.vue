@@ -46,11 +46,12 @@
                 {
                     param: '/prosjekt',
                     text: 'Prosjekter'
-                },
-                {
-                    param: '/bedrifter',
-                    text: 'Bedrifter'
-                }]"
+                }//,
+                //{
+                //    param: '/bedrifter',
+                //    text: 'Bedrifter'
+                //}
+                ]"
                 base="/coop"
                 />
                <div class="deadline" v-if="activeChoice=='praksis' || activeChoice=='prosjekt'">
@@ -73,11 +74,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="coopIntro">Finn en praksisplass, et prosjekt eller les mer om en bedrift!</p>
+                        <p class="coopIntro">Finn en praksisplass eller et bachelorprosjekt!</p>
                         <p>
-                            Bruk menyen til venstre for å navigere. Ønsker du å lage en ny utlysning
-                            kan du ta i bruk den blå knappen. Husk at du som student må prioritere minst
-                            tre bedrifter om du ikke finner en på egenhånd. Prioriteringene dine finner du
+                            Bruk menyen til venstre for å navigere. Husk at du som student må prioritere minst
+                            tre bedrifter til praksis om du ikke finner en på egenhånd. Prioriteringene dine finner du
                             i din oversikt.
                         </p>
                     </div>
@@ -101,11 +101,11 @@
                         />
                     </div>
                     
-                    <div key="bedrifter" v-else-if="activeChoice=='bedrifter'">
+                    <!-- <div key="bedrifter" v-else-if="activeChoice=='bedrifter'">
                         <Card 
                             collection="users"
                         />
-                    </div>
+                    </div> -->
 
                 </transition>
             </div> <!-- </section> -->
