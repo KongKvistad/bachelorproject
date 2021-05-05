@@ -34,7 +34,7 @@
 
 <script>
 import {getData, multipleCols} from '@/utils/get.js'
-import { editDoc } from '@/utils/create.js'
+import { editDoc, deleteDoc } from '@/utils/create.js'
 
 export default {
     name: 'PureCard',
@@ -59,6 +59,12 @@ export default {
                     this.$emit("appApproved", data)
                 }
             })
+
+            if(bool == false){
+                deleteDoc(data.type, data.id).then(res => {
+                    this.$emit("appApproved", data)
+                })
+            }
         }
     }
 }
