@@ -15,7 +15,7 @@
                 <p >Legg til søkere med plusstegnet</p>
             </b-row>
             <b-row>
-                <b-list-group style="padding-bottom: 30px;">
+                <b-list-group style="padding-bottom: 30px; width: 90%;">
                     <Applicant
                     v-for="app in applicants"
                     :key="app.id"
@@ -29,7 +29,7 @@
             
         </b-col>
         <b-col  class="col-md-5">
-            <h2>Mine Prioriteringer</h2>
+            <h2>Våre prioriteringer</h2>
             <b-row>
                     <b-list-group>
                         <SelectedApplicant
@@ -80,7 +80,8 @@
     </b-col> -->
   </b-row>
   <b-row class="py-5 px-3">
-  <button @click="saveApplicants()" class="ml-auto button">Lagre</button>
+  <button @click="saveApplicants()" class="ml-auto primary-button">Lagre</button>
+  <button class="secondary-button" @click="$router.go(-1)">Avbryt</button>
   </b-row>
   </b-container>
 </b-container>
