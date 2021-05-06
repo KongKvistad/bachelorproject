@@ -24,7 +24,7 @@
                     </div>
 
                 </b-card-body>
-                <b-card-footer footer-bg-variant="white" align="right">
+                <b-card-footer align="right">
                     <button @click="$emit('deleteApp', data)" class="secondary-button button">Fjern</button>
                     <button v-if="data.application" @click="$emit('appOpen', data)" class="primary-button button">Rediger søknad</button>
                     <button v-else @click="$emit('appOpen', data)" class="danger-button button">Skriv søknad</button>
