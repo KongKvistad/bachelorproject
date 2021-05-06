@@ -155,7 +155,7 @@ header{
     li{
       margin: 0px 20px;
 
-      /* .router-link-exact-active {
+      /* .router-link-exact-active, .router-link-active {
         text-decoration: underline;
         width: 100%;
       } */
@@ -951,6 +951,7 @@ img{
 // Contact Column
 .contactColumn {
   margin-right: 50px;
+  margin-bottom: 30px;
   background-color: $c-lightbg;
   border-radius: 0 5px 5px 0;
   padding: 20px;

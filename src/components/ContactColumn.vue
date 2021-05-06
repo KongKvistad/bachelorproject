@@ -1,4 +1,5 @@
 <template>
+
     <div class="contactColumn col-md-3">
         <img :src="img"/>
         <div class="info">
@@ -17,10 +18,7 @@
                 <a><li><b-icon icon="github"></b-icon></li></a>
                 <a><li><b-icon icon="globe"></b-icon></li></a>
             </ul>
-
-    </div>
-    
-
+        </div>
     
     </div>
 </template>
