@@ -39,10 +39,7 @@
                         <h1>{{activeChoice}}</h1>
                     </div>
                 </div>
-                <div v-if="activeChoice == 'overordnet'" class="newCoop">
-                    <p>Nye avtaler</p>
-                    <p><span>X</span> Samarbeid mangler godkjenning</p>
-                </div>
+                
                 <transition name="fade">
                     <b-container v-if="activeChoice =='overordnet'" >
                         <!--<router-link to="/offerbroker"> Offerbroker</router-link>-->
