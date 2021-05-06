@@ -45,7 +45,7 @@
                 },
                 {
                     param: '/prosjekt',
-                    text: 'Prosjekter'
+                    text: 'Bachelor'
                 }//,
                 //{
                 //    param: '/bedrifter',
@@ -66,7 +66,8 @@
                 <!-- <div class="secRow"> --> 
                 <div class="row">
                     <div class="col-6">
-                            <h1>{{activeChoice}}</h1>
+                            <h1 v-if="activeChoice=='prosjekt'">Bachelor</h1>
+                            <h1 v-else-if="activeChoice=='praksis'">Praksis</h1>
                     </div>
                     <div class="col-6 d-flex justify-content-end">
                         <button class="primary-button" @click.prevent="toggleModal('opened')">Ny utlysning</button>
@@ -76,7 +77,7 @@
                     <div class="col-md-12">
                         <p class="coopIntro">Finn en praksisplass eller et bachelorprosjekt!</p>
                         <p>
-                            Bruk menyen til venstre for å navigere. Husk at du som student må prioritere minst
+                            Bruk menyen til venstre for å navigere. Husk at du som student må prioritere max
                             tre bedrifter til praksis om du ikke finner en på egenhånd. Prioriteringene dine finner du
                             i din oversikt.
                         </p>

@@ -96,7 +96,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1>Praksis</h1>
-                            <h2>Godkjente:</h2>
+                            <p>Dette er dine utlysninger. Aktive utlysninger er tilgjengelig for studenter i samarbeid.
+                                Før en utlysning publiseres og gjøres tilgjengelig må den godkjennes av emneansvarlig. 
+                            </p>
+                            <h2>Aktive utlysninger:</h2>
                             <div v-if="dataFetched" key="praksis" class="cards">
                             
                                 <Card2 
@@ -117,7 +120,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>Ikke godkjente:</h2>
+                            <h2>Avventer godkjenning:</h2>
                             <div v-if="dataFetched" key="praksis"  class="cards">
                              
                                 <Card2 
@@ -222,9 +225,9 @@
                     <b-col class="mt-4"
                     v-if="compCanPrio"
                     >
-                    <h3 class="w-50 mx-auto">Du er i karantene</h3>
-                    <p class="w-50 mx-auto"> Bedriftene prioriterer for sesongen.<br>
-                    Det betyr at fristen er uløpt, og du må vente på svar</p>
+                    <h3 class="w-50 mx-auto">Bedriftene prioriterer for sesongen.</h3>
+                    <p class="w-50 mx-auto">Du kan ikke endre dine prioriteringer eller søknader nå.<br>
+                    Det betyr at fristen er utløpt, og du må vente på svar.</p>
                     </b-col>
                     
                     <Priorities
@@ -244,7 +247,7 @@
                     />
                     <h3
                     v-else-if="!placeOffered && pairComplete"
-                    >beklager! du har havnet i reste-liste</h3>
+                    >Beklager! Du har havnet i reste-liste</h3>
                     
                 
                     
@@ -281,7 +284,7 @@
     </section>
     <section class="main profile">
         <section>
-            <b-icon-arrow-left font-scale="3" class="backArrow" @click="$router.go(-1)" /> 
+            <b-icon-arrow-left font-scale="3" class="backArrow" @click="$router.go(-1)" /> <br>
         </section>
         <section> 
             <ContactColumn

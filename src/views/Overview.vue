@@ -39,7 +39,10 @@
                         <h1>{{activeChoice}}</h1>
                     </div>
                 </div>
-                
+                <div v-if="activeChoice == 'overordnet'" class="newCoop">
+                    <p>Nye avtaler</p>
+                    <p><span>X</span> Samarbeid mangler godkjenning</p>
+                </div>
                 <transition name="fade">
                     <b-container v-if="activeChoice =='overordnet'" >
                         <!--<router-link to="/offerbroker"> Offerbroker</router-link>-->
@@ -121,7 +124,7 @@ data() {
           this.activeTableCat = val
       },
       setCompanyData(comps){
-        let cols = ['Navn', 'Kontakt', 'TLF', 'Email']
+        let cols = ['Navn', 'Kontakt', 'Tlf', 'E-post']
 
         let rowData = comps.map(x => {
             return [x.name, x.contact, x.phone, x.email]
@@ -171,15 +174,15 @@ data() {
               
               let usersObj = {
                   'alle': {
-                      cols: ['navn'],
+                      cols: ['Navn'],
                       rows: []
                    },
                   'praksis': {
-                      cols: ['status', 'navn'],
+                      cols: ['Status', 'Navn'],
                       rows: []
                   },
                   'prosjekt': {
-                      cols: ['status', 'navn'],
+                      cols: ['Status', 'Navn'],
                       rows: []
                   }
               }
@@ -192,8 +195,8 @@ data() {
                   
                   
                   if(!prios){
-                      usersObj.praksis.rows.push([stud.status = "ikke startet", stud.name])
-                      usersObj.prosjekt.rows.push([stud.status = "ikke startet", stud.name])
+                      usersObj.praksis.rows.push([stud.status = "Ikke startet søknadsprosess", stud.name])
+                      usersObj.prosjekt.rows.push([stud.status = "Ikke startet søknadsprosess", stud.name])
 
                   }else {
                       
@@ -201,17 +204,17 @@ data() {
                       let prosjektCount = stud.priorities.prosjekt ? stud.priorities.prosjekt.length : 0
                      
                       if(praksisCount <= 2 && praksisCount > 0){
-                          usersObj.praksis.rows.push([stud.status = "påbegynt", stud.name])
+                          usersObj.praksis.rows.push([stud.status = "Påbegynt søknadsprosess", stud.name])
                       } if (praksisCount >= 3 ){
-                          usersObj.praksis.rows.push([stud.status = "søkt", stud.name])
+                          usersObj.praksis.rows.push([stud.status = "Ferdig søkt", stud.name])
                       } if(prosjektCount <= 2 && prosjektCount > 0){
-                          usersObj.prosjekt.rows.push([stud.status = "påbegynt", stud.name])
+                          usersObj.prosjekt.rows.push([stud.status = "Påbegynt søknadsprosess", stud.name])
                       } if (prosjektCount >= 3 ){
-                          usersObj.prosjekt.rows.push([stud.status = "søkt", stud.name])
+                          usersObj.prosjekt.rows.push([stud.status = "Ferdig søkt", stud.name])
                       } if (praksisCount == 0){
-                          usersObj.praksis.rows.push([stud.status = "ikke startet", stud.name])
+                          usersObj.praksis.rows.push([stud.status = "Ikke startet søknadsprosess", stud.name])
                       } if (prosjektCount == 0){
-                          usersObj.prosjekt.rows.push([stud.status = "ikke startet", stud.name])
+                          usersObj.prosjekt.rows.push([stud.status = "Ikke startet søknadsprosess", stud.name])
                       }
                   }
                 
@@ -228,7 +231,7 @@ data() {
       //historyData
       getData(false, 'matches').then(res => {
           let resArr = []
-          let cols = ["bedrift", "student", "dato"]
+          let cols = ["Bedrift", "Student", "Dato gjennomført"]
           res.forEach(elem => {
             let tableObj = elem.result.map(x => {
               return [x.compName, x.studName, elem.date.toDate().toDateString()]

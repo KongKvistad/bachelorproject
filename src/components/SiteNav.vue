@@ -15,14 +15,14 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
 
-        <!--Start på student og bedrift meny-->
-        <b-navbar-nav class="ml-auto" v-if="user.role === 'student' || user.role === 'company'">
+        <!--Start på student meny-->
+        <b-navbar-nav class="ml-auto" v-if="user.role === 'student'">
           <b-nav-item to="/">Om</b-nav-item>
           <b-nav-item to="/calendar">Kalender</b-nav-item>
 
           <b-nav-item-dropdown text="Samarbeid">
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
-            <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Bachelor</b-dropdown-item>
             <!-- <b-dropdown-item :to="{ name: 'coop', params: { type: 'bedrifter' }}">Bedrifter</b-dropdown-item> -->
           </b-nav-item-dropdown>
 
@@ -36,13 +36,37 @@
           <b-nav-item to="/information">Hjelp</b-nav-item>
           <b-nav-item @click="logout()">Logg ut</b-nav-item>
         </b-navbar-nav>
-        <!--Slutt på student og bedrift meny-->
+        <!--Slutt på student meny-->
+
+        <!--Start på bedrift meny-->
+        <b-navbar-nav class="ml-auto" v-else-if="user.role === 'company'">
+          <b-nav-item to="/">Om</b-nav-item>
+          <b-nav-item to="/calendar">Kalender</b-nav-item>
+
+          <b-nav-item-dropdown text="Samarbeid">
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Bachelor</b-dropdown-item>
+            <!-- <b-dropdown-item :to="{ name: 'coop', params: { type: 'bedrifter' }}">Bedrifter</b-dropdown-item> -->
+          </b-nav-item-dropdown>
+
+          <b-nav-item-dropdown text="Min oversikt">
+            
+            <b-dropdown-item :to="{ name: 'profile', params: { id: user.id, type: 'default' }}">Profil</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'profile', params: { id: user.id, type: 'praksis' }}">Vår praksis</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'profile', params: { id: user.id, type: 'prosjekt' }}">Vår bachelor</b-dropdown-item>
+          </b-nav-item-dropdown>
+
+          <b-nav-item to="/information">Hjelp</b-nav-item>
+          <b-nav-item @click="logout()">Logg ut</b-nav-item>
+        </b-navbar-nav>
+        <!--Slutt på bedrift meny-->
 
         <!--Start på admin meny-->
         <b-navbar-nav class="ml-auto" v-else-if="user.role === 'admin'">
           <b-nav-item to="/">Om</b-nav-item>
           <b-nav-item to="/calendar">Kalender</b-nav-item>
 
+        
           <b-nav-item-dropdown text="Oversikt">
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'overordnet' }}">Overordnet</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'nye avtaler' }}">Nye avtaler</b-dropdown-item>
@@ -52,11 +76,12 @@
 
           <b-nav-item-dropdown text="Samarbeid">
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
-            <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Bachelor</b-dropdown-item>
             <!-- <b-dropdown-item :to="{ name: 'coop', params: { type: 'bedrifter' }}">Bedrifter</b-dropdown-item> -->
-            <b-dropdown-item to="#" disabled>Studenter</b-dropdown-item>
+            <!-- <b-dropdown-item to="#" disabled>Studenter</b-dropdown-item> -->
           </b-nav-item-dropdown>
 
+          <b-nav-item to="/information">Hjelp</b-nav-item>
           <b-nav-item @click="logout()">Logg ut</b-nav-item>
         </b-navbar-nav>
         <!--Slutt på admin meny-->
@@ -67,7 +92,7 @@
 
           <b-nav-item-dropdown text="Samarbeid">
             <b-dropdown-item :to="{ name: 'coop', params: { type: 'praksis' }}">Praksis</b-dropdown-item>
-            <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Prosjekter</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'coop', params: { type: 'prosjekt' }}">Bachelor</b-dropdown-item>
           </b-nav-item-dropdown>
 
           <!-- <b-nav-item to="/signup">Registrer</b-nav-item> -->
