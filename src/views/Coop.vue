@@ -89,6 +89,12 @@
                             for praksis eller bachelorprosjekt ved å bruke knappen oppe til høyre.
                         </p>
                     </div>
+                    <div v-if="userProfile.role==='admin'" class="col-md-12">
+                        <p class="coopIntro">Aktive utlysninger i BeNet</p>
+                        <p>
+                            Bruk menyen til venstre for å navigere. 
+                        </p>
+                    </div>
                 </div>
                 <div class="row"> <!-- <div class="secRow"> --> 
                     <div class="col-md-12" id="search-field">
