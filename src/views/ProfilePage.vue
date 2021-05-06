@@ -413,12 +413,16 @@ export default {
   methods:{
     saveApp(){
         this.$store.dispatch('savePrioCart', this.userProfile.id)
-        this.$toast.success('Søknad er lagret')
+        this.$toast.success('Søknad er lagret', {
+        position: "top",
+        });
         this.showEditor = !this.showEditor
     },
     rePrioritize(){
         this.$store.dispatch('savePrioCart', this.userProfile.id)
-        this.$toast.success('Omprioritering er lagret')
+        this.$toast.success('Omprioritering er lagret', {
+        position: "top",
+        }); 
     },
 
     removeOffers(choice){
@@ -433,6 +437,9 @@ export default {
     deleteCard(card){
         this.$store.commit('removeFromCart', {type: this.activeChoice, data: card})
         this.$store.dispatch('savePrioCart', this.userProfile.id)
+        this.$toast.success('Prioritering er fjernet', {
+        position: "top",
+        }); 
     },
 
     findPost(hit){

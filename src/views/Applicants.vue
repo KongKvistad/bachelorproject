@@ -144,7 +144,9 @@ export default {
             console.log(arr)
             
             editDoc('company_priorities', id, {spots: this.postData.spots, praksis: arr}).then(res => {
-                this.$toast.success('Prioriteringer er lagret');
+                this.$toast.success('Prioriteringer er lagret', {
+                position: "top",
+                }); 
 
             })
            

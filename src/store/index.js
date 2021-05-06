@@ -32,14 +32,14 @@ const store = new Vuex.Store({
     addToPrioCart(state, card){
       if(state.priorityCart[card.type].length > 2){
         this._vm.$toast.error('Du har allerede 3 prioriteringer', {
+          position: "top",
+          });  
           // optional options Object
 
-          })
       } else {
         this._vm.$toast.success('"'+card.data.title + '"'+ ' ble lagt til som prioritering i min ' + card.type, {
-          // optional options Object
-
-          })
+          position: "top",
+          }); 
       
         if(!state.priorityCart[card.type]){
           state.priorityCart[card.type] = []

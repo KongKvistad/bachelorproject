@@ -3,6 +3,14 @@
   margin-top: 30px;
   font-size: 20px; 
 }
+.danger-button { //skriv søknad hos student for å signalisere at den mangler
+  background-color: $c-alert;
+  padding: 7px;
+  border-radius: 5px;
+  min-width: 90px;
+  border: 2px solid $c-white;
+  margin: 5px 5px 0;
+}
 .student-infobox { //melding på profil som forteller at profilen er CV
   margin-top: 10px;
   background: $c-lightbg;
