@@ -11,6 +11,8 @@
   border: 1px solid $c-white;
   margin: 5px 5px 0;
 }
+
+
 .student-infobox { //melding på profil som forteller at profilen er CV
   margin-top: 10px;
   background: $c-lightbg;
@@ -1162,7 +1164,7 @@ footer {
     border-radius: 5px;
     min-width: 90px;
     border: 2px solid $c-alert;
-    color: white;
+    color: $c-white;
   }
   min-height: 12em;
   
@@ -1202,6 +1204,10 @@ footer {
       background-color: $c-confirm;
       color: $c-white;
       border: 2px solid $c-confirm;
+    }
+
+    .secondary-button:hover {
+      opacity: 60%;
     }
 
     div{
@@ -1279,6 +1285,20 @@ footer {
   .card-footer {
     background-color: $c-priobg;
   }
+}
+
+#firstDegList, #secDegList {
+  .list-group {
+    .list-group-item{
+      background-color: $c-priobg;
+    }
+    
+  }
+}
+
+
+.danger-button:hover {
+  opacity: 60%;
 }
 
 @media only screen and (max-width: 600px) {

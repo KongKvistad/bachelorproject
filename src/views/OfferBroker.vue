@@ -56,7 +56,7 @@
     </b-list-group>
 </b-row>
 <b-row>
-<button @click="sendData" class="button ml-auto mt-4">Godkjenn</button>
+<button @click="sendData" class="button primary-button ml-auto mt-4">Godkjenn</button>
 </b-row>
 </b-container>
 </template>
