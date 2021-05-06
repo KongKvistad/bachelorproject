@@ -74,12 +74,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div v-if="userProfile.role==='student'" class="col-md-12">
                         <p class="coopIntro">Finn en praksisplass eller et bachelorprosjekt!</p>
                         <p>
                             Bruk menyen til venstre for å navigere. Husk at du som student må prioritere max
                             tre bedrifter til praksis om du ikke finner en på egenhånd. Prioriteringene dine finner du
                             i din oversikt.
+                        </p>
+                    </div>
+                    <div v-if="userProfile.role==='company'" class="col-md-12">
+                        <p class="coopIntro"></p>
+                        <p>
+                            Bruk menyen til venstre for å navigere. Du som bedrift kan lage egne utlysninger
+                            for praksis eller bachelorprosjekt ved å bruke knappen oppe til høyre.
                         </p>
                     </div>
                 </div>
@@ -135,6 +142,7 @@ export default {
       Card,
       SideMenu
   },
+  props: ["user"],
   data(){
       return {
       showUserAlert: false,

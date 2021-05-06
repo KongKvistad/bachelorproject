@@ -39,7 +39,7 @@
                         <h1>{{activeChoice}}</h1>
                     </div>
                 </div>
-                
+                <p v-if="activeChoice == 'historikk'">Historisk oversikt over alle samarbeid i BeNet.</p>
                 <transition name="fade">
                     <b-container v-if="activeChoice =='overordnet'" >
                         <!--<router-link to="/offerbroker"> Offerbroker</router-link>-->
@@ -47,6 +47,9 @@
                     </b-container>
                     <b-container v-else-if="activeChoice =='brukere' && studentData && companyData">
                         <h2 class="mt-5 mb-4">Studenter</h2>
+                        <p>Dette er alle studentene som deltar i årets gjennomføring av praksisemnet. <br>Se status 
+                            status for hver enkelt student i både praksis og prosjekt.
+                        </p>
                         <MatrixMenu2
                         
                         :data="studentData"
@@ -58,6 +61,8 @@
                             </template>
                         </MatrixMenu2>
                         <h2 class="mt-5 mb-4">Bedrifter</h2>
+                        <p>Dette er alle bedriftene registrert i BeNet.
+                        </p>
                         <grid :cols="companyData.cols" :sort="true" :rows="companyData.rows" />
                     </b-container>
 

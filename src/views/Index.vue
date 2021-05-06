@@ -13,6 +13,7 @@
               dagens digitale situasjon er det helt åpent for bedrifter fra andre kommuner og fylker. I tillegg er 
               det er et stort antall studenter på Gjøvik som er innflyttere, og som derfor har flere muligheter.</p>
               <span v-show="!authorized"><a href="/login"><button class="primary-button">Kom i gang</button></a></span>
+              <span v-show="authorized"><a href="/coop/praksis"><button class="primary-button">Finn eller utlys praksisplass!</button></a></span>
           </div>
 
 
