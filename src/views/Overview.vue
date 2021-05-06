@@ -12,12 +12,12 @@
                         
                         <SideMenu
                         :menuOptions="[{
-                            param: '/overordnet',
-                            text: 'Overordnet'
+                            param: '/nye utlysninger',
+                            text: 'Nye utlysninger'
                         },
                         {
-                            param: '/nye avtaler',
-                            text: 'Nye avtaler'
+                            param: '/matching',
+                            text: 'Matching'
                         },
                         {
                             param: '/brukere',
@@ -40,11 +40,20 @@
                     </div>
                 </div>
                 <p v-if="activeChoice == 'historikk'">Historisk oversikt over alle samarbeid i BeNet.</p>
+                <p v-else-if="activeChoice == 'matching'">Sammenstilling av prioriteringene til bedrifter og prioriteringene
+                                                          til studenter. 1-grads match vil forekomme om både bedrift og student
+                                                          har prioritert hverandre på førsteplass.</p>
+                <p style="margin-bottom:30px;" v-else-if="activeChoice == 'nye utlysninger'">Foreslåtte utlysninger fra bedrifter som krever
+                                                                godkjenning. Du kan redigere utlysningen ved å foreslå endring. 
+                                                                Godkjent utlysning vil bli tilgjengelig for studenter, avslåtte 
+                                                                utlysninger vil bli permanent slettet.</p>
+
                 <transition name="fade">
-                    <b-container v-if="activeChoice =='overordnet'" >
+                    <b-container v-if="activeChoice =='matching'" >
                         <!--<router-link to="/offerbroker"> Offerbroker</router-link>-->
                         <Offerbroker/>
                     </b-container>
+
                     <b-container v-else-if="activeChoice =='brukere' && studentData && companyData">
                         <h2 class="mt-5 mb-4">Studenter</h2>
                         <p>Dette er alle studentene som deltar i årets gjennomføring av praksisemnet. <br>Se status 

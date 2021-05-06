@@ -8,7 +8,7 @@
   padding: 7px;
   border-radius: 5px;
   min-width: 90px;
-  border: 2px solid $c-white;
+  border: 1px solid $c-white;
   margin: 5px 5px 0;
 }
 .student-infobox { //melding på profil som forteller at profilen er CV
@@ -1154,8 +1154,17 @@ footer {
 }
 
 .pureCard{
-  display: flex;
+  //display: flex;
+  .danger-button { //skriv søknad hos student for å signalisere at den mangler
+    background-color: $c-alert;
+    padding: 7px;
+    border-radius: 5px;
+    min-width: 90px;
+    border: 2px solid $c-alert;
+    color: white;
+  }
   min-height: 12em;
+  
   .left{
     flex-basis: 15em;
     display: flex;
@@ -1165,9 +1174,9 @@ footer {
       width: 70%;
       object-fit:contain;
     }
-  }
+  } 
 
-  .middle{
+  /* .middle{
     flex-basis: calc(100% - 27em);
     padding: 0px 20px;
     min-width: 20em;
@@ -1175,32 +1184,34 @@ footer {
       
       text-align: justify;
     }
-  }
+  } */
 
   .right{
     //flex-basis: 12em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: center;
     
     .primary-button{      
       width:100%;
-      display: flex;
       //justify-content: center;
       //margin-bottom: 0.5em;
+    } 
+    .secondary-button{
+      background-color: $c-confirm;
+      color: $c-white;
+      border: 2px solid $c-confirm;
     }
 
     div{
-      display: flex;
+      //display: flex;
       //justify-content:space-between;
-
-      /* button{
-        width: 48%;
-        min-width: 2em;
+      button{
+        width: 100%;
         align-self: flex-start;
-      } */
+      } 
     }
-  }
+ }
 }
 
 //NY KODE FOR SAMARBEID OG CARDS SARAH. MÅTTE LEGGES HER FORDI ALT

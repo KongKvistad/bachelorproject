@@ -68,8 +68,8 @@
 
         
           <b-nav-item-dropdown text="Oversikt">
-            <b-dropdown-item :to="{ name: 'overview', params: { type: 'overordnet' }}">Overordnet</b-dropdown-item>
-            <b-dropdown-item :to="{ name: 'overview', params: { type: 'nye avtaler' }}">Nye avtaler</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'overview', params: { type: 'nye utlysninger' }}">Nye utlysninger</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'overview', params: { type: 'matching' }}">Matching</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'brukere' }}">Brukere</b-dropdown-item>
             <b-dropdown-item :to="{ name: 'overview', params: { type: 'historikk' }}">Historikk</b-dropdown-item>
           </b-nav-item-dropdown>

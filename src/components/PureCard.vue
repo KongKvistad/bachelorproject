@@ -1,34 +1,33 @@
 <template>
 <transition name="fade">
-    <li class="pureCard cardsList">
-        <div class="row">
-        <div class="left col-md-3">
-            <img :src="data.image_url" alt="Bedrift logo">
-        </div>
-        <div  class="col-md-6 middle">
-            <h3>{{ data.title }}</h3>
-            <div v-if="data.content" v-html="trim(data.content)"></div>
-            
-        </div>
-        <div class="right col-md-3 d-flex justify-content-center">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-cd-12">
+    <div class="pureCard cardsList row">
+        
+            <div class="left col-md-3">
+                <img :src="data.image_url" alt="Bedrift logo">
+            </div>
+            <div  class="col-md-6 middle">
+                <h3>{{ data.title }}</h3>
+                <div v-if="data.content" v-html="trim(data.content)"></div>  
+            </div>
+
+            <div class="right col-md-3">
+                
+                <div class="row">
+                    <div class="col-md-12">
                         <button @click.prevent="cardClick(data)" class="primary-button">Foreslå endring</button>
                     </div>
                 </div>
-                <div class="row d-flex justify-content-center">
-                    <div class="col-cd-6">
+
+                <div class="row">
+                    <div class="col-md-6">
                         <button @click="setStatus(data, true)" class="secondary-button">Godkjenn</button>
                     </div>
-                    <div class="col-cd-6">
-                        <button @click="setStatus(data, false)" class="secondary-button">Avslå </button>
+                    <div class="col-md-6">
+                        <button @click="setStatus(data, false)" class="danger-button" style="margin-left:0;">Avslå</button>
                     </div>
                 </div>
-            
-        </div> 
-        </div>
-
-    </li>
+            </div> 
+    </div>
 </transition>
 </template>
 
