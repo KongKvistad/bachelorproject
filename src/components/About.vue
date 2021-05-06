@@ -3,10 +3,15 @@
 <template>
     <div class="container about">
 
+<div class="row">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <h1>{{name}}</h1>
             </div>
+             <div class="col-3 d-flex justify-content-end">
+                <button class="secondary-button">Rediger profil</button>
+            </div>
+        </div>
             <div class="col-md-12">
                 <p>Bachelor i {{study}}</p>
             </div>

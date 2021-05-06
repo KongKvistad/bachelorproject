@@ -192,8 +192,8 @@ data() {
                   
                   
                   if(!prios){
-                      usersObj.praksis.rows.push([stud.status = "Ikke startet", stud.name])
-                      usersObj.prosjekt.rows.push([stud.status = "Ikke startet", stud.name])
+                      usersObj.praksis.rows.push([stud.status = "Ikke startet søknadsprosess", stud.name])
+                      usersObj.prosjekt.rows.push([stud.status = "Ikke startet søknadsprosess", stud.name])
 
                   }else {
                       
@@ -201,17 +201,17 @@ data() {
                       let prosjektCount = stud.priorities.prosjekt ? stud.priorities.prosjekt.length : 0
                      
                       if(praksisCount <= 2 && praksisCount > 0){
-                          usersObj.praksis.rows.push([stud.status = "Påbegynt", stud.name])
+                          usersObj.praksis.rows.push([stud.status = "Påbegynt søknadsprosess", stud.name])
                       } if (praksisCount >= 3 ){
                           usersObj.praksis.rows.push([stud.status = "Ferdig søkt", stud.name])
                       } if(prosjektCount <= 2 && prosjektCount > 0){
-                          usersObj.prosjekt.rows.push([stud.status = "Påbegynt", stud.name])
+                          usersObj.prosjekt.rows.push([stud.status = "Påbegynt søknadsprosess", stud.name])
                       } if (prosjektCount >= 3 ){
                           usersObj.prosjekt.rows.push([stud.status = "Ferdig søkt", stud.name])
                       } if (praksisCount == 0){
-                          usersObj.praksis.rows.push([stud.status = "Ikke startet", stud.name])
+                          usersObj.praksis.rows.push([stud.status = "Ikke startet søknadsprosess", stud.name])
                       } if (prosjektCount == 0){
-                          usersObj.prosjekt.rows.push([stud.status = "Ikke startet", stud.name])
+                          usersObj.prosjekt.rows.push([stud.status = "Ikke startet søknadsprosess", stud.name])
                       }
                   }
                 
