@@ -6,31 +6,57 @@
   
   </div>
   <b-container v-else>
-    <b-row class="mt-5" style="margin-bottom: 2.3em;">
-        <b-col cols="8" class="pl-4" >
-        <b-row>
-            <h1 class="h3">Søkere til {{userProfile.name}}</h1>
-        </b-row>
-        <b-row>
-            <p >Legg til søkere med plusstegnet</p>
-        </b-row>
+    <b-row class="mt-5 company-prio" style="margin-bottom: 2.3em;">
+        <b-col  class="col-md-7" >
+            <b-row>
+                <h2>Søkere til {{userProfile.name}}</h2>
+            </b-row>
+            <b-row>
+                <p >Legg til søkere med plusstegnet</p>
+            </b-row>
+            <b-row>
+                <b-list-group style="padding-bottom: 30px; width: 90%;">
+                    <Applicant
+                    v-for="app in applicants"
+                    :key="app.id"
+                    :data="app"
+                    @clickedApp="handleApp"
+                    @showModal="setModal(app.id)"
+                    />
+                </b-list-group>
+
+            </b-row>
             
         </b-col>
-        <b-col cols="4">
-            <h1 class="h3">Mine Prioriteringer</h1>
+        <b-col  class="col-md-5">
+            <h2>Våre prioriteringer</h2>
+            <b-row>
+                    <b-list-group>
+                        <SelectedApplicant
+                        v-for="(app, idx) in selectedApp"
+                        :key="'selected' + idx"
+                        :data="app"
+                        @removeApp="handleRemove"
+                        />
+                    </b-list-group>
+            </b-row>
         </b-col>
 
-  </b-row>
+    </b-row>
+    <b-row>
+        
+    </b-row>
   <b-row  >
   <Modal 
      v-if="modalShow"
      @close="modalShow = false"
    >
    <template v-slot:content>
+    <p>Søknaden til: {{ applicants.find(x => x.id == activeApp).name }}</p>
    <vue-editor style="margin-top: 2em;" v-model="applications[activeApp]" :disabled = "true" :editor-toolbar="[[]]"/>
    </template>
    </Modal>
-    <b-col cols="8">
+<!--     <b-col cols="8">
        <b-list-group>
         <Applicant
         v-for="app in applicants"
@@ -51,10 +77,11 @@
            @removeApp="handleRemove"
            />
         </b-list-group>
-    </b-col>
+    </b-col> -->
   </b-row>
   <b-row class="py-5 px-3">
-  <button @click="saveApplicants()" class="ml-auto button">Lagre</button>
+  <button @click="saveApplicants()" class="ml-auto primary-button">Lagre</button>
+  <button class="secondary-button" @click="$router.go(-1)">Avbryt</button>
   </b-row>
   </b-container>
 </b-container>
@@ -117,7 +144,8 @@ export default {
             console.log(arr)
             
             editDoc('company_priorities', id, {spots: this.postData.spots, praksis: arr}).then(res => {
-                console.log(res)
+                this.$toast.success('Prioriteringer er lagret');
+
             })
            
         },

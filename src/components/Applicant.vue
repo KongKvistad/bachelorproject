@@ -1,15 +1,15 @@
 <template>
 
   <b-list-group-item >
-    <b-row style="height: 5.3em;">
+    <b-row>
         <b-col cols="3">
         <b-row align-h="center">
-            <b-img style="width: 6vw; height: 6vw;" v-bind="imgProps" :src="data.image_url" rounded="circle" alt="Circle image"></b-img>
+            <b-img style="width: 6vw; height: 6vw;" v-bind="imgProps" :src="data.image_url" rounded="circle" alt="Studenten"></b-img>
         </b-row>
         </b-col>
-        <b-col align-self="end"  cols="6">
+        <b-col align-self="end"  cols="7">
         <b-row >
-                <h2 class="mb-3">{{data.name}}</h2>
+                <h3 class="mb-3">{{data.name}}</h3>
         
         </b-row>
         <b-row >
@@ -20,7 +20,7 @@
 
         
         </b-col>
-        <b-col cols="3" align-self="center" >
+        <b-col cols="2" align-self="center" >
         <b-row align-h="center">
             <b-icon-plus style="width: 5vw; height: 5vw;" variant="primary" @click="$emit('clickedApp', data)"></b-icon-plus>
            

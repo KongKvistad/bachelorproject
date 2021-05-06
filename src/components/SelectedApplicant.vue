@@ -4,16 +4,16 @@
     <b-row v-if="typeof data === 'object'">
         <b-col cols="4">
         <b-row align-h="center">
-            <b-img style="width: 6vw; height: 6vw;" v-bind="imgProps" :src="data.image_url" rounded="circle" alt="Circle image"></b-img>
+            <b-img style="width: 6vw; height: 6vw;" v-bind="imgProps" :src="data.image_url" rounded="circle" alt="Bilde av studenten"></b-img>
         </b-row>
         </b-col>
         <b-col align-self="end"  cols="8">
         <b-row >
-                <h2 class="mb-3">{{data.name}}</h2>
+                <h3 class="mb-3">{{data.name}}</h3>
         
         </b-row>
         <b-row >
-                <b-link @click="() => $emit('removeApp', data)">fjern</b-link>
+                <b-link @click="() => $emit('removeApp', data)">Fjern</b-link>
                 
         </b-row>
 
