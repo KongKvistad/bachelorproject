@@ -1246,6 +1246,40 @@ footer {
   }
 }
 
+.company-prio {
+  .list-group {
+    background-color: $c-bodybg;
+  }
+
+  .list-group-item {
+    background-color: $c-priobg;
+  }
+
+  svg {
+    fill: $c-btntext;
+  }
+
+  h3 {
+    color: $c-headerTxt;
+  }
+
+  img[alt] {
+    color: $c-text;
+  }
+}
+
+.card-deck {
+  background-color: $c-bodybg;
+
+  .card {
+    background-color: $c-priobg;
+  }
+
+  .card-footer {
+    background-color: $c-priobg;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .company-prio {
     h3 {

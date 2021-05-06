@@ -29,7 +29,12 @@
             
         </b-col>
         <b-col  class="col-md-5">
+            <b-row>
             <h2>Våre prioriteringer</h2>
+            </b-row>
+            <b-row>
+                <p>Trykk på &#171;fjern&#187; for å angre</p>
+            </b-row>
             <b-row>
                     <b-list-group>
                         <SelectedApplicant

@@ -24,7 +24,7 @@
     <b-row v-else style="height: 5.3em;">
         <b-col cols="3" align-self="center">
         <b-row align-h="center" >
-            <h3 style="margin: 0; color: #6590c2;">{{data}}</h3>
+            <h3 style="margin: 0;">{{data}}</h3>
         </b-row>
         </b-col>
         <b-col align-self="end"  cols="6">
