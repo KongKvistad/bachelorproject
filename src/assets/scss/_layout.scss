@@ -1227,4 +1227,11 @@ footer {
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .company-prio {
+    h3 {
+      font-size: $fs-large;
+    }
+  }
+}
 
