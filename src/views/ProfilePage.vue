@@ -1,7 +1,22 @@
 <template>
-    <main class="left-col-container" v-if="ownsPage && data.pageUserData">
+<div class="container-fluid" v-if="ownsPage && data.pageUserData">
+
+    <!--Denne modalen er for knapp til bedrift for å lage ny utlysning--->
+    <Modal 
+        v-if="showNew"
+        @close="toggleEditor"
+    >
+    <template v-slot:content>
+        <EditorWrapper 
+            :collection="activeChoice"
+            :access="'new'"
+            @closed="showNew = !showNew"/>
+    </template>
+    </Modal>
 
     <div class="container">
+
+        <!--Info boks til student om hva profilen gjør-->
         <div class="row student-infobox" v-if="data.pageUserData.role == 'student' && activeChoice == 'default'">
             <div class="danger-icon"><b-icon icon="exclamation-octagon"></b-icon></div>
             <div class="col-md-12">
@@ -11,118 +26,119 @@
                 du anser som relevant. Du kan også legge ved linker til relevant informasjon og arbeid.</p>
             </div>
         </div>
-    </div>
+    
 
-    <section class="main profile">
-        
-        <div class="sideMenu">
-            <SideMenu
-            :menuOptions="[{
-                param: '/default',
-                text: 'Min profil'
-            },
-            {
-                param: '/praksis',
-                text: 'Min praksis'
-            },
-            {
-                param: '/prosjekt',
-                text: 'Min bachelor'
-            }]"
-            :id="'/' + this.$route.params.id"
-            base="/profile"
-            v-if="data.pageUserData.role == 'student'"
-            />
-            <div class="deadline" v-if="data.pageUserData.role=='student' && activeChoice=='praksis' || data.pageUserData.role=='student' && activeChoice=='prosjekt'">
-                   <div class="attention"><b-icon icon="exclamation-octagon"></b-icon></div>
-                   <p>Frist for å søke:</p>
-                   <p>18. september</p>
-               </div>
-            <SideMenu
-            :menuOptions="[{
-                param: '/default',
-                text: 'Vår profil'
-            },
-            {
-                param: '/praksis',
-                text: 'Vår praksis'
-            },
-            {
-                param: '/prosjekt',
-                text: 'Vår bachelor'
-            },
-            {
-                param: '/historikk',
-                text: 'Vår historikk'
-            }]"
-            :id="'/' + this.$route.params.id"
-            base="/profile"
-            v-else-if="data.pageUserData.role == 'company'"
-            />
-
-        </div>
-        <section v-if="activeChoice == 'default'"> 
-            <ContactColumn
-                :img="data.pageUserData.image_url"
-                :name="data.pageUserData.contact ? data.pageUserData.contact : data.pageUserData.name"
-                :study="data.pageUserData.study"
-                :phone="data.pageUserData.phone"
-                :email="data.pageUserData.email"
-                :editable="ownsPage"
+    <!-- <section class="main profile"> -->
+        <div class="row" style="margin-top: 40px;">
+            <div class="sideMenu col-md-2">
+                <SideMenu
+                :menuOptions="[{
+                    param: '/default',
+                    text: 'Min profil'
+                },
+                {
+                    param: '/praksis',
+                    text: 'Min praksis'
+                },
+                {
+                    param: '/prosjekt',
+                    text: 'Min bachelor'
+                }]"
+                :id="'/' + this.$route.params.id"
+                base="/profile"
+                v-if="data.pageUserData.role == 'student'"
                 />
-                <About
-                :description="data.pageUserData.about"
-                :name="data.pageUserData.name"
-                :study="data.pageUserData.study"
-                :wanted_work="data.pageUserData.wanted_work"
-                
+                <div class="deadline" v-if="data.pageUserData.role=='student' && activeChoice=='praksis' || data.pageUserData.role=='student' && activeChoice=='prosjekt'">
+                    <div class="attention"><b-icon icon="exclamation-octagon"></b-icon></div>
+                    <p>Frist for å søke:</p>
+                    <p>18. september</p>
+                </div>
+                <SideMenu
+                :menuOptions="[{
+                    param: '/default',
+                    text: 'Vår profil'
+                },
+                {
+                    param: '/praksis',
+                    text: 'Vår praksis'
+                },
+                {
+                    param: '/prosjekt',
+                    text: 'Vår bachelor'
+                },
+                {
+                    param: '/historikk',
+                    text: 'Vår historikk'
+                }]"
+                :id="'/' + this.$route.params.id"
+                base="/profile"
+                v-else-if="data.pageUserData.role == 'company'"
                 />
-        </section>
+            </div>
 
-        <section v-else-if="activeChoice == 'praksis' && data.pageUserData.role == 'company'">
-        <Modal 
-            v-if="showEditor"
-            @close="showEditor = false"
-        >
-        <template v-slot:content>
-            <EditorWrapper 
-                :collection="activeChoice"
-                :access="'owner'"
-                :data="cardData"/>
-        </template>
-        </Modal>
-            <div class="container-fluid">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1>Praksis</h1>
-                            <p>Dette er dine utlysninger. Aktive utlysninger er tilgjengelig for studenter i samarbeid.
-                                Før en utlysning publiseres og gjøres tilgjengelig må den godkjennes av emneansvarlig. 
-                            </p>
-                            <h2>Aktive utlysninger:</h2>
-                            <div v-if="dataFetched" key="praksis" class="cards">
-                            
-                                <Card2 
-                                v-for="card in data.praksis.approved"
-                                :key="card.title"
-                                collection="praksis"
-                                :cardData="card" 
-                                >
-                                <template v-slot:button>
-                                        <button :disabled="!compCanPrio" class="primary-button button" @click="$router.push('/applicants/' + card.id)" >Se søkere</button>
-                                        <button class="secondary-button button mr-4" @click="toggleCard(card)" >Se utlysning</button>
-                                </template>
-                                </Card2>
-                                    
-                            </div>
+            <div class="col-md-10" v-if="activeChoice == 'default'"> 
+                <div class="row">
+                    <ContactColumn
+                        :img="data.pageUserData.image_url"
+                        :name="data.pageUserData.contact ? data.pageUserData.contact : data.pageUserData.name"
+                        :study="data.pageUserData.study"
+                        :phone="data.pageUserData.phone"
+                        :email="data.pageUserData.email"
+                        :editable="ownsPage"
+                    />
+                    <About
+                        :description="data.pageUserData.about"
+                        :name="data.pageUserData.name"
+                        :study="data.pageUserData.study"
+                        :wanted_work="data.pageUserData.wanted_work"
+                        
+                    />
+                </div>
+            </div>
+
+            <!--Vår praksis for bedrift---------------------------------->
+            <div class="col-md-10" v-else-if="activeChoice == 'praksis' && data.pageUserData.role == 'company'">
+                <Modal 
+                    v-if="showEditor"
+                    @close="showEditor = false"
+                >
+                <template v-slot:content>
+                    <EditorWrapper 
+                        :collection="activeChoice"
+                        :access="'owner'"
+                        :data="cardData"/>
+                </template>
+                </Modal>
+                    
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Praksis</h1>
+                        <p>Dette er dine utlysninger. Aktive utlysninger er tilgjengelig for studenter i samarbeid.
+                            Før en utlysning publiseres og gjøres tilgjengelig må den godkjennes av emneansvarlig. 
+                        </p>
+                        <h2 style="margin-top:30px;">Aktive utlysninger:</h2>
+                        <div v-if="dataFetched" key="praksis" class="cards">
+                        
+                            <Card2 
+                            v-for="card in data.praksis.approved"
+                            :key="card.title"
+                            collection="praksis"
+                            :cardData="card" 
+                            >
+                            <template v-slot:button>
+                                    <button :disabled="!compCanPrio" class="primary-button button" @click="$router.push('/applicants/' + card.id)" >Se søkere</button>
+                                    <button class="secondary-button button mr-4" @click="toggleCard(card)" >Se utlysning</button>
+                            </template>
+                            </Card2>      
                         </div>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Avventer godkjenning:</h2>
-                            <div v-if="dataFetched" key="praksis"  class="cards">
-                             
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 style="margin-top:30px;">Avventer godkjenning:</h2>
+                        <div v-if="dataFetched" key="praksis"  class="cards">
+                            <div v-if="data.praksis.denied.length !== 0">
                                 <Card2 
                                 v-for="card in data.praksis.denied"
                                 :key="card.title"
@@ -130,68 +146,70 @@
                                 :cardData="card" 
                                 >
                                 <template v-slot:button>
-                                  
-                                        <button class="primary-button button" @click="toggleCard(card)" >Se utlysning</button>
-                                   
+                                    <button class="primary-button button" @click="toggleCard(card)" >Se utlysning</button>
                                 </template>
-                                </Card2>
-                                    
+                                </Card2>   
                             </div>
+                            <div v-else>
+                                <p>Du har ingen utlysninger som venter på godkjenning</p>
+                                <button class="primary-button" @click.prevent="toggleModal('opened')" style="margin-left:0;">Lag en ny utlysning</button>
+                            </div>  
                         </div>
                     </div>
-
-                    
                 </div>
-            </div> 
-            
-        </section>
+            </div>
 
-        <section v-else-if="activeChoice == 'prosjekt' && data.pageUserData.role == 'company'">
-            <div class="container-fluid">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1>Bachelor</h1>
-                            <h2>Godkjente:</h2>
-                            <div v-if="data.prosjekt" key="prosjekt" class="cards">
-                            
-                                <Card2 
-                                v-for="card in data.prosjekt.approved"
-                                :key="card.title"
-                                collection="prosjekt"
-                                :cardData="card" 
-                                />
-                                    
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Ikke godkjente:</h2>
-                            <div key="prosjekt" class="cards">
-                            
-                                <Card2 
-                                v-for="card in data.prosjekt.denied"
-                                :key="card.title"
-                                collection="prosjekt"
-                                :cardData="card" 
-                                />
-                                    
-                            </div>
-                        </div>
-                    </div>
-
+        <!--Vår bachelor for bedrift--------------------------------->
+        <div class="col-md-10" v-else-if="activeChoice == 'prosjekt' && data.pageUserData.role == 'company'">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Bachelor</h1>
+                    <p>Dette er dine utlysninger. Aktive utlysninger er tilgjengelig for studenter i samarbeid.
+                        Før en utlysning publiseres og gjøres tilgjengelig må den godkjennes av emneansvarlig. 
+                    </p>
+                    <h2 style="margin-top:30px;">Aktive utlysninger:</h2>
+                    <div v-if="data.prosjekt" key="prosjekt" class="cards">
                     
+                        <Card2 
+                        v-for="card in data.prosjekt.approved"
+                        :key="card.title"
+                        collection="prosjekt"
+                        :cardData="card" 
+                        />
+                            
+                    </div>
                 </div>
-            </div> 
-        </section>
+            </div>
 
-        <section v-else-if="activeChoice == 'historikk'"> 
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 style="margin-top:30px;">Avventer godkjenning:</h2>
+                    <div key="prosjekt" class="cards">
+                    
+                        <div v-if="data.prosjekt.denied.length !== 0">
+                            <Card2 
+                            v-for="card in data.prosjekt.denied"
+                            :key="card.title"
+                            collection="prosjekt"
+                            :cardData="card" 
+                            />
+                        </div>
+                        <div v-else>
+                            <p>Du har ingen utlysninger som venter på godkjenning</p>
+                            <button class="primary-button" @click.prevent="toggleModal('opened')" style="margin-left:0;">Lag en ny utlysning</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!---Historikk for bedrift--------------------------->
+        <div class="col-md-10" v-else-if="activeChoice == 'historikk'"> 
             <h1>Historikk</h1>
-        </section>
+        </div>
 
-        <section v-else-if="(activeChoice == 'praksis' || activeChoice == 'prosjekt') && data.pageUserData.role == 'student'">
+        <!----Min praksis for student--------------------------------------->
+        <div class="col-md-10" v-else-if="(activeChoice == 'praksis' || activeChoice == 'prosjekt') && data.pageUserData.role == 'student'">
            <b-container >
             <b-row cols="1">
                 <div class="row">
@@ -264,18 +282,15 @@
                 </b-col>
 
             </b-row>
-            </b-container>
-             
+            </b-container>         
             
-            
-                        
-            
-        </section>
+        </div>
 
         
-
-    </section>
-    </main>
+        </div>
+    <!-- </section> -->
+    </div>
+</div>
 
     <!-- if profile is owner by someone who's not the owner-->
     <main v-else-if="!ownsPage && data.pageUserData" class="left-col-container">
@@ -345,7 +360,8 @@ export default {
           dataFetched: false,
           placeOffered: false,
           pairComplete: false,
-          prioChange: false
+          prioChange: false,
+          showNew: false
           
       }
   },
@@ -432,7 +448,7 @@ export default {
          else {
             void(0)
         }
-        
+
         
     },
     checkForOffers(val){
@@ -456,9 +472,26 @@ export default {
                 
             })
         } 
-    }
-    
+    },
+    toggleModal(val) {
+        if(val == "opened"){
+            if(!this.userProfile.id){
+                this.showUserAlert = !this.showUserAlert
+            } else {
+                this.showNew = true
+            }
+        } else {
+            this.showUserAlert = !this.showUserAlert
+        }
+        
+      },
+      toggleEditor(){
+          this.showNew = false;
+      },
+      
   },
+    
+  
   
  beforeCreate(){
      let ownsPage = store.state.userProfile.id

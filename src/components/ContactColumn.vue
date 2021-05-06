@@ -1,27 +1,25 @@
 <template>
-    <div class="contactColumn">
-    <img :src="img"/>
-    <div class="info">
-        <h3>Kontakt</h3>
-        <ul class="profile-contact">
-            <li>{{name}}</li>
+    <div class="contactColumn col-md-3">
+        <img :src="img"/>
+        <div class="info">
+            <h4>Kontakt</h4>
+            <ul class="profile-contact">
+                <li>{{name}}</li>
+            
+                <li>{{study}}</li>
+            
+                <li>{{phone}}</li>
         
-            <li>{{study}}</li>
-        
-            <li>{{phone}}</li>
-       
-            <li>{{email}}</li>
-        </ul>
-        <ul class="profile-links">
-            <a><li><b-icon icon="linkedin"></b-icon></li></a>
-            <a><li><b-icon icon="github"></b-icon></li></a>
-            <a><li><b-icon icon="globe"></b-icon></li></a>
-        </ul>
+                <li>{{email}}</li>
+            </ul>
+            <ul class="profile-links">
+                <a><li><b-icon icon="linkedin"></b-icon></li></a>
+                <a><li><b-icon icon="github"></b-icon></li></a>
+                <a><li><b-icon icon="globe"></b-icon></li></a>
+            </ul>
 
     </div>
     
-        
-        
 
     
     </div>

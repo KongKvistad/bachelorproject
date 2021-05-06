@@ -942,7 +942,7 @@ img{
 .contactColumn {
   margin-right: 50px;
   background-color: $c-lightbg;
-  border-radius: 15px;
+  border-radius: 0 5px 5px 0;
   padding: 20px;
   display: flex;
   flex-direction: column;
