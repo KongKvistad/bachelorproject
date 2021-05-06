@@ -783,7 +783,8 @@ img{
     color: $c-text;
 
     input {
-      color: $c-text;
+ 
+      color: $c-dark;
     }
 
     svg {
@@ -1309,3 +1310,20 @@ footer {
   }
 }
 
+
+.nav-item {
+  /* [aria-current] {
+    border-bottom: 3px solid red;
+  } */
+
+  .router-link-exact-active {
+    border-bottom: 2px solid $c-white;
+  }
+
+/*   .router-link-active {
+    border-bottom: 3px solid yellow;
+  } */
+}
+
+
+ 
