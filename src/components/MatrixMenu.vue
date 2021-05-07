@@ -1,5 +1,15 @@
 <template>
 <div v-if="results" class="matrixMenu">
+<Modal 
+     v-if="showFeedback"
+     @close="toggleEditor"
+   >
+   <template v-slot:content>
+   <h1>Er du sikker?</h1>
+   <p>{{operation.operation  ? 'er du sikker på at du vil godkjenne? Utlysningen vil ble offentliggjort' : 'er du sikker på at du vil avslå? Utlysningen vil bli fjernet fra databasen'}}</p>
+   <button @click.prevent="doOperation(operation)"  class="w-25 ml-auto d-block button">Godkjenn</button>
+   </template>
+</Modal>
  <Modal 
      v-if="showEditor"
      @close="toggleEditor"
@@ -30,7 +40,7 @@
     v-for="(entry, idx) in relCards" 
     v-bind:key="'card' + idx" :data="entry" 
     :collection="activeChoice"
-    @appApproved="removeCard"/>
+    @issueFeedback="giveFeedback"/>
     
     </ul>
   
@@ -41,7 +51,8 @@
 
 import PureCard from '@/components/PureCard'
 import EditorWrapper from '@/components/EditorWrapper'
-import {getData, multipleCols} from '@/utils/get.js'
+import {getData, multipleCols } from '@/utils/get.js'
+import {editDoc, deleteDoc} from '@/utils/create.js'
 import Modal from '@/components/Modal'
 export default {
   name: "MatrixMenu",
@@ -52,7 +63,9 @@ export default {
         activeChoice: "alle",
         results: false,
         showEditor: false,
-        cardData: false
+        cardData: false,
+        showFeedback: false,
+        operation: false
       }
   },
   computed: {
@@ -80,9 +93,33 @@ export default {
       let tempArr = this.results[card.type]
       let index = tempArr.findIndex(x => x == card)
       tempArr.splice(index, 1)
+      
+    },
+    giveFeedback(op){
+      this.operation = op
+      this.showFeedback = true;
+    },
+    doOperation(op){
+      if(op.operation){
+        op.item.approved = true
+        editDoc(op.item.type, op.item.id, op.item).then(res => {
+          //if change got rhtough and value was changed to true
+            this.removeCard(op.item)
+        })
+      } else {
+        deleteDoc(op.item.type, op.item.id).then(res => {
+            this.removeCard(op.item)
+        })
+      }
+
+      this.showFeedback = false  
+      
+
+     
     },
     toggleEditor(){
           this.showEditor = false;
+          this.showFeedback = false;
       },
 
     putDataInModal(val){

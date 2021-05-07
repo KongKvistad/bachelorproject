@@ -41,6 +41,7 @@ export default {
         "data",
         "collection"
     ],
+
     methods: {
         cardClick(data){
             this.$emit("cardClicked", data)
@@ -50,20 +51,13 @@ export default {
         },
         setStatus(data, bool){
             
-            data.approved = bool
-            
-            editDoc(data.type, data.id, data).then(res => {
-                //if change got rhtough and value was changed to true
-                if(res && bool == true){
-                    this.$emit("appApproved", data)
-                }
-            })
 
-            if(bool == false){
-                deleteDoc(data.type, data.id).then(res => {
-                    this.$emit("appApproved", data)
-                })
+            let toDo = {
+                item: data,
+                operation: bool
             }
+            
+            this.$emit("issueFeedback", toDo)
         }
     }
 }
