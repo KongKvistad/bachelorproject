@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-md-12 modalbtns col-md-12 d-flex justify-content-end">
                         <div>
-                            <button @click="$store.commit('updatePrioCart', expandedCard)" class="primary-button" v-if="renderPrioBtn()">Prioriter</button>
+                            <button @click="addToCart(expandedCard)" class="primary-button" v-if="renderPrioBtn()">Prioriter</button>
                             <button class="secondary-button" @click="toggleCoopModal">Lukk</button>
                         </div>
                     </div>
@@ -131,7 +131,7 @@ export default {
             
         },
         addToCart(card){
-            
+            console.log(card)
             this.$store.commit('addToPrioCart', {type: this.collection, data: card})
             this.$store.dispatch('savePrioCart', this.userProfile.id)
         }
