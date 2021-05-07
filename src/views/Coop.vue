@@ -54,10 +54,15 @@
                 ]"
                 base="/coop"
                 />
-               <div class="deadline" v-if="activeChoice=='praksis' || activeChoice=='prosjekt'">
+               <div class="deadline" v-if="userProfile.role==='student'">
                    <div class="attention"><b-icon icon="exclamation-octagon"></b-icon></div>
                    <p>Frist for å søke:</p>
                    <p>18. september</p>
+               </div>
+               <div class="deadline" v-if="userProfile.role==='company'">
+                   <div class="attention"><b-icon icon="exclamation-octagon"></b-icon></div>
+                   <p>Frist for å utlyse plass:</p>
+                   <p>20. januar</p>
                </div>
             </div>
             <!-- </section> -->

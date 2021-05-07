@@ -118,18 +118,22 @@
                         </p>
                         <h2 style="margin-top:30px;">Aktive utlysninger:</h2>
                         <div v-if="dataFetched" key="praksis" class="cards">
-                        
-                            <Card2 
-                            v-for="card in data.praksis.approved"
-                            :key="card.title"
-                            collection="praksis"
-                            :cardData="card" 
-                            >
-                            <template v-slot:button>
-                                    <button :disabled="!compCanPrio" class="primary-button button" @click="$router.push('/applicants/' + card.id)" >Se søkere</button>
-                                    <button class="secondary-button button mr-4" @click="toggleCard(card)" >Se utlysning</button>
-                            </template>
-                            </Card2>      
+                            <div v-if="data.praksis.approved.length !== 0">
+                                <Card2 
+                                v-for="card in data.praksis.approved"
+                                :key="card.title"
+                                collection="praksis"
+                                :cardData="card" 
+                                >
+                                <template v-slot:button>
+                                        <button :disabled="!compCanPrio" class="primary-button button" @click="$router.push('/applicants/' + card.id)" >Se søkere</button>
+                                        <button class="secondary-button button mr-4" @click="toggleCard(card)" >Se utlysning</button>
+                                </template>
+                                </Card2>  
+                            </div>    
+                            <div v-else>
+                                <p>Du har ingen aktive utlysninger</p>
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -169,14 +173,17 @@
                     </p>
                     <h2 style="margin-top:30px;">Aktive utlysninger:</h2>
                     <div v-if="data.prosjekt" key="prosjekt" class="cards">
-                    
-                        <Card2 
-                        v-for="card in data.prosjekt.approved"
-                        :key="card.title"
-                        collection="prosjekt"
-                        :cardData="card" 
-                        />
-                            
+                        <div v-if="data.prosjekt.approved.length !== 0">
+                            <Card2 
+                            v-for="card in data.prosjekt.approved"
+                            :key="card.title"
+                            collection="prosjekt"
+                            :cardData="card" 
+                            />
+                        </div>  
+                        <div v-else>
+                            <p>Du har ingen aktive utlysninger</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -227,50 +234,45 @@
                 <div class="row" style="margin-top: 30px;">
                     <h3 class="mb-5 " v-if="placeOffered && !compCanPrio && pairComplete">Din {{activeChoice}}-plass:</h3>
                     <div class="col-md-12">
-                    <Modal 
-                        v-if="showEditor"
-                        @close="showEditor = false"
-                    >
+                        <Modal 
+                            v-if="showEditor"
+                            @close="showEditor = false"
+                        >
                         <template v-slot:content>
-                            
                             <vue-editor style="margin-top: 2em;" v-model="cardData.application"/>
                             <div class="modal-buttons">
                                 <button @click="saveApp" class="primary-button">Lagre</button>
                                 <button @click.prevent="showEditor = !showEditor" class="secondary-button">Avbryt</button>
                             </div>
                         </template>
-                    </Modal>
-                    <b-col class="mt-4"
-                    v-if="compCanPrio"
-                    >
-                    <h3 class="w-50 mx-auto">Bedriftene prioriterer for sesongen.</h3>
-                    <p class="w-50 mx-auto">Du kan ikke endre dine prioriteringer eller søknader nå.<br>
-                    Det betyr at fristen er utløpt, og du må vente på svar.</p>
-                    </b-col>
-                    
-                    <Priorities
-                    @appOpen="toggleCard"
-                    @deleteApp="deleteCard"
-                    @prioChanged="prioChange = !prioChange"
-                    v-else-if="!compCanPrio && !pairComplete"
+                        </Modal>
 
-                    />
+                        <b-col class="mt-4"
+                        v-if="compCanPrio"
+                        >
+                        <h3 class="w-50 mx-auto">Bedriftene prioriterer for sesongen.</h3>
+                        <p class="w-50 mx-auto">Du kan ikke endre dine prioriteringer eller søknader nå.<br>
+                        Det betyr at fristen er utløpt, og du må vente på svar.</p>
+                        </b-col>
                         
-                    <Contract
-                    v-else-if="placeOffered && pairComplete"
-                    @removeOffers="removeOffers"
-                    v-for="place in placeOffered"
-                    :key="place.id"
-                    :offer="place"
-                    />
-                    <h3
-                    v-else-if="!placeOffered && pairComplete"
-                    >Beklager! Du har havnet i reste-liste</h3>
-                    
-                
-                    
-                
-                    
+                        <Priorities
+                        @appOpen="toggleCard"
+                        @deleteApp="deleteCard"
+                        @prioChanged="prioChange = !prioChange"
+                        v-else-if="!compCanPrio && !pairComplete"
+
+                        />
+                            
+                        <Contract
+                        v-else-if="placeOffered && pairComplete"
+                        @removeOffers="removeOffers"
+                        v-for="place in placeOffered"
+                        :key="place.id"
+                        :offer="place"
+                        />
+                        <h3
+                        v-else-if="!placeOffered && pairComplete"
+                        >Beklager! Du har havnet i reste-liste</h3>
                     </div>
                 </div>
 
@@ -283,43 +285,44 @@
 
             </b-row>
             </b-container>         
-            
         </div>
 
         
         </div>
-    <!-- </section> -->
     </div>
 </div>
 
-    <!-- if profile is owner by someone who's not the owner-->
-    <main v-else-if="!ownsPage && data.pageUserData" class="left-col-container">
-    <section class="topRow">
-        
-    </section>
-    <section class="main profile">
-        <section>
-            <b-icon-arrow-left font-scale="3" class="backArrow" @click="$router.go(-1)" /> <br>
-        </section>
-        <section> 
-            <ContactColumn
-            :img="data.pageUserData.image_url"
-            :name="data.pageUserData.contact ? data.pageUserData.contact : data.pageUserData.name "
-            :phone="data.pageUserData.phone"
-            :study="data.pageUserData.study"
-            :email="data.pageUserData.email"
-            :editable="ownsPage"
-            />
-            <About
-            :description="data.pageUserData.about"
-            :name="data.pageUserData.name"
-            :study="data.pageUserData.study"
-            :wanted_work="data.pageUserData.wanted_work"
-            
-            />
-        </section>
-    </section>
-    </main>
+    <!-- if profile is viewed by someone who's not the owner----------------------------->
+    <div v-else-if="!ownsPage && data.pageUserData" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <b-icon-arrow-left font-scale="3" class="backArrow" @click="$router.go(-1)" /> <br>
+                </div>
+            </div>
+
+            <div class="row justify-content-center"> 
+                
+                <ContactColumn
+                :img="data.pageUserData.image_url"
+                :name="data.pageUserData.contact ? data.pageUserData.contact : data.pageUserData.name "
+                :phone="data.pageUserData.phone"
+                :study="data.pageUserData.study"
+                :email="data.pageUserData.email"
+                :editable="ownsPage"
+                />
+                
+                <About
+                :description="data.pageUserData.about"
+                :name="data.pageUserData.name"
+                :study="data.pageUserData.study"
+                :wanted_work="data.pageUserData.wanted_work"
+                />
+                
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>

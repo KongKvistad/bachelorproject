@@ -1,4 +1,20 @@
 
+details {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: $c-lightbg;
+  border-radius: 5px 0 5px 0;
+
+  summary {
+    font-size: $fs-h6;
+  }
+  p {
+  padding-top: 10px;
+  font-size: $fs-small;
+  }
+}
+
+
 .coopIntro { //intro til hva coop er, ligger i coop.vue
   margin-top: 30px;
   font-size: 20px; 
@@ -11,6 +27,8 @@
   border: 1px solid $c-white;
   margin: 5px 5px 0;
 }
+
+
 .student-infobox { //melding på profil som forteller at profilen er CV
   margin-top: 10px;
   background: $c-lightbg;
@@ -153,7 +171,7 @@ header{
     li{
       margin: 0px 20px;
 
-      /* .router-link-exact-active {
+      /* .router-link-exact-active, .router-link-active {
         text-decoration: underline;
         width: 100%;
       } */
@@ -236,6 +254,7 @@ header{
   .attention {
     position: absolute;
     margin-left: -25px;
+    margin-top: 2px;
     svg {
       width: 20px;
       height: 20px;
@@ -781,7 +800,8 @@ img{
     color: $c-text;
 
     input {
-      color: $c-text;
+ 
+      color: $c-dark;
     }
 
     svg {
@@ -949,6 +969,7 @@ img{
 // Contact Column
 .contactColumn {
   margin-right: 50px;
+  margin-bottom: 30px;
   background-color: $c-lightbg;
   border-radius: 0 5px 5px 0;
   padding: 20px;
@@ -1161,7 +1182,7 @@ footer {
     border-radius: 5px;
     min-width: 90px;
     border: 2px solid $c-alert;
-    color: white;
+    color: $c-white;
   }
   min-height: 12em;
   
@@ -1201,6 +1222,10 @@ footer {
       background-color: $c-confirm;
       color: $c-white;
       border: 2px solid $c-confirm;
+    }
+
+    .secondary-button:hover {
+      opacity: 60%;
     }
 
     div{
@@ -1280,6 +1305,20 @@ footer {
   }
 }
 
+#firstDegList, #secDegList {
+  .list-group {
+    .list-group-item{
+      background-color: $c-priobg;
+    }
+    
+  }
+}
+
+
+.danger-button:hover {
+  opacity: 60%;
+}
+
 @media only screen and (max-width: 600px) {
   .company-prio {
     h3 {
@@ -1288,3 +1327,20 @@ footer {
   }
 }
 
+
+.nav-item {
+  /* [aria-current] {
+    border-bottom: 3px solid red;
+  } */
+
+  .router-link-exact-active {
+    border-bottom: 2px solid $c-white;
+  }
+
+/*   .router-link-active {
+    border-bottom: 3px solid yellow;
+  } */
+}
+
+
+ 
