@@ -90,7 +90,8 @@
                         :description="data.pageUserData.about"
                         :name="data.pageUserData.name"
                         :study="data.pageUserData.study"
-                        :wanted_work="data.pageUserData.wanted_work"
+                        :wantedWork="data.pageUserData.wanted_work"
+                        :quali="data.pageUserData.quali"
                         
                     />
                 </div>
@@ -292,7 +293,7 @@
     </div>
 </div>
 
-    <!-- if profile is viewed by someone who's not the owner----------------------------->
+    <!-- if profile is viewed by someone who's not the owner------------->
     <div v-else-if="!ownsPage && data.pageUserData" class="container-fluid">
         <div class="container">
             <div class="row">
@@ -316,7 +317,8 @@
                 :description="data.pageUserData.about"
                 :name="data.pageUserData.name"
                 :study="data.pageUserData.study"
-                :wanted_work="data.pageUserData.wanted_work"
+                :wantedWork="data.pageUserData.wanted_work"
+                :quali="data.pageUserData.quali"
                 />
                 
             </div>
