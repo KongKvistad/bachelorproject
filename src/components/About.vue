@@ -18,7 +18,7 @@
             <div class="row" style="margin-bottom:30px;">
                 <div class="col-md-12">
                     <h4>Foretrukket arbeid</h4>
-                    <p>{{wanted_work}}</p>
+                    <p>{{wantedWork}}</p>
                 </div>
             </div>
 
@@ -26,8 +26,7 @@
                 <div class="col-md-12">
                     <h4>Mine ferdigheter</h4>
                     <ul>
-                        <li>Prosjektledelse</li>
-                        <li>Visual Studio Code</li>
+                        <li v-for="(skill, idx) in quali" :key="'skill' + idx" >{{skill}}</li>
                     </ul>
                 </div>
             </div>
@@ -42,7 +41,7 @@
 <script>
 export default {
     name: "About",
-    props:["name", "description", "study", "wanted_work"]
+    props:["name", "description", "study", "wanted_work", "quali"]
 }
 
 </script>

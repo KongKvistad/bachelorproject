@@ -1,4 +1,20 @@
 
+details {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: $c-lightbg;
+  border-radius: 5px 0 5px 0;
+
+  summary {
+    font-size: $fs-h6;
+  }
+  p {
+  padding-top: 10px;
+  font-size: $fs-small;
+  }
+}
+
+
 .coopIntro { //intro til hva coop er, ligger i coop.vue
   margin-top: 30px;
   font-size: 20px; 
@@ -238,6 +254,7 @@ header{
   .attention {
     position: absolute;
     margin-left: -25px;
+    margin-top: 2px;
     svg {
       width: 20px;
       height: 20px;

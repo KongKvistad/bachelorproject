@@ -30,24 +30,28 @@ const store = new Vuex.Store({
       state.userProfile = val
     },
     addToPrioCart(state, card){
+      //init
+      if(!state.priorityCart[card.type]){
+        state.priorityCart[card.type] = []
+      }
+
+      if(!state.priorityCart[card.type + 'Ids']){
+        state.priorityCart[card.type + 'Ids'] = []
+      }
+      
+      
       if(state.priorityCart[card.type].length > 2){
         this._vm.$toast.error('Du har allerede 3 prioriteringer', {
           position: "top",
           });  
           // optional options Object
 
+      } else if (state.priorityCart[card.type].filter(x => x.id == card.data.id).length > 0){
+        this._vm.$toast.error('Du har allerede prioritert denne utlysningen')
       } else {
         this._vm.$toast.success('"'+card.data.title + '"'+ ' ble lagt til som prioritering i min ' + card.type, {
           position: "top",
           }); 
-      
-        if(!state.priorityCart[card.type]){
-          state.priorityCart[card.type] = []
-        }
-
-        if(!state.priorityCart[card.type + 'Ids']){
-          state.priorityCart[card.type + 'Ids'] = []
-        }
       
         state.priorityCart[card.type].push(card.data)
         state.priorityCart[card.type+'Ids'].push(card.data.id)

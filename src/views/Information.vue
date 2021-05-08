@@ -6,7 +6,7 @@
         <div class="row indexIntro">
           <div class="col-md-6 mobile-second">
             <h1>Informasjon</h1>
-            <p>På denne siden finner du informasjon om hva det er forventet av deg som student i BeNet.
+            <p>På denne siden finner du informasjon om hva det er forventet av deg i BeNet.
                 Lenger ned finner du for for eksempel ofte stilte spørsmål som forhåpentligvis vil svare
                 deg på det du lurer på. Finner du ikke svaret du er ute etter kan du ta kontakt med emneansvarlig.
             </p>
@@ -35,13 +35,19 @@
           </details>
           <details>
             <summary> Hva burde jeg skrive på min profil?</summary>
-            <p>Det viktigste du burde ha med er dine kvalifikasjoner! Husk at for at bedriften skal velge deg,
-              vil de se etter kvalifikasjoner de verdsetter i sin bedrift.
+            <p>Det viktigste man burde ha med er kvalifikasjoner. Bedrifter
+              vil se etter kvalifikasjoner de verdsetter i sin bedrift.
             </p>
           </details>
           <details>
             <summary> Hva gjør jeg hvis jeg har funnet en praksisplass på egenhånd?</summary>
             <p>Henvis den aktuelle bedriften til BeNet, og be de opprette en profil for sin bedrift. 
+            </p>
+          </details>
+          <details>
+            <summary> Hvor mange studenter kan en bedrift ta i mot?</summary>
+            <p>En bedrift kan tilby så mange praksisplasser bedriften anser som fornuftig. 
+              BeNet setter ingen begrensninger for dette.
             </p>
           </details>
           </div>

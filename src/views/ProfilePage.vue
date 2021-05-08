@@ -1,7 +1,7 @@
 <template>
 <div class="container-fluid" v-if="ownsPage && data.pageUserData">
 
-    <!--Denne modalen er for knapp til bedrift for å lage ny utlysning--->
+    <!--Denne modalen er for knapp til bedrift for å lage ny utlysning-->
     <Modal 
         v-if="showNew"
         @close="toggleEditor"
@@ -90,13 +90,14 @@
                         :description="data.pageUserData.about"
                         :name="data.pageUserData.name"
                         :study="data.pageUserData.study"
-                        :wanted_work="data.pageUserData.wanted_work"
+                        :wantedWork="data.pageUserData.wanted_work"
+                        :quali="data.pageUserData.quali"
                         
                     />
                 </div>
             </div>
 
-            <!--Vår praksis for bedrift---------------------------------->
+            <!--Vår praksis for bedrift-->
             <div class="col-md-10" v-else-if="activeChoice == 'praksis' && data.pageUserData.role == 'company'">
                 <Modal 
                     v-if="showEditor"
@@ -163,7 +164,7 @@
                 </div>
             </div>
 
-        <!--Vår bachelor for bedrift--------------------------------->
+        <!--Vår bachelor for bedrift-->
         <div class="col-md-10" v-else-if="activeChoice == 'prosjekt' && data.pageUserData.role == 'company'">
             <div class="row">
                 <div class="col-md-12">
@@ -210,12 +211,12 @@
             </div>
         </div>
 
-        <!---Historikk for bedrift--------------------------->
+        <!---Historikk for bedrift-->
         <div class="col-md-10" v-else-if="activeChoice == 'historikk'"> 
             <h1>Historikk</h1>
         </div>
 
-        <!----Min praksis for student--------------------------------------->
+        <!--Min praksis for student-->
         <div class="col-md-10" v-else-if="(activeChoice == 'praksis' || activeChoice == 'prosjekt') && data.pageUserData.role == 'student'">
            <b-container >
             <b-row cols="1">
@@ -258,9 +259,9 @@
                         <Priorities
                         @appOpen="toggleCard"
                         @deleteApp="deleteCard"
-                        @prioChanged="prioChange = !prioChange"
+                        @prioChanged="prioChange = true"
                         v-else-if="!compCanPrio && !pairComplete"
-
+                        :cartType="activeChoice"
                         />
                             
                         <Contract
@@ -292,7 +293,7 @@
     </div>
 </div>
 
-    <!-- if profile is viewed by someone who's not the owner----------------------------->
+    <!-- if profile is viewed by someone who's not the owner-->
     <div v-else-if="!ownsPage && data.pageUserData" class="container-fluid">
         <div class="container">
             <div class="row">
@@ -316,7 +317,8 @@
                 :description="data.pageUserData.about"
                 :name="data.pageUserData.name"
                 :study="data.pageUserData.study"
-                :wanted_work="data.pageUserData.wanted_work"
+                :wantedWork="data.pageUserData.wanted_work"
+                :quali="data.pageUserData.quali"
                 />
                 
             </div>
@@ -426,6 +428,7 @@ export default {
         this.$toast.success('Omprioritering er lagret', {
         position: "top",
         }); 
+        this.prioChange = false
     },
 
     removeOffers(choice){

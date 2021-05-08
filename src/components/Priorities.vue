@@ -61,15 +61,16 @@ import { BIcon, BIconArrowUp, BIconArrowDown } from 'bootstrap-vue'
 
 export default {
     name: "Priorities",
-    props:[],
+    props:["cartType"],
     computed:{
         renderArrows(){
             return '<img @click="arrange(idx)" class="pickarrow up" src="../assets/images/Left-Arrow-90.png"/>'
         },
         cart(){
-            return this.$store.getters.getPrioCart("praksis")
+            return this.$store.getters.getPrioCart(this.cartType)
         }
     },
+    
 
     
     methods: {
@@ -77,7 +78,8 @@ export default {
         this.cart.splice(idx + dir, 0, this.cart.splice(idx, 1)[0]);
         this.$emit("prioChanged")
     }
-  }
+  },
+  
 }
 
 </script>
