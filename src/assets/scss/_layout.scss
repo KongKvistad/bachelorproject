@@ -27,7 +27,7 @@ details { //Informasjonssiden "hjelp"
   padding: 7px;
   border-radius: 5px;
   min-width: 90px;
-  border: 1px solid $c-white;
+  border: 1px solid $c-alertborder;
   margin: 5px 5px 0;
 }
 
@@ -1186,7 +1186,7 @@ footer {
     padding: 7px;
     border-radius: 5px;
     min-width: 90px;
-    border: 2px solid $c-alert;
+    border: 2px solid $c-alertborder;
     color: $c-white;
   }
   min-height: 12em;
@@ -1226,7 +1226,7 @@ footer {
     .secondary-button{
       background-color: $c-confirm;
       color: $c-white;
-      border: 2px solid $c-confirm;
+      border: 2px solid $c-confirmborder;
     }
 
     .secondary-button:hover {

@@ -29,9 +29,9 @@
   
 
   <ul class="tabs">
-    <li :class="styleActive('alle')" @click="activeChoice = 'alle'">Alle ({{countCards('alle')}}) </li>
-    <li :class="styleActive('praksis')" @click="activeChoice = 'praksis'">Praksis ({{countCards('praksis')}})</li>
-    <li :class="styleActive('prosjekt')" @click="activeChoice = 'prosjekt'">Prosjekter ({{countCards('prosjekt')}})</li>
+    <li :class="styleActive('alle')" @click="activeChoice = 'alle'"><a href="#">Alle ({{countCards('alle')}})</a> </li>
+    <li :class="styleActive('praksis')" @click="activeChoice = 'praksis'"><a href="#">Praksis ({{countCards('praksis')}})</a></li>
+    <li :class="styleActive('prosjekt')" @click="activeChoice = 'prosjekt'"><a href="#">Prosjekter ({{countCards('prosjekt')}})</a></li>
     </ul>
     <ul class="cards-list">
     
