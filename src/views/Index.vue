@@ -7,11 +7,10 @@
           <div class="col-md-6">
             <h1>NTNU BeNet</h1>
             <p>NTNU BeNet er et bedriftsnettverk som tilbyr praksisformidling og administrasjon av praksisopphold. 
-              Tjenesten krever lite interaksjon fra deg som arbeidsgiver, og gjør det lettere for studenter å skaffe 
-              og koordinere praksisplass eller bachelor-oppgave.</p>
+              Tjenesten krever lite interaksjon fra arbeidsgiver, og gjør det lettere for studenter å skaffe 
+              og koordinere praksisplass.</p>
             <p>Foreløpig er NTNU BeNet et internt bedriftsnettverk for Institutt for design på NTNU Gjøvik, men i 
-              dagens digitale situasjon er det helt åpent for bedrifter fra andre kommuner og fylker. I tillegg er 
-              det er et stort antall studenter på Gjøvik som er innflyttere, og som derfor har flere muligheter.</p>
+              dagens digitale situasjon er det helt åpent for bedrifter fra andre kommuner og fylker.</p>
               <span v-show="!authorized"><a href="/login"><button class="primary-button" style="margin-left:0;">Kom i gang</button></a></span>
               <span v-show="authorized"><a href="/coop/praksis"><button class="primary-button" style="margin-left:0;">Finn eller utlys praksisplass!</button></a></span>
           </div>
@@ -29,12 +28,12 @@
 
           <div class="col-md-6 align-self-center">
             <h2>Hvordan fungerer det?</h2>
-            <p>Du som bedrift er ansvarlig for å ta i mot studenten eller de studentene som skal ha praksisplass hos dere. 
-              Det første som skjer er at du må lage en utlysning, som beskriver hva praksisperioden vil inneholde. Dette er 
-              noe studentene skal se, før de prioriterer 3 valgfrie bedrifter, ved å skrive søknader. </p>
-            <p>Når de har gjort det, vil du få en oversikt over alle som har søkt til deg, samt lese deres søknader og få 
+            <p>Bedrifter som vil delta er ansvarlig for å ta i mot studenten eller de studentene som skal ha praksis. 
+              Det første som skjer er at en bedrift må utlyse en plass, som beskriver hva praksisperioden vil inneholde. Dette er 
+              noe studentene skal se, før de prioriterer 3 valgfrie bedrifter ved å skrive søknader til samtlige. </p>
+            <p>Bedriftene vil deretter få en oversikt over alle som har søkt til, samt lese deres søknader og få 
               tilgang til de gjeldene studentenes profil. Deres profil inneholder en digital CV og relevant informasjon om 
-              studenten. Deretter må du som bedrift også prioritere dine søkere fra èn til tre, innen en gitt frist.</p>
+              studenten. Deretter må bedriften også prioritere søkere innen en gitt frist.</p>
           </div>
         </div>
 
