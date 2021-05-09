@@ -1088,10 +1088,11 @@ footer {
 		}
 	}
   .credits { //forklarende tekst om at BeNet er bachelorprosjekt
-    font-size: $fs-xsmall;
     background: $c-footerbg;
+    font-size: $fs-xsmall;
       p {
       color: $c-navFooterTxt;
+      font-size: $fs-xsmall;
       }
   }
 
