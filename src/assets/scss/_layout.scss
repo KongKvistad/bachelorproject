@@ -1,5 +1,8 @@
 
-details {
+
+
+
+details { //Informasjonssiden "hjelp"
   padding: 10px;
   margin-bottom: 10px;
   background-color: $c-lightbg;
@@ -561,29 +564,32 @@ KNAPPER
 
 //Om-side
 #dashboard, #calendar {
-	.img_right_column {
+	/* .img_right_column {
     max-height: 400px;
     object-fit: contain;
     height: 100%;
     width: 100%;
 		float: right;
-	} 
+	}  */
 
   .calendarImg {
     height: 100%;
     width: 100%;
   }
 
-	.img_left_column {
-		max-width: 400px;
-		width: 100%;
+	.img_about_2, .img_about_1 {
+		max-width: 500px;
+		object-fit: contain;
 	}
 
   .indexIntro { //.indexIntro ligger på to diver
     margin-top: 50px;
   } 
   .indexEnd { //siste to avsnitta på index
-    margin-top: 70px;
+    margin-top: 100px;
+    p {
+      font-size: $fs-small;
+    }
   }
 
 	@media only screen and (max-width: 768px) {
@@ -591,10 +597,9 @@ KNAPPER
       order: 2;
     }
 		.img_about_1 {
-			padding-top: 20px;
+			padding-top: 30px;
       padding-bottom: 20px;
-		}
-
+    }
 		.img_about_2 {
       padding-top: 20px;
 		}
@@ -1083,10 +1088,10 @@ footer {
 		}
 	}
   .credits { //forklarende tekst om at BeNet er bachelorprosjekt
+    font-size: $fs-xsmall;
     background: $c-footerbg;
       p {
       color: $c-navFooterTxt;
-      font-size: $fs-xsmall;
       }
   }
 
