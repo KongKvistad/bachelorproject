@@ -1323,6 +1323,20 @@ footer {
 .danger-button:hover {
   opacity: 60%;
 }
+.removeApplicant {
+  a {
+    color: $c-alert!important;
+  }
+}
+.applicantImage {
+  img {
+  max-width: 4vw;
+  height: auto;
+  @media only screen and (max-width: 600px) {
+    max-width: 10vw;
+  }
+  }
+}
 
 @media only screen and (max-width: 600px) {
   .company-prio {

@@ -2,10 +2,10 @@
 
   <b-list-group-item >
     <b-row>
-        <b-col cols="3">
-        <b-row align-h="center">
-            <b-img style="width: 6vw; height: 6vw;" v-bind="imgProps" :src="data.image_url" rounded="circle" alt="Studenten"></b-img>
-        </b-row>
+        <b-col class="applicantImage" cols="3">
+        
+            <b-img v-bind="imgProps" :src="data.image_url" alt="Bilde av studenten"></b-img>
+        
         </b-col>
         <b-col align-self="end"  cols="7">
         <b-row >
