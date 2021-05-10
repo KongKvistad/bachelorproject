@@ -24,6 +24,11 @@ html {
 	transition: 0.15s;
 }
 
+/* *:focus {
+	outline: 2px solid $c-text;
+	border: 2px solid $c-white;
+} */
+
 li {
     color: $c-text;
   }
