@@ -65,11 +65,12 @@
                 {
                     param: '/prosjekt',
                     text: 'Vår bachelor'
-                },
-                {
-                    param: '/historikk',
-                    text: 'Vår historikk'
-                }]"
+                }//,
+                //{
+                    //param: '/historikk',
+                    //text: 'Vår historikk'
+                //}
+                ]"
                 :id="'/' + this.$route.params.id"
                 base="/profile"
                 v-else-if="data.pageUserData.role == 'company'"

@@ -41,7 +41,7 @@
 <script>
 export default {
     name: "About",
-    props:["name", "description", "study", "wanted_work", "quali"]
+    props:["name", "description", "study", "wantedWork", "quali"]
 }
 
 </script>
