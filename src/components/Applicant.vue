@@ -8,13 +8,12 @@
         
         </b-col>
         <b-col align-self="end"  cols="7">
-        <b-row >
-                <h3 class="mb-3">{{data.name}}</h3>
-        
+        <b-row class="applicantName">
+                <p class="mb-3">{{data.name}}</p>
         </b-row>
         <b-row >
-                <router-link :to="{path: '/profile/' + data.id}">Profil</router-link>
-                <b-link @click="() => $emit('showModal')" class="ml-4">Søknad</b-link>
+                <router-link :to="{path: '/profile/' + data.id}"><b-icon icon="person"></b-icon>Se profil</router-link>
+                <b-link @click="() => $emit('showModal')" class="ml-4">Les søknad</b-link>
                 
         </b-row>
 
@@ -22,8 +21,8 @@
         </b-col>
         <b-col cols="2" align-self="center" >
         <b-row align-h="center">
-            <b-icon-plus style="width: 5vw; height: 5vw;" variant="primary" @click="$emit('clickedApp', data)"></b-icon-plus>
-           
+            <b-icon-plus style="width: 5vw; height: 5vw; cursor:pointer;" variant="primary" @click="$emit('clickedApp', data)"></b-icon-plus>
+    
         </b-row>
         
         </b-col>

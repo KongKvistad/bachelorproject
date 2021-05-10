@@ -93,7 +93,7 @@
                         :study="data.pageUserData.study"
                         :wantedWork="data.pageUserData.wanted_work"
                         :quali="data.pageUserData.quali"
-                        
+                        :workOffer="data.pageUserData.work_offer"
                     />
                 </div>
             </div>
@@ -128,7 +128,7 @@
                                 :cardData="card" 
                                 >
                                 <template v-slot:button>
-                                        <button :disabled="!compCanPrio" class="primary-button button" @click="$router.push('/applicants/' + card.id)" >Se søkere</button>
+                                        <button :disabled="!compCanPrio" class="primary-button button" @click="$router.push('/applicants/' + card.id)" ><b-icon icon="people-fill"></b-icon> Se søkere</button>
                                         <button class="secondary-button button mr-4" @click="toggleCard(card)" >Se utlysning</button>
                                 </template>
                                 </Card2>  
@@ -320,6 +320,7 @@
                 :study="data.pageUserData.study"
                 :wantedWork="data.pageUserData.wanted_work"
                 :quali="data.pageUserData.quali"
+                :workOffer="data.pageUserData.work_offer"
                 />
                 
             </div>

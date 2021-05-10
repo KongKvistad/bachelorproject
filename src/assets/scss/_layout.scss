@@ -26,7 +26,7 @@ details { //Informasjonssiden "hjelp"
   background-color: $c-alert;
   padding: 7px;
   border-radius: 5px;
-  min-width: 90px;
+  max-width: 90px;
   border: 1px solid $c-alertborder;
   margin: 5px 5px 0;
 }
@@ -263,6 +263,9 @@ header{
       height: 20px;
     }
   }
+}
+.editProfile:hover{
+    text-decoration: underline;
 }
 
 .left-col-container{
@@ -1325,8 +1328,13 @@ footer {
   opacity: 60%;
 }
 .removeApplicant {
-  a {
+  a, svg {
     color: $c-alert!important;
+  }
+}
+.applicantName {
+  p {
+  font-size: $fs-h4;
   }
 }
 .applicantImage {

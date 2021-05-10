@@ -4,8 +4,11 @@
     <div class="col-md-8">
 
             <div class="row" style="margin-bottom:30px;">
-                <div class="col-md-9">
+                <div class="col-sm-6">
                     <h1>{{name}}</h1>
+                </div>
+                <div class="col-sm-6 editProfile d-flex justify-content-end align-self-center">
+                    <a><b-icon icon="pencil-square"></b-icon> Rediger profil</a>
                 </div>
             </div>
 
@@ -19,6 +22,10 @@
                 <div class="col-md-12">
                     <h4>Foretrukket arbeid</h4>
                     <p>{{wantedWork}}</p>
+                </div>
+                <div class="col-md-12">
+                    <h4>Hva kan vi tilby?</h4>
+                    <p>{{workOffer}}</p>
                 </div>
             </div>
 
@@ -41,7 +48,7 @@
 <script>
 export default {
     name: "About",
-    props:["name", "description", "study", "wantedWork", "quali"]
+    props:["name", "description", "study", "wantedWork", "quali", "workOffer"]
 }
 
 </script>

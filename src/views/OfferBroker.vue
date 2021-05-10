@@ -1,5 +1,5 @@
 <template>
-<b-container>
+<div>
 
 <b-row class="mt-5">
     <h2 class="h2">1-grad</h2>
@@ -7,14 +7,14 @@
 <b-row class="mt-3">
         
         <b-col cols="8" >
-        <b-row>
-            <h3 class="h4">Bedrifter</h3>
+        <b-row class="applicantName">
+            <p>Bedrift</p>
         </b-row>
         
             
         </b-col>
-        <b-col cols="4">
-            <h3 class="h4">Studenter</h3>
+        <b-col cols="4" class="applicantName">
+            <p>Student</p>
         </b-col>
 
 </b-row>
@@ -34,14 +34,14 @@
 <b-row class="mt-3">
         
         <b-col cols="8" >
-        <b-row>
-            <h3 class="h4">Bedrifter</h3>
+        <b-row class="applicantName">
+            <p>Bedrift</p>
         </b-row>
         
             
         </b-col>
-        <b-col cols="4">
-            <h3 class="h4">Studenter</h3>
+        <b-col cols="4" class="applicantName">
+            <p>Student</p>
         </b-col>
 
 </b-row>
@@ -58,7 +58,7 @@
 <b-row>
 <button @click="sendData" class="button primary-button ml-auto mt-4">Godkjenn</button>
 </b-row>
-</b-container>
+</div>
 </template>
 
 <script>

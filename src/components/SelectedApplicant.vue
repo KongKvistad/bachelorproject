@@ -8,13 +8,11 @@
             
         </b-col>
         <b-col align-self="end"  cols="8">
-        <b-row >
-                <h3 class="mb-3">{{data.name}}</h3>
-        
+        <b-row class="applicantName">
+                <p class="mb-3">{{data.name}}</p>
         </b-row>
         <b-row class="removeApplicant">
                 <b-link @click="() => $emit('removeApp', data)">Fjern</b-link>
-                
         </b-row>
 
         
@@ -28,8 +26,8 @@
         </b-row>
         </b-col>
         <b-col align-self="end"  cols="6">
-        <b-row >
-                <h2 class="mb-3">{{data.name}}</h2>
+        <b-row class="applicantName">
+                <p class="mb-3">{{data.name}}</p>
         
         </b-row>
         <b-row >
