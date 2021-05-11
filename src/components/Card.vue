@@ -18,7 +18,7 @@
                     <p>{{ card.about|truncate }}</p>
                 </div>
                 <div class="card-buttons col-md-12">
-                    <button @click="addToCart(card)" class="primary-button" v-if="renderPrioBtn()">Prioriter</button>
+                    <button @click="addToCart(card)" class="primary-button" v-if="renderPrioBtn()"><b-icon icon="plus"></b-icon> Prioriter</button>
                     <button @click="toggleCoopModal(card)" class="secondary-button">Les mer</button>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-md-12 modalbtns col-md-12 d-flex justify-content-end">
                         <div>
-                            <button @click="addToCart(expandedCard)" class="primary-button" v-if="renderPrioBtn()">Prioriter</button>
+                            <button @click="addToCart(expandedCard)" class="primary-button" v-if="renderPrioBtn()"><b-icon icon="plus"></b-icon> Prioriter</button>
                             <button class="secondary-button" @click="toggleCoopModal">Lukk</button>
                         </div>
                     </div>
