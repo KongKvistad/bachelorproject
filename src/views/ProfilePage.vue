@@ -75,6 +75,11 @@
                 base="/profile"
                 v-else-if="data.pageUserData.role == 'company'"
                 />
+                <div class="deadline" v-if="data.pageUserData.role=='company' && activeChoice=='praksis' || data.pageUserData.role=='company' && activeChoice=='prosjekt'">
+                    <div class="attention"><b-icon icon="exclamation-octagon"></b-icon></div>
+                    <p>Frist for å utlyse plass:</p>
+                    <p>20. januar</p>
+                </div>
             </div>
 
             <div class="col-md-10" v-if="activeChoice == 'default'"> 
@@ -115,7 +120,7 @@
                     
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Praksis</h1>
+                        <h1 style="margin-bottom:30px;">Praksis</h1>
                         <p>Dette er dine utlysninger. Aktive utlysninger er tilgjengelig for studenter i samarbeid.
                             Før en utlysning publiseres og gjøres tilgjengelig må den godkjennes av emneansvarlig. 
                         </p>
@@ -159,7 +164,7 @@
                             </div>
                             <div v-else>
                                 <p>Du har ingen utlysninger som venter på godkjenning</p>
-                                <button class="primary-button" @click.prevent="toggleModal('opened')" style="margin-left:0;">Lag en ny utlysning</button>
+                                <button class="primary-button" @click.prevent="toggleModal('opened')" style="margin-left:0;"><b-icon icon="plus"></b-icon> Lag en ny utlysning</button>
                             </div>  
                         </div>
                     </div>
@@ -170,7 +175,7 @@
         <div class="col-md-10" v-else-if="activeChoice == 'prosjekt' && data.pageUserData.role == 'company'">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Bachelor</h1>
+                    <h1 style="margin-bottom:30px;">Bachelor prosjekt</h1>
                     <p>Dette er dine utlysninger. Aktive utlysninger er tilgjengelig for studenter i samarbeid.
                         Før en utlysning publiseres og gjøres tilgjengelig må den godkjennes av emneansvarlig. 
                     </p>
@@ -206,7 +211,7 @@
                         </div>
                         <div v-else>
                             <p>Du har ingen utlysninger som venter på godkjenning</p>
-                            <button class="primary-button" @click.prevent="toggleModal('opened')" style="margin-left:0;">Lag en ny utlysning</button>
+                            <button class="primary-button" @click.prevent="toggleModal('opened')" style="margin-left:0;"><b-icon icon="plus"></b-icon> Lag en ny utlysning</button>
                         </div>
                     </div>
                 </div>
