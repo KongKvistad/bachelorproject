@@ -1,5 +1,8 @@
 
-details {
+
+
+
+details { //Informasjonssiden "hjelp"
   padding: 10px;
   margin-bottom: 10px;
   background-color: $c-lightbg;
@@ -23,8 +26,8 @@ details {
   background-color: $c-alert;
   padding: 7px;
   border-radius: 5px;
-  min-width: 90px;
-  border: 1px solid $c-white;
+  max-width: 90px;
+  border: 1px solid $c-alertborder;
   margin: 5px 5px 0;
 }
 
@@ -260,6 +263,9 @@ header{
       height: 20px;
     }
   }
+}
+.editProfile:hover{
+    text-decoration: underline;
 }
 
 .left-col-container{
@@ -561,29 +567,32 @@ KNAPPER
 
 //Om-side
 #dashboard, #calendar {
-	.img_right_column {
+	/* .img_right_column {
     max-height: 400px;
     object-fit: contain;
     height: 100%;
     width: 100%;
 		float: right;
-	} 
+	}  */
 
   .calendarImg {
     height: 100%;
     width: 100%;
   }
 
-	.img_left_column {
-		max-width: 400px;
-		width: 100%;
+	.img_about_2, .img_about_1 {
+		max-width: 500px;
+		object-fit: contain;
 	}
 
   .indexIntro { //.indexIntro ligger på to diver
     margin-top: 50px;
   } 
   .indexEnd { //siste to avsnitta på index
-    margin-top: 70px;
+    margin-top: 100px;
+    p {
+      font-size: $fs-small;
+    }
   }
 
 	@media only screen and (max-width: 768px) {
@@ -591,10 +600,9 @@ KNAPPER
       order: 2;
     }
 		.img_about_1 {
-			padding-top: 20px;
+			padding-top: 30px;
       padding-bottom: 20px;
-		}
-
+    }
 		.img_about_2 {
       padding-top: 20px;
 		}
@@ -830,7 +838,7 @@ img{
     label{
       width: 100%;
       font-size: $fs-normal;
-      color: $c-primary;
+      color: $c-headerTxt;
       font-weight: bold;
       margin-bottom: 10px;
       margin-top: 10px;
@@ -1083,10 +1091,11 @@ footer {
 		}
 	}
   .credits { //forklarende tekst om at BeNet er bachelorprosjekt
-    font-size: $fs-xsmall;
     background: $c-footerbg;
+    font-size: $fs-xsmall;
       p {
       color: $c-navFooterTxt;
+      font-size: $fs-xsmall;
       }
   }
 
@@ -1181,7 +1190,7 @@ footer {
     padding: 7px;
     border-radius: 5px;
     min-width: 90px;
-    border: 2px solid $c-alert;
+    border: 2px solid $c-alertborder;
     color: $c-white;
   }
   min-height: 12em;
@@ -1221,7 +1230,7 @@ footer {
     .secondary-button{
       background-color: $c-confirm;
       color: $c-white;
-      border: 2px solid $c-confirm;
+      border: 2px solid $c-confirmborder;
     }
 
     .secondary-button:hover {
@@ -1318,6 +1327,25 @@ footer {
 .danger-button:hover {
   opacity: 60%;
 }
+.removeApplicant {
+  a, svg {
+    color: $c-alert!important;
+  }
+}
+.applicantName {
+  p {
+  font-size: $fs-h4;
+  }
+}
+.applicantImage {
+  img {
+  max-width: 4vw;
+  height: auto;
+  @media only screen and (max-width: 600px) {
+    max-width: 10vw;
+  }
+  }
+}
 
 @media only screen and (max-width: 600px) {
   .company-prio {
@@ -1340,6 +1368,10 @@ footer {
 /*   .router-link-active {
     border-bottom: 3px solid yellow;
   } */
+}
+
+td {
+  color: $c-dark;
 }
 
 

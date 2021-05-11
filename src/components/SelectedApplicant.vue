@@ -2,19 +2,17 @@
 
   <b-list-group-item>
     <b-row v-if="typeof data === 'object'">
-        <b-col cols="4">
-        <b-row align-h="center">
-            <b-img style="width: 6vw; height: 6vw;" v-bind="imgProps" :src="data.image_url" rounded="circle" alt="Bilde av studenten"></b-img>
-        </b-row>
+        <b-col class="applicantImage" cols="4">
+
+            <b-img v-bind="imgProps" :src="data.image_url" alt="Bilde av studenten"></b-img>
+            
         </b-col>
         <b-col align-self="end"  cols="8">
-        <b-row >
-                <h3 class="mb-3">{{data.name}}</h3>
-        
+        <b-row class="applicantName">
+                <p class="mb-3">{{data.name}}</p>
         </b-row>
-        <b-row >
+        <b-row class="removeApplicant">
                 <b-link @click="() => $emit('removeApp', data)">Fjern</b-link>
-                
         </b-row>
 
         
@@ -28,8 +26,8 @@
         </b-row>
         </b-col>
         <b-col align-self="end"  cols="6">
-        <b-row >
-                <h2 class="mb-3">{{data.name}}</h2>
+        <b-row class="applicantName">
+                <p class="mb-3">{{data.name}}</p>
         
         </b-row>
         <b-row >

@@ -1,15 +1,13 @@
 <template>
-<b-list-group-item style="width: 100%;">
+<b-list-group-item style="width: 100%; background-color: #f9fafb;">
     <b-row>
         <b-col cols="8">
-            <h3 class="h5">{{item.compName}}</h3>
+            <p class="h5">{{item.compName}}</p>
         </b-col>
         <b-col cols="4">
-            <h3 class="h5">{{item.studName}}</h3>
+            <p class="h5">{{item.studName}}</p>
         </b-col>
-        
-        </b-row>
-
+    </b-row>
   </b-list-group-item>
 </template>
 <script>

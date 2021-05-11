@@ -12,7 +12,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <p>Har du ikke en bruker? <a href="/signup">Gå til registrering.</a></p>
+              <p>Har du ikke en bruker? <a href="/signup" style="text-decoration: underline;">Gå til registrering.</a></p>
             </div>
           </div>
           <div class="row">
@@ -23,12 +23,12 @@
             <div class="col-md-6">
               <label for="password1">Passord</label>
               <input v-model.trim="loginForm.password" type="password" placeholder="******" id="password1" />
-              <a @click="togglePasswordReset()">Glemt passord?</a>
+              <a @click="togglePasswordReset()" style="text-decoration: underline;">Glemt passord?</a>
             </div>
           </div>
           <div class="row">
           <div class="col-md-12">
-          <button @click="login()" class="button">Logg inn</button>
+          <button @click="login()" class="primary-button button">Logg inn</button>
           </div>
           </div>
         </form>

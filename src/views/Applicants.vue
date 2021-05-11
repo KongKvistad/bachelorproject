@@ -57,7 +57,7 @@
      @close="modalShow = false"
    >
    <template v-slot:content>
-    <p>Søknaden til: {{ applicants.find(x => x.id == activeApp).name }}</p>
+    <p>Søknad fra {{ applicants.find(x => x.id == activeApp).name }}</p>
    <vue-editor style="margin-top: 2em;" v-model="applications[activeApp]" :disabled = "true" :editor-toolbar="[[]]"/>
    </template>
    </Modal>

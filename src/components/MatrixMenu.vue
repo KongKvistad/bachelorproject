@@ -5,9 +5,10 @@
      @close="toggleEditor"
    >
    <template v-slot:content>
-   <h1>Er du sikker?</h1>
-   <p>{{operation.operation  ? 'er du sikker på at du vil godkjenne? Utlysningen vil ble offentliggjort' : 'er du sikker på at du vil avslå? Utlysningen vil bli fjernet fra databasen'}}</p>
-   <button @click.prevent="doOperation(operation)"  class="w-25 ml-auto d-block button">Godkjenn</button>
+   <h2>Advarsel!</h2>
+   <p>{{operation.operation  ? 'Er du sikker på at du vil godkjenne? Utlysningen vil bli offentliggjort og tilgjengelig for studenter.' : 
+     'Er du sikker på at du vil avslå? Utlysningen vil bli slettet permanent og kan ikke gjenopprettes.'}}</p>
+   <button @click.prevent="doOperation(operation)"  class="w-25 ml-auto d-block button">Bekreft</button>
    </template>
 </Modal>
  <Modal 
@@ -29,9 +30,9 @@
   
 
   <ul class="tabs">
-    <li :class="styleActive('alle')" @click="activeChoice = 'alle'">Alle ({{countCards('alle')}}) </li>
-    <li :class="styleActive('praksis')" @click="activeChoice = 'praksis'">Praksis ({{countCards('praksis')}})</li>
-    <li :class="styleActive('prosjekt')" @click="activeChoice = 'prosjekt'">Prosjekter ({{countCards('prosjekt')}})</li>
+    <li :class="styleActive('alle')" @click="activeChoice = 'alle'"><a href="#">Alle ({{countCards('alle')}})</a> </li>
+    <li :class="styleActive('praksis')" @click="activeChoice = 'praksis'"><a href="#">Praksis ({{countCards('praksis')}})</a></li>
+    <li :class="styleActive('prosjekt')" @click="activeChoice = 'prosjekt'"><a href="#">Prosjekter ({{countCards('prosjekt')}})</a></li>
     </ul>
     <ul class="cards-list">
     

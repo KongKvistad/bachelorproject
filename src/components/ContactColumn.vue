@@ -1,7 +1,7 @@
 <template>
 
     <div class="contactColumn col-md-3">
-        <img :src="img"/>
+        <img :src="img" alt="Profilbilde"/>
         <div class="info">
             <h4>Kontakt</h4>
             <ul class="profile-contact">

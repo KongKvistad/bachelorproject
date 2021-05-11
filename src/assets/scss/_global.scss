@@ -24,6 +24,11 @@ html {
 	transition: 0.15s;
 }
 
+/* *:focus {
+	outline: 2px solid $c-text;
+	border: 2px solid $c-white;
+} */
+
 li {
     color: $c-text;
   }
@@ -37,6 +42,10 @@ h5,
 h6,
 p {
 	margin: 0 0 0.5rem;
+	color: $c-text;
+}
+
+div {
 	color: $c-text;
 }
 
@@ -79,6 +88,7 @@ h6 {
 p, em, strong, details p, details summary {
 	color: $c-text;
 	line-height: 1.5;
+	font-size: $fs-normal;
 }
 
 a {

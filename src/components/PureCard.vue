@@ -14,15 +14,15 @@
                 
                 <div class="row">
                     <div class="col-md-12">
-                        <button @click.prevent="cardClick(data)" class="primary-button">Foreslå endring</button>
+                        <button @click.prevent="cardClick(data)" class="primary-button"><b-icon icon="pencil-square"></b-icon> Foreslå endring</button>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <button @click="setStatus(data, true)" class="secondary-button">Godkjenn</button>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <button @click="setStatus(data, false)" class="danger-button" style="margin-left:0;">Avslå</button>
                     </div>
                 </div>

@@ -18,7 +18,7 @@
   
 
   <ul class="tabs">
-    <li v-for="(tab, idx) in extractCols" :key="tab + idx" :class="styleActive(tab)" @click="activeChoice = tab"> {{tab}} </li>  
+    <li v-for="(tab, idx) in extractCols" :key="tab + idx" :class="styleActive(tab)" @click="activeChoice = tab"><a href="#"> {{tab}} </a></li>  
   </ul>
     
     <ul class="matrix-list">
