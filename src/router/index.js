@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../views/Index.vue'
 import { auth } from '../firebase'
+import store from '../store/index.js'
 
 Vue.use(VueRouter)
 
@@ -55,7 +56,7 @@ const routes = [
     name: 'overview',
     component: () => import( /* webpackChunkName: "settings" */ '../views/Overview.vue'),
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -90,15 +91,24 @@ const router = new VueRouter({
   routes
 })
 
+
 // navigation guard to check for logged in users
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
 
+  //general auth guard
   if (requiresAuth && !auth.currentUser) {
     next('/login')
   } else {
     next()
   }
+  
+  // //rolespecific
+  // if(to.name == 'overview'){
+  //   let test = store.state.userProfile
+  //   console.log(auth)
+    
+  // }
 })
 
 export default router

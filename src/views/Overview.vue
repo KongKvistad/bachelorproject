@@ -1,6 +1,6 @@
 <!-- skal bli til oversikt for admin. følger samme route/sidemeny-mapping som f.eks Coop.-->
 <template>
-<main class="left-col-container">
+<main class="left-col-container" v-if="userProfile.role == 'admin'">
     <section class="topRow">
        
     </section>
@@ -93,6 +93,17 @@
 
     </section>
     </main>
+    <b-container v-else>
+   <b-jumbotron bg-variant="light" class="mt-5 w-75 mx-auto" text-variant="white">
+    <template #header>Du har ikke tilgang</template>
+
+
+    <hr class="my-4">
+
+     <b-link href="/">Til fremsiden</b-link>
+  </b-jumbotron>
+        
+    </b-container>
 
 </template>
 
@@ -100,7 +111,7 @@
 <script>
 // grid er en vue-component som enkelt lager tables.
 // tar props som kolonner og rader.
-
+import { mapState } from 'vuex'
 import Grid from 'gridjs-vue'
 import {multipleCols, getData, filterByField, getDoc} from '@/utils/get.js'
 import MatrixMenu from '@/components/MatrixMenu'
@@ -133,6 +144,7 @@ data() {
     }
 },
  computed:{
+     ...mapState(['userProfile']),
       
       activeChoice(){
           return this.$route.params.type

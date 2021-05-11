@@ -77,6 +77,9 @@ const store = new Vuex.Store({
     
     getPrioCart: (state) => (key) => {
       return state.priorityCart[key]
+    },
+    getUser: (state) => {
+      return state.userProfile
     }
   },
   actions: {

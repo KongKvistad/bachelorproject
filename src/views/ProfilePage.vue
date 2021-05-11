@@ -108,7 +108,8 @@
                     <EditorWrapper 
                         :collection="activeChoice"
                         :access="'owner'"
-                        :data="cardData"/>
+                        :data="cardData"
+                        @closed="showEditor = !showEditor" />
                 </template>
                 </Modal>
                     

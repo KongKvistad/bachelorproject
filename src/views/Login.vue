@@ -38,11 +38,10 @@
 </template>
 
 <script>
-import PasswordReset from '@/components/PasswordReset'
 
 export default {
   components: {
-    PasswordReset
+
   },
   data() {
     return {

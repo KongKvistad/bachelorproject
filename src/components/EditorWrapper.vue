@@ -96,8 +96,10 @@ export default {
  
   methods: {
       setHeading(){
-          if(this.access == 'editor' || this.access == 'owner'){
+          if(this.access == 'editor'){
               return "Rediger forslag"
+          } else if (this.access == 'owner'){
+              return this.data.title
           } else {
               return "Opprett en ny utlysning"
           }
