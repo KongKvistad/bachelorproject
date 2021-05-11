@@ -75,7 +75,7 @@
                             <h1 v-else-if="activeChoice=='praksis'">Praksis</h1>
                     </div>
                     <div class="col-6 d-flex justify-content-end">
-                        <button class="primary-button" @click.prevent="toggleModal('opened')">Ny utlysning</button>
+                        <button class="primary-button" @click.prevent="toggleModal('opened')"><b-icon icon="plus"></b-icon> Ny utlysning</button>
                     </div>
                 </div>
                 <div class="row">
