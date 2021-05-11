@@ -26,6 +26,10 @@
                         {
                             param: '/historikk',
                             text: 'Historikk'
+                        },
+                        {
+                            param: '/innstillinger',
+                            text: 'Innstillinger'
                         }]"
                         base="/overview"
                         />
@@ -77,6 +81,8 @@
 
                     
                     <grid v-else-if="activeChoice =='historikk'" :cols="cols" :sort="true" :rows="rows"></grid>
+                    <AdminBtns v-else-if="activeChoice =='innstillinger'"/>
+                        
                     <MatrixMenu  v-else/>
                 </transition>
             </div>
@@ -100,6 +106,7 @@ import {multipleCols, getData, filterByField, getDoc} from '@/utils/get.js'
 import MatrixMenu from '@/components/MatrixMenu'
 import MatrixMenu2 from '@/components/MatrixMenu2'
 import SideMenu from '@/components/SideMenu'
+import AdminBtns from '@/components/AdminBtns'
 import Offerbroker from '@/views/OfferBroker'
 export default {
   name: "Overview",
@@ -108,7 +115,8 @@ export default {
       MatrixMenu,
       MatrixMenu2,
       SideMenu,
-      Offerbroker
+      Offerbroker,
+      AdminBtns
     },
   
 data() {
