@@ -1314,12 +1314,17 @@ footer {
   }
 }
 
+//Liste i "matching" for administrator
+
 #firstDegList, #secDegList {
   .list-group {
     .list-group-item{
       background-color: $c-priobg;
+
+      p {
+        color: $c-dark;
+      }
     }
-    
   }
 }
 
