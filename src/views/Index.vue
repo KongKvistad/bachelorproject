@@ -11,8 +11,8 @@
               og koordinere praksisplass.</p>
             <p>Foreløpig er NTNU BeNet et internt bedriftsnettverk for Institutt for design på NTNU Gjøvik, men i 
               dagens digitale situasjon er det helt åpent for bedrifter fra andre kommuner og fylker.</p>
-              <span v-show="!authorized"><a href="/login"><button class="primary-button" style="margin-left:0;">Kom i gang</button></a></span>
-              <span v-show="authorized"><a href="/coop/praksis"><button class="primary-button" style="margin-left:0;">Finn eller utlys praksisplass!</button></a></span>
+              <span v-show="!authorized"><a href="/login"><button class="primary-button" style="margin-left:0;">Kom i gang <b-icon icon="arrow-right"></b-icon></button></a></span>
+              <span v-show="authorized"><a href="/coop/praksis"><button class="primary-button" style="margin-left:0;">Finn eller utlys praksisplass <b-icon icon="arrow-right"></b-icon></button></a></span>
           </div>
 
 

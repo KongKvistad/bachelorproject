@@ -119,7 +119,7 @@
                     
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Praksis</h1>
+                        <h1 style="margin-bottom:30px;">Praksis</h1>
                         <p>Dette er dine utlysninger. Aktive utlysninger er tilgjengelig for studenter i samarbeid.
                             Før en utlysning publiseres og gjøres tilgjengelig må den godkjennes av emneansvarlig. 
                         </p>
@@ -174,7 +174,7 @@
         <div class="col-md-10" v-else-if="activeChoice == 'prosjekt' && data.pageUserData.role == 'company'">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Bachelor prosjekt</h1>
+                    <h1 style="margin-bottom:30px;">Bachelor prosjekt</h1>
                     <p>Dette er dine utlysninger. Aktive utlysninger er tilgjengelig for studenter i samarbeid.
                         Før en utlysning publiseres og gjøres tilgjengelig må den godkjennes av emneansvarlig. 
                     </p>
