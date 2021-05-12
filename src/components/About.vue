@@ -15,7 +15,9 @@
 
             <div class="row" style="margin-bottom:30px;">
                 <div class="col-md-12">
-                    <p>{{userData.about}}</p>
+                    
+                    <p v-if="!canEdit">{{userData.about}}</p>
+                    <b-form-input v-else v-model="userData.about" ></b-form-input>
                 </div>
             </div>
 
@@ -41,6 +43,9 @@
                     <b-form-input :value="userData.quali.toString()" v-else @input="e => updateQuali(e)" ></b-form-input>
                 </div>
             </div>
+             <div class="row" style="margin-top:30px;">
+                <button @click.prevent="save()" :disabled="editChange == 0" class="button ml-auto">Lagre</button>
+             </div>
         
     </div>
     
@@ -58,7 +63,8 @@ export default {
     props:["userData", "ownsPage"],
     data(){
         return {
-            canEdit: false
+            canEdit: false,
+            editChange: 0
         }
     }, methods:{
         updateQuali(e) {
@@ -67,14 +73,25 @@ export default {
             this.userData.quali = arr
             return e
             
+        },
+        update(){
+            editDoc('users', this.userData.id, this.userData).then(state => {
+                     console.log(state)
+                 })
+        },
+        save(){
+            this.editChange = 0
+            this.canEdit = false
+            this.update()
         }
     },
     watch: {
         canEdit(newVal){
             if (newVal == false){
-                 editDoc('users', this.userData.id, this.userData).then(state => {
-                     console.log(state)
-                 })
+                this.update()
+                this.editChange = 0
+            } else {
+                this.editChange ++
             }
         }
     }
