@@ -107,6 +107,7 @@ export default {
                     if(hit){
                         entry.studName = hit.name
                         entry.studPic = hit.image_url
+                        entry.study = hit.study ? hit.study : false
                     }
                 })
                 
