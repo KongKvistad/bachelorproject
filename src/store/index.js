@@ -47,7 +47,9 @@ const store = new Vuex.Store({
           // optional options Object
 
       } else if (state.priorityCart[card.type].filter(x => x.id == card.data.id).length > 0){
-        this._vm.$toast.error('Du har allerede prioritert denne utlysningen')
+        this._vm.$toast.error('Du har allerede prioritert denne utlysningen', {
+          position: "top",
+        });
       } else {
         this._vm.$toast.success('"'+card.data.title + '"'+ ' ble lagt til som prioritering i min ' + card.type, {
           position: "top",

@@ -412,12 +412,12 @@ header{
     h3 {
       margin-bottom: 10px;
     }
-    .card-company-name {
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: $fs-small;
-    }
   }
+}
+.card-company-name {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: $fs-small;
 }
 
 //Sidemeny i samarbeid. Har en class
@@ -1314,12 +1314,17 @@ footer {
   }
 }
 
+//Liste i "matching" for administrator
+
 #firstDegList, #secDegList {
   .list-group {
     .list-group-item{
       background-color: $c-priobg;
+
+      p {
+        color: $c-dark;
+      }
     }
-    
   }
 }
 

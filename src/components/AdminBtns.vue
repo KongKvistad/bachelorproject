@@ -4,7 +4,7 @@
     <b-col>
         <b-row align-h="Start" class="px-5" style="min-height:11em;">
         <h2>Bedrifter kan prioritere</h2>
-        <p class="pr-4">Bestemmer hvorvidt bedrifter kan prioritere / studenter kan søke. I fremtiden kommer dette til å bestemmes av en dato/ kalender.</p>
+        <p class="pr-4">Bestemmer hvorvidt bedrifter kan prioritere / studenter kan søke. I fremtiden kommer dette til å bestemmes av en dato/kalender.</p>
             <b-row align-h="center" class="w-100">
             <b-button @click.prevent="changeState(compCanPrio)" v-if="compCanPrio.state" variant="danger">Slå av</b-button>
             <b-button @click.prevent="changeState(compCanPrio)" v-else variant="primary">Slå på</b-button>

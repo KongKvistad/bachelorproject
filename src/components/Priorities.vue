@@ -12,6 +12,7 @@
             </b-col>
             <b-col md="8">
                 <b-card-body :title="data.title">
+                    <p class="card-company-name">{{data.name}}</p>
                     <div class="h2 mb-0" align="right" v-if="idx == cart.length - 1" @click="arrange(idx, -1)">
                         <b-icon-arrow-up ></b-icon-arrow-up>
                     </div>

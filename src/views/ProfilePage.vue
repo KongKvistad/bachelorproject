@@ -164,7 +164,7 @@
                             </div>
                             <div v-else>
                                 <p>Du har ingen utlysninger som venter på godkjenning</p>
-                                <button class="primary-button" @click.prevent="toggleModal('opened')" style="margin-left:0;"><b-icon icon="plus"></b-icon> Lag en ny utlysning</button>
+                                <button class="primary-button" @click.prevent="toggleModal('opened')" style="margin-left:0;"><b-icon icon="pencil-square"></b-icon> Lag en ny utlysning</button>
                             </div>  
                         </div>
                     </div>
@@ -211,7 +211,7 @@
                         </div>
                         <div v-else>
                             <p>Du har ingen utlysninger som venter på godkjenning</p>
-                            <button class="primary-button" @click.prevent="toggleModal('opened')" style="margin-left:0;"><b-icon icon="plus"></b-icon> Lag en ny utlysning</button>
+                            <button class="primary-button" @click.prevent="toggleModal('opened')" style="margin-left:0;"><b-icon icon="pencil-square"></b-icon> Lag en ny utlysning</button>
                         </div>
                     </div>
                 </div>

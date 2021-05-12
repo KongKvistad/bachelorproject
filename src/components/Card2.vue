@@ -7,7 +7,7 @@
                 </div>
                 <div class="right-column col-md-9" v-if="collection=='praksis' || collection=='prosjekt'">
                     <h3>{{ cardData.title }}</h3>
-                    <p>{{cardData.name}}</p>
+                    <p class="card-company-name">{{cardData.name}}</p>
                     <p>{{ cardData.content}}</p>
                 </div>
                 <div class="right-column col-md-9" v-else>
