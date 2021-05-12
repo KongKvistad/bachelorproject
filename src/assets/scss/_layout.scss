@@ -1234,7 +1234,8 @@ footer {
     }
 
     .secondary-button:hover {
-      opacity: 60%;
+      background-color: $c-white;
+      color: $c-confirm;
     }
 
     div{
@@ -1330,7 +1331,8 @@ footer {
 
 
 .danger-button:hover {
-  opacity: 60%;
+  background-color: $c-white;
+  color: $c-alert;
 }
 .removeApplicant {
   a, svg {
