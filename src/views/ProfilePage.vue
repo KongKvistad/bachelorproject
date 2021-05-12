@@ -93,12 +93,8 @@
                         :editable="ownsPage"
                     />
                     <About
-                        :description="data.pageUserData.about"
-                        :name="data.pageUserData.name"
-                        :study="data.pageUserData.study"
-                        :wantedWork="data.pageUserData.wanted_work"
-                        :quali="data.pageUserData.quali"
-                        :workOffer="data.pageUserData.work_offer"
+                        :userData="data.pageUserData"
+                        :ownsPage="ownsPage"
                     />
                 </div>
             </div>
@@ -304,7 +300,7 @@
     <div v-else-if="!ownsPage && data.pageUserData" class="container-fluid">
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2"  style="display:flex; height: 7em;align-items: center;justify-content: center;">
                     <b-icon-arrow-left font-scale="3" class="backArrow" @click="$router.go(-1)" /> <br>
                 </div>
             </div>
@@ -321,12 +317,8 @@
                 />
                 
                 <About
-                :description="data.pageUserData.about"
-                :name="data.pageUserData.name"
-                :study="data.pageUserData.study"
-                :wantedWork="data.pageUserData.wanted_work"
-                :quali="data.pageUserData.quali"
-                :workOffer="data.pageUserData.work_offer"
+                :userData="data.pageUserData"
+                :ownsPage="ownsPage"
                 />
                 
             </div>

@@ -11,7 +11,7 @@
             
                 <li>{{phone}}</li>
         
-                <li>{{email}}</li>
+                <li><p style="word-break:break-all;">{{email}}</p></li>
             </ul>
             <ul class="profile-links">
                 <a><li><b-icon icon="linkedin"></b-icon></li></a>
