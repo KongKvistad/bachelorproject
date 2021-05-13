@@ -44,7 +44,7 @@
                 </div>
             </div>
              <div class="row" style="margin-top:30px;">
-                <button @click.prevent="save()" :disabled="editChange == 0" class="button ml-auto">Lagre</button>
+                <button v-if="ownsPage" @click.prevent="save()" :disabled="editChange == 0" class="button ml-auto">Lagre</button>
              </div>
         
     </div>

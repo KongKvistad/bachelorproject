@@ -130,6 +130,10 @@ export default {
                     //console.log(state)
                 
                 })
+                editDoc('state_flags', 'companies_can_prioritize', {state: false}).then(state => {
+                    //console.log(state)
+                
+                })
             })
 
 
@@ -180,6 +184,7 @@ export default {
             let match = studPrios.findIndex(x =>x.prios[0] == comp.id && target == x.id)
 
             if(match != -1){
+                comp.spots --
                 let pair = {comp: comp.id, stud: studPrios[match].id}
                 this.firstDegMatches.push(pair)
                 studPrios.splice(match, 1)
@@ -210,10 +215,12 @@ export default {
             if(possibles.length > 0){
                 let bestmatch = possibles.reduce(function(prev, curr) {
                 return prev.compPrioIndex < curr.compPrioIndex ? prev : curr;
-            });
-            this.secDegMatches.push(bestmatch)
-            students.splice(bestmatch.studIndex, 1)
-            //console.log(comp.id, bestmatch)
+                });
+                
+                comp.spots--
+                this.secDegMatches.push(bestmatch)
+                students.splice(bestmatch.studIndex, 1)
+            
             }
             
             
@@ -232,7 +239,7 @@ export default {
                         
                         // 1: both student and company put each other in 1st
                         this.firstDeg(studPrios, comp)
-                        comp.spots--
+                        
                         
                     }
                 })
@@ -242,7 +249,7 @@ export default {
                         
                         //2: company 1st choice is taken, but student has company in their list,
                         this.secondDeg(studPrios, comp)
-                        comp.spots--
+                        
                         
                     }
                 })

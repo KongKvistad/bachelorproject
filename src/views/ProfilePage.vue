@@ -120,9 +120,10 @@
                         <p>Dette er dine utlysninger. Aktive utlysninger er tilgjengelig for studenter i samarbeid.
                             Før en utlysning publiseres og gjøres tilgjengelig må den godkjennes av emneansvarlig. 
                         </p>
-                        <h2 style="margin-top:30px;">Aktive utlysninger:</h2>
+                        <h2 v-if="data.praksis.approved.length !== 0 && !pairComplete" style="margin-top:30px;">Aktive utlysninger:</h2>
+                        <h2 style="margin-top:30px;" v-else-if="studentsPlaced.length !== 0 && pairComplete"> Dine matcher </h2>
                         <div v-if="dataFetched" key="praksis" class="cards">
-                            <div v-if="data.praksis.approved.length !== 0">
+                            <div v-if="data.praksis.approved.length !== 0 && !pairComplete">
                                 <Card2 
                                 v-for="card in data.praksis.approved"
                                 :key="card.title"
@@ -134,7 +135,15 @@
                                         <button class="secondary-button button mr-4" @click="toggleCard(card)" >Se utlysning</button>
                                 </template>
                                 </Card2>  
-                            </div>    
+                            </div>
+                            <div v-else-if="studentsPlaced.length !== 0 && pairComplete">
+                                <Match
+                                v-for="entry in studentsPlaced"
+                                :key="entry.comp"
+                                :item="entry"
+                                type="first"
+                                />
+                            </div>   
                             <div v-else>
                                 <p>Du har ingen aktive utlysninger</p>
                             </div> 
@@ -268,7 +277,7 @@
                         />
                             
                         <Contract
-                        v-else-if="placeOffered && pairComplete"
+                        v-else-if="placeOffered && pairComplete && activeChoice == 'praksis'"
                         @removeOffers="removeOffers"
                         v-for="place in placeOffered"
                         :key="place.id"
@@ -342,6 +351,7 @@ import store from '../store'
 import EditorWrapper from '@/components/EditorWrapper'
 import Contract from '@/components/Contract'
 import Modal from '@/components/Modal'
+import Match from '@/components/Match'
 import { VueEditor } from "vue2-editor"
 export default {
   name:"ProfilePage",
@@ -354,7 +364,8 @@ export default {
       Modal,
       EditorWrapper,
       VueEditor,
-      Contract
+      Contract,
+      Match
   },
   data(){
       return {
@@ -366,7 +377,9 @@ export default {
           placeOffered: false,
           pairComplete: false,
           prioChange: false,
-          showNew: false
+          showNew: false,
+          compMatchData: false,
+          studentsPlaced: []
           
       }
   },
@@ -410,8 +423,25 @@ export default {
             this.checkForOffers(val)
         
     },
-   
-    
+   //handling to make sure companies show results from matching
+    data(val){
+        if (val[this.activeChoice] && this.role == 'company'){
+            let dataToCompare = val[this.activeChoice].approved
+            let ids = dataToCompare.map(x => x.id)
+            console.log(ids)
+            if(this.pairComplete && this.compMatchData){
+                this.compMatchData.forEach(elem=> {
+                    dataToCompare.forEach(post => {
+                        let match = elem.result.find(x => x.comp == post.id)
+                        match.compName = post.title
+                        if(match){
+                            this.studentsPlaced.push(match)
+                        }
+                    })
+                })
+            }
+        }
+    }
 
    
   },
@@ -449,39 +479,55 @@ export default {
     },
 
     findPost(hit){
-        if(!this.placeOffered){
-        //there can only be one offer
-        hit = hit[0]
-        let match = this.cart.find(x => x.id == hit.comp)
         
-        // match.to = match.to ? match.to : false
-        // match.from = match.from ?match.from: false
+        hit = hit[0]
+        
+        let match = this.cart.find(x => x.id == hit.comp)
+        match.date = hit.date
+
+        if(!this.placeOffered){
         this.placeOffered = [match]
+        } else {
+            let higher = this.placeOffered.filter(x => x.date > hit.date)
+            
+            if(higher[0]){
+                 this.placeOffered = [higher[0]]
+            } else {
+                this.placeOffered = [match]
+            }
         }
-         else {
-            void(0)
-        }
+         
 
         
     },
     checkForOffers(val){
         if(val == 'student'){
             
-          
+            
             //check if student has any places offered          
             getData(false, 'matches').then( res => {
-                
+
+                    
                     
                     res.forEach(x => { 
                         let hit = x.result.filter(y => y.stud == this.userProfile.id)
+
                         
                         if(hit.length > 0){
+                            hit[0].date = x.date.seconds
+                            console.log(hit)
                             this.findPost(hit)
                             
                         }
  
                     })
-                 
+            })
+        } 
+        else if (val == 'company') {
+            
+            //check if student has any places offered          
+            getData(false, 'matches').then( res => {
+                    this.compMatchData = res
                 
             })
         } 
@@ -522,7 +568,7 @@ export default {
         this.pairComplete = res.find(x => x.id == 'pairing_complete').state
 
         if(this.pairComplete){
-            // runs only if user is student - check if they've already recieved offers
+            // runs only if user is student or company - check if they've already recieved offers
             this.checkForOffers(this.userProfile.role)
         }
     })

@@ -19,9 +19,9 @@
             </b-row>
             
         </b-col>
-        <b-col cols="2" align-self="center">
+        <b-col cols="3" align-self="center">
             <!--<button @click="accept(offer)" class="button">godta</button>-->
-            <router-link class="button text-white" :to="'/profile/'+offer.created_by.trim()">om bedriften</router-link>
+            <b-link  :href="'/profile/'+offer.created_by.trim()">om bedriften</b-link>
         </b-col>
      </b-row>
 </template>
