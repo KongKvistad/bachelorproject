@@ -2,13 +2,19 @@
 https://app.gitkraken.com/glo/board/YDY5-hdxdwARgsUp
 
 
-# Run the thing locally
+# For å kjøre prosjektet lokalt:
+
+Du må ha Node.js version 8.9, eller nyere installert
+
 ```
 npm i
 npm run serve
 ```
 
-#### EIRIK NOTES:
+
+
+
+#### NOTES ON CLOUD FUNCTIONS:
 
 to emulate cloud functions: firebase emulators:start
 
