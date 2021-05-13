@@ -11,7 +11,15 @@ npm i
 npm run serve
 ```
 
+# Innloggingsinformasjon til student-brukere:
 
+1.
+lisevjoh@broadpark.mail
+passord
+
+2.
+sarahvberg@gmail.com
+heihei123
 
 
 #### NOTES ON CLOUD FUNCTIONS:
