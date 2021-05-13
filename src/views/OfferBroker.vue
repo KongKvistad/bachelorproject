@@ -135,7 +135,9 @@ export default {
                 
                 })
             })
-
+            this.$toast.success('Matching godkjent!', {
+            position: "top",
+            }); 
 
         },
 
